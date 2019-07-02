@@ -5,28 +5,28 @@ class Account_model extends CI_Model
 {
   /**
    * Picture Director Reference
-   * 
+   *
    * @var string
    */
   public const PICTURE_PATH = '/upload/news/picture/';
 
   /**
    * Defualt Picture
-   * 
+   *
    * @var string
    */
   public const PICTURE = 'user.png';
 
   /**
    * Account Roles
-   * 
+   *
    * @var array
    */
   public const ROLE = array(0 => 'guest', 1 => 'user', 2 => 'editor', 3 => 'administrator');
 
   /**
    * Get Account From Databae
-   * 
+   *
    * @param   array
    * @return  array
    */
@@ -34,10 +34,10 @@ class Account_model extends CI_Model
   {
     return $this->db->get('accounts', $where)->result_array();
   }
-  
+
   /**
    * Add Account To Database
-   * 
+   *
    * @param   array
    * @return  boolean
    */
@@ -52,12 +52,13 @@ class Account_model extends CI_Model
       'surname'  => $account['surname'] ?? '',
       'password' => $account['password']
     );
+
     return $this->db->insert('accounts', $data);
   }
 
   /**
    * Change/Update Account
-   * 
+   *
    * @param   array
    * @param   array
    * @return  boolean
@@ -69,19 +70,13 @@ class Account_model extends CI_Model
       'surname'  => $account['surname'] ?? ''
     );
 
-    // check if picture is upload
-    if(isset($account['picture']))
-    {
-      $data['picture'] = $account['picture'];
-    }
-
     return $this->db->where($where)
                     ->update('accounts', $account);
   }
 
   /**
    * Change/Update Account Password
-   * 
+   *
    * @param   array
    * @param   array
    * @return  boolean
@@ -94,7 +89,7 @@ class Account_model extends CI_Model
 
   /**
    * Delete Account
-   * 
+   *
    * @param   array
    * @return  boolean
    */
