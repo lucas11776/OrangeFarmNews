@@ -8,25 +8,17 @@ class Register extends CI_Controller
    */
   public function index()
   {
-    # page details
-    $details = array(
-      'title'       => 'Welcome back to OrangeFarmNews.',
-      'description' => null, # defualt description
-      'active'      => 'register'
-    );
-
+    # validate required data
     $this->form_validation->set_rules('username', 'username', 'required|callback_username_exist');
     $this->form_validation->set_rules('email', 'email', 'required|valid_email|callback_email_exist');
     $this->form_validation->set_rules('password', 'password', 'required|min_length[6]|max_length[20]');
     $this->form_validation->set_rules('confirm_password', 'confirm password', 'required|matches[password]');
 
-    # check if form validation is valid
+    # check if data if valid
     if($this->form_validation->run() === false)
     {
       # page
-      $this->load->view('template/navbar', $details);
-      $this->load->view('register/create');
-      $this->load->view('template/footer');
+      $this->view();
 
       return;
     }
@@ -47,9 +39,7 @@ class Register extends CI_Controller
       $this->session->set_flashdata('register_error', 'Something went wrong when tring to connect to database.');
 
       # page
-      $this->load->view('template/navbar', $details);
-      $this->load->view('register/create');
-      $this->load->view('template/footer');
+      $this->view();
 
       return;
     }
@@ -59,6 +49,26 @@ class Register extends CI_Controller
     $this->load->view('register/success');
     $this->load->view('template/footer');
   }
+
+  /**
+   * Register View
+   *
+   * @return  void
+   */
+   private function view()
+   {
+     # page details
+     $details = array(
+       'title'       => 'Welcome back to OrangeFarmNews.',
+       'description' => null, # defualt description
+       'active'      => 'register'
+     );
+
+     # page
+     $this->load->view('template/navbar', $details);
+     $this->load->view('register/create');
+     $this->load->view('template/footer');
+   }
 
   /**
    * Check If Username Exist In Database

@@ -36,6 +36,17 @@ class Account_model extends CI_Model
   }
 
   /**
+   * Get Account By Username Or Email Or User_ID
+   *
+   * @param   string
+   * @return  false
+  */
+  public function get_account(string $uid)
+  {
+    return $this->db->where('username', $uid)->or_where('email', $uid)->get('accounts')->result_array()[0] ?? false;
+  }
+
+  /**
    * Add Account To Database
    *
    * @param   array
