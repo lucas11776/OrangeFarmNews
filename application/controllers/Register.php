@@ -42,6 +42,7 @@ class Register extends CI_Controller
     # create account
     if(!$this->account->create($account))
     {
+      # set register error
       $this->session->set_flashdata('register_error', 'Something went wrong when tring to connect to database.');
 
       # page

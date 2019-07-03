@@ -63,7 +63,8 @@ $autoload['libraries'] = array(
   'form_validation',
   'session',
   'encryption',
-  'authentication' => 'auth'
+  'authentication' => 'auth',
+  'upload'
 );
 
 /*
@@ -139,5 +140,6 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 $autoload['model'] = array(
-  'account_model' => 'account'
+  'account_model' => 'account',
+  'news_model'    => 'news'
 );
