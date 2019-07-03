@@ -32,7 +32,10 @@ class Login extends CI_Controller
   public function index()
   {
     # check if client is not logged in
-    
+    if($this->auth->user(false)) # disable redirect
+    {
+      redirect('');
+    }
 
     # page details
     $details = array(
@@ -64,12 +67,14 @@ class Login extends CI_Controller
       $this->view('account_blocked', $details);
     }
 
-    # get account identify and convert data to json and encrypt json data
+    # client account uid and current client ip address to prevent cookie hijecking and convert token to json object
     $token = json_encode(array(
       'id'         => $this->client_account['id'],
-      'username'   => $this->client_account['username'],
-      'ip_address' => $this->input->ip_address() # current user ip address to prevent cookie hijecking
+      'ip_address' => $this->input->ip_address()
     ));
+
+    # decrypt token
+    $token = $this->encryption->encrypt($token);
 
     # check if user wants to stay logged in
     if($this->input->post('stay_logged_in') == 'on')
@@ -79,6 +84,9 @@ class Login extends CI_Controller
 
     # assign token to session
     $this->session->set_userdata('token', $token);
+
+    //print_r($this->session->userdata('token'));
+    die();
 
     # redirect user to old page or home page
     empty($this->input->post('redirect')) ? redirect($this->input->post('redirect')) : redirect('');
@@ -109,6 +117,12 @@ class Login extends CI_Controller
     return true;
   }
 
+  /**
+   * Check If Password Matches Account Password
+   *
+   * @param   string
+   * @return  boolean
+   */
   public function password_match($password)
   {
     # decrypt password
@@ -134,19 +148,16 @@ class Login extends CI_Controller
    */
   private function stay_logged_in(string $token)
   {
-    # cookie
     $cookie = array(
-            'name'   => 'token',
-            'value'  => $token,
-            'expire' => (((60*60)*24)*365.242199) + time(), # set cookie expire in a year
-            #'domain' => '.some-domain.com',
-            'path'   => '/',
-            'prefix' => 'tid_',
-            'secure' => false
+      'name'   => 'token',
+      'value'  => $token,
+      'expire' => ((60*60)*24) * 365.242199, # set cookie expire in a year full year(365.242199)
+      #'domain' => '.some-domain.com',
+      'path'   => '/',
+      'prefix' => 'tid_',
+      'secure' => false
     );
-
-    # store cookie
-    $this->input->set_cookie($cookie);
+    $this->input->set_cookie($cookie); # store cookie
   }
 
 }

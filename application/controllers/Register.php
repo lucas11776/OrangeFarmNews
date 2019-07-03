@@ -8,6 +8,12 @@ class Register extends CI_Controller
    */
   public function index()
   {
+    # check if client is not logged in
+    if($this->auth->user(false)) # disable redirect
+    {
+      redirect('');
+    }
+
     # validate required data
     $this->form_validation->set_rules('username', 'username', 'required|callback_username_exist');
     $this->form_validation->set_rules('email', 'email', 'required|valid_email|callback_email_exist');
