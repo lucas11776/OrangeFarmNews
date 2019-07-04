@@ -50,7 +50,7 @@ class News extends CI_Controller
     $per_page = 3;
 
     # config pagination
-    $this->page_pagination($total ,$per_page);
+    $this->page_pagination($total, $per_page);
 
     # get page page
     $page = is_numeric($this->input->get('page')) ? $this->input->get('page') : 0;
@@ -105,9 +105,13 @@ class News extends CI_Controller
   /**
    * @Route (news)
    */
-  public function category()
+  public function category($category)
   {
-
+    # check if category exist
+    if(array_key_exists(strtolower($category), $this->news::CATEGORY) === false)
+    {
+      echo '<h1>No Category</h1>';
+    }
   }
 
   /**

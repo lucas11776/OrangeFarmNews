@@ -57,21 +57,28 @@ class News_model extends CI_Model
     return $this->db->order_by('views','DESC')->order_by('date','DESC')->get('news', $limit, $offset)->result_array();
   }
 
+  /**
+   * Count Number Of Result In Database
+   *
+   * @param   string
+   * @param   array
+   * @return  integer
+   */
   public function count(string $type = '', array $data = array())
   {
     switch ($type) {
       case 'like':
-        $this->count_like($data);
+        $this->like($data);
         break;
       case 'where':
-        $this->count_where($data);
+        $this->where($data);
         break;
     }
 
     return $this->db->count_all_results('news');
   }
 
-  private function count_where(array $where)
+  private function where(array $where)
   {
     foreach ($where as $key => $value)
     {
@@ -79,7 +86,10 @@ class News_model extends CI_Model
     }
   }
 
-  private function count_like(array $like)
+  /**
+   * Multi
+   */
+  private function like(array $like)
   {
     # loop count
     $index = 0;
