@@ -64,7 +64,8 @@ $autoload['libraries'] = array(
   'session',
   'encryption',
   'authentication' => 'auth',
-  'upload'
+  'upload',
+  'pagination'
 );
 
 /*

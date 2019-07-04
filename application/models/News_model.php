@@ -57,6 +57,50 @@ class News_model extends CI_Model
     return $this->db->order_by('views','DESC')->order_by('date','DESC')->get('news', $limit, $offset)->result_array();
   }
 
+  public function count(string $type = '', array $data = array())
+  {
+    switch ($type) {
+      case 'like':
+        $this->count_like($data);
+        break;
+      case 'where':
+        $this->count_where($data);
+        break;
+    }
+
+    return $this->db->count_all_results('news');
+  }
+
+  private function count_where(array $where)
+  {
+    foreach ($where as $key => $value)
+    {
+      $this->db->where($key, $value);
+    }
+  }
+
+  private function count_like(array $like)
+  {
+    # loop count
+    $index = 0;
+
+    foreach ($data as $key => $value)
+    {
+      # check if first loop
+      if($index == 0)
+      {
+        $this->db->like($key, $value);
+      }
+      else
+      {
+        $this->db->or_like($key, $value);
+      }
+
+      # add one to loop count
+      ++$index;
+    }
+  }
+
   /**
    * Random Pick News Post
    *
