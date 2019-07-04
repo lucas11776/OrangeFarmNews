@@ -54,7 +54,7 @@ class Upload_news extends CI_Controller
       # delete picture if picture is uploaded
       if($this->picture !== null)
       {
-        unlike($this->picture);
+        // unlink($this->picture);
       }
 
       return;
@@ -97,15 +97,18 @@ class Upload_news extends CI_Controller
     $config = $this->news::PICTURE_CONFIG;
 
     # add title as picture file name
-    $config['file_name'] = $this->input->post('title') ?? 'TEMP-'.uniqid();
+    $config['file_name'] = url_title($this->input->post('title') ?? 'TEMP-'.uniqid());
 
     # upload picture
     if($this->upload->do_upload('picture', $config) === false)
     {
-      $this->form_validation->set_message('upload_picture', $this->upload->display_errors('',''));
+      // $this->form_validation->set_message('upload_picture', $this->upload->display_errors('',''));
 
-      return false;
+      // return true;
     }
+
+    # uploaded picture
+    $this->picture = $this->news::PICTURE_CONFIG['upload_path'] . url_title($this->input->post('title')) . uniqid() . '.png';
 
     return true;
   }
