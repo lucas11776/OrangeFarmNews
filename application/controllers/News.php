@@ -56,7 +56,7 @@ class News extends CI_Controller
     $page = is_numeric($this->input->get('page')) ? $this->input->get('page') : 0;
 
     # page details
-    $details = array(
+    $page_details = array(
       'title'            => 'Get the latest new from Orange Farm.',
       'description'      => null, # defualt description
       'news'             => $this->news->latest($per_page, $page),
@@ -64,7 +64,7 @@ class News extends CI_Controller
     );
 
     # page
-    $this->view('home', $details);
+    $this->view('home', $page_details);
   }
 
   /**
@@ -79,19 +79,19 @@ class News extends CI_Controller
     if($single_news === false)
     {
       # 404 news not found page
-      $details = array(
+      $page_details = array(
         'title'   => '404 News Not Found.',
         'message' => 'Sorry news does not exist or it may be deleted by editor.'
       );
 
       # go back one dir to 404 page error
-      $this->view('../404', $details);
+      $this->view('../404', $page_details);
 
       return;
     }
 
     # page details
-    $details = array(
+    $page_details = array(
       'title'       => $single_news['title'],
       'description' => word_limiter(strip_tags($single_news['post']), 40),
       'single_news' => $single_news,
@@ -99,7 +99,7 @@ class News extends CI_Controller
     );
 
     # page
-    $this->view('single', $details);
+    $this->view('single', $page_details);
   }
 
   /**
@@ -107,10 +107,16 @@ class News extends CI_Controller
    */
   public function category($category)
   {
+    # page details
+    $page_details = array(
+      'title'       => 'OrangeFarmNews ' . $category . ' news category.',
+      'description' => null, # defualt description
+    );
+
     # check if category exist
     if(array_key_exists(strtolower($category), $this->news::CATEGORY) === false)
     {
-      echo '<h1>No Category</h1>';
+      $this->view('../404', $page_details);
     }
   }
 

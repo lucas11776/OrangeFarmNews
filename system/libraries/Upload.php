@@ -311,7 +311,7 @@ class CI_Upload {
 	public function initialize(array $config = array(), $reset = TRUE)
 	{
 		$reflection = new ReflectionClass($this);
-
+		
 		if ($reset === TRUE)
 		{
 			$defaults = $reflection->getDefaultProperties();

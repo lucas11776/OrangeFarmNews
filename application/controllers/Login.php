@@ -38,7 +38,7 @@ class Login extends CI_Controller
     }
 
     # page details
-    $details = array(
+    $page_details = array(
       'title'       => 'Welcome back to OrangeFarmNews.',
       'description' => null,
       'active'      => 'login'
@@ -52,7 +52,7 @@ class Login extends CI_Controller
     if($this->form_validation->run() === false)
     {
       # page
-      $this->view('create', $details);
+      $this->view('create', $page_details);
 
       return;
     }
@@ -61,10 +61,10 @@ class Login extends CI_Controller
     if($this->client_account['role'] == 0)
     {
       # change page title
-      $details['title'] = 'Account Has Been Blocked By Administrator.';
+      $page_details['title'] = 'Account Has Been Blocked By Administrator.';
 
       # page
-      $this->view('account_blocked', $details);
+      $this->view('account_blocked', $page_details);
     }
 
     # client account uid and current client ip address to prevent cookie hijecking and convert token to json object
@@ -84,10 +84,7 @@ class Login extends CI_Controller
 
     # assign token to session
     $this->session->set_userdata('token', $token);
-
-    //print_r($this->session->userdata('token'));
-    die();
-
+    
     # redirect user to old page or home page
     empty($this->input->post('redirect')) ? redirect($this->input->post('redirect')) : redirect('');
   }

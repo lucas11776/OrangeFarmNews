@@ -54,7 +54,7 @@ class Upload_news extends CI_Controller
       # delete picture if picture is uploaded
       if($this->picture !== null)
       {
-        // unlink($this->picture);
+        unlink($this->picture);
       }
 
       return;
@@ -73,9 +73,10 @@ class Upload_news extends CI_Controller
     # create news item
     if($this->news->create($news) === false)
     {
+      # overwrite page title
+      $details['title'] = 'Something went wrong when tring to connect to database.';
       # set upload news error
-      $this->session->set_flashdata('upload_news_error', 'Something went wrong when tring to connect to database.');
-
+      $this->session->set_flashdata('upload_news_error', $details['title']);
       # page
       $this->view('create', $details);
 
@@ -89,6 +90,8 @@ class Upload_news extends CI_Controller
   /**
    * Upload Picture
    *
+   * @// NOTE: If file title does not exist temp picture will be deleted in index
+   *
    * @return boolean
    */
   public function upload_picture()
@@ -99,16 +102,19 @@ class Upload_news extends CI_Controller
     # add title as picture file name
     $config['file_name'] = url_title($this->input->post('title') ?? 'TEMP-'.uniqid());
 
-    # upload picture
-    if($this->upload->do_upload('picture', $config) === false)
-    {
-      // $this->form_validation->set_message('upload_picture', $this->upload->display_errors('',''));
+    # initialize upload configuration
+    $this->upload->initialize($config);
 
-      // return true;
+    # upload picture
+    if($this->upload->do_upload('picture') === false)
+    {
+      $this->form_validation->set_message('upload_picture', $this->upload->display_errors('',''));
+
+      return false;
     }
 
     # uploaded picture
-    $this->picture = $this->news::PICTURE_CONFIG['upload_path'] . url_title($this->input->post('title')) . uniqid() . '.png';
+    $this->picture = base_url($this->news::PICTURE_CONFIG['upload_path'] . $this->upload->data('file_name'));
 
     return true;
   }

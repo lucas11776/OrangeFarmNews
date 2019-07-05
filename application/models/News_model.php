@@ -19,7 +19,7 @@ class News_model extends CI_Model
     7  => 'education',
     8  => 'finaci',
     9  => '',
-    10 => ''
+    10 => 'otheirs'
   );
 
   /**
@@ -28,7 +28,7 @@ class News_model extends CI_Model
    * @var array
    */
   public const PICTURE_CONFIG = array(
-    'upload_path'   => './uploads/',
+    'upload_path'   => 'uploads/news/pictures/',
     'max_size'      => 512, # 0.5mb maximum upload size
     'allowed_types' => array('png','jpeg','jpg')
   );
@@ -164,7 +164,7 @@ class News_model extends CI_Model
       'slug'     => $news['slug'],
       'title'    => $news['title'],
       'picture'  => $news['picture'],
-      'category' => $news['category'],
+      'category' => $this::CATEGORY[$news['category'] ?? count($this::CATEGORY) - 1],
       'post'     => $news['post']
     );
 
