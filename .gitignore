@@ -34,9 +34,8 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /user_guide/
 
 # application assets
-/assets/*
 
 # Application Upload Paths
-uploads/news/pictures/*
+/uploads/news/pictures/*
 /uploads/blog/pictures/*
 /uploads/accounts/pictures/*
