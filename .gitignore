@@ -39,10 +39,10 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /uploads/accounts/pictures/*
 
 # default application assets
-/asset/default/
+/assets/default/
 
 # newsletter application asset
-/asset/newsletter/
+/assets/newsletter/
 
 # Application files
 /application/
