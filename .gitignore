@@ -37,6 +37,20 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /assets/*
 
 # Application Upload Paths
-uploads/news/pictures/*
+/uploads/news/pictures/*
 /uploads/blog/pictures/*
 /uploads/accounts/pictures/*
+
+# Application files
+/application/
+/assets/
+/system/
+/uploads/
+/user_guide/
+.editorconfig
+.htaccess
+composer.json
+contributing.md
+index.php
+license.txt
+readme.rst
