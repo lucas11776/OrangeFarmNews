@@ -72,9 +72,9 @@ class Register extends CI_Controller
      );
 
      # page
-     $this->load->view('template/navbar', $details);
+     $this->load->view('template/_navbar', $details);
      $this->load->view('register/create');
-     $this->load->view('template/footer');
+     $this->load->view('template/_footer');
    }
 
   /**

@@ -21,9 +21,9 @@ class Login extends CI_Controller
     */
    private function view(string $page, array $details)
    {
-     $this->load->view('template/navbar', $details);
+     $this->load->view('template/_navbar', $details);
      $this->load->view('login/'.$page);
-     $this->load->view('template/footer');
+     $this->load->view('template/_footer');
    }
 
   /**
