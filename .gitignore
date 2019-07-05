@@ -33,9 +33,6 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 # CodeIgniter Docs
 /user_guide/*
 
-# application assets
-/assets/*
-
 # Application Upload Paths
 /uploads/news/pictures/*
 /uploads/blog/pictures/*
