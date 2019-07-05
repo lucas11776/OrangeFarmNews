@@ -34,7 +34,7 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /user_guide/
 
 ## panel assets
-/assets/panel/node_modules/*
+
 
 
 # Application Upload Paths
