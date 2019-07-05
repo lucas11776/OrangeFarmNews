@@ -18,7 +18,7 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 
 # IDE Files
 #-------------------------
-/nbproject/
+/project/
 .idea/*
 
 ## Sublime Text cache files
@@ -41,9 +41,14 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /uploads/blog/pictures/*
 /uploads/accounts/pictures/*
 
+# default application assets
+/asset/default/
+
+# newsletter application asset
+/asset/newsletter/
+
 # Application files
 /application/
-/assets/
 /system/
 /uploads/
 /user_guide/
