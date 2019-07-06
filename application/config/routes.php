@@ -49,15 +49,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller']   = 'home';               # access (all)
-$route['register']             = 'register/index';     # access (guest)
-$route['login']                = 'login/index';        # access (guest)
-$route['upload/news']          = 'upload_news/index';  # access (editor,administrator)
-$route['upload/blog']          = 'upload_blog/index';  # access (editor,administrator)
-$route['news']                 = 'news/index';         # access (all)
-$route['news/category/(:any)'] = 'news/category/$1';   # access (all)
-$route['news/most-viewed']     = 'news/most_viewed';   # access (all)
-$route['news/(:any)']          = 'news/single/$1';     # access (all)
-$route['logout']               = 'logout/index';       # access (all)
-$route['404_override']         = 'page_not_found';     # access (all)
-$route['translate_uri_dashes'] = FALSE;
+$route['default_controller']       = 'home';                     # access (all)
+$route['register']                 = 'register/index';           # access (guest)
+$route['login']                    = 'login/index';              # access (guest)
+$route['upload/news']              = 'upload_news/index';        # access (editor,administrator)
+$route['upload/blog']              = 'upload_blog/index';        # access (editor,administrator)
+$route['news']                     = 'news/index';               # access (all)
+$route['news/category/(:any)']     = 'news/category/$1';         # access (all)
+$route['news/most-viewed']         = 'news/most_viewed';         # access (all)
+$route['news/(:any)']              = 'news/single/$1';           # access (all)
+$route['dashboard']                = 'administrator/index';      # access (administrator)
+$route['dashboard/accounts']       = 'administrator/accounts';   # access (administrator)
+$route['dashboard/news']           = 'administrator/news';       # access (administrator)
+$route['dashboard/newsletter']     = 'administrator/newsletter'; # access (administrator)
+$route['logout']                   = 'logout/index';             # access (all)
+$route['404_override']             = 'page_not_found';           # access (all)
+$route['translate_uri_dashes']     = FALSE;
