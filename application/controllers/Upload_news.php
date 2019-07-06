@@ -19,9 +19,9 @@ class Upload_news extends CI_Controller
    */
   private function view(string $page, array $details)
   {
-    $this->load->view('template/navbar', $details);
+    $this->load->view('template/_navbar', $details);
     $this->load->view('news/'.$page);
-    $this->load->view('template/footer');
+    $this->load->view('template/_footer');
   }
 
   /**

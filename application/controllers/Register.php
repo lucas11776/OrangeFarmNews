@@ -53,7 +53,7 @@ class Register extends CI_Controller
     }
 
     # encrypt password
-    $encrypted_password = $this->input->post('password');
+    $encrypted_password = $this->encryption->encrypt($this->input->post('password'));
 
     # account details
     $account = array(

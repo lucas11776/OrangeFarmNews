@@ -19,7 +19,8 @@ class Administrator extends CI_Controller
     $page_details = array(
       'title'       => 'OrangeFarmNews Administrator (Themba)',
       'description' => 'OrangeFarmNews Administrator Panel.',
-      'active'      => 'panel'
+      'active'      => 'panel',
+      'number_post' => $this->stats->number_post(), # get number post from (accounts,blog,news)
     );
 
     # page

@@ -1,3 +1,6 @@
+  <?php
+  # Hide Navbar If Page (register,login,password)
+  if(!in_array(strtolower($active), $this->panel::PAGES_HIDE_NAVBAR)): ?>
 
     </div>
     <!-- /.container-fluid -->
@@ -26,6 +29,10 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
+  <?php
+  # if is found in (template/_navbar)
+  endif; ?>
+
   <!-- Bootstrap core JavaScript-->
   <script src="<?php echo base_url('assets/panel/vendor/jquery/jquery.min.js'); ?>"></script>
   <script src="<?php echo base_url('assets/panel/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
@@ -35,13 +42,6 @@
 
   <!-- Custom scripts for all pages-->
   <script src="<?php echo base_url('assets/panel/js/sb-admin-2.min.js'); ?>"></script>
-
-  <!-- Page level plugins -->
-  <script src="<?php echo base_url('assets/panel/vendor/chart.js/Chart.min.js'); ?>"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="<?php echo base_url('assets/panel/js/demo/chart-area-demo.js'); ?>"></script>
-  <script src="<?php echo base_url('assets/panel/js/demo/chart-pie-demo.js'); ?>"></script>
 
   </body>
 

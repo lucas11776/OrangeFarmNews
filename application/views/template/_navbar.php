@@ -20,7 +20,11 @@
 
 </head>
 
-<body <?php echo in_array(strtolower($active ?? ''), array('register','login','password')) ? 'class="bg-gradient-primary"' : 'id="page-top"'; ?>>
+<body <?php echo in_array(strtolower($active), array('register','login','password')) ? 'class="bg-gradient-primary"' : 'id="page-top"'; ?>>
+
+  <?php
+  # Hide Navbar If Page (register,login,password)
+  if(!in_array(strtolower($active), $this->panel::PAGES_HIDE_NAVBAR)): ?>
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -52,37 +56,37 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Interface
+        Accounts
       </div>
+
+      <!-- Nav Item - My Account -->
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url($this->auth->administrator(false) ? 'dashboard/my/account' : 'my/account'); ?>">
+          <i class="fas fa-fw fa-user"></i>
+          <span>My Account</span></a>
+      </li>
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
-          <span>Components</span>
+          <span>Accounts</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="buttons.html">Buttons</a>
-            <a class="collapse-item" href="cards.html">Cards</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Utilities</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="utilities-color.html">Colors</a>
-            <a class="collapse-item" href="utilities-border.html">Borders</a>
-            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-            <a class="collapse-item" href="utilities-other.html">Other</a>
+            <h6 class="collapse-header">Accounts By Role:</h6>
+            <a class="collapse-item" href="buttons.html">
+              <i class="fas fa-exclamation-triangle pr-1 text-primary"></i> Blocked
+            </a>
+            <a class="collapse-item" href="buttons.html">
+              <i class="fas fa-user pr-1 text-primary"></i> User
+            </a>
+            <a class="collapse-item" href="buttons.html">
+              <i class="fas fa-edit pr-1 text-primary"></i> Editor
+            </a>
+            <a class="collapse-item" href="buttons.html">
+              <i class="fas fa-key pr-1 text-primary"></i> Administrator
+            </a>
           </div>
         </div>
       </li>
@@ -92,41 +96,45 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Addons
+        Manage Content
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
+          <span>Upload</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="login.html">Login</a>
-            <a class="collapse-item" href="register.html">Register</a>
-            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Other Pages:</h6>
-            <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item" href="blank.html">Blank Page</a>
+            <h6 class="collapse-header">Upload Content:</h6>
+            <a class="collapse-item" href="<?php echo base_url('dashboard/upload/news'); ?>">
+              <i class="fas fa-edit pr-1 text-primary"></i> News
+            </a>
+            <a class="collapse-item" href="<?php echo base_url('dashboard/upload/blog'); ?>">
+              <i class="fas fa-rss pr-1 text-primary"></i> Blog
+            </a>
           </div>
         </div>
       </li>
 
-      <!-- Nav Item - Charts -->
+      <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
-      </li>
-
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages1" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>My Posts</span>
+        </a>
+        <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Manage Post:</h6>
+            <a class="collapse-item" href="buttons.html">
+              <i class="fas fa-edit pr-1 text-primary"></i> News
+            </a>
+            <a class="collapse-item" href="buttons.html">
+              <i class="fas fa-rss pr-1 text-primary"></i> Blog
+            </a>
+          </div>
+        </div>
       </li>
 
       <!-- Divider -->
@@ -331,3 +339,7 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
+
+  <?php
+  # End Hide Navbar If Page
+  endif; ?>
