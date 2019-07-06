@@ -45,11 +45,20 @@ class Login extends CI_Controller
     );
 
     # validate required data
-    $this->form_validation->set_rules('username', 'username', 'required|callback_username_exist');
-    $this->form_validation->set_rules('password', 'password', 'required|callback_password_match');
+    $this->form_validation->set_rules('username', 'email/username', 'callback_username_exist');
+    $this->form_validation->set_rules('password', 'password', 'required');
 
     # check if data if valid
     if($this->form_validation->run() === false)
+    {
+      # page
+      $this->view('create', $page_details);
+
+      return;
+    }
+
+    # check if client password matches account password
+    if($this->password_matches($this->input->post('password')) === false)
     {
       # page
       $this->view('create', $page_details);
@@ -84,9 +93,31 @@ class Login extends CI_Controller
 
     # assign token to session
     $this->session->set_userdata('token', $token);
-    
+
     # redirect user to old page or home page
     empty($this->input->post('redirect')) ? redirect($this->input->post('redirect')) : redirect('');
+  }
+
+  /**
+   * Check Is Password Matches Account Passsowrd
+   *
+   * @param   string
+   * @return  boolean
+   */
+  public function password_matches(string $password)
+  {
+    # decrypt account password
+    $account_password = $this->encryption->decrypt($this->client_account['password']);
+
+    # check if password matches account password
+    if($account_password != $password)
+    {
+      $this->session->set_flashdata('login_error', 'Incorrect username or password.');
+
+      return false;
+    }
+
+    return true;
   }
 
   /**
@@ -99,37 +130,21 @@ class Login extends CI_Controller
    */
   public function username_exist($uid)
   {
-    # get account by username or email
-    $this->client_account = $this->account->get_account($uid);
-
-    # check if account exist
-    if($this->account === false)
+    # check if user identity is not empty
+    if(empty($uid))
     {
-      $this->form_validation->set_message('username_exist', 'Sorry {field} does not exist please try correct one.');
-      $this->session->set_flashdata('login_fail', 'Invalid creditials please try again.');
+      $this->form_validation->set_message('username_exist', 'Your {field} is required to login.');
 
       return false;
     }
 
-    return true;
-  }
+    # get account ty username or email
+    $this->client_account = $this->account->get_account($uid);
 
-  /**
-   * Check If Password Matches Account Password
-   *
-   * @param   string
-   * @return  boolean
-   */
-  public function password_match($password)
-  {
-    # decrypt password
-    $decrypted_password = $this->client_account['password'] ?? null;
-
-    # check if account password match account password
-    if($password == $decrypted_password)
+    # check if account exist
+    if($this->client_account === false)
     {
-      $this->form_validation->set_message('password_match', 'Sorry {field} password does not match account password.');
-      $this->session->set_flashdata('login_fail', 'Invalid creditials please try again.');
+      $this->form_validation->set_message('username_exist', 'The {field} your entered does not exist.');
 
       return false;
     }

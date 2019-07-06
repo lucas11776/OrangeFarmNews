@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Dashboard</title>
+  <title><?php echo $title ?? 'OrangeFarmNews the voice of the people since 2012 (DashBoard)'; ?></title>
 
   <!-- Custom fonts for this template-->
   <link href="<?php echo base_url('assets/panel/vendor/fontawesome-free/css/all.min.css'); ?>" rel="stylesheet" type="text/css">
@@ -20,27 +20,4 @@
 
 </head>
 
-<body id="page-top">
-
-  
-
-  <!-- Bootstrap core JavaScript-->
-  <script src="<?php echo base_url('assets/panel/vendor/jquery/jquery.min.js'); ?>"></script>
-  <script src="<?php echo base_url('assets/panel/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="<?php echo base_url('assets/panel/vendor/jquery-easing/jquery.easing.min.js'); ?>"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="<?php echo base_url('assets/panel/js/sb-admin-2.min.js'); ?>"></script>
-
-  <!-- Page level plugins -->
-  <script src="<?php echo base_url('assets/panel/vendor/chart.js/Chart.min.js'); ?>"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="<?php echo base_url('assets/panel/js/demo/chart-area-demo.js'); ?>"></script>
-  <script src="<?php echo base_url('assets/panel/js/demo/chart-pie-demo.js'); ?>"></script>
-
-</body>
-
-</html>
+<body <?php echo $active == 'register' || $active == 'login' ? 'class="bg-gradient-primary"' : 'id="page-top"'; ?>>

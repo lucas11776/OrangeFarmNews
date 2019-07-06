@@ -4,6 +4,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Register extends CI_Controller
 {
   /**
+   * Register Page View
+   *
+   * @param   string
+   * @param   array
+   * @return  void
+   */
+   private function view($page, $details)
+   {
+     # page
+     $this->load->view('template/_navbar', $details);
+     $this->load->view('register/'.$page);
+     $this->load->view('template/_footer');
+   }
+
+  /**
    * @Route (register)
    */
   public function index()
@@ -20,11 +35,19 @@ class Register extends CI_Controller
     $this->form_validation->set_rules('password', 'password', 'required|min_length[6]|max_length[20]');
     $this->form_validation->set_rules('confirm_password', 'confirm password', 'required|matches[password]');
 
+    # page details
+    $page_details = array(
+      'title'       => 'Register and join the community of OrangeFarm.',
+      'description' => null, # defualt description
+      'active'      => 'register',
+      'login_page'  => true
+    );
+
     # check if data if valid
-    if($this->form_validation->run() === false)
+    if($this->form_validation->run('create') === false)
     {
       # page
-      $this->view();
+      $this->view('create', $page_details);
 
       return;
     }
@@ -57,25 +80,6 @@ class Register extends CI_Controller
     $this->load->view('template/footer');
   }
 
-  /**
-   * Register View
-   *
-   * @return  void
-   */
-   private function view()
-   {
-     # page details
-     $details = array(
-       'title'       => 'Welcome back to OrangeFarmNews.',
-       'description' => null, # defualt description
-       'active'      => 'register'
-     );
-
-     # page
-     $this->load->view('template/_navbar', $details);
-     $this->load->view('register/create');
-     $this->load->view('template/_footer');
-   }
 
   /**
    * Check If Username Exist In Database
