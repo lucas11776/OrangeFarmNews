@@ -20,4 +20,4 @@
 
 </head>
 
-<body <?php echo $active == 'register' || $active == 'login' ? 'class="bg-gradient-primary"' : 'id="page-top"'; ?>>
+<body <?php echo in_array(strtolower($active ?? ''), array('register','login','password')) ? 'class="bg-gradient-primary"' : 'id="page-top"'; ?>>
