@@ -79,25 +79,27 @@ function modules() {
     ])
     .pipe(gulp.dest('./vendor/jquery'));
   // Quill TextArea Editor (Minifier Files)
-  // var quill = gulp.src([
-  //   './node_modules/quill/dist/*.js',
-  //   './node_modules/quill/dist/*.css' ])
-  //   .pipe(minify({
-  //     minify: true,
-  //     minifyHTML: {
-  //       collapseWhitespace: true,
-  //       conservativeCollapse: true,
-  //     },
-  //     minifyJS: {
-  //       sourceMap: true
-  //     },
-  //     minifyCSS: true,
-  //     getKeptComment: function (content, filePath) {
-  //         var m = content.match(/\/\*![\s\S]*?\*\//img);
-  //         return m && m.join('\n') + '\n' || '';
-  //     }
-  //   }))
-  //   .pipe(gulp.dest('./vendor/quill'))
+  var quill = gulp.src([
+    './node_modules/quill/dist/quill.core.js',
+    './node_modules/quill/dist/quill.js',
+    './node_modules/quill/dist/quill.core.css',
+    './node_modules/quill/dist/quill.snow.css'])
+    .pipe(minify({
+      minify: true,
+      minifyHTML: {
+        collapseWhitespace: true,
+        conservativeCollapse: true,
+      },
+      minifyJS: {
+        sourceMap: true
+      },
+      minifyCSS: true,
+      getKeptComment: function (content, filePath) {
+          var m = content.match(/\/\*![\s\S]*?\*\//img);
+          return m && m.join('\n') + '\n' || '';
+      }
+    }))
+    .pipe(gulp.dest('./vendor/quill'));
   return merge(bootstrapJS, bootstrapSCSS, chartJS, dataTables, fontAwesome, jquery, jqueryEasing, quill);
 }
 

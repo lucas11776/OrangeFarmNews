@@ -43,7 +43,7 @@ class Upload_news extends CI_Controller
     $this->form_validation->set_rules('picture', 'picture', 'callback_upload_picture');
     $this->form_validation->set_rules('title', 'title', 'required|min_length[5]|max_length[100]');
     $this->form_validation->set_rules('category', 'category', 'required|callback_category_exist');
-    $this->form_validation->set_rules('post', 'post', 'required');
+    $this->form_validation->set_rules('post', 'content', 'required');
 
     # check if required data is valid
     if($this->form_validation->run() === false)

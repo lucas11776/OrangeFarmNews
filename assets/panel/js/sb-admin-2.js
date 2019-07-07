@@ -1,17 +1,6 @@
 (function($) {
   "use strict"; // Start of use strict
 
-  // Quill TextArea Editor
-  var editorTextArea = new Quill('#editor-text-area', {
-    debug: 'info',
-    modules: {
-      toolbar: ['bold', 'italic', 'underline', 'strike']
-    },
-    placeholder: 'Compose content...',
-    readOnly: true,
-    theme: 'snow'
-  });
-
   // Toggle the side navigation
   $("#sidebarToggle, #sidebarToggleTop").on('click', function(e) {
     $("body").toggleClass("sidebar-toggled");
@@ -56,5 +45,22 @@
     }, 1000, 'easeInOutExpo');
     e.preventDefault();
   });
+
+  // Quill TextArea 
+  var editorTextArea = new Quill('#editor', {
+    debug: 'info',
+    placeholder: 'Compose Text...',
+    theme: 'snow'
+  });
+
+  // set Quill Content
+  editorTextArea.setText($('.quill-textarea').val());
+
+  // Event Listerner #editor-text-area
+  editorTextArea.on('editor-change', function() {
+    // assign text to hidden text area for form submit
+    $('.quill-textarea').val($('.ql-editor').html());
+  });
+
 
 })(jQuery); // End of use strict

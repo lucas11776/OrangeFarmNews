@@ -18,6 +18,12 @@
   <!-- Custom styles for this template-->
   <link href="<?php echo base_url('assets/panel/css/sb-admin-2.min.css'); ?>" rel="stylesheet">
 
+  <!-- Quill Text Editor Style and theme -->
+  <link href="<?php echo base_url('assets/panel/vendor/quill/quill.core.css'); ?>" rel="stylesheet">
+
+  <!-- Quill Text Editor Style and theme -->
+  <link href="<?php echo base_url('assets/panel/vendor/quill/quill.snow.css'); ?>" rel="stylesheet">
+
 </head>
 
 <body <?php echo in_array(strtolower($active), array('register','login','password')) ? 'class="bg-gradient-primary"' : 'id="page-top"'; ?>>
