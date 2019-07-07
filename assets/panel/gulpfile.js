@@ -12,6 +12,7 @@ const plumber = require("gulp-plumber");
 const rename = require("gulp-rename");
 const sass = require("gulp-sass");
 const uglify = require("gulp-uglify");
+const minify = require("gulp-minifier");
 
 // Load package.json for banner
 const pkg = require('./package.json');
@@ -77,7 +78,27 @@ function modules() {
       '!./node_modules/jquery/dist/core.js'
     ])
     .pipe(gulp.dest('./vendor/jquery'));
-  return merge(bootstrapJS, bootstrapSCSS, chartJS, dataTables, fontAwesome, jquery, jqueryEasing);
+  // Quill TextArea Editor (Minifier Files)
+  // var quill = gulp.src([
+  //   './node_modules/quill/dist/*.js',
+  //   './node_modules/quill/dist/*.css' ])
+  //   .pipe(minify({
+  //     minify: true,
+  //     minifyHTML: {
+  //       collapseWhitespace: true,
+  //       conservativeCollapse: true,
+  //     },
+  //     minifyJS: {
+  //       sourceMap: true
+  //     },
+  //     minifyCSS: true,
+  //     getKeptComment: function (content, filePath) {
+  //         var m = content.match(/\/\*![\s\S]*?\*\//img);
+  //         return m && m.join('\n') + '\n' || '';
+  //     }
+  //   }))
+  //   .pipe(gulp.dest('./vendor/quill'))
+  return merge(bootstrapJS, bootstrapSCSS, chartJS, dataTables, fontAwesome, jquery, jqueryEasing, quill);
 }
 
 // CSS task

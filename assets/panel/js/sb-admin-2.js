@@ -1,6 +1,17 @@
 (function($) {
   "use strict"; // Start of use strict
 
+  // Quill TextArea Editor
+  var editorTextArea = new Quill('#editor-text-area', {
+    debug: 'info',
+    modules: {
+      toolbar: ['bold', 'italic', 'underline', 'strike']
+    },
+    placeholder: 'Compose content...',
+    readOnly: true,
+    theme: 'snow'
+  });
+
   // Toggle the side navigation
   $("#sidebarToggle, #sidebarToggleTop").on('click', function(e) {
     $("body").toggleClass("sidebar-toggled");

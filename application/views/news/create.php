@@ -29,8 +29,8 @@
         </div>
         <div class="form-group">
           <label for="exampleFormControlTextarea1"><strong>Content<strong></label>
-          <textarea class="form-control"
-                    id="exampleFormControlTextarea1"
+          <textarea class=""
+                    id="editor"
                     rows="6"
                     placeholder="News content."></textarea>
         </div>
