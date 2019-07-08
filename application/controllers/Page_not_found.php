@@ -9,7 +9,8 @@ class Page_not_found extends CI_Controller
     $page_details = array(
       'title'       => '404 page not found',
       'description' => null, # defualt description
-      'message'     => 'Page you are try to view does not exist it maybe removed by developer.'
+      'message'     => 'Page your are looking for does not exist.',
+      'active'      => 'contect'
     );
 
     #page

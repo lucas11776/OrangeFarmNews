@@ -9,13 +9,13 @@ class News_model extends CI_Model
    * @param array
    */
   public const CATEGORY = array(
-    0  => 'sport',
-    1  => 'breaking-news',
+    0  => 'breaking-news',
+    1  => 'sport',
     2  => 'community',
-    3  => 'international',
-    4  => 'crime',
-    5  => 'health',
-    6  => 'politics',
+    3  => 'crime',
+    4  => 'politics',
+    5  => 'international',
+    6  => 'health',
     7  => 'education',
     8  => 'finaci',
     9  => '',

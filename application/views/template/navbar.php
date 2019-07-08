@@ -3,13 +3,17 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="">
+    <meta name="description"
+          content="<?php echo $description ?? 'OrangeFarmNews local newspaper for the community of OrangeFarm offering free newspaper on a weekly basis.\nOrangeFarmNews the voice of the people since 2012.'; ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
+    <!-- Application Base Url -->
+    <base href="<?php echo base_url(); ?>">
+
     <!-- Title -->
-    <title>The News Paper - News &amp; Lifestyle Magazine Template</title>
+    <title><?php echo $title ?? 'OrangeFarmNews the voice of the people since 2012.'; ?></title>
 
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">
@@ -38,8 +42,12 @@
               <div class="login-search-area d-flex align-items-center">
                 <!-- Login -->
                 <div class="login d-flex">
-                  <a href="<?php echo base_url('login/'); ?>"><i class="fa fa-user-o"></i> Login</a>
-                  <a href="<?php echo base_url('register/'); ?>"><i class="fa fa-edit"></i> Register</a>
+                  <?php if($this->auth->user(false) === false): ?>
+                    <a href="<?php echo base_url('login/'); ?>"><i class="fa fa-user-o"></i> Login</a>
+                    <a href="<?php echo base_url('register/'); ?>"><i class="fa fa-edit"></i> Register</a>
+                  <?php else: ?>
+                    <a href="<?php echo base_url('logout'); ?>"><i class="fa fa-edit"></i> Logout</a>
+                  <?php endif; ?>
                 </div>
                 <!-- Search Form -->
                 <div class="search-form">
@@ -65,7 +73,7 @@
 
               <!-- Logo -->
               <div class="logo">
-                <a href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+                <a href="index.html"><span class="white">OrangeFarm</span><span class="black">News</span></a>
               </div>
 
               <!-- Navbar Toggler -->
@@ -85,26 +93,37 @@
                 <div class="classynav">
                   <ul>
                     <li class="<?php echo $active == 'home' || $active == '' ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>">Home</a></li>
-                    <li class="<?php echo $active == 'home'; ?>"><a href="#">News</a></li>
-                    <li class="<?php echo $active == 'home'; ?>"><a href="#">Blog</a></li>
-                    <li class="<?php echo $active == 'home'; ?>"><a href="#">Category</a>
-                    <ul class="dropdown">
-                      <li><a href="#"><i class="fa fa-newspaper-o color"></i> News</a>
-                        <ul class="dropdown">
-                          <?php foreach ($this->news::CATEGORY as $value): ?>
-                            <li><a href="<?php echo base_url('news/category/'.$value); ?>"><?php echo $value; ?></a></li>
-                          <?php endforeach; ?>
-                        </ul>
-                      </li>
-                    </ul>
+                    <li class="<?php echo $active == 'news'; ?>"><a href="#">News</a></li>
+                    <li class="<?php echo $active == 'blog'; ?>"><a href="#">Blog</a></li>
+                    <li class="<?php echo $active == 'category'; ?>"><a href="#">Category</a>
+                      <ul class="dropdown">
+                        <li><a href="#"><i class="fa fa-newspaper-o color"></i> News</a>
+                          <ul class="dropdown">
+                            <?php foreach ($this->news::CATEGORY as $value): ?>
+                              <li><a href="<?php echo base_url('news/category/'.$value); ?>"><?php echo $value; ?></a></li>
+                            <?php endforeach; ?>
+                          </ul>
+                        </li>
+                      </ul>
                     </li>
                     <li>
-                    <?php for($i = 0; $i < 5; $i++): ?>
-                      <li class="<?php echo $active == 'news'; ?>">
-                        <a href="<?php echo base_url('news/category/'.$this->news::CATEGORY[$i]); ?>"><?php echo $this->news::CATEGORY[$i]; ?></a>
+                    <!-- Show Category to user and show dashboard and shortcut linlks to dashboard to ++editor -->
+                    <?php if($this->auth->editor(false) === false): ?>
+                      <?php for($i = 0; $i < 5; $i++): ?>
+                        <li class="<?php echo $active == 'news'; ?>">
+                          <a href="<?php echo base_url('news/category/'.$this->news::CATEGORY[$i]); ?>"><?php echo $this->news::CATEGORY[$i]; ?></a>
+                        </li>
+                      <?php endfor; ?>
+                    <?php else: ?>
+                      <li class="<?php echo $active == 'upload'; ?>"><a href="#"><i class="fa fa-cloud-upload"></i> Upload</a>
+                        <ul class="dropdown">
+                          <li><a href="<?php echo base_url('dashboard/upload/news'); ?>"><i class="fa fa-newspaper-o color"></i> News</a></li>
+                        </ul>
                       </li>
-                    <?php endfor; ?>
-                    <li><a href="contact.html"><i class="fa fa-phone-alt"></i> Contact</a></li>
+                      <li><a href="<?php echo base_url('dashboard'); ?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                    <?php endif; ?>
+
+                    <li><a href="<?php echo base_url('contact'); ?>"><i class="fa fa-phone"></i> Contact</a></li>
                   </ul>
                 </div>
                 <!-- Nav End -->
@@ -113,5 +132,5 @@
         </div>
       </div>
     </div>
-   </header>
-   <!-- ##### Header Area End ##### -->
+  </header>
+  <!-- ##### Header Area End ##### -->
