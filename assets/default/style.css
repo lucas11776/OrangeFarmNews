@@ -17,6 +17,7 @@
 :: 10.0 About Area
 :: 11.0 Cool Facts
 :: 12.0 Contact Area
+:: 13.0 Page 404
 */
 /* :: 1.0 Import Fonts */
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900");
@@ -76,6 +77,13 @@ ol {
 img {
   height: auto;
   max-width: 100%; }
+
+/* default color */
+.bg-color {
+  background-color: #ff5c1f; }
+
+.color {
+  color: ff5c1f; }
 
 /* Spacing */
 .mt-15 {
@@ -289,7 +297,7 @@ textarea:focus {
   .newspaper-btn.active, .newspaper-btn:hover, .newspaper-btn:focus {
     font-size: 14px;
     font-weight: 700;
-    color: #ffffff;
+    color: #ff5c1f;
     background-color: #1c1c1c; }
 
 /* :: 4.0 Header Area */
@@ -300,7 +308,7 @@ textarea:focus {
   .header-area .top-header-area {
     width: 100%;
     height: 100px;
-    background-color: #ff5c1f;
+    background-color: #fff;
     position: relative;
     z-index: 1; }
     @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -312,7 +320,7 @@ textarea:focus {
     .header-area .top-header-area .top-header-content {
       width: 100%;
       height: 100px;
-      background-color: #ff5c1f;
+      background-color: #fff;
       position: relative;
       z-index: 1; }
       @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -338,7 +346,7 @@ textarea:focus {
       .header-area .top-header-area .login-search-area .login a {
         display: inline-block;
         padding: 0 10px;
-        color: #fff; }
+        color: #ff5c1f; }
       .header-area .top-header-area .login-search-area .search-form form {
         width: 250px;
         height: 40px;
@@ -362,13 +370,13 @@ textarea:focus {
         .header-area .top-header-area .login-search-area .search-form form input {
           width: 100%;
           height: 100%;
-          border: 1px solid #fff;
+          border: 1px solid #ff5c1f;
           border-radius: 5px;
           background-color: transparent;
           padding: 0 15px;
           font-size: 12px;
           font-style: italic;
-          color: #fff; }
+          color: #ff5c1f; }
           .header-area .top-header-area .login-search-area .search-form form input.form-control {
             box-shadow: none; }
         .header-area .top-header-area .login-search-area .search-form form button {
@@ -380,30 +388,31 @@ textarea:focus {
           z-index: 10;
           border: none;
           background-color: transparent;
-          color: #fff;
+          color: #ff5c1f;
           cursor: pointer;
           outline: none; }
         .header-area .top-header-area .login-search-area .search-form form .form-control::-webkit-input-placeholder {
-          color: #fff;
+          color: #ff5c1f;
           opacity: 1; }
         .header-area .top-header-area .login-search-area .search-form form .form-control::-moz-placeholder {
-          color: #fff;
+          color: #ff5c1f;
           opacity: 1; }
         .header-area .top-header-area .login-search-area .search-form form .form-control:-ms-input-placeholder {
-          color: #fff;
+          color: #ff5c1f;
           opacity: 1; }
         .header-area .top-header-area .login-search-area .search-form form .form-control::-ms-input-placeholder {
-          color: #fff;
+          color: #ff5c1f;
           opacity: 1; }
         .header-area .top-header-area .login-search-area .search-form form .form-control::placeholder {
-          color: #fff;
+          color: #ff5c1f;
           opacity: 1; }
   .header-area .newspaper-main-menu {
     position: relative;
     width: 100%;
     z-index: 100;
     height: 80px;
-    border-bottom: 1px solid #d0d5d8; }
+    border-bottom: 1px solid #d0d5d8;
+    background-color: #ff5c1f; }
     @media only screen and (min-width: 768px) and (max-width: 991px) {
       .header-area .newspaper-main-menu {
         background-color: #152535; } }
@@ -440,7 +449,7 @@ textarea:focus {
         padding: 12px 12px 11px;
         background-color: transparent;
         line-height: 1;
-        color: #828282;
+        color: #fff;
         font-weight: 500; }
         .header-area .newspaper-main-menu .classy-navbar .classynav > ul > li > a:hover, .header-area .newspaper-main-menu .classy-navbar .classynav > ul > li > a:focus {
           color: #1c1c1c; }
@@ -1199,5 +1208,9 @@ textarea:focus {
     @media only screen and (max-width: 767px) {
       .contact-area .contact-title h2 {
         font-size: 30px; } }
+
+/* :: 13.0 Page 404 */
+.page-404 {
+  }
 
 /*# sourceMappingURL=style.css.map */

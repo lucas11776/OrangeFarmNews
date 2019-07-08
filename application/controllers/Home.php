@@ -23,6 +23,7 @@ class Home extends CI_Controller
     $page_details = array(
       'titlt'       => 'OrangeFarmNews news report for the community.',
       'description' => null, # defualt description
+      'active'      => 'home'
     );
 
 
