@@ -123,7 +123,7 @@
                       <li><a href="<?php echo base_url('dashboard'); ?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
                     <?php endif; ?>
 
-                    <li><a href="<?php echo base_url('contact'); ?>"><i class="fa fa-phone"></i> Contact</a></li>
+                    <li><a href="<?php echo base_url('contect'); ?>"><i class="fa fa-phone"></i> Contect</a></li>
                   </ul>
                 </div>
                 <!-- Nav End -->
@@ -134,3 +134,63 @@
     </div>
   </header>
   <!-- ##### Header Area End ##### -->
+
+  <!-- ##### Hero Area Start ##### -->
+  <?php if(($navbar_adv ?? null) === true || is_null($navbar_adv ?? null)): ?>
+    <div class="hero-area">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-12 col-lg-8">
+
+            <!-- Breaking News Widget -->
+            <?php if(empty($news_updated) === false): ?>
+              <div class="breaking-news-area d-flex align-items-center">
+                  <div class="news-title">
+                      <p><span class="fa fa-newspaper-o"></span> News</p>
+                  </div>
+                  <div id="breakingNewsTicker" class="ticker">
+                      <ul>
+                        <?php for($i = 0; $i < (count($news_updated) >= 5 ? 5 : count($news_updated)); $i++): ?>
+                          <li>
+                            <a href="<?php echo base_url(); ?>">
+                              <?php echo character_limiter($news_updated[$i]['title'], 20); ?>
+                            </a>
+                          </li>
+                        <?php endfor; ?>
+                      </ul>
+                  </div>
+              </div>
+            <?php endif; ?>
+
+            <!-- Breaking News Widget -->
+            <?php if(empty($blog_updated) === false): ?>
+              <div class="breaking-news-area d-flex align-items-center mt-15">
+                  <div class="news-title title2">
+                      <p><span class="fa fa-rss"></span> Blog</p>
+                  </div>
+                  <div id="internationalTicker" class="ticker">
+                      <ul>
+                        <?php for($i = 0; $i < (count($blog_updated) >= 5 ? 5 : count($blog_updated)); $i++): ?>
+                          <li>
+                            <a href="<?php echo base_url(); ?>">
+                              <?php echo character_limiter($blog_updated[$i]['title'], 20); ?>
+                            </a>
+                          </li>
+                        <?php endfor; ?>
+                      </ul>
+                  </div>
+              </div>
+            <?php endif; ?>
+          </div>
+
+          <!-- Ads Add -->
+          <div class="col-12 text-center <?php echo !empty($news_updated) == false && !empty($blog_updated) ? 'col-lg-6 offset-lg-3' : 'col-lg-4'; ?>">
+              <div class="hero-add">
+                  <a href="#"><img src="<?php echo base_url('assets/default/img/bg-img/hero-add.gif'); ?>" alt=""></a>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php endif; ?>
+  <!-- ##### Hero Area End ##### -->

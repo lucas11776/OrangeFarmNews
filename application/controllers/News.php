@@ -14,7 +14,7 @@ class News extends CI_Controller
   {
     $this->load->view('template/navbar', $details);
     $this->load->view('news/'.$page, $details);
-    $this->load->view('template/footer');
+    $this->load->view('template/footer', $details);
   }
 
   /**

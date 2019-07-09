@@ -23,7 +23,7 @@ class Login extends CI_Controller
    {
      $this->load->view('template/_navbar', $details);
      $this->load->view('login/'.$page);
-     $this->load->view('template/_footer');
+     $this->load->view('template/_footer', $details);
    }
 
   /**

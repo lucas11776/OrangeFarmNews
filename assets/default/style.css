@@ -488,15 +488,15 @@ textarea:focus {
             .header-area .newspaper-main-menu .classy-navbar .classynav > ul > li.active > a::before {
               display: none; } }
   .header-area .is-sticky #stickyMenu {
-    background-color: #fff;
+    background-color: #ff5c1f;
     box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
     border-bottom: none; }
     @media only screen and (min-width: 768px) and (max-width: 991px) {
       .header-area .is-sticky #stickyMenu {
-        background-color: #152535; } }
+        background-color: #ff5c1f; } }
     @media only screen and (max-width: 767px) {
       .header-area .is-sticky #stickyMenu {
-        background-color: #152535; } }
+        background-color: #ff5c1f; } }
 
 /* :: 5.0 Hero Area */
 .hero-area {
@@ -1197,6 +1197,7 @@ textarea:focus {
   height: 45px;
   width: 100%;
   background-color: #f3f5f8;
+  color: #000;
   font-size: 12px;
   font-style: italic;
   margin-bottom: 15px;
@@ -1205,6 +1206,9 @@ textarea:focus {
   padding: 0 20px;
   -webkit-transition-duration: 500ms;
   transition-duration: 500ms; }
+.contact-form-area .form-control.is-invalid {
+  border: 1px solid #dc3545;
+  box-shadow:0 0 0 .2rem rgba(220,53,69,.25);}
   .contact-form-area .form-control:focus {
     box-shadow: none; }
 .contact-form-area textarea.form-control {

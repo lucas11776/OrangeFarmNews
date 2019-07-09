@@ -14,16 +14,22 @@ class Home extends CI_Controller
   {
     $this->load->view('template/navbar', $details);
     $this->load->view('home/'.$page, $details);
-    $this->load->view('template/footer');
+    $this->load->view('template/footer', $details);
   }
 
   public function index()
   {
+
+    # get latest news
+    $news = $this->news->latest(9);
+
     # page details
     $page_details = array(
-      'titlt'       => 'OrangeFarmNews news report for the community.',
-      'description' => null, # defualt description
-      'active'      => 'home'
+      'titlt'         => 'OrangeFarmNews news report for the community.',
+      'description'   => null, # defualt description
+      'active'        => 'home',
+      'latest_news'   => $news,
+      'news_updated'  => $news
     );
 
 

@@ -7,7 +7,7 @@ class Administrator extends CI_Controller
   {
     $this->load->view('template/_navbar', $details);
     $this->load->view('administrator/'.$page, $details);
-    $this->load->view('template/_footer');
+    $this->load->view('template/_footer', $details);
   }
 
   /**
