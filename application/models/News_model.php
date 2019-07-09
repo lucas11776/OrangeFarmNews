@@ -18,7 +18,7 @@ class News_model extends CI_Model
     6  => 'health',
     7  => 'education',
     8  => 'politics',
-    9  => 'crime',
+    9  => 'finance',
     10 => 'otheirs'
   );
 

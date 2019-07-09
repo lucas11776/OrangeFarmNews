@@ -9,11 +9,12 @@ class Contect_model extends CI_Model
    * @var
    */
   public const SUBJECT_CATEGORY = array(
-    0 => 'report',
+    0 => 'report-news',
     1 => 'message',
     2 => 'advertisement',
     3 => 'personal',
-    4 => 'otheirs'
+    4 => 'report-bug',
+    5 => 'otheirs'
   );
 
   /**
