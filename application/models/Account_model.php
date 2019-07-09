@@ -32,7 +32,7 @@ class Account_model extends CI_Model
    */
   public function get(array $where)
   {
-    return $this->db->get('accounts', $where)->result_array();
+    return $this->db->where($where)->get('accounts')->result_array();
   }
 
   /**
