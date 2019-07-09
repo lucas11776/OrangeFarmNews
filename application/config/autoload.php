@@ -143,6 +143,7 @@ $autoload['language'] = array();
 $autoload['model'] = array(
   'account_model'    => 'account',
   'news_model'       => 'news',
-  'panel_model'      => 'panel',      
+  'contect_model'    => 'contect',
+  'panel_model'      => 'panel',
   'statistics_model' => 'stats'
 );

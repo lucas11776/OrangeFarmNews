@@ -4,10 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="description"
-          content="<?php echo $description ?? 'OrangeFarmNews local newspaper for the community of OrangeFarm offering free newspaper on a weekly basis.\nOrangeFarmNews the voice of the people since 2012.'; ?>">
+          content="<?php echo $description; ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <meta property="og:locale" content="en-za">
+
+    <!-- Twitter Tags -->
 
     <!-- Application Base Url -->
     <base href="<?php echo base_url(); ?>">

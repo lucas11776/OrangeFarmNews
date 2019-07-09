@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Contect_model extends CI_Controller
+class Contect_model extends CI_Model
 {
   /**
    * Message Category
-   * 
+   *
    * @var
    */
   public const SUBJECT_CATEGORY = array(
@@ -37,7 +37,7 @@ class Contect_model extends CI_Controller
 
   /**
    * View A Single Message By Id
-   * 
+   *
    * @param   integer
    * @return  array
    */
@@ -48,7 +48,7 @@ class Contect_model extends CI_Controller
     // set message to seen if not seen
     if(($message['seen'] ?? 'no-seen') == 0)
     {
-      $this->db->where('id', $message['id'])->->update('contect' , array('seen' => 1));
+      $this->db->where('id', $message['id'])->update('contect' , array('seen' => 1));
     }
 
     return $message;

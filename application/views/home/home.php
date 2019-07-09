@@ -22,7 +22,6 @@ $news_international = array();
     <div class="row">
       <div class="col-12 col-md-6 col-lg-8 mb-4">
         <div class="row">
-
           <!-- Single Featured Post -->
           <?php for($i = 0; $i < (count($latest ?? array()) >= 1 ? 1 : 0); $i++): ?>
             <div class="col-12 col-lg-7">
@@ -73,7 +72,6 @@ $news_international = array();
             </div>
           </div>
         </div>
-
         <div class="col-12 col-md-6 col-lg-4 pb-4">
             <!-- Single Featured Post -->
             <?php for($i = 1; $i < (count($sidebar) >= 6 ? 6 : count($sidebar)); $i++): ?>

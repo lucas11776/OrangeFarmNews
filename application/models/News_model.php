@@ -13,12 +13,12 @@ class News_model extends CI_Model
     1  => 'sport',
     2  => 'community',
     3  => 'crime',
-    4  => 'politics',
+    4  => 'jobs',
     5  => 'international',
     6  => 'health',
     7  => 'education',
-    8  => 'finaci',
-    9  => '',
+    8  => 'politics',
+    9  => 'crime',
     10 => 'otheirs'
   );
 

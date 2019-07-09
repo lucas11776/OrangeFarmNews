@@ -2,16 +2,19 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
   <h1 class="h3 mb-0 text-gray-800"><span class="fas fa-upload text-primary"></span> Upload News</h1>
 </div>
-
 <div class="row">
   <div class="col-lg-8 offset-lg-2">
     <div class="p-5">
+
+      <!-- Upload News Form -->
       <?php echo form_open_multipart('dashboard/upload/news'); ?>
 
         <!-- Picture -->
         <div class="form-group">
           <label for="exampleFormControlTextarea1"><strong>Picture<strong></label>
-          <input type="file" class="form-control-file <?php echo !empty(form_error('picture')) || !empty($this->session->flashdata('upload_error')) ? 'is-invalid' : null; ?>" id="picture">
+          <input type="file"
+                 class="form-control-file <?php echo !empty(form_error('picture')) || !empty($this->session->flashdata('upload_error')) ? 'is-invalid' : null; ?>"
+                 id="picture">
           <?php echo form_error('picture', '<strong class="invalid-feedback">', '</strong>'); ?>
         </div>
 
@@ -42,10 +45,11 @@
         <!-- Post -->
         <div class="form-group">
           <label for="post"><strong>Content<strong></label>
-          <textarea class="quill-textarea d-none" name="post" id="post"><?php echo set_value('post'); ?></textarea>
+          <textarea class="quill-textarea d-none"
+                    name="post" id="post"><?php echo set_value('post'); ?></textarea>
           <div class="form-control <?php echo !empty(form_error('post')) || !empty($this->session->flashdata('upload_error')) ? 'is-invalid' : null; ?>"
             id="editor" style="min-height: 400px;"></div>
-            <?php echo form_error('post', '<strong class="invalid-feedback">', '</strong>'); ?>
+          <?php echo form_error('post', '<strong class="invalid-feedback">', '</strong>'); ?>
         </div>
 
         <!-- Submit -->
@@ -54,6 +58,7 @@
         </div>
 
       <?php echo form_close(); ?>
+      
       <hr>
     </div>
   </div>
