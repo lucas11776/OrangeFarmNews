@@ -577,6 +577,8 @@ textarea:focus {
     .single-blog-post .post-thumb a img {
       width: 100%;
       max-height: 250px; }
+    .single-blog-post .post-thumb a img.single {
+      height: auto; }
   .single-blog-post .post-data {
     padding: 30px 0; }
     .single-blog-post .post-data .post-catagory {
@@ -851,26 +853,30 @@ textarea:focus {
 .newsletter-widget {
   position: relative;
   z-index: 1;
-  background-color: #ff5c1f;
+  background-color: #fff;
+  border: 2px dotted #ff5c1f;
   padding: 30px 25px 50px; }
   .newsletter-widget h4 {
     text-align: center;
-    color: #fff; }
+    color: #ff5c1f; }
   .newsletter-widget p {
     font-size: 12px;
-    color: #fff;
+    color: #ff5c1f;
     font-weight: bolder;
     text-align: center; }
   .newsletter-widget form input {
     width: 100%;
     height: 50px;
     background-color: #fff;
+    border: 2px solid #ff5c1f;
     font-size: 14px;
     font-style: italic;
     color: #000;
     margin-bottom: 25px;
-    border: none;
     padding: 0 25px; }
+  .newsletter-widget form input.is-invalid {
+    border: 2px solid #dc3545;
+    box-shadow:0 0 0 .3rem rgba(220,53,69,.25); }
   .newsletter-widget form button {
     width: 100%;
     height: 50px;
@@ -879,14 +885,14 @@ textarea:focus {
     font-weight: bolder;
     font-style: italic;
     color: #fff;
-    border: 2px double #fff;
+    border: 2px double #ff5c1f;
     padding: 0 25px;
     border-radius: 0; }
     .newsletter-widget form button:hover, .newsletter-widget form button:focus {
       -webkit-transition-duration: 500ms;
       transition-duration: 500ms;
       background-color: #fff;
-      color: #000; }
+      color: #ff5c1f; }
 
 .pagination {
   position: relative;

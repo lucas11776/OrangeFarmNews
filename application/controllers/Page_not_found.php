@@ -22,9 +22,9 @@ class Page_not_found extends CI_Controller
     # page details
     $page_details = array(
       'title'       => '404 page not found',
-      'description' => null, # defualt description
-      'message'     => 'Page your are looking for does not exist.',
-      'active'      => 'contect',
+      'description' => 'Page your are looking for does not exist.', # defualt description
+      'message'     => '404 Page Not Found',
+      'active'      => '',
       'navbar_adv'  => false
     );
 

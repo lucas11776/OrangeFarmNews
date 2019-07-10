@@ -80,8 +80,12 @@ class News extends CI_Controller
     {
       # 404 news not found page
       $page_details = array(
-        'title'   => '404 News Not Found.',
-        'message' => 'Sorry news does not exist or it may be deleted by editor.'
+        'title'       => '404 News Not Found',
+        'message'     => 'News not found they maybe deleted by editor.',
+        'description' => 'News not found they maybe deleted by editor.',
+        'icon'        => 'fa fa-newspaper-o',
+        'active'      => '',
+        'navbar_adv'  => false
       );
 
       # go back one dir to 404 page error
@@ -94,8 +98,10 @@ class News extends CI_Controller
     $page_details = array(
       'title'       => $single_news['title'],
       'description' => word_limiter(strip_tags($single_news['post']), 40),
+      'active'      => 'news',
       'single_news' => $single_news,
-      'latest_news' => $this->news->latest(6)
+      'latest_news' => $this->news->latest(6),
+      'navbar_adv'  => false
     );
 
     # page

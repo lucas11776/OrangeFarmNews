@@ -44,12 +44,17 @@ $sidebar_news         = array_splice($latest_news, 0, 8); ?>
               <!-- Single Featured Post -->
               <div class="single-blog-post featured-post-2">
                 <div class="post-thumb">
-                  <a href="#"><img src="<?php echo base_url('assets/default/img/bg-img/17.jpg'); ?>" alt=""></a>
+                  <a href="<?php echo base_url('news/'.$dsiplay_summary_news[$i]['slug']); ?>">
+                    <img src="<?php echo base_url('assets/default/img/bg-img/17.jpg'); ?>"
+                         alt="<?php $dsiplay_summary_news[$i]['title']; ?>">
+                  </a>
                 </div>
                 <div class="post-data">
-                  <a href="#" class="post-catagory"><?php echo $dsiplay_summary_news[$i]['category']; ?></a>
+                  <a href="<?php echo base_url('news/category/'.$dsiplay_summary_news[$i]['category']); ?>" class="post-catagory">
+                    <?php echo $dsiplay_summary_news[$i]['category']; ?>
+                  </a>
                   <div class="post-meta">
-                    <a href="#" class="post-title">
+                    <a href="<?php echo base_url('news/'.$dsiplay_summary_news[$i]['slug']); ?>" class="post-title">
                       <h6><?php echo word_limiter($dsiplay_summary_news[$i]['title'], 15); ?></h6>
                     </a>
                     <!-- Post Like & Post Comment -->
@@ -74,8 +79,8 @@ $sidebar_news         = array_splice($latest_news, 0, 8); ?>
                   <div class="post-data">
                       <a href="#" class="post-catagory"><?php echo $sidebar_news[$i]['category']; ?></a>
                       <div class="post-meta">
-                          <a href="#" class="post-title">
-                              <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
+                          <a href="<?php echo base_url('news/'.$sidebar_news[$i]['slug']); ?>" class="post-title">
+                              <h6><?php echo word_limiter($sidebar_news[$i]['title'], 10); ?></h6>
                           </a>
                           <p class="post-date"><span>7:00 AM</span> | <span>April 14</span></p>
                       </div>
@@ -87,7 +92,20 @@ $sidebar_news         = array_splice($latest_news, 0, 8); ?>
               <h4><span class="fa fa-inbox"></span> Newsletter</h4>
               <p>Subscribe to our newsletter to get the latest updated.</p>
               <form action="#" method="post">
-                <input type="email" name="email" placeholder="Email">
+                <?php if($this->session->flashdata('newsletter_exist')): ?>
+                  <div class="alert alert-danger">
+                    <strong>
+                      <i class="fa fa-envelope"></i> Sorry email address is address Subscribe to newsletter
+                    </strong>
+                  </div>
+                <?php endif; ?>
+                <input type="hidden"
+                       name="redirect"
+                       value="<?php echo base_url(); ?>">
+                <input class="<?php if($this->session->flashdata('newsletter_exist')) echo 'is-invalid'; ?>"
+                       type="email"
+                       name="newsletter_email"
+                       placeholder="Your">
                 <button type="submit" class="btn w-100">
                   <span class="fa fa-paper-plane-o"></span> Subscribe
                 </button>
