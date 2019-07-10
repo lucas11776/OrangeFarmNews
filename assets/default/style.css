@@ -80,6 +80,7 @@ img {
 
 /* default color */
 .bg-color {
+  color: #fff;
   background-color: #ff5c1f; }
 
 .color {
@@ -1209,6 +1210,9 @@ textarea:focus {
 .contact-form-area .form-control.is-invalid {
   border: 1px solid #dc3545;
   box-shadow:0 0 0 .2rem rgba(220,53,69,.25);}
+.contact-form-area .invalid-feedback {
+  font-weight: bolder;
+  font-size: .9em; }
   .contact-form-area .form-control:focus {
     box-shadow: none; }
 .contact-form-area textarea.form-control {

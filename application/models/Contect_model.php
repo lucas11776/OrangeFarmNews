@@ -4,9 +4,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Contect_model extends CI_Model
 {
   /**
+   * Phone Number Regex Express (South Africa)
+   *
+   * @var string
+   */
+  public const PHONE_NUMBER_REGEX = "/(\+27|0)(6|7|8)[0-9]{8}/";
+
+  /**
+   * Telephone Number Regex Express (South Africa)
+   *
+   * @var string
+   */
+  public const TELEPHONE_NUMBER_REGEX = '';
+
+  /**
    * Message Category
    *
-   * @var
+   * @var array
    */
   public const SUBJECT_CATEGORY = array(
     0 => 'report-news',

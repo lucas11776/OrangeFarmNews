@@ -11,50 +11,56 @@
     <div class="row">
       <div class="col-12 col-lg-8">
         <div class="contact-form-area">
-          <form action="#" method="post">
+          <?php echo form_open('contect'); ?>
             <div class="row">
               <!-- Name -->
               <div class="col-12 col-lg-6">
                 <input type="text"
                        name="name"
-                       class="form-control"
+                       class="form-control <?php if(form_error('name')) echo 'is-invalid'; ?>"
                        id="name"
+                       value="<?php echo set_value('name')?>"
                        placeholder="Name (Required)">
-                <?php echo form_error('subject', '<p class="invalid-feedback">', '</p>'); ?>
+                <?php echo form_error('name', '<p class="invalid-feedback">', '</p>'); ?>
               </div>
               <!-- Surname -->
               <div class="col-12 col-lg-6">
                 <input type="text"
                        name="surname"
-                       class="form-control"
+                       class="form-control <?php if(form_error('surname')) echo 'is-invalid'; ?>"
                        id="surname"
+                       value="<?php echo set_value('surname')?>"
                        placeholder="Surname (Required)">
-                <?php echo form_error('subject', '<p class="invalid-feedback">', '</p>'); ?>
+                <?php echo form_error('surname', '<p class="invalid-feedback">', '</p>'); ?>
               </div>
               <!-- Phone Number -->
               <div class="col-12 col-lg-6">
                 <input type="tel"
                        name="phone_number"
-                       class="form-control"
+                       class="form-control <?php if(form_error('phone_number')) echo 'is-invalid'; ?>"
                        id="email"
+                       value="<?php echo set_value('phone_number')?>"
                        placeholder="Phone Number (Required)">
-                <?php echo form_error('subject', '<p class="invalid-feedback">', '</p>'); ?>
+                <?php echo form_error('phone_number', '<p class="invalid-feedback">', '</p>'); ?>
               </div>
               <!-- Email -->
               <div class="col-12 col-lg-6">
                 <input type="email"
                        name="email"
-                       class="form-control"
+                       class="form-control <?php if(form_error('email')) echo 'is-invalid'; ?>"
                        id="email"
+                       value="<?php echo set_value('email')?>"
                        placeholder="Email Address (Optional)">
-                <?php echo form_error('subject', '<p class="invalid-feedback">', '</p>'); ?>
+                <?php echo form_error('email', '<p class="invalid-feedback">', '</p>'); ?>
               </div>
               <!-- Subject -->
               <div class="col-12">
-                <select class="form-control text-capitalize" id="subject">
+                <select name="subject" class="form-control <?php if(form_error('subject')) echo 'is-invalid'; ?> text-capitalize" id="subject">
                   <?php for($i = 0; $i < count($this->contect::SUBJECT_CATEGORY); $i++): ?>
-                    <?php if(!isset($this->contect::SUBJECT_CATEGORY[set_value('subject') ?? '--']) && $i == 0): ?>
+                    <?php if(!in_array(set_value('subject'), $this->contect::SUBJECT_CATEGORY) && $i == 0): ?>
                       <option value="">--- Subject ---</option>
+                    <?php elseif(in_array(set_value('subject'), $this->contect::SUBJECT_CATEGORY) && $i == 0): ?>
+                      <option value="<?php echo set_value('subject'); ?>"><?php echo set_value('subject'); ?></option>
                     <?php endif; ?>
                     <?php if(set_value('subject') != $this->contect::SUBJECT_CATEGORY[$i]): ?>
                       <option value="<?php echo $this->contect::SUBJECT_CATEGORY[$i]; ?>"><?php echo $this->contect::SUBJECT_CATEGORY[$i]; ?></option>
@@ -66,19 +72,19 @@
               <!-- Message -->
               <div class="col-12">
                 <textarea name="message"
-                          class="form-control"
+                          class="form-control <?php if(form_error('message')) echo 'is-invalid'; ?>"
                           id="message"
                           cols="30"
                           rows="10"
-                          placeholder="Message (Required)..."></textarea>
-                <?php echo form_error('subject', '<p class="invalid-feedback">', '</p>'); ?>
+                          placeholder="Message (Required)..."><?php echo set_value('message'); ?></textarea>
+                <?php echo form_error('message', '<p class="invalid-feedback">', '</p>'); ?>
               </div>
               <!-- Submit -->
               <div class="col-12 text-center">
                 <button class="btn newspaper-btn mt-30 w-100" type="submit"><span class="fa fa-paper-plane-o"></span> Send Message</button>
               </div>
             </div>
-          </form>
+          <?php form_close(); ?>
         </div>
       </div>
       <div class="col-12 col-lg-4">
