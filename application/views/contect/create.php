@@ -1,5 +1,5 @@
 <!-- ##### Contact Form Area Start ##### -->
-<div class="contact-area section-padding-0-80">
+<div class="contact-area section-padding-80">
   <div class="container">
     <div class="row">
       <div class="col-12">
@@ -97,7 +97,9 @@
         <div class="single-contact-information mb-30">
           <h6><span class="fa fa-phone"></span> Phone:</h6>
           <p>
-            <a href="tel:"
+            <a href="tel:0783297240"><i class="color"><span class="fa fa-shopping-bag"></span> Advertising :</i> 078 329 724</a>
+            <i class="color">Or</i> <a href="tel:0118501160">011 850 1160</a><br/>
+            <a href="tel:0862639988"><i class="color"><span class="fa fa-newspaper-o"></span> Article :</i> 086 263 9988</a>
           </p>
         </div>
         <!-- Single Contact Information -->

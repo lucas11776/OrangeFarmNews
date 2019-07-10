@@ -29,15 +29,14 @@ class Contect extends CI_Controller
       'description' => `Getting in touch with us is so simple you can go to are office at Nelgate, call us or use
                         our simple form application by just filling in your details and sending them to us.`,
       'active'       => 'contact',
-      'navbar_adv' => false
-      //'news_updated' => $this->news->random_pick(5),
-      //'blog_updated' => $this->news->random_pick(5)
+      'news_updated' => $this->news->random_pick(5),
+      'blog_updated' => $this->news->random_pick(5)
     );
 
     # validate required data
-    $this->form_validation->set_rules('name', 'name', 'required|min_length[2]|max_length[20]');
-    $this->form_validation->set_rules('surname', 'surname', 'required|min_length[2]|max_length[20]');
-    $this->form_validation->set_rules('phone_number', 'phone number', 'required|callback_phone_number_valid');
+    $this->form_validation->set_rules('name', 'name', 'required|min_length[3]|max_length[20]');
+    $this->form_validation->set_rules('surname', 'surname', 'required|min_length[3]|max_length[20]');
+    $this->form_validation->set_rules('phone_number', 'phone number', 'callback_phone_number_valid');
     $this->form_validation->set_rules('subject', 'subject', 'required');
     $this->form_validation->set_rules('email', 'email address', 'valid_email');
     $this->form_validation->set_rules('message', 'message', 'required|min_length[10]|max_length[2500]');
@@ -60,28 +59,36 @@ class Contect extends CI_Controller
       'message'      => $this->input->post('message')
     );
 
-    print_r($message);
-
-    die('--------------------------');
-
     # insert message to database
-    if($this->contect->create($message))
+    if($this->contect->create($message) === false)
     {
+      # Database error
+      $this->session->set_flashdata('contect_error', 'Something went wrong when tring to connect to database.');
+
       # page
-      $this->view('create', $details);
+      $this->view('create', $page_details);
 
       return;
     }
 
-    // success page details
+    # success page details
     $page_success_details = array(
-      'icon'    => 'fa fa-envelope-open-o',
-      'title'   => 'Message Sent Successfully.',
-      'message' => 'Your message has been sent successfully we will get back to your'
+      'icon'        => 'fa fa-envelope-open-o',
+      'title'       => 'Message Sent Successfully.',
+      'message'     => 'Your message has been sent successfully we will get back to your later.',
+      'description' => 'Your message has been sent successfully to OrangeFarmNews OrangeFarmNews will get back to your later.',
+      'navbar_adv'  => false,
+      'active'      => 'contect',
+      # link btn
+      'link'    => array(
+        'icon' => 'fa fa-home',
+        'url'  => base_url(''),
+        'text' => 'Home Page'
+      )
     );
 
     # page
-    $this->view('../404', $page_success_details);
+    $this->view('../message', $page_success_details);
   }
 
   /**
@@ -94,8 +101,6 @@ class Contect extends CI_Controller
    */
   public function phone_number_valid($phone_number)
   {
-    #print_r(preg_match($this->contect::PHONE_NUMBER_REGEX, $phone_number));
-    #die("----------------- {$phone_number} -------------------");
     # check if phone number is valid
     if(preg_match($this->contect::PHONE_NUMBER_REGEX, $phone_number) == 0)
     {
@@ -118,7 +123,7 @@ class Contect extends CI_Controller
     # check if subjeck exist in category
     if(in_array($subject, $this->contect::SUBJECT_CATEGORY) === false)
     {
-      $this->form_validation->set_massage('subject_valid', 'The {} field is invalid please select correct category.');
+      $this->form_validation->set_massage('subject_valid', 'The {field} is invalid please select correct category.');
     }
 
     return true;

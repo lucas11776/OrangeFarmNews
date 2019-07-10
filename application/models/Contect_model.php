@@ -4,11 +4,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Contect_model extends CI_Model
 {
   /**
-   * Phone Number Regex Express (South Africa)
+   * Phone Number Regex Express (South Africa - sim code)
    *
    * @var string
    */
-  public const PHONE_NUMBER_REGEX = "/(\+27|0)(6|7|8)[0-9]{8}/";
+  public const PHONE_NUMBER_REGEX = "/(\+27|0)(6|7|8|9)[0-9]{8}/";
 
   /**
    * Telephone Number Regex Express (South Africa)
@@ -51,6 +51,17 @@ class Contect_model extends CI_Model
   }
 
   /**
+   * Count Number Of Message In database
+   *
+   * @param   array
+   * @return  integer
+   */
+  public function count(array $where = null)
+  {
+    return $this->db->where($where ?? '1')->count_all('contect');
+  }
+
+  /**
    * View A Single Message By Id
    *
    * @param   integer
@@ -61,9 +72,9 @@ class Contect_model extends CI_Model
     $message = $this->db->where(array('id' => $id))->get('contect')->result_array()[0] ?? false;
 
     // set message to seen if not seen
-    if(($message['seen'] ?? 'no-seen') == 0)
+    if(($message['seen'] ?? 'null') == 0)
     {
-      $this->db->where('id', $message['id'])->update('contect' , array('seen' => 1));
+      $this->db->where('id', $message['id'])->update('contect' , array('seen' => $this->auth->account('id')));
     }
 
     return $message;

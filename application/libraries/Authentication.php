@@ -69,6 +69,12 @@ class Authentication
     return $this->CI->account->get(array('id' => $token['id']))[0];
   }
 
+  /**
+   * Get Current User Account Details
+   *
+   * @param   string
+   * @return  array
+   */
   public function account(string $field = null)
   {
     if($field !== null)

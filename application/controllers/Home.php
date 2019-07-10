@@ -21,7 +21,7 @@ class Home extends CI_Controller
   {
 
     # get latest news
-    $news = $this->news->latest(9);
+    $news = $this->news->latest(12);
 
     # page details
     $page_details = array(

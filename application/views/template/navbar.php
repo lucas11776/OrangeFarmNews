@@ -9,17 +9,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="">
-    <meta property="og:type" content="">
-    <meta property="og:description" content="">
-    <meta property="og:image" content="">
-    <meta property="og:locale" content="en-za">
-
-    <!-- Twitter Tags -->
-
     <!-- Application Base Url -->
     <base href="<?php echo base_url(); ?>">
+
+    <!-- Twitter API -->
+    <meta name="twitter:card" content="">
+    <meta name="twitter:site" content="">
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="">
+
+    <!-- Facebook API (OpenGraph) -->
+    <meta property="og:url" content="">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="">
+    <meta property="og:image" content="">
+    <meta property="og:image:secure_url" content="">
+    <meta property="og:image:type" content="">
+    <meta property="og:image:width" content="">
+    <meta property="og:image:height" content="">
 
     <!-- Title -->
     <title><?php echo $title ?? 'OrangeFarmNews the voice of the people since 2012.'; ?></title>

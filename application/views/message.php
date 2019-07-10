@@ -4,9 +4,11 @@
     <h1><?php echo $title ?></h1>
     <p><?php echo $message ?? ''; ?></p>
     <br/>
-    <a class="btn bg-color btn-lg" href="<?php echo $link['url']; ?>">
-      <span class="<?php echo $link['icon'] ?? ''; ?>"></span> <?php echo $link['text']; ?>
-    </a>
+    <div class="col-12">
+      <a class="btn bg-color btn-lg" href="<?php echo $link['url']; ?>">
+        <span class="<?php echo $link['icon'] ?? ''; ?>"></span> <?php echo $link['text']; ?>
+      </a>
+    </div>
     <br/>
   </div>
 </div>
