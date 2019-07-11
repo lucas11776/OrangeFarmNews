@@ -3,8 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description"
-          content="<?php echo $description; ?>">
+    <meta name="description" content="<?php echo $description; ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -12,27 +11,27 @@
     <!-- Application Base Url -->
     <base href="<?php echo base_url(); ?>">
 
+    <!-- Title -->
+    <title><?php echo $title ?? 'OrangeFarmNews the voice of the people since 2012.'; ?></title>
+
     <!-- Twitter API -->
     <meta name="twitter:card" content="">
-    <meta name="twitter:site" content="">
-    <meta name="twitter:creator" content="">
-    <meta name="twitter:title" content="">
-    <meta name="twitter:description" content="">
+    <meta name="twitter:site" content="<?php echo $website ?? 'http://www.orangefarmnews.co.za'; ?>">
+    <meta name="twitter:creator" content="<?php echo $author ?? 'OrangeFarmNews'; ?>">
+    <meta name="twitter:title" content="<?php echo $title ?? 'OrangeFarmNews the voice of the people since 2012.'; ?>">
+    <meta name="twitter:description" content="<?php echo $description; ?>">
     <meta name="twitter:image" content="">
 
     <!-- Facebook API (OpenGraph) -->
     <meta property="og:url" content="">
-    <meta property="og:title" content="">
-    <meta property="og:description" content="">
+    <meta property="og:title" content="<?php echo $title ?? 'OrangeFarmNews the voice of the people since 2012.'; ?>">
+    <meta property="og:description" content="<?php echo $description; ?>">
     <meta property="og:type" content="">
     <meta property="og:image" content="">
     <meta property="og:image:secure_url" content="">
     <meta property="og:image:type" content="">
     <meta property="og:image:width" content="">
     <meta property="og:image:height" content="">
-
-    <!-- Title -->
-    <title><?php echo $title ?? 'OrangeFarmNews the voice of the people since 2012.'; ?></title>
 
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">
@@ -154,10 +153,57 @@
   </header>
   <!-- ##### Header Area End ##### -->
 
+  <!--- ##### Global Alerts ##### -->
+  <div class="hero-area p-0">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-12">
+          <?php if($this->session->flashdata('alert-success')): ?>
+            <!-- Alert Success -->
+            <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
+              <i class="fa fa-check"></i> <?php echo $this->session->flashdata('alert-success'); ?>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          <?php endif; ?>
+          <?php if($this->session->flashdata('alert-info')): ?>
+            <!-- Alert Info -->
+            <div class="alert alert-info alert-dismissible fade show mt-5" role="alert">
+              <i class="fa fa-info-circle"></i> <?php echo $this->session->flashdata('alert-info'); ?>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          <?php endif; ?>
+          <?php if($this->session->flashdata('alert-warning')): ?>
+            <!-- Alert Warning -->
+            <div class="alert alert-warning alert-dismissible fade show mt-5" role="alert">
+              <i class="fa fa-warning"></i> <?php echo $this->session->flashdata('alert-warning'); ?>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          <?php endif; ?>
+          <?php if($this->session->flashdata('alert-danger')): ?>
+            <!-- Alert Danger -->
+            <div class="alert alert-danger alert-dismissible fade show mt-5" role="alert">
+              <i class="fa fa-close"></i>  <?php echo $this->session->flashdata('alert-danger'); ?>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          <?php endif; ?>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ##### Global Alerts End ##### -->
+
   <!-- ##### Hero Area Start ##### -->
   <?php if(($navbar_adv ?? null) === true || is_null($navbar_adv ?? null)): ?>
-    <div class="hero-area">
-      <div class="container">
+    <div class="hero-area p-0">
+      <div class="container pt-5 pb-5">
         <div class="row align-items-center">
           <div class="col-12 col-lg-8">
 

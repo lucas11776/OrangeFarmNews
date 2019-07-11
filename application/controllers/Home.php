@@ -25,7 +25,7 @@ class Home extends CI_Controller
 
     # page details
     $page_details = array(
-      'titlt'         => 'OrangeFarmNews news report for the community.',
+      'title'         => 'OrangeFarmNews news report for the community.',
       'description'   => `Orange Farm News is a FREE BI - monthly NEWSPAPER, printed at Mid Month (15th) and Month end (25-31).
                           We distribute 60 000 copies FREE door to door in Orange Farm, Drieziek, Stretford, Palm Springs, Migson Manor,
                           Lakeside and Evaton. We circulate 60 000 copies boasting a readership of close to 350 000 and increasing every month.
