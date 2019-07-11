@@ -1,5 +1,5 @@
 <!-- ##### Contact Form Area Start ##### -->
-<div class="contact-area section-padding-80">
+<div class="contact-area section-padding-80 pt-4">
   <div class="container">
     <div class="row">
       <div class="col-12">
@@ -85,6 +85,11 @@
               </div>
             </div>
           <?php form_close(); ?>
+          <hr/>
+          <p>
+            At OrangeFarmNews we protect our source <span class="fa fa-user-o color"></span> identity by keep them private from
+            <span class="fa fa-users color"></span> public for they personal safety so do not be afraid to report news.
+           </p>
         </div>
       </div>
       <div class="col-12 col-lg-4">
@@ -110,7 +115,7 @@
       </div>
     </div>
     <!-- Google Maps -->
-    <div class="map-area">
+    <div class="map-area d-none">
         <div id="googleMap"></div>
     </div>
   </div>

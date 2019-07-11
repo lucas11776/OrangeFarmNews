@@ -79,6 +79,9 @@ img {
   max-width: 100%; }
 
 /* default color */
+.border-color {
+  border-color: #ff5c1f }
+
 .bg-color {
   color: #fff;
   background-color: #ff5c1f; }

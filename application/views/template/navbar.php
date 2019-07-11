@@ -12,20 +12,20 @@
     <base href="<?php echo base_url(); ?>">
 
     <!-- Title -->
-    <title><?php echo $title ?? 'OrangeFarmNews the voice of the people since 2012.'; ?></title>
+    <title><?php echo strip_tags($title) ?? 'OrangeFarmNews the voice of the people since 2012.'; ?></title>
 
     <!-- Twitter API -->
     <meta name="twitter:card" content="">
     <meta name="twitter:site" content="<?php echo $website ?? 'http://www.orangefarmnews.co.za'; ?>">
     <meta name="twitter:creator" content="<?php echo $author ?? 'OrangeFarmNews'; ?>">
-    <meta name="twitter:title" content="<?php echo $title ?? 'OrangeFarmNews the voice of the people since 2012.'; ?>">
-    <meta name="twitter:description" content="<?php echo $description; ?>">
+    <meta name="twitter:title" content="<?php echo strip_tags($title) ?? 'OrangeFarmNews the voice of the people since 2012.'; ?>">
+    <meta name="twitter:description" content="<?php echo strip_tags($description); ?>">
     <meta name="twitter:image" content="">
 
     <!-- Facebook API (OpenGraph) -->
     <meta property="og:url" content="">
-    <meta property="og:title" content="<?php echo $title ?? 'OrangeFarmNews the voice of the people since 2012.'; ?>">
-    <meta property="og:description" content="<?php echo $description; ?>">
+    <meta property="og:title" content="<?php echo strip_tags($title) ?? 'OrangeFarmNews the voice of the people since 2012.'; ?>">
+    <meta property="og:description" content="<?php echo strip_tags($description); ?>">
     <meta property="og:type" content="">
     <meta property="og:image" content="">
     <meta property="og:image:secure_url" content="">
@@ -111,8 +111,8 @@
                 <div class="classynav">
                   <ul>
                     <li class="<?php echo $active == 'home' || $active == '' ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>">Home</a></li>
-                    <li class="<?php echo $active == 'blog'; ?>"><a href="#">Blog</a></li>
-                    <li class="<?php echo $active == 'category'; ?>"><a href="#">Category</a>
+                    <li class="<?php echo $active == 'blog' ? 'active' : ''; ?>"><a href="#">Blog</a></li>
+                    <li class="<?php echo $active == 'category' ? 'active' : ''; ?>"><a href="#">Category</a>
                       <ul class="dropdown">
                         <li><a href="#"><i class="fa fa-newspaper-o color"></i> News</a>
                           <ul class="dropdown">
@@ -127,20 +127,19 @@
                     <!-- Show Category to user and show dashboard and shortcut linlks to dashboard to ++editor -->
                     <?php if($this->auth->editor(false) === false): ?>
                       <?php for($i = 0; $i < 5; $i++): ?>
-                        <li class="<?php echo $active == 'news'; ?>">
+                        <li class="<?php echo $active == 'news' ? 'active' : ''; ?>">
                           <a href="<?php echo base_url('news/category/'.$this->news::CATEGORY[$i]); ?>"><?php echo $this->news::CATEGORY[$i]; ?></a>
                         </li>
                       <?php endfor; ?>
                     <?php else: ?>
-                      <li class="<?php echo $active == 'upload'; ?>"><a href="#"><i class="fa fa-cloud-upload"></i> Upload</a>
+                      <li class="<?php echo $active == 'upload' ? 'active' : ''; ?>"><a href="#"><i class="fa fa-cloud-upload"></i> Upload</a>
                         <ul class="dropdown">
                           <li><a href="<?php echo base_url('dashboard/upload/news'); ?>"><i class="fa fa-newspaper-o color"></i> News</a></li>
                         </ul>
                       </li>
                       <li><a href="<?php echo base_url('dashboard'); ?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
                     <?php endif; ?>
-
-                    <li><a href="<?php echo base_url('contect'); ?>"><i class="fa fa-phone"></i> Contect</a></li>
+                    <li class="<?php echo $active == 'contect' ? 'active' : '' ?>"><a href="<?php echo base_url('contect'); ?>"><i class="fa fa-phone"></i> Contect</a></li>
                   </ul>
                 </div>
                 <!-- Nav End -->

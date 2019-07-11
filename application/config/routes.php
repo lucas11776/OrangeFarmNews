@@ -56,6 +56,7 @@ $route['news']                    = 'news/index';                      # access 
 $route['news/category/(:any)']    = 'news/category/$1';                # access (all)
 $route['news/most-viewed']        = 'news/most_viewed';                # access (all)
 $route['news/(:any)']             = 'news/single/$1';                  # access (all)
+$route['search']                  = 'search/index';                    # access (all)
 $route['dashboard']               = 'administrator/index';             # access (administrator)
 $route['dashboard/accounts']      = 'administrator/accounts';          # access (administrator)
 $route['dashboard/news']          = 'administrator/news';              # access (administrator)

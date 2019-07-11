@@ -78,6 +78,13 @@ class News_model extends CI_Model
     return $this->db->count_all_results('news');
   }
 
+  public function search(array $like)
+  {
+    $this->like($like);
+
+    return $this->db->get('news')->result_array();
+  }
+
   private function where(array $where)
   {
     foreach ($where as $key => $value)
@@ -94,7 +101,7 @@ class News_model extends CI_Model
     # loop count
     $index = 0;
 
-    foreach ($data as $key => $value)
+    foreach ($like as $key => $value)
     {
       # check if first loop
       if($index == 0)
