@@ -1,7 +1,14 @@
 <div class="newsletter-widget">
   <h4><span class="fa fa-inbox"></span> Newsletter</h4>
-  <p>Subscribe to our newsletter to get the latest updated.</p>
-  <form action="#" method="post">
+  <p>
+    <?php echo true ? 'Want to to unsubscribe to our newsletter just click unsubscribe.' :
+                      'Subscribe to our newsletter to get the latest updated.'; ?>
+  </p>
+  <?php if(false): ?>
+    <?php echo form_open('newsletter/subscribe'); ?>
+  <?php else: ?>
+    <?php echo form_open('newsletter/unsubscribe'); ?>
+  <?php endif; ?>
     <?php if($this->session->flashdata('newsletter_exist')): ?>
       <div class="alert alert-danger">
         <strong>
@@ -15,11 +22,14 @@
     <input class="<?php if($this->session->flashdata('newsletter_exist')) echo 'is-invalid'; ?>"
            type="email"
            name="newsletter_email"
-           placeholder="Your"
+           placeholder="Email Address..."
            value="<?php if($this->auth->user(false)) echo $this->auth->account('email'); ?>"
            <?php if($this->auth->user(false)) echo 'disabled'; ?>>
+    <?php if($this->session->flashdata('newsletter_error')): ?>
+      <p class="text-danger"><?php echo $this->session->flashdata('newsletter_error'); ?></p>
+    <?php endif; ?>
     <button type="submit" class="btn w-100">
-      <span class="fa fa-paper-plane-o"></span> Subscribe
+      <span class="fa fa-paper-plane-o"></span> <?php echo true ? 'Unsubscribe' : 'Subscribe'; ?>
     </button>
-  </form>
+  <?php echo form_close(); ?>
 </div>
