@@ -8,7 +8,7 @@ class Account_model extends CI_Model
    *
    * @var string
    */
-  public const PICTURE_PATH = '/upload/news/picture/';
+  public const PICTURE_PATH = '/upload/accounts/picture/';
 
   /**
    * Defualt Picture

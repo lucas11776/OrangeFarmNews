@@ -61,8 +61,8 @@
                       <p class="post-excerp"><?php echo word_limiter(strip_tags($search_result[$i]['post']), 100); ?></p>
                       <!-- Post Like & Post Comment -->
                       <div class="d-flex align-items-center">
-                        <a href="#" class="post-like"><i class="fa fa-comments-o"></i> <span>392</span></a>
-                        <a href="#" class="post-comment"><i class="fa fa-eye"></i> <span>10</span></a>
+                        <a href="#" class="post-like"><i class="fa fa-eye"></i> <span><?php echo $search_result[$i]['views']; ?></span></a>
+                        <a href="#" class="post-comment"><i class="fa fa-comments-o"></i> <span><?php echo $search_result[$i]['comments']; ?></span></a>
                       </div>
                     </div>
                   </div>
@@ -83,11 +83,11 @@
                     </a>
                     <div class="post-meta">
                       <p class="post-author">By <a href="#">Christinne Williams</a></p>
-                      <p class="post-excerp">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales placerat. Sed varius leo ac leo fermentum, eu cursus nunc maximus. Integer convallis nisi nibh, et ornare neque ullamcorper ac. Nam id congue lectus, a venenatis massa. Maecenas justo libero, vulputate vel nunc id, blandit feugiat sem. </p>
+                      <p class="post-excerp"><?php echo word_limiter(strip_tags($search_result[$i]['post']), 50); ?></p>
                       <!-- Post Like & Post Comment -->
                       <div class="d-flex align-items-center">
-                        <a href="#" class="post-like"><i class="fa fa-comments-o"></i> <span>392</span></a>
-                        <a href="#" class="post-comment"><i class="fa fa-eye"></i> <span>10</span></a>
+                        <a href="#" class="post-like"><i class="fa fa-eye"></i> <span><?php echo $search_result[$i]['views']; ?></span></a>
+                        <a href="#" class="post-comment"><i class="fa fa-comments-o"></i> <span><?php echo $search_result[$i]['comments']; ?></span></a>
                       </div>
                     </div>
                   </div>
@@ -108,21 +108,21 @@
 
           <!-- Latest Posts Widget -->
           <div class="latest-posts-widget mb-50">
-            <?php for($i = 0; $i < 6; $i++): ?>
+            <?php for($i = 0; $i < count($most_viewed); $i++): ?>
               <!-- Single Featured Post -->
               <div class="single-blog-post small-featured-post d-flex">
                 <div class="post-thumb">
                   <a href="#">
-                    <img src="<?php echo base_url('assets/default/img/bg-img/19.jpg'); ?>" alt="">
+                    <img src="<?php echo $most_viewed[$i]['picture'] ?>" alt="">
                   </a>
                 </div>
                 <div class="post-data">
                   <a href="#" class="post-catagory">Finance</a>
                   <div class="post-meta">
                     <a href="#" class="post-title">
-                      <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
+                      <h6><?php echo word_limiter($most_viewed[$i]['title'], 15); ?></h6>
                     </a>
-                    <p class="post-date"><span>7:00 AM</span> | <span>April 14</span></p>
+                    <p class="post-date"><?php echo date('h:i A | F d', strtotime($most_viewed[$i]['date'])); ?></p>
                   </div>
                 </div>
               </div>

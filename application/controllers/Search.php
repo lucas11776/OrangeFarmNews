@@ -79,7 +79,8 @@ class Search extends CI_Controller
       'description'   => '',
       'active'        => '',
       'navbar_adv'    => '',
-      'search_result' => $this->news->search(array('title' => $term), $per_page, $page)
+      'search_result' => $this->news->search(array('title' => $term), $per_page, $page),
+      'most_viewed'   => $this->news->most_viewed(6)
     );
 
     $this->view('news', $page_details);

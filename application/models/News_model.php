@@ -41,7 +41,7 @@ class News_model extends CI_Model
   private function select()
   {
     # select news sql
-    $select_sql = 'news.*, accounts.username, accounts.name, accounts.surname,
+    $select_sql = 'news.*, accounts.username, accounts.name, accounts.surname, accounts.role, accounts.picture as profile_picture,
                    (SELECT COUNT(*) FROM news_comments where news_comments.news_id = news.id) as comments';
 
     return $this->db->select($select_sql)
@@ -97,7 +97,7 @@ class News_model extends CI_Model
   {
     $this->like($like);
 
-    return $this->db->order_by('id', 'DESC')->get('news', $limit, $offset)->result_array();
+    return $this->select()->order_by('id', 'DESC')->get('news', $limit, $offset)->result_array();
   }
 
   private function where(array $where)
@@ -134,17 +134,6 @@ class News_model extends CI_Model
   }
 
   /**
-   * Random Pick News Post
-   *
-   * @param  integer
-   * @return array
-   */
-  public function random_pick(int $limit = 10)
-  {
-    return $this->db->order_by(50, 'RANDOM')->get('news', $limit)->result_array();
-  }
-
-  /**
    * Get Single News Post By Slug
    *
    * @param  string
@@ -153,7 +142,7 @@ class News_model extends CI_Model
   public function view(string $slug)
   {
     # get news by slug
-    $news_item = $this->db->where('slug', $slug)->get('news')->result_array()[0] ?? false;
+    $news_item = $this->select()->where('slug', $slug)->get('news')->result_array()[0] ?? false;
 
     # check if news post exist in database
     if($news_item === false)

@@ -42,11 +42,11 @@ class Home extends CI_Controller
                           we are an Independent Publication and members of AIP (Associated Independent Publishers) and Capro.
                           Orange Farm News is ABC Grassroots certified Feel free to visit our FACEBOOK page, where past issues can be downloaded.`,
       'active'        => 'home',
-      'latest_news'   => $this->news->latest($per_page),
+      'latest_news'   => $this->news->latest($per_page, $page),
       'news_updated'  => $this->news->latest($per_page),
       'blog_updated'  => $this->news->latest($per_page)
     );
-    
+
     #page
     $this->view('index', $page_details);
   }

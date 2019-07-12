@@ -82,7 +82,8 @@ class News extends CI_Controller
       'description' => word_limiter(strip_tags($single_news['post']), 40),
       'active'      => 'news',
       'single_news' => $single_news,
-      'latest_news' => $this->news->latest(6),
+      'latest_news'      => $this->news->latest(8),
+      'most_viewed' => $this->news->most_viewed(5),
       'navbar_adv'  => false
     );
 
@@ -95,17 +96,29 @@ class News extends CI_Controller
    */
   public function category($category)
   {
+    # check if category exist
+    if(in_array(strtolower($category), $this->news::CATEGORY) === false)
+    {
+      # add page 404 error messages
+      $page_details = array(
+        'icon'        => 'fa fa-newspaper-o',
+        'description' => 'Category you are trying to view does not exist.',
+        'title'       => 'News category your selected does not exist.',
+        'message'     => 'Please do not change url manual site will handle url change.',
+        'active'      => '404',
+        'navbar_adv'  => false
+      );
+      # 404 page not found
+      $this->view('../404', $page_details);
+    }
+
     # page details
     $page_details = array(
       'title'       => 'OrangeFarmNews ' . $category . ' news category.',
       'description' => null, # defualt description
+      'active'      => 'news-category',
+      'navbar_adv'  => false
     );
-
-    # check if category exist
-    if(array_key_exists(strtolower($category), $this->news::CATEGORY) === false)
-    {
-      $this->view('../404', $page_details);
-    }
   }
 
 }
