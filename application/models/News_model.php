@@ -34,6 +34,21 @@ class News_model extends CI_Model
   );
 
   /**
+   * Select All Table Fields Releted To News
+   *
+   * @return object
+   */
+  private function select()
+  {
+    # select news sql
+    $select_sql = 'news.*, accounts.username, accounts.name, accounts.surname,
+                   (SELECT COUNT(*) FROM news_comments where news_comments.news_id = news.id) as comments';
+
+    return $this->db->select($select_sql)
+                    ->join('accounts', 'accounts.id = news.user_id', 'left');
+  }
+
+  /**
    * Get Latest News Post
    *
    * @param  integer
@@ -42,7 +57,7 @@ class News_model extends CI_Model
    */
   public function latest(int $limit = 10, int $offset = 0)
   {
-    return $this->db->order_by('date','DESC')->get('news', $limit, $offset)->result_array();
+    return $this->select()->order_by('date','DESC')->get('news', $limit, $offset)->result_array();
   }
 
   /**
@@ -82,7 +97,7 @@ class News_model extends CI_Model
   {
     $this->like($like);
 
-    return $this->db->get('news', $limit, $offset)->result_array();
+    return $this->db->order_by('id', 'DESC')->get('news', $limit, $offset)->result_array();
   }
 
   private function where(array $where)
@@ -148,10 +163,10 @@ class News_model extends CI_Model
     else
     {
       # check if client has not viewed news post
-      if(false)
+      if(true)
       {
         # register a news view
-        $this->update(array('id' => $news_item['id']), array('views' => 'views+1'));
+        $this->db->query("UPDATE `news` SET `views`=views+1 WHERE id = {$news_item['id']}");
       }
     }
 
@@ -176,5 +191,17 @@ class News_model extends CI_Model
     );
 
     return $this->db->insert('news', $data);
+  }
+
+  /**
+   * Updated News Item
+   *
+   * @param   array
+   * @param   array
+   * @return  boolean
+   */
+  public function update(array $where, array $update)
+  {
+    return $this->db->where($where)->update('news', $update);
   }
 }

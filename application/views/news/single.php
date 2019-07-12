@@ -8,8 +8,8 @@
 
             <!-- Single Featured Post -->
             <div class="single-blog-post featured-post single-post">
-              <div class="post-thumb">
-                  <a><img class="single" src="<?php echo base_url('assets/default/img/bg-img/25.jpg'); ?>" alt=""></a>
+              <div class="post-thumb" style="height: auto;">
+                  <a><img class="single" style="height: auto;" src="<?php echo $single_news['picture']; ?>" alt="<?php echo $single_news['title']; ?>"></a>
               </div>
               <div class="post-data">
                 <a href="#" class="post-catagory">

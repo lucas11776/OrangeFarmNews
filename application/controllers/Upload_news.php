@@ -63,7 +63,7 @@ class Upload_news extends CI_Controller
     # news details
     $news = array(
       'id'       => $this->auth->account('id'),
-      'picture'  => base_url($this->news::CATEGORY['upload_path'] . $this->upload->data('file_name')), # uploaded picture
+      'picture'  => base_url($this->news::PICTURE_CONFIG['upload_path'] . $this->upload->data('file_name')), # uploaded picture
       'slug'     => url_title($this->input->post('title') . ' ' . date('l d M Y h a s i')), # slug by time
       'title'    => $this->input->post('title'),
       'category' => $this->input->post('category'),

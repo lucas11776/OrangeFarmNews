@@ -70,7 +70,11 @@
                 <!-- Search Form -->
                 <div class="search-form">
                   <?php echo form_open('search', array('method' => 'GET')); ?>
-                    <input type="text" name="term" class="form-control" placeholder="Search...">
+                    <input type="text"
+                           name="term"
+                           class="form-control"
+                           placeholder="Search..."
+                           value="<?php echo $this->input->get('term'); ?>">
                     <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                   <?php echo form_close(); ?>
                 </div>
@@ -217,7 +221,7 @@
                         <?php for($i = 0; $i < (count($news_updated) >= 5 ? 5 : count($news_updated)); $i++): ?>
                           <li>
                             <a href="<?php echo base_url(); ?>">
-                              <?php echo character_limiter($news_updated[$i]['title'], 20); ?>
+                              <?php echo character_limiter($news_updated[$i]['title'], 50); ?>
                             </a>
                           </li>
                         <?php endfor; ?>
@@ -237,7 +241,7 @@
                         <?php for($i = 0; $i < (count($blog_updated) >= 5 ? 5 : count($blog_updated)); $i++): ?>
                           <li>
                             <a href="<?php echo base_url(); ?>">
-                              <?php echo character_limiter($blog_updated[$i]['title'], 20); ?>
+                              <?php echo character_limiter($blog_updated[$i]['title'], 50); ?>
                             </a>
                           </li>
                         <?php endfor; ?>

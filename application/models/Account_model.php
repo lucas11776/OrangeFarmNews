@@ -47,6 +47,17 @@ class Account_model extends CI_Model
   }
 
   /**
+   * Get Account Full Name Or Username
+   *
+   * @param   array
+   * @return  string
+   */
+  public function get_account_name(array $account)
+  {
+    return empty($account['name']) || empty($account['surname']) ? $account['username'] : $account['name'] . ' ' . $account['surname'];
+  }
+
+  /**
    * Add Account To Database
    *
    * @param   array

@@ -30,7 +30,7 @@
               </div>
             </div>
             <div class="col-auto">
-              <button class="btn bg-color" type="submit"><span class="fa fa-filter"></span> switch search</button>
+              <button class="btn bg-color" type="submit"><span class="fa fa-retweet"></span> switch search</button>
             </div>
           </div>
         <?php echo form_close(); ?>
@@ -46,7 +46,7 @@
                 <div class="single-blog-post featured-post mb-30 col-lg-12">
                   <div class="post-thumb">
                      <a href="<?php echo base_url('news/'.$search_result[$i]['slug']); ?>">
-                       <img src="<?php echo base_url('assets/default/img/bg-img/25.jpg'); ?>" alt="">
+                       <img src="<?php echo $search_result[$i]['picture']; ?>" alt="">
                      </a>
                   </div>
                   <div class="post-data">
@@ -58,7 +58,7 @@
                     </a>
                     <div class="post-meta">
                       <p class="post-author">By <a href="#">Christinne Williams</a></p>
-                      <p class="post-excerp"><?php echo $search_result[$i]['title'] ?></p>
+                      <p class="post-excerp"><?php echo word_limiter(strip_tags($search_result[$i]['post']), 100); ?></p>
                       <!-- Post Like & Post Comment -->
                       <div class="d-flex align-items-center">
                         <a href="#" class="post-like"><i class="fa fa-comments-o"></i> <span>392</span></a>
@@ -71,7 +71,7 @@
                 <div class="single-blog-post featured-post mb-30 col-md-6">
                   <div class="post-thumb">
                     <a href="<?php echo base_url('news/category/'.$search_result[$i]['slug']); ?>">
-                      <img src="<?php echo base_url('assets/default/img/bg-img/25.jpg'); ?>" alt="">
+                      <img src="<?php echo $search_result[$i]['picture']; ?>" alt="">
                     </a>
                   </div>
                   <div class="post-data">

@@ -26,7 +26,7 @@ class Home extends CI_Controller
     $page = is_numeric($this->input->get('page')) ? $this->input->get('page') : 0;
 
     # per page
-    $per_page = 6;
+    $per_page = 12;
 
     # initialize pagination
     $this->custom_pagination->user_pagination($total, $per_page);
@@ -46,8 +46,7 @@ class Home extends CI_Controller
       'news_updated'  => $this->news->latest($per_page),
       'blog_updated'  => $this->news->latest($per_page)
     );
-
-
+    
     #page
     $this->view('index', $page_details);
   }
