@@ -41,7 +41,7 @@ class Upload_news extends CI_Controller
 
     # validate required data
     $this->form_validation->set_rules('picture', 'picture', 'callback_upload_picture');
-    $this->form_validation->set_rules('title', 'title', 'required|min_length[5]|max_length[100]');
+    $this->form_validation->set_rules('title', 'title', 'required|min_length[5]|max_length[150]');
     $this->form_validation->set_rules('category', 'category', 'required|callback_category_exist');
     $this->form_validation->set_rules('post', 'content', 'required');
 
@@ -54,7 +54,7 @@ class Upload_news extends CI_Controller
       # delete picture if picture is uploaded
       if($this->picture !== null)
       {
-        unlink($this->picture);
+        unlink($this->upload->data('file_name'));
       }
 
       return;
@@ -63,7 +63,7 @@ class Upload_news extends CI_Controller
     # news details
     $news = array(
       'id'       => $this->auth->account('id'),
-      'picture'  => $this->picture, # uploaded picture
+      'picture'  => base_url($this->news::CATEGORY['upload_path'] . $this->upload->data('file_name')), # uploaded picture
       'slug'     => url_title($this->input->post('title') . ' ' . date('l d M Y h a s i')), # slug by time
       'title'    => $this->input->post('title'),
       'category' => $this->input->post('category'),
@@ -112,9 +112,6 @@ class Upload_news extends CI_Controller
 
       return false;
     }
-
-    # uploaded picture
-    $this->picture = base_url($this->news::PICTURE_CONFIG['upload_path'] . $this->upload->data('file_name'));
 
     return true;
   }

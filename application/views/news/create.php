@@ -13,6 +13,7 @@
         <div class="form-group">
           <label for="exampleFormControlTextarea1"><strong>Picture<strong></label>
           <input type="file"
+                 name="picture"
                  class="form-control-file <?php echo !empty(form_error('picture')) || !empty($this->session->flashdata('upload_error')) ? 'is-invalid' : null; ?>"
                  id="picture">
           <?php echo form_error('picture', '<strong class="invalid-feedback">', '</strong>'); ?>
@@ -21,23 +22,31 @@
         <!-- Titile -->
         <div class="form-group">
           <label for="exampleFormControlTextarea1"><strong>Title<strong></label>
-          <input type="email"
+          <input type="text"
+                 name="title"
                  class="form-control form-control-user form-control-lg <?php echo !empty(form_error('title')) || !empty($this->session->flashdata('upload_error')) ? 'is-invalid' : null; ?>"
                  id="exampleFormControlInput1"
-                 placeholder="News title.">
+                 placeholder="News title."
+                 value="<?php echo set_value('title'); ?>">
           <?php echo form_error('title', '<strong class="invalid-feedback">', '</strong>'); ?>
         </div>
 
         <!-- Category -->
         <div class="form-group">
           <label for="category"><strong>Category<strong></label>
-          <select class="form-control form-control-lg <?php echo !empty(form_error('category')) || !empty($this->session->flashdata('upload_error')) ? 'is-invalid' : null; ?>"
+          <select class="form-control text-capitalize form-control-lg <?php echo !empty(form_error('category')) || !empty($this->session->flashdata('upload_error')) ? 'is-invalid' : null; ?>"
                   name="category"
                   id="category">
-            <option value="">--- Select Category ---</option>
-            <?php foreach ($this->news::CATEGORY as $key => $value): ?>
-              <option value="<?php echo $key; ?>"><?php echo $value; ?></option>
-            <?php endforeach; ?>
+            <?php for($i = 0; $i < count($this->news::CATEGORY); $i++): ?>
+              <?php if(!isset($this->news::CATEGORY[set_value('category')]) && $i == 0): ?>
+                <option value="">--- Select Category ---</option>
+              <?php elseif(isset($this->news::CATEGORY[set_value('category')]) && $i == 0): ?>
+                <option value="<?php echo set_value('category'); ?>"><?php echo $this->news::CATEGORY[set_value('category')]; ?></option>
+              <?php endif; ?>
+              <?php if(set_value('category') !== array_keys($this->news::CATEGORY)[$i]): ?>
+                <option value="<?php echo array_keys($this->news::CATEGORY)[$i]; ?>"><?php echo array_values($this->news::CATEGORY)[$i]; ?></option>
+              <?php endif; ?>
+            <?php endfor; ?>
           </select>
           <?php echo form_error('category', '<strong class="invalid-feedback">', '</strong>'); ?>
         </div>
@@ -58,7 +67,7 @@
         </div>
 
       <?php echo form_close(); ?>
-      
+
       <hr>
     </div>
   </div>

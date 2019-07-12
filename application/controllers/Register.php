@@ -38,7 +38,8 @@ class Register extends CI_Controller
     # page details
     $page_details = array(
       'title'       => 'Register and join the community of OrangeFarm.',
-      'description' => null, # defualt description
+      'description' => 'Join Orange Farm News community by registering to our easy form application it only '.
+                       'takes 15 seconds so register now.',
       'active'      => 'register',
       'login_page'  => true
     );
@@ -69,15 +70,30 @@ class Register extends CI_Controller
       $this->session->set_flashdata('register_error', 'Something went wrong when tring to connect to database.');
 
       # page
-      $this->view();
+      $this->view('create', $page_details);
 
       return;
     }
 
-    # page
-    $this->load->view('template/navbar', $details);
-    $this->load->view('register/success');
-    $this->load->view('template/footer');
+    # add link btn to page_details
+    $page_details = array(
+      'title'       => 'Thank your for registering now you are a member.',
+      'description' => null, # no description
+      'active'      => 'password',
+      'navbar_adv'  => false,
+      'icon'        => 'fa fa-users',
+      'message'     => 'Please login to your account by clicking to login button and stay communicating with your community.',
+      'link'        => array(
+        'url'  => base_url('login'),
+        'icon' => 'fa fa-user-o',
+        'text' => 'Login Account'
+      )
+    );
+
+    # page (success register view)
+    $this->load->view('template/navbar', $page_details);
+    $this->load->view('message', $page_details);
+    $this->load->view('template/footer', $page_details);
   }
 
 
