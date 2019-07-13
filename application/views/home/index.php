@@ -1,8 +1,10 @@
 <?php
-// Page Work OuterIterator
+// Page Work Out Position
 $display_news         = array_splice($latest_news, 0, 2);
 $dsiplay_summary_news = array_splice($latest_news, 0, 3);
-$sidebar_news         = array_splice($latest_news, 0, 8); ?>
+$sidebar_news         = array_splice($latest_news, 0, 8);
+// End Page Work Out
+?>
 <!-- ##### Featured Post Area Start ##### -->
 <div class="featured-post-area">
   <div class="container">
@@ -49,8 +51,7 @@ $sidebar_news         = array_splice($latest_news, 0, 8); ?>
               <div class="single-blog-post featured-post-2">
                 <div class="post-thumb">
                   <a href="<?php echo base_url('news/'.$dsiplay_summary_news[$i]['slug']); ?>">
-                    <img src="<?php echo $dsiplay_summary_news[$i]['picture']; ?>"
-                         alt="<?php $dsiplay_summary_news[$i]['title']; ?>">
+                    <img src="<?php echo $dsiplay_summary_news[$i]['picture']; ?>" alt="<?php $dsiplay_summary_news[$i]['title']; ?>">
                   </a>
                 </div>
                 <div class="post-data">
@@ -83,7 +84,9 @@ $sidebar_news         = array_splice($latest_news, 0, 8); ?>
                       </a>
                   </div>
                   <div class="post-data">
-                      <a href="#" class="post-catagory"><?php echo $sidebar_news[$i]['category']; ?></a>
+                      <a href="<?php echo base_url('news/category/' . $sidebar_news[$i]['category']); ?>" class="post-catagory">
+                        <?php echo $sidebar_news[$i]['category']; ?>
+                      </a>
                       <div class="post-meta">
                           <a href="<?php echo base_url('news/'.$sidebar_news[$i]['slug']); ?>" class="post-title">
                               <h6><?php echo word_limiter($sidebar_news[$i]['title'], 10); ?></h6>

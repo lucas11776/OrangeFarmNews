@@ -26,7 +26,7 @@ class News extends CI_Controller
     $total = $this->news->count();
 
     # number of result to be show per page
-    $per_page = 2;
+    $per_page = 6;
 
     # config pagination
     $this->custom_pagination->user_pagination($total, $per_page);
@@ -42,7 +42,8 @@ class News extends CI_Controller
       'active'           => 'news',
       'navbar_adv'       => false,
       'news'             => $this->news->latest($per_page, $page),
-      'most_viewed_news' => $this->news->most_viewed(6)
+      'most_viewed'      => $this->news->most_viewed($per_page, $per_page),
+      'most_commented'   => $this->news->most_commented(4, $per_page - 2)
     );
 
     # page

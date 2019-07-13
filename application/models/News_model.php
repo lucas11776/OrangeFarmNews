@@ -87,9 +87,9 @@ class News_model extends CI_Model
    */
   public function most_commented(int $limit = 10, int $offset = 0)
   {
-    return $this->select()->order_by('date','DESC')
-                          ->order_by('comments','DESC')
+    return $this->select()->order_by('comments','DESC')
                           ->order_by('views','DESC')
+                          ->order_by('date','DESC')
                           ->get('news', $limit, $offset)
                           ->result_array();
   }

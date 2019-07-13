@@ -29,8 +29,8 @@ class Contect extends CI_Controller
       'description' => `Getting in touch with us is so simple you can go to are office at Nelgate, call us or use
                         our simple form application by just filling in your details and sending them to us.`,
       'active'       => 'contect',
-      'news_updated' => $this->news->random_pick(5),
-      'blog_updated' => $this->news->random_pick(5)
+      'news_updated' => $this->news->most_viewed(5),
+      'blog_updated' => $this->news->latest(5)
     );
 
     # validate required data

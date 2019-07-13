@@ -70,12 +70,12 @@
               <?php else: ?>
                 <div class="single-blog-post featured-post mb-30 col-md-6">
                   <div class="post-thumb">
-                    <a href="<?php echo base_url('news/category/'.$search_result[$i]['slug']); ?>">
-                      <img src="<?php echo $search_result[$i]['picture']; ?>" alt="">
+                    <a href="<?php echo base_url('news/category/' . $search_result[$i]['slug']); ?>">
+                      <img src="<?php echo $search_result[$i]['picture']; ?>" alt="<?php echo $search_result[$i]['title']; ?>">
                     </a>
                   </div>
                   <div class="post-data">
-                    <a href="<?php echo base_url('news/category/'.$search_result[$i]['slug']); ?>" class="post-catagory">
+                    <a href="<?php echo base_url('news/category/' . $search_result[$i]['slug']); ?>" class="post-catagory">
                       <?php echo $search_result[$i]['category']; ?>
                     </a>
                     <a href="<?php echo base_url('news/'.$search_result[$i]['slug']); ?>" class="post-title">
@@ -112,8 +112,8 @@
               <!-- Single Featured Post -->
               <div class="single-blog-post small-featured-post d-flex">
                 <div class="post-thumb">
-                  <a href="#">
-                    <img src="<?php echo $most_viewed[$i]['picture'] ?>" alt="">
+                  <a href="<?php echo base_url('news/' . $most_viewed[$i]['slug']); ?>">
+                    <img src="<?php echo $most_viewed[$i]['picture']; ?>" alt="<?php echo $most_viewed[$i]['title']; ?>">
                   </a>
                 </div>
                 <div class="post-data">
@@ -121,7 +121,7 @@
                     <?php echo $most_viewed[$i]['category']; ?>
                   </a>
                   <div class="post-meta">
-                    <a href="#" class="post-title">
+                    <a href="<?php echo base_url('news/' . $most_viewed[$i]['slug']); ?>" class="post-title">
                       <h6><?php echo word_limiter($most_viewed[$i]['title'], 15); ?></h6>
                     </a>
                     <p class="post-date"><?php echo date('h:i A | F d', strtotime($most_viewed[$i]['date'])); ?></p>
