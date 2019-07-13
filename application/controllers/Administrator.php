@@ -17,10 +17,11 @@ class Administrator extends CI_Controller
   {
     # page details
     $page_details = array(
-      'title'       => 'OrangeFarmNews Administrator (Themba)',
-      'description' => 'OrangeFarmNews Administrator Panel.',
-      'active'      => 'panel',
-      'number_post' => $this->stats->number_post(), # get number post from (accounts,blog,news)
+      'title'           => 'OrangeFarmNews Administrator (Themba)',
+      'description'     => 'OrangeFarmNews Administrator Panel.',
+      'active'          => 'panel',
+      'summary'         => $this->stats->summary(), # get number post from (accounts,blog,news)
+      'latest_messages' => $this->contect->get(null, 5)
     );
 
     # page
