@@ -46,18 +46,18 @@
                 <div class="single-blog-post featured-post mb-30 col-lg-12">
                   <div class="post-thumb">
                      <a href="<?php echo base_url('news/'.$search_result[$i]['slug']); ?>">
-                       <img src="<?php echo $search_result[$i]['picture']; ?>" alt="">
+                       <img src="<?php echo $search_result[$i]['picture']; ?>" alt="<?php echo $search_result[$i]['title']; ?>">
                      </a>
                   </div>
                   <div class="post-data">
-                    <a href="<?php echo base_url('news/category/'.$search_result[$i]['slug']); ?>" class="post-catagory">
+                    <a href="<?php echo base_url('news/category/'.$search_result[$i]['category']); ?>" class="post-catagory">
                       <?php echo $search_result[$i]['category']; ?>
                     </a>
                     <a href="<?php echo base_url('news/'.$search_result[$i]['slug']); ?>" class="post-title">
                       <h6><?php echo $search_result[$i]['title'] ?></h6>
                     </a>
                     <div class="post-meta">
-                      <p class="post-author">By <a href="#">Christinne Williams</a></p>
+                      <p class="post-author">By <a href="#"><?php echo $this->account->get_account_name($search_result[$i]); ?></a></p>
                       <p class="post-excerp"><?php echo word_limiter(strip_tags($search_result[$i]['post']), 100); ?></p>
                       <!-- Post Like & Post Comment -->
                       <div class="d-flex align-items-center">
@@ -82,7 +82,7 @@
                       <h5><?php echo $search_result[$i]['title'] ?></h5>
                     </a>
                     <div class="post-meta">
-                      <p class="post-author">By <a href="#">Christinne Williams</a></p>
+                      <p class="post-author">By <a href="#"><?php echo $this->account->get_account_name($search_result[$i]); ?></a></p>
                       <p class="post-excerp"><?php echo word_limiter(strip_tags($search_result[$i]['post']), 50); ?></p>
                       <!-- Post Like & Post Comment -->
                       <div class="d-flex align-items-center">
@@ -117,7 +117,9 @@
                   </a>
                 </div>
                 <div class="post-data">
-                  <a href="#" class="post-catagory">Finance</a>
+                  <a href="<?php echo base_url('news/category/' . $most_viewed[$i]['category']); ?>" class="post-catagory">
+                    <?php echo $most_viewed[$i]['category']; ?>
+                  </a>
                   <div class="post-meta">
                     <a href="#" class="post-title">
                       <h6><?php echo word_limiter($most_viewed[$i]['title'], 15); ?></h6>

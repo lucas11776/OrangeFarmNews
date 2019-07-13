@@ -1,5 +1,4 @@
-<!-- Reply Comment Model -->
-<!-- Modal -->
+<!-- ##### Reply Comment Model Start ##### -->
 <div class="modal fade" id="reply-comment-model" tabindex="-1" role="dialog" aria-labelledby="reply-comment-model" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -10,7 +9,6 @@
         </button>
       </div>
       <div class="modal-body">
-
         <div class="post-a-comment-area pt-0 pb-0">
             <!-- Reply Form -->
             <div class="contact-form-area">
@@ -33,15 +31,37 @@
                 <?php echo form_close(); ?>
             </div>
         </div>
-
       </div>
-      <!-- <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div> -->
     </div>
   </div>
 </div>
+<!-- ##### Reply Comment Model End ##### -->
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#delete-comment-model">
+  Launch demo modal
+</button> -->
+
+<!-- ##### Delete Comment Model Start ##### -->
+<div class="modal fade" id="delete-comment-model" tabindex="-1" role="dialog" aria-labelledby="News comment confirmation model" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered " role="document">
+    <div class="modal-content border border-danger">
+      <div class="modal-header">
+        <h5 class="modal-title text-muted" id="exampleModalCenterTitle"><span class="fa fa-trash-o color"></span> Confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal"><span class="fa fa-close"></span> Cancel</button>
+        <button type="button" class="btn btn-danger">
+          <span class="fa fa-trash-o"></span> Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ##### Delete Comment Model End ##### -->
 
 <!-- ##### Blog Area Start ##### -->
 <div class="blog-area section-padding-0-80 pt-2">
@@ -215,16 +235,24 @@
 
                   <!-- Reply Form -->
                   <div class="contact-form-area">
-                      <form action="#" method="post">
+                      <?php echo form_open('news/comment'); ?>
+                          <input type="hidden"
+                                 name="news_id"
+                                 value="<?php echo $single_news['id']; ?>">
                           <div class="row">
                               <div class="col-12">
-                                  <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+                                  <textarea name="message"
+                                            class="form-control"
+                                            id="message"
+                                            cols="30"
+                                            rows="10"
+                                            placeholder="Message"></textarea>
                               </div>
                               <div class="col-12 text-center">
                                   <button class="btn newspaper-btn mt-30 w-100" type="submit">Submit Comment</button>
                               </div>
                           </div>
-                      </form>
+                      <?php echo form_close(); ?>
                   </div>
               </div>
           </div>

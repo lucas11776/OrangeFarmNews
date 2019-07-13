@@ -108,17 +108,34 @@ class News extends CI_Controller
         'active'      => '404',
         'navbar_adv'  => false
       );
+
       # 404 page not found
       $this->view('../404', $page_details);
     }
 
+    # get number of news in database
+    $total = $this->news->count('where', array('category' => $category));
+
+    # number of result to be show per page
+    $per_page = 7;
+
+    # config pagination
+    $this->custom_pagination->user_pagination($total, $per_page);
+
+    # get page page
+    $page = is_numeric($this->input->get('page')) ? $this->input->get('page') : 0;
+
     # page details
     $page_details = array(
-      'title'       => 'OrangeFarmNews ' . $category . ' news category.',
-      'description' => null, # defualt description
-      'active'      => 'news-category',
-      'navbar_adv'  => false
+      'title'           => 'OrangeFarmNews ' . $category . ' news category.',
+      'description'     => null, # defualt description
+      'active'          => strtolower('category-' . $category),
+      'navbar_adv'      => false,
+      'category_result' => $this->news->get(array('category' => $category), $per_page, $page),
+      'most_commented'  => $this->news->most_commented(6)
     );
+
+    $this->view('category', $page_details);
   }
 
 }

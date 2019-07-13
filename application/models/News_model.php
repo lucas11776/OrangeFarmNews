@@ -57,7 +57,10 @@ class News_model extends CI_Model
    */
   public function latest(int $limit = 10, int $offset = 0)
   {
-    return $this->select()->order_by('date','DESC')->get('news', $limit, $offset)->result_array();
+    return $this->select()
+                ->order_by('date','DESC')
+                ->get('news', $limit, $offset)
+                ->result_array();
   }
 
   /**
@@ -69,7 +72,26 @@ class News_model extends CI_Model
    */
   public function most_viewed(int $limit = 10, int $offset = 0)
   {
-    return $this->db->order_by('views','DESC')->order_by('date','DESC')->get('news', $limit, $offset)->result_array();
+    return $this->db->order_by('views','DESC')
+                    ->order_by('date','DESC')
+                    ->get('news', $limit, $offset)
+                    ->result_array();
+  }
+
+  /**
+   * Get Most Viewed News Post
+   *
+   * @param  integer
+   * @param  integer
+   * @return array
+   */
+  public function most_commented(int $limit = 10, int $offset = 0)
+  {
+    return $this->select()->order_by('date','DESC')
+                          ->order_by('comments','DESC')
+                          ->order_by('views','DESC')
+                          ->get('news', $limit, $offset)
+                          ->result_array();
   }
 
   /**
@@ -97,7 +119,10 @@ class News_model extends CI_Model
   {
     $this->like($like);
 
-    return $this->select()->order_by('id', 'DESC')->get('news', $limit, $offset)->result_array();
+    return $this->select()
+                ->order_by('id', 'DESC')
+                ->get('news', $limit, $offset)
+                ->result_array();
   }
 
   private function where(array $where)
@@ -160,6 +185,17 @@ class News_model extends CI_Model
     }
 
     return $news_item;
+  }
+
+  /**
+   * Get News
+   *
+   * @param   array
+   * @return  array
+   */
+  public function get(array $where, int $limit = null, int $offset = null)
+  {
+    return $this->select()->where($where)->get('news', $limit, $offset)->result_array();
   }
 
   /**

@@ -132,7 +132,7 @@
                     <!-- Show Category to user and show dashboard and shortcut linlks to dashboard to ++editor -->
                     <?php if($this->auth->editor(false) === false): ?>
                       <?php for($i = 0; $i < 5; $i++): ?>
-                        <li class="<?php echo $active == 'news' ? 'active' : ''; ?>">
+                        <li class="<?php echo $active == strtolower('category-'.$this->news::CATEGORY[$i]) ? 'active' : ''; ?>">
                           <a href="<?php echo base_url('news/category/'.$this->news::CATEGORY[$i]); ?>"><?php echo $this->news::CATEGORY[$i]; ?></a>
                         </li>
                       <?php endfor; ?>
