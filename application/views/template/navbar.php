@@ -220,8 +220,8 @@
                       <ul>
                         <?php for($i = 0; $i < (count($news_updated) >= 5 ? 5 : count($news_updated)); $i++): ?>
                           <li>
-                            <a href="<?php echo base_url(); ?>">
-                              <?php echo character_limiter($news_updated[$i]['title'], 50); ?>
+                            <a href="<?php echo base_url('news/' . $news_updated[$i]['slug']); ?>">
+                              <?php echo word_limiter($news_updated[$i]['title'], 10); ?>
                             </a>
                           </li>
                         <?php endfor; ?>
@@ -240,8 +240,8 @@
                       <ul>
                         <?php for($i = 0; $i < (count($blog_updated) >= 5 ? 5 : count($blog_updated)); $i++): ?>
                           <li>
-                            <a href="<?php echo base_url(); ?>">
-                              <?php echo character_limiter($blog_updated[$i]['title'], 50); ?>
+                            <a href="<?php echo base_url('news/' . $news_updated[$i]['slug']); ?>">
+                              <?php echo word_limiter($blog_updated[$i]['title'], 10); ?>
                             </a>
                           </li>
                         <?php endfor; ?>

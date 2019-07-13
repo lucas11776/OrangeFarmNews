@@ -80,7 +80,7 @@ class Search extends CI_Controller
       'active'        => '',
       'navbar_adv'    => '',
       'search_result' => $this->news->search(array('title' => $term), $per_page, $page),
-      'most_viewed'   => $this->news->most_viewed(6)
+      'most_viewed'   => $this->news->most_viewed(6, $page == 0 ? 0 : $page - 1)
     );
 
     $this->view('news', $page_details);

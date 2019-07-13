@@ -43,7 +43,7 @@ class Home extends CI_Controller
                           Orange Farm News is ABC Grassroots certified Feel free to visit our FACEBOOK page, where past issues can be downloaded.`,
       'active'        => 'home',
       'latest_news'   => $this->news->latest($per_page, $page),
-      'news_updated'  => $this->news->latest($per_page),
+      'news_updated'  => $this->news->latest($per_page, $page),
       'blog_updated'  => $this->news->latest($per_page)
     );
 

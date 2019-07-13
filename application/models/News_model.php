@@ -115,6 +115,14 @@ class News_model extends CI_Model
     return $this->db->count_all_results('news');
   }
 
+  /**
+   * Search Term In Title Field Of News Table
+   *
+   * @param   array
+   * @param   integer
+   * @param   integer
+   * @return  array
+   */
   public function search(array $like, int $limit = 10, int $offset = 0)
   {
     $this->like($like);
@@ -125,6 +133,12 @@ class News_model extends CI_Model
                 ->result_array();
   }
 
+  /**
+   * Multi Where Cluea
+   *
+   * @param array
+   * @return void
+   */
   private function where(array $where)
   {
     foreach ($where as $key => $value)
@@ -134,7 +148,10 @@ class News_model extends CI_Model
   }
 
   /**
-   * Multi
+   * Multi Like Cluea
+   *
+   * @param array
+   * @return void
    */
   private function like(array $like)
   {
@@ -195,7 +212,11 @@ class News_model extends CI_Model
    */
   public function get(array $where, int $limit = null, int $offset = null)
   {
-    return $this->select()->where($where)->get('news', $limit, $offset)->result_array();
+    return $this->select()
+                ->where($where)
+                ->order_by('date', 'DESC')
+                ->get('news', $limit, $offset)
+                ->result_array();
   }
 
   /**

@@ -42,8 +42,8 @@ class News extends CI_Controller
       'active'           => 'news',
       'navbar_adv'       => false,
       'news'             => $this->news->latest($per_page, $page),
-      'most_viewed'      => $this->news->most_viewed($per_page, $per_page),
-      'most_commented'   => $this->news->most_commented(4, $per_page - 2)
+      'most_viewed'      => $this->news->most_viewed($per_page, $page),
+      'most_commented'   => $this->news->most_commented(5, $page == 0 ? 0 : $page - 1)
     );
 
     # page
@@ -133,7 +133,7 @@ class News extends CI_Controller
       'active'          => strtolower('category-' . $category),
       'navbar_adv'      => false,
       'category_result' => $this->news->get(array('category' => $category), $per_page, $page),
-      'most_commented'  => $this->news->most_commented(6)
+      'most_commented'  => $this->news->most_commented(6, $page)
     );
 
     $this->view('category', $page_details);

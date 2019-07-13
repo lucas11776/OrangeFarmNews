@@ -91,7 +91,7 @@ $sidebar_news         = array_splice($latest_news, 0, 8);
                           <a href="<?php echo base_url('news/'.$sidebar_news[$i]['slug']); ?>" class="post-title">
                               <h6><?php echo word_limiter($sidebar_news[$i]['title'], 10); ?></h6>
                           </a>
-                          <p class="post-date"><?php echo date('h:i A | F d', strtotime($sidebar_news[$i]['date'])); ?></p>
+                          <p class="post-date"><span class="fa fa-clock-o color"></span> <?php echo date('h:i A | F d', strtotime($sidebar_news[$i]['date'])); ?></p>
                       </div>
                   </div>
               </div>

@@ -90,7 +90,7 @@
                     <a href="<?php echo base_url('news/' . $most_commented[$i]['slug']); ?>" class="post-title">
                       <h6><?php echo word_limiter($most_commented[$i]['title'], 15); ?></h6>
                     </a>
-                    <p class="post-date"><?php echo date('h:i A | F d', strtotime($most_commented[$i]['date'])); ?></p>
+                    <p class="post-date"><span class="fa fa-clock-o color"></span> <?php echo date('h:i A | F d', strtotime($most_commented[$i]['date'])); ?></p>
                   </div>
                 </div>
               </div>
