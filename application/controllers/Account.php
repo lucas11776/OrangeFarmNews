@@ -17,6 +17,51 @@ class Account extends CI_Controller
   }
 
   /**
+   * @Route (account/:username)
+   */
+  public function single($username)
+  {
+    # get user account by name
+    $user_account = $this->account->get(array('username' => $username))[0] ?? false;
+
+    # check if account exist
+    if($user_account === false)
+    {
+      # page details
+      $page_details = array(
+        'title'       => 'User Account ' . $username . ' Does Not Exist.',
+        'description' => 'User account does not exist.',
+        'active'      => '404',
+        'icon'        => 'fa fa-user-circle-o',
+        'message'     => 'User account you are trying to view does not exist it maybe deleted.',
+        'navbar_adv'  => false
+      );
+
+      # page
+      $this->load->view('template/navbar', $page_details);
+      $this->load->view('404', $page_details);
+      $this->load->view('template/footer', $page_details);
+
+      return;
+    }
+
+    # page details
+    $page_details = array(
+      'title'       => 'User Account ' . $username . ' Does Not Exist.',
+      'description' => 'User account does not exist.',
+      'active'      => '404',
+      'icon'        => 'fa fa-user-circle-o',
+      'message'     => 'User account you are trying to view does not exist it maybe deleted.',
+      'navbar_adv'  => false,
+      'account'     => $user_account
+    );
+
+    # page
+    $this->load->view('template/navbar', $page_details);
+    $this->load->view('account/single', $page_details);
+    $this->load->view('template/footer', $page_details);
+  }
+  /**
    * @Route (my/account)
    */
   public function index()

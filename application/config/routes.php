@@ -61,6 +61,7 @@ $route['search']                  = 'search/index';                    # access 
 $route['news/comment/delete']     = 'news_comment/delete';             # access (user,editor,administrator)
 $route['dashboard']               = 'administrator/index';             # access (administrator)
 $route['my/account']              = 'account/index';                   # access (user,editor,administrator)
+$route['account/(:any)']          = 'account/single/$1';               # access (user,editor,administrator)
 $route['dashboard/my/account']    = 'account/index';                   # access (user,editor,administrator)
 $route['dashboard/accounts']      = 'administrator/accounts';          # access (administrator)
 $route['dashboard/news']          = 'administrator/news';              # access (administrator)

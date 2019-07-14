@@ -33,13 +33,13 @@
 
         <li class="list-group-item pb-0">
           <div class="form-group row">
-             <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">Profile Picture</label>
+             <label for="picture" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">Profile Picture</label>
              <div class="col-sm-9">
                <input type="file"
                       name="picture"
                       style="position: relative; top: 5px;"
                       class="form-control-file is-invalid"
-                      id="exampleFormControlFile1">
+                      id="picture">
                 <?php echo form_error('picture', '<p class="invalid-feedback">', '</p>'); ?>
              </div>
            </div>
@@ -47,12 +47,12 @@
 
         <li class="list-group-item pb-0">
           <div class="form-group row">
-             <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">Username</label>
+             <label for="usernmae" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">Username</label>
              <div class="col-sm-9">
                <input type="text"
                       name="username"
                       class="form-control form-control-md"
-                      id=""
+                      id="username"
                       value="<?php echo $this->auth->account('username'); ?>"
                       placeholder="Username."
                       disabled>
@@ -62,12 +62,12 @@
 
         <li class="list-group-item pb-0">
           <div class="form-group row">
-             <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">Email</label>
+             <label for="email" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">Email</label>
              <div class="col-sm-9">
                <input type="email"
                       name="email"
                       class="form-control form-control-md"
-                      id=""
+                      id="email"
                       value="<?php echo $this->auth->account('email'); ?>"
                       placeholder="Email Address."
                       disabled>
@@ -77,12 +77,12 @@
 
         <li class="list-group-item pb-0">
           <div class="form-group row">
-             <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">Name</label>
+             <label for="name" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">Name</label>
              <div class="col-sm-9">
                <input type="text"
                       name="name"
                       class="form-control form-control-md"
-                      id=""
+                      id="name"
                       value="<?php echo empty(set_value('name')) ? $this->auth->account('name') : set_value('name'); ?>"
                       placeholder="Enter your name.">
                 <?php echo form_error('name', '<p class="invalid-feedback">', '</p>'); ?>
@@ -92,12 +92,12 @@
 
         <li class="list-group-item pb-0">
           <div class="form-group row">
-             <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">Surname</label>
+             <label for="surname" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">Surname</label>
              <div class="col-sm-9">
                <input type="text"
                       name="surname"
                       class="form-control form-control-md"
-                      id=""
+                      id="surname"
                       value="<?php echo empty(set_value('surname')) ? $this->auth->account('surname') : set_value('surname'); ?>"
                       placeholder="Enter your surname.">
              </div>
@@ -118,12 +118,12 @@
         <li class="list-group-item active"><strong><i class="fas fa-key"></i> Change Password</strong></li>
         <li class="list-group-item pb-0">
           <div class="form-group row">
-             <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">Old Password</label>
+             <label for="old-password" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">Old Password</label>
              <div class="col-sm-9">
                <input type="password"
                       name="old_password"
                       class="form-control form-control-md <?php if(form_error('old_password')) echo 'is-invalid'; ?>"
-                      id=""
+                      id="old-password"
                       value="<?php echo set_value('old_password'); ?>"
                       placeholder="Account password (old).">
                 <?php echo form_error('old_password', '<strong class="invalid-feedback">', '</strong>'); ?>
@@ -133,12 +133,12 @@
 
         <li class="list-group-item pb-0">
           <div class="form-group row">
-             <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">News Password</label>
+             <label for="new-password" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">News Password</label>
              <div class="col-sm-9">
                <input type="password"
                       name="new_password"
                       class="form-control form-control-md <?php if(form_error('new_password')) echo 'is-invalid'; ?>"
-                      id=""
+                      id="new-password"
                       value=""
                       placeholder="New password.">
                 <?php echo form_error('new_password', '<strong class="invalid-feedback">', '</strong>'); ?>
@@ -148,12 +148,12 @@
 
         <li class="list-group-item pb-0">
           <div class="form-group row">
-             <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">Confirm Password</label>
+             <label for="confirm-password" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">Confirm Password</label>
              <div class="col-sm-9">
                <input type="password"
                       name="confirm_password"
                       class="form-control form-control-md <?php if(form_error('confirm_password')) echo 'is-invalid'; ?>"
-                      id=""
+                      id="confirm-password"
                       value=""
                       placeholder="Confirm new pasword.">
                 <?php echo form_error('confirm_password', '<strong class="invalid-feedback">', '</strong>'); ?>
