@@ -6,7 +6,7 @@ class Administrator extends CI_Controller
   private function view(string $page, array $details)
   {
     $this->load->view('template/_navbar', $details);
-    $this->load->view('administrator/'.$page, $details);
+    $this->load->view('administrator/' . $page, $details);
     $this->load->view('template/_footer', $details);
   }
 
@@ -15,13 +15,16 @@ class Administrator extends CI_Controller
    */
   public function index()
   {
+    # check if user administrator
+    $this->auth->administrator();
+
     # page details
     $page_details = array(
       'title'           => 'OrangeFarmNews Administrator (Themba)',
       'description'     => 'OrangeFarmNews Administrator Panel.',
       'active'          => 'panel',
-      'summary'         => $this->stats->summary(), # get number post from (accounts,blog,news)
-      'latest_messages' => $this->contect->get(null, 5)
+      'summary'         => $this->stats->summary(),
+      'unread_messages' => $this->contect->get(array('seen' => 0), 5)
     );
 
     # page

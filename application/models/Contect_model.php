@@ -63,6 +63,7 @@ class Contect_model extends CI_Model
       'surname'      => $message['surname'],
       'email'        => $message['email'],
       'phone_number' => $message['phone_number'],
+      'subject'      => $message['subject'],
       'message'      => $message['message']
     );
 
@@ -86,14 +87,14 @@ class Contect_model extends CI_Model
    * @param   integer
    * @return  array
    */
-  public function view(int $id)
+  public function view($id)
   {
     $message = $this->db->where(array('id' => $id))->get('contect')->result_array()[0] ?? false;
 
     // set message to seen if not seen
     if(($message['seen'] ?? 'null') == 0)
     {
-      $this->db->where('id', $message['id'])->update('contect' , array('seen' => $this->auth->account('id')));
+      // $this->db->where('id', $message['id'])->update('contect' , array('seen' => $this->auth->account('id')));
     }
 
     return $message;

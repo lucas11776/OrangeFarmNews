@@ -213,14 +213,14 @@
               <!-- Dropdown - Messages -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                 <h6 class="dropdown-header">
-                  Message Center
+                  Unread Messages
                 </h6>
-                <?php for($i = 0; $i < count($latest_messages); $i++): ?>
+                <?php for($i = 0; $i < count($unread_messages); $i++): ?>
                   <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="<?php echo $latest_messages[$i]['seen'] == 0 ? 'font-weight-bold' : ''; ?>">
-                      <div class="text-truncate"><?php echo word_limiter($latest_messages[$i]['message'], 15); ?></div>
+                    <div class="<?php echo $unread_messages[$i]['seen'] == 0 ? 'font-weight-bold' : ''; ?>">
+                      <div class="text-truncate"><?php echo word_limiter($unread_messages[$i]['message'], 15); ?></div>
                       <div class="small text-gray-500">
-                        <?php echo $latest_messages[$i]['name']; ?> <?php echo $latest_messages[$i]['name']; ?> ·
+                        <?php echo $unread_messages[$i]['name']; ?> <?php echo $unread_messages[$i]['name']; ?> ·
                         <?php echo date('h:ia d F Y'); ?>
                       </div>
                     </div>
