@@ -15,9 +15,10 @@
                           </div>
                           <!-- List -->
                           <ul class="list">
-                              <li><a href="mailto:contact@youremail.com">contact@youremail.com</a></li>
-                              <li><a href="tel:+4352782883884">+43 5278 2883 884</a></li>
-                              <li><a href="http://yoursitename.com">www.yoursitename.com</a></li>
+                              <li><a href="mailto:orangefarmnews@yahoo.com"><span class="fa fa-google"></span> orangefarmnews@yahoo.com</a></li>
+                              <li><a href="tel:0118501160"><span class="fa fa-shopping-bag"></span> 011 850 1160</a></li>
+                              <li><a href="tel:0862639988"><span class="fa fa-newspaper-o"></span>  086 263 9988</a></li>
+                              <li><a href="<?php echo base_url(''); ?>"><span class="fa fa-globe"></span>  www.orangefarmnews.co.za</a></li>
                           </ul>
                       </div>
                   </div>

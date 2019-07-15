@@ -115,7 +115,7 @@ $sidebar_news         = array_splice($latest_news, 0, 8);
         <div class="row">
             <div class="col-12 col-sm-10 col-lg-8 offset-sm-1 offset-lg-2">
                 <div class="footer-add">
-                    <a href="#"><img src="<?php echo base_url('assets/default/img/bg-img/footer-add.gif'); ?>" alt=""></a>
+                    <a href="#"><img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/topband.gif'); ?>" alt=""></a>
                 </div>
             </div>
         </div>
@@ -152,6 +152,13 @@ $sidebar_news         = array_splice($latest_news, 0, 8);
                 </div>
               </div>
             </div>
+            <?php if(($i+1) % 3 == 0 && $i != (9-1)): ?>
+              <div class="col-12 text-center pt-1 pb-5">
+                <div class="footer-add">
+                  <a href="#"><img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/holy.gif'); ?>" alt=""></a>
+                </div>
+              </div>
+            <?php endif; ?>
           <?php endfor; ?>
           </div>
       </div>
@@ -177,6 +184,13 @@ $sidebar_news         = array_splice($latest_news, 0, 8);
               </div>
             </div>
           </div>
+          <?php if(($i+1) % 3 == 0 && $i != (5-1)): ?>
+            <div class="col-12 text-center pt-1 pb-4">
+              <div class="footer-add">
+                <a href="#"><img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/front-banner.jpg'); ?>" alt=""></a>
+              </div>
+            </div>
+          <?php endif; ?>
         <?php endfor; ?>
       </div>
     </div>

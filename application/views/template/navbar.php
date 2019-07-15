@@ -12,19 +12,19 @@
     <base href="<?php echo base_url(); ?>">
 
     <!-- Title -->
-    <title><?php echo strip_tags($title) ?? 'OrangeFarmNews the voice of the people since 2012.'; ?></title>
+    <title><?php echo strip_tags($title) ?? 'Orange Farm News the voice of the people since 2012.'; ?></title>
 
     <!-- Twitter API -->
     <meta name="twitter:card" content="">
     <meta name="twitter:site" content="<?php echo $website ?? 'http://www.orangefarmnews.co.za'; ?>">
-    <meta name="twitter:creator" content="<?php echo $author ?? 'OrangeFarmNews'; ?>">
-    <meta name="twitter:title" content="<?php echo strip_tags($title) ?? 'OrangeFarmNews the voice of the people since 2012.'; ?>">
+    <meta name="twitter:creator" content="<?php echo $author ?? 'Orange Farm News'; ?>">
+    <meta name="twitter:title" content="<?php echo strip_tags($title) ?? 'Orange Farm News the voice of the people since 2012.'; ?>">
     <meta name="twitter:description" content="<?php echo strip_tags($description); ?>">
     <meta name="twitter:image" content="">
 
     <!-- Facebook API (OpenGraph) -->
     <meta property="og:url" content="">
-    <meta property="og:title" content="<?php echo strip_tags($title) ?? 'OrangeFarmNews the voice of the people since 2012.'; ?>">
+    <meta property="og:title" content="<?php echo strip_tags($title) ?? 'Orange Farm News the voice of the people since 2012.'; ?>">
     <meta property="og:description" content="<?php echo strip_tags($description); ?>">
     <meta property="og:type" content="">
     <meta property="og:image" content="">
@@ -254,7 +254,7 @@
           <!-- Ads Add -->
           <div class="col-12 text-center <?php echo !empty($news_updated) == false && !empty($blog_updated) ? 'col-lg-6 offset-lg-3' : 'col-lg-4'; ?>">
               <div class="hero-add">
-                  <a href="#"><img src="<?php echo base_url('assets/default/img/bg-img/hero-add.gif'); ?>" alt=""></a>
+                  <a href="#"><img src="<?php echo base_url('uploads/adverts/thetha.jpg'); ?>" alt=""></a>
               </div>
           </div>
         </div>

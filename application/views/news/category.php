@@ -1,3 +1,17 @@
+<!-- ##### Footer Add Area Start ##### -->
+<div class="footer-add-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-10 col-lg-8 offset-sm-1 offset-lg-2">
+                <div class="footer-add">
+                    <a href="#"><img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/topband.gif'); ?>" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Footer Add Area End ##### -->
+
 <!-- ##### Blog Area Start ##### -->
 <div class="blog-area section-padding-0-80 pt-2">
   <div class="container">
@@ -59,6 +73,13 @@
                   </div>
                 </div>
               <?php endif; ?>
+              <?php if($i % 4 == 0 && $i != 0): ?>
+                <div class="col-12 text-center pb-5">
+                    <div class="footer-add">
+                      <a href="#"><img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/topband.gif'); ?>" alt=""></a>
+                    </div>
+                </div>
+              <?php endif; ?>
             <?php endfor; ?>
           </div>
         </div>
@@ -94,6 +115,13 @@
                   </div>
                 </div>
               </div>
+              <?php if((count($most_commented) - 1) == $i): ?>
+                <div class="col-12 text-center pt-5 pb-0">
+                    <div class="footer-add">
+                      <a href="#"><img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/front-banner.jpg'); ?>" alt=""></a>
+                    </div>
+                </div>
+              <?php endif; ?>
             <?php endfor; ?>
           </div>
 

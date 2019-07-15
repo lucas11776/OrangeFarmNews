@@ -93,6 +93,13 @@
                   </div>
                 </div>
               <?php endif; ?>
+              <?php if($i % 4 == 0 && $i != 0): ?>
+                <div class="col-12 text-center pb-5">
+                    <div class="footer-add">
+                      <a href="#"><img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/topband.gif'); ?>" alt=""></a>
+                    </div>
+                </div>
+              <?php endif; ?>
             <?php endfor; ?>
           </div>
         </div>
@@ -128,6 +135,13 @@
                   </div>
                 </div>
               </div>
+              <?php if((count($most_viewed) - 1) == $i): ?>
+                <div class="col-12 text-center pt-5 pb-0">
+                    <div class="footer-add">
+                      <a href="#"><img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/front-banner.jpg'); ?>" alt=""></a>
+                    </div>
+                </div>
+              <?php endif; ?>
             <?php endfor; ?>
           </div>
 
