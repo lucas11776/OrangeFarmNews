@@ -18,27 +18,6 @@ class News extends CI_Controller
   }
 
   /**
-   * Page Pagination Configuration
-   *
-   * @param   integer
-   * @return  array
-   */
-  private function page_pagination(int $total, int $per_page = 6)
-  {
-    # pagination configuration
-    $config = array(
-      'page_query_string'    => true,
-      'query_string_segment' => 'page',
-      'base_url'             => base_url(uri_string()),
-      'total_rows'           => $total,
-      'per_page'             => $per_page
-    );
-
-    # initialize pagination class
-    $this->pagination->initialize($config);
-  }
-
-  /**
    * @Route (news)
    */
   public function index()
@@ -50,7 +29,7 @@ class News extends CI_Controller
     $per_page = 3;
 
     # config pagination
-    $this->page_pagination($total, $per_page);
+    $this->custom_pagination->user_pagination($total, $per_page);
 
     # get page page
     $page = is_numeric($this->input->get('page')) ? $this->input->get('page') : 0;
@@ -59,6 +38,8 @@ class News extends CI_Controller
     $page_details = array(
       'title'            => 'Get the latest new from Orange Farm.',
       'description'      => null, # defualt description
+      'active'           => 'news',
+      'navbar_adv'       => false,
       'news'             => $this->news->latest($per_page, $page),
       'most_viewed_news' => $this->news->most_viewed(6)
     );

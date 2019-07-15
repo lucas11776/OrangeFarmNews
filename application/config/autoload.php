@@ -145,6 +145,7 @@ $autoload['model'] = array(
   'news_model'       => 'news',
   'newsletter_model' => 'newsletter',
   'contect_model'    => 'contect',
+  'pagination_model' => 'custom_pagination',
   'panel_model'      => 'panel',
   'statistics_model' => 'stats'
 );

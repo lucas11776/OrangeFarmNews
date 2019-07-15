@@ -18,41 +18,6 @@ class Search extends CI_Controller
   }
 
   /**
-   * Page Pagination Configuration
-   *
-   * @param   integer
-   * @return  array
-   */
-  private function page_pagination(int $total, int $per_page = 6)
-  {
-    # pagination configuration
-    $config = array(
-      'page_query_string'    => true,
-      'query_string_segment' => 'page',
-      'base_url'             => base_url(uri_string()),
-      'total_rows'           => $total,
-      'per_page'             => $per_page,
-      # pagination markup
-      'full_tag_open'        => '<ul class="pagination mt-50">',
-      'full_tag_close'       => '</ul>',
-      //'first_tag_open'       => '<li class="page-item">',
-      //'first_tag_close'      => '</li>',
-      'next_tag_open'        => '<li class="page-item">',
-      'next_tag_close'       => '</li>',
-      'prev_tag_open'        => '<li class="page-item">',
-      'prev_tag_close'       => '</li>',
-      'cur_tag_open'         => '<li class="page-item active"><a class="page-link" href="#">',
-      'cur_tag_close'        => '</a></li>',
-      'num_tag_open'         => '<li class="page-item">',
-      'num_tag_close'        => '</li>',
-      'attributes'           => array('class' => 'page-link')
-    );
-
-    # initialize pagination class
-    $this->pagination->initialize($config);
-  }
-
-  /**
    * @Route (search)
    */
   public function index()
@@ -75,22 +40,25 @@ class Search extends CI_Controller
       $this->view('../404', $page_details);
     }
 
-    if(strtolower($type) == 'blog')
-    {
-      $this->search_blog($term, $page);
+    # check search type defualt news
+    switch ($type) {
+      case 'blog':
+        $this->search_blog($term, $page);
+        break;
+
+      default:
+        $this->search_news($term, $page);
+        break;
     }
-    else
-    {
-      $this->search_news($term, $page);
-    }
+
   }
 
   /**
    * Search Form News Post
    *
    * @param   integer
+   * @param   string
    * @return  array
-   <?php echo $this->pagination->create_links(); ?>
    */
   private function search_news($term, $page)
   {
@@ -101,7 +69,7 @@ class Search extends CI_Controller
     $page = is_numeric($this->input->get('page')) ? $this->input->get('page') : 0;
 
     # initialize pagination
-    $this->page_pagination($total, 7);
+    $this->custom_pagination->user_pagination($total, 7);
 
     $page_details = array(
       'title'         => '',
