@@ -1,13 +1,13 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-  <h1 class="h3 mb-0 text-gray-800"><span class="fas fa-upload text-primary"></span> Upload News</h1>
+  <h1 class="h3 mb-0 text-gray-800"><span class="fas fa-upload text-primary"></span> Upload blog</h1>
 </div>
 <div class="row">
   <div class="col-lg-8 offset-lg-2">
     <div class="p-5">
 
-      <!-- Upload News Form -->
-      <?php echo form_open_multipart('dashboard/upload/news'); ?>
+      <!-- Upload blog Form -->
+      <?php echo form_open_multipart('dashboard/upload/blog'); ?>
 
         <!-- Picture -->
         <div class="form-group">
@@ -26,7 +26,7 @@
                  name="title"
                  class="form-control form-control-user form-control-lg <?php echo !empty(form_error('title')) || !empty($this->session->flashdata('upload_error')) ? 'is-invalid' : null; ?>"
                  id="exampleFormControlInput1"
-                 placeholder="News title."
+                 placeholder="blog title."
                  value="<?php echo set_value('title'); ?>">
           <?php echo form_error('title', '<strong class="invalid-feedback">', '</strong>'); ?>
         </div>
@@ -37,14 +37,14 @@
           <select class="form-control text-capitalize form-control-lg <?php echo !empty(form_error('category')) || !empty($this->session->flashdata('upload_error')) ? 'is-invalid' : null; ?>"
                   name="category"
                   id="category">
-            <?php for($i = 0; $i < count($this->news::CATEGORY); $i++): ?>
-              <?php if(!isset($this->news::CATEGORY[set_value('category')]) && $i == 0): ?>
+            <?php for($i = 0; $i < count($this->blog::CATEGORY); $i++): ?>
+              <?php if(!isset($this->blog::CATEGORY[set_value('category')]) && $i == 0): ?>
                 <option value="">--- Select Category ---</option>
-              <?php elseif(isset($this->news::CATEGORY[set_value('category')]) && $i == 0): ?>
-                <option value="<?php echo set_value('category'); ?>"><?php echo $this->news::CATEGORY[set_value('category')]; ?></option>
+              <?php elseif(isset($this->blog::CATEGORY[set_value('category')]) && $i == 0): ?>
+                <option value="<?php echo set_value('category'); ?>"><?php echo $this->blog::CATEGORY[set_value('category')]; ?></option>
               <?php endif; ?>
-              <?php if(set_value('category') != array_keys($this->news::CATEGORY)[$i]): ?>
-                <option value="<?php echo array_keys($this->news::CATEGORY)[$i]; ?>"><?php echo array_values($this->news::CATEGORY)[$i]; ?></option>
+              <?php if(set_value('category') != array_keys($this->blog::CATEGORY)[$i]): ?>
+                <option value="<?php echo array_keys($this->blog::CATEGORY)[$i]; ?>"><?php echo array_values($this->blog::CATEGORY)[$i]; ?></option>
               <?php endif; ?>
             <?php endfor; ?>
           </select>
@@ -63,7 +63,7 @@
 
         <!-- Submit -->
         <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-user btn-lg btn-block">Upload News</button>
+          <button type="submit" class="btn btn-primary btn-user btn-lg btn-block">Upload blog</button>
         </div>
 
       <?php echo form_close(); ?>

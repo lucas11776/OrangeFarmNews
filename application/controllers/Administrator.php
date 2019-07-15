@@ -22,7 +22,7 @@ class Administrator extends CI_Controller
     $page_details = array(
       'title'           => 'OrangeFarmNews Administrator (Themba)',
       'description'     => 'OrangeFarmNews Administrator Panel.',
-      'active'          => 'panel',
+      'active'          => 'Dashboard',
       'summary'         => $this->stats->summary(),
       'unread_messages' => $this->contect->get(array('seen' => 0), $this->contect::UNREAD_MESSAGES_LIMIT)
     );

@@ -126,6 +126,14 @@ class Upload_news extends CI_Controller
    */
   public function category_exist($id)
   {
+    # check if category isset
+    if(empty($category_id))
+    {
+      $this->form_validation->set_message('category_exist', 'The {field} field is required.');
+
+      return false;
+    }
+
     # check if category id exist
     if(isset($this->news::CATEGORY[$id]) === false)
     {

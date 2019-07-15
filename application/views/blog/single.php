@@ -89,23 +89,23 @@
             <!-- Single Featured Post -->
             <div class="single-blog-post featured-post single-post">
               <div class="post-thumb" style="height: auto;">
-                  <a><img class="single" style="height: auto;" src="<?php echo $single_news['picture']; ?>" alt="<?php echo $single_news['title']; ?>"></a>
+                  <a><img class="single" style="height: auto;" src="<?php echo $single_blog['picture']; ?>" alt="<?php echo $single_blog['title']; ?>"></a>
               </div>
               <div class="post-data">
                 <a href="#" class="post-catagory">
-                  <?php echo $single_news['category']; ?>
+                  <?php echo $single_blog['category']; ?>
                 </a>
                 <a class="post-title">
-                    <h1><?php echo $single_news['title']; ?> </h1>
+                    <h1><?php echo $single_blog['title']; ?> </h1>
                 </a>
                 <div class="post-meta">
                     <p class="post-author">By
-                      <a href="<?php echo base_url('account/' . $single_news['username']); ?>">
-                        <?php echo $this->account->get_account_name($single_news); ?>
+                      <a href="<?php echo base_url('account/' . $single_blog['username']); ?>">
+                        <?php echo $this->account->get_account_name($single_blog); ?>
                       </a>
                     </p>
                     <div class="news-post">
-                      <?php echo $single_news['post']; ?>
+                      <?php echo $single_blog['post']; ?>
                     </div>
                     <div class="newspaper-post-like d-flex align-items-center justify-content-between">
                         <!-- Tags -->
@@ -130,8 +130,8 @@
 
                         <!-- Post Like & Post Comment -->
                         <div class="d-flex align-items-center post-like--comments">
-                            <a class="post-like"><i class="fa fa-eye color"></i> <span><?php echo $single_news['views']; ?></span></a>
-                            <a class="post-comment"><i class="fa fa-comments-o color"></i> <span><?php echo $single_news['comments']; ?></span></a>
+                            <a class="post-like"><i class="fa fa-eye color"></i> <span><?php echo $single_blog['views']; ?></span></a>
+                            <a class="post-comment"><i class="fa fa-comments-o color"></i> <span><?php echo $single_blog['comments']; ?></span></a>
                         </div>
                     </div>
                 </div>
@@ -141,15 +141,15 @@
             <!-- About Author -->
             <div class="blog-post-author d-flex">
                 <div class="author-thumbnail">
-                    <img src="<?php echo $single_news['profile_picture']; ?>" alt="<?php echo $this->account->get_account_name($single_news); ?>">
+                    <img src="<?php echo $single_blog['profile_picture']; ?>" alt="<?php echo $this->account->get_account_name($single_blog); ?>">
                 </div>
                 <div class="author-info">
-                    <a href="<?php echo $this->auth->editor(false) ? base_url('account/' . $single_news['username']) : '#'; ?>" class="author-name">
-                      <?php echo $this->account->get_account_name($single_news); ?>, <span>The Author</span>
+                    <a href="<?php echo $this->auth->editor(false) ? base_url('account/' . $single_blog['username']) : '#'; ?>" class="author-name">
+                      <?php echo $this->account->get_account_name($single_blog); ?>, <span>The Author</span>
                     </a>
                     <p>
                       <i class="fa fa-key"></i> <strong class="color">Account Type :</strong>
-                      <strong class="text-muted"><?php echo strtoupper($this->account::ROLE[$single_news['role']]); ?></strong>
+                      <strong class="text-muted"><?php echo strtoupper($this->account::ROLE[$single_blog['role']]); ?></strong>
                     </p>
                 </div>
             </div>
@@ -256,7 +256,7 @@
                       <?php echo form_open('news/comment'); ?>
                           <input type="hidden"
                                  name="news_id"
-                                 value="<?php echo $single_news['id']; ?>">
+                                 value="<?php echo $single_blog['id']; ?>">
                           <div class="row">
                               <div class="col-12">
                                   <textarea name="message"
@@ -282,23 +282,23 @@
               <!-- Latest Posts Widget -->
               <div class="latest-posts-widget mb-50">
 
-                  <?php for($i = 0; $i < count($latest_news); $i++): ?>
+                  <?php for($i = 0; $i < count($latest_blog); $i++): ?>
                     <!-- Single Featured Post -->
                     <div class="single-blog-post small-featured-post d-flex">
                         <div class="post-thumb">
-                            <a href="<?php echo base_url('news/' . $latest_news[$i]['slug']); ?>">
-                              <img src="<?php echo $latest_news[$i]['picture']; ?>" alt="<?php echo $latest_news[$i]['title']; ?>">
+                            <a href="<?php echo base_url('news/' . $latest_blog[$i]['slug']); ?>">
+                              <img src="<?php echo $latest_blog[$i]['picture']; ?>" alt="<?php echo $latest_blog[$i]['title']; ?>">
                             </a>
                         </div>
                         <div class="post-data">
-                            <a href="<?php echo base_url('news/category/' . $latest_news[$i]['category']); ?>" class="post-catagory">
-                              <?php echo $latest_news[$i]['category']; ?>
+                            <a href="<?php echo base_url('news/category/' . $latest_blog[$i]['category']); ?>" class="post-catagory">
+                              <?php echo $latest_blog[$i]['category']; ?>
                             </a>
                             <div class="post-meta">
-                                <a href="<?php echo base_url('news/' . $latest_news[$i]['slug']); ?>" class="post-title">
-                                    <h6><?php echo word_limiter($latest_news[$i]['title'], 15); ?></h6>
+                                <a href="<?php echo base_url('news/' . $latest_blog[$i]['slug']); ?>" class="post-title">
+                                    <h6><?php echo word_limiter($latest_blog[$i]['title'], 15); ?></h6>
                                 </a>
-                                <p class="post-date"><?php echo date('h:i A | F d', strtotime($latest_news[$i]['date'])); ?></p>
+                                <p class="post-date"><?php echo date('h:i A | F d', strtotime($latest_blog[$i]['date'])); ?></p>
                             </div>
                         </div>
                     </div>
@@ -360,3 +360,4 @@
   </div>
 </div>
 <!-- ##### Blog Area End ##### -->
+
