@@ -26,7 +26,7 @@ class News extends CI_Controller
     $total = $this->news->count();
 
     # number of result to be show per page
-    $per_page = 3;
+    $per_page = 8;
 
     # config pagination
     $this->custom_pagination->user_pagination($total, $per_page);
@@ -36,7 +36,7 @@ class News extends CI_Controller
 
     # page details
     $page_details = array(
-      'title'            => 'Get the latest new from Orange Farm.',
+      'title'            => 'Get the latest news.',
       'description'      => null, # defualt description
       'active'           => 'news',
       'navbar_adv'       => false,
@@ -45,7 +45,7 @@ class News extends CI_Controller
     );
 
     # page
-    $this->view('home', $page_details);
+    $this->view('index', $page_details);
   }
 
   /**
@@ -105,14 +105,6 @@ class News extends CI_Controller
     {
       $this->view('../404', $page_details);
     }
-  }
-
-  /**
-   * @Route (news)
-   */
-  public function most_viewed()
-  {
-
   }
 
 }

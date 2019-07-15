@@ -41,7 +41,7 @@ class Home extends CI_Controller
 
 
     #page
-    $this->view('home', $page_details);
+    $this->view('index', $page_details);
   }
 
 }
