@@ -12,6 +12,11 @@ class Pagination_model extends CI_Model
    */
   public function user_pagination(int $total, int $per_page = 10)
   {
+    if($per_page == 0)
+    {
+      die('<h1>Per Page Can Not Be Zore Result In Pagination Model.</h1>');
+    }
+
     # pagination configuration
     $config = array(
       'page_query_string'    => true,
@@ -22,8 +27,8 @@ class Pagination_model extends CI_Model
       # pagination markup
       'full_tag_open'        => '<ul class="pagination mt-50">',
       'full_tag_close'       => '</ul>',
-      //'first_tag_open'       => '<li class="page-item">',
-      //'first_tag_close'      => '</li>',
+      #'first_tag_open'       => '<li class="page-item">',
+      #'first_tag_close'      => '</li>',
       'next_tag_open'        => '<li class="page-item">',
       'next_tag_close'       => '</li>',
       'prev_tag_open'        => '<li class="page-item">',
@@ -32,6 +37,11 @@ class Pagination_model extends CI_Model
       'cur_tag_close'        => '</a></li>',
       'num_tag_open'         => '<li class="page-item">',
       'num_tag_close'        => '</li>',
+      'first_link'           => '1',
+      'last_link'            => round($total/$per_page),
+      'prev_link'            => '<span class="fa fa-chevron-left"></span>',
+      'next_link'            => '<span class="fa fa-chevron-right"></span>',
+      'reuse_query_string'   => true,
       'attributes'           => array('class' => 'page-link')
     );
 

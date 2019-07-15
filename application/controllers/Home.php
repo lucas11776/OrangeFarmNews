@@ -19,9 +19,17 @@ class Home extends CI_Controller
 
   public function index()
   {
+    # count number of news in database
+    $total = $this->news->count();
 
-    # get latest news
-    $news = $this->news->latest(12);
+    # page number
+    $page = is_numeric($this->input->get('page')) ? $this->input->get('page') : 0;
+
+    # per page
+    $per_page = 6;
+
+    # initialize pagination
+    $this->custom_pagination->user_pagination($total, $per_page);
 
     # page details
     $page_details = array(
@@ -34,9 +42,9 @@ class Home extends CI_Controller
                           we are an Independent Publication and members of AIP (Associated Independent Publishers) and Capro.
                           Orange Farm News is ABC Grassroots certified Feel free to visit our FACEBOOK page, where past issues can be downloaded.`,
       'active'        => 'home',
-      'latest_news'   => $news,
-      'news_updated'  => $news,
-      'blog_updated'  => $news
+      'latest_news'   => $this->news->latest($per_page),
+      'news_updated'  => $this->news->latest($per_page),
+      'blog_updated'  => $this->news->latest($per_page)
     );
 
 

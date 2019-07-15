@@ -68,15 +68,18 @@ class Search extends CI_Controller
     # get page number
     $page = is_numeric($this->input->get('page')) ? $this->input->get('page') : 0;
 
+    # per page result
+    $per_page = 7;
+
     # initialize pagination
-    $this->custom_pagination->user_pagination($total, 7);
+    $this->custom_pagination->user_pagination($total, $per_page);
 
     $page_details = array(
       'title'         => '',
       'description'   => '',
       'active'        => '',
       'navbar_adv'    => '',
-      'search_result' => $this->news->search(array('title' => $term), 7, $page)
+      'search_result' => $this->news->search(array('title' => $term), $per_page, $page)
     );
 
     $this->view('news', $page_details);

@@ -92,15 +92,7 @@ $sidebar_news         = array_splice($latest_news, 0, 8); ?>
         </div>
         <div class="col-12 pb-5">
           <nav aria-label="Home Pagination">
-            <ul class="pagination mt-50">
-              <li class="page-item active"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">4</a></li>
-              <li class="page-item"><a class="page-link" href="#">5</a></li>
-              <li class="page-item"><a class="page-link" href="#">...</a></li>
-              <li class="page-item"><a class="page-link" href="#">10</a></li>
-            </ul>
+            <?php echo $this->pagination->create_links(); ?>
           </nav>
         </div>
     </div>

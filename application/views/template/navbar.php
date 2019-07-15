@@ -111,6 +111,7 @@
                 <div class="classynav">
                   <ul>
                     <li class="<?php echo $active == 'home' || $active == '' ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>">Home</a></li>
+                    <li class="<?php echo $active == 'blog' ? 'active' : ''; ?>"><a href="<?php echo base_url('news'); ?>">News</a></li>
                     <li class="<?php echo $active == 'blog' ? 'active' : ''; ?>"><a href="#">Blog</a></li>
                     <li class="<?php echo $active == 'category' ? 'active' : ''; ?>"><a href="#">Category</a>
                       <ul class="dropdown">
