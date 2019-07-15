@@ -4,6 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Contect_model extends CI_Model
 {
   /**
+   * Unread Message Limit
+   *
+   * @var integer
+   */
+  public const UNREAD_MESSAGES_LIMIT = 10;
+
+  /**
    * Phone Number Regex Express (South Africa - sim code)
    *
    * @var string

@@ -36,7 +36,9 @@ class Upload_news extends CI_Controller
     $details = array(
       'title'       => 'Upload News At OrangeFarmNews And Keep Community Up To Date.',
       'description' => null,    # defualt description
-      'active'      => 'upload' # active navbar link
+      'active'      => 'upload', # active navbar link
+      'summary'         => $this->stats->summary(),
+      'unread_messages' => $this->contect->get(array('seen' => 0), $this->contect::UNREAD_MESSAGES_LIMIT)
     );
 
     # validate required data

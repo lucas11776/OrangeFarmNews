@@ -24,7 +24,7 @@ class Administrator extends CI_Controller
       'description'     => 'OrangeFarmNews Administrator Panel.',
       'active'          => 'panel',
       'summary'         => $this->stats->summary(),
-      'unread_messages' => $this->contect->get(array('seen' => 0), 5)
+      'unread_messages' => $this->contect->get(array('seen' => 0), $this->contect::UNREAD_MESSAGES_LIMIT)
     );
 
     # page

@@ -85,7 +85,11 @@
                     <h1><?php echo $single_news['title']; ?> </h1>
                 </a>
                 <div class="post-meta">
-                    <p class="post-author">By <a href="#">Christinne Williams</a></p>
+                    <p class="post-author">By
+                      <a href="<?php echo base_url('account/' . $single_news['username']); ?>">
+                        <?php echo $this->account->get_account_name($single_news); ?>
+                      </a>
+                    </p>
                     <div class="news-post">
                       <?php echo $single_news['post']; ?>
                     </div>
@@ -126,13 +130,13 @@
                     <img src="<?php echo $single_news['profile_picture']; ?>" alt="<?php echo $this->account->get_account_name($single_news); ?>">
                 </div>
                 <div class="author-info">
-                    <a href="#" class="author-name">
+                    <a href="<?php echo $this->auth->editor(false) ? base_url('account/' . $single_news['username']) : '#'; ?>" class="author-name">
                       <?php echo $this->account->get_account_name($single_news); ?>, <span>The Author</span>
                     </a>
                     <p>
                       <i class="fa fa-key"></i> <strong class="color">Account Type :</strong>
                       <strong class="text-muted"><?php echo strtoupper($this->account::ROLE[$single_news['role']]); ?></strong>
-                      </p>
+                    </p>
                 </div>
             </div>
 

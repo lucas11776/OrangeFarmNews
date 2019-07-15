@@ -30,7 +30,7 @@ $sidebar_news         = array_splice($latest_news, 0, 8);
                       </a>
                       <div class="post-meta">
                           <p class="post-author">By
-                            <a href="#">
+                            <a href="<?php echo $this->auth->editor(false) ? base_url('account/' . $display_news[$i]['username']) : '#'; ?>">
                               <?php echo $this->account->get_account_name($display_news[$i]); ?>
                             </a>
                           </p>

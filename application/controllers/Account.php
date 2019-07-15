@@ -75,7 +75,7 @@ class Account extends CI_Controller
       'descript'        => 'Edit your account',
       'active'          => 'My Account',
       'summary'         => $this->stats->summary(),
-      'unread_messages' => $this->contect->get(array('seen' => 0), 5)
+      'unread_messages' => $this->contect->get(array('seen' => 0), $this->contect::UNREAD_MESSAGES_LIMIT)
     );
 
     # check update type

@@ -216,7 +216,7 @@
                   Unread Messages
                 </h6>
                 <?php for($i = 0; $i < count($unread_messages); $i++): ?>
-                  <a class="dropdown-item d-flex align-items-center" href="#">
+                  <a class="dropdown-item d-flex align-items-center" href="<?php echo base_url('dashboard/inbox/' . $unread_messages[$i]['id']); ?>">
                     <div class="<?php echo $unread_messages[$i]['seen'] == 0 ? 'font-weight-bold' : ''; ?>">
                       <div class="text-truncate"><?php echo word_limiter($unread_messages[$i]['message'], 15); ?></div>
                       <div class="small text-gray-500">

@@ -24,7 +24,11 @@
                           <h5><?php echo word_limiter($news[$i]['title'], 10); ?></h5>
                         </a>
                         <div class="post-meta">
-                          <p class="post-author">By <a href="#"><?php echo $this->account->get_account_name($news[$i]); ?></a></p>
+                          <p class="post-author">By
+                            <a href="<?php echo $this->auth->editor(false) ? base_url('account/' . $news[$i]['username']) : '#'; ?>">
+                              <?php echo $this->account->get_account_name($news[$i]); ?>
+                            </a>
+                          </p>
                           <p class="post-excerp"><?php echo word_limiter(strip_tags($news[$i]['post']), 100); ?></p>
                           <!-- Post Like & Post Comment -->
                           <div class="d-flex align-items-center">
@@ -52,13 +56,19 @@
                         <h5><?php echo word_limiter($news[$i]['title'], 10); ?></h5>
                       </a>
                       <div class="post-meta">
-                          <p class="post-author">By <a href="#"><?php echo $this->account->get_account_name($news[$i]); ?></a></p>
-                          <p class="post-excerp"><?php echo word_limiter(strip_tags($news[$i]['post']), 50); ?></p>
-                          <!-- Post Like & Post Comment -->
-                          <div class="d-flex align-items-center">
-                            <a href="#" class="post-like"><i class="fa fa-eye"></i> <span><?php echo $news[$i]['views']; ?></span></a>
-                            <a href="#" class="post-comment"><i class="fa fa-comments-o"></i> <span><?php echo $news[$i]['comments']; ?></span></a>
-                          </div>
+                        <p class="post-author">By
+                          <a href="<?php echo $this->auth->editor(false) ? base_url('account/' . $news[$i]['username']) : '#'; ?>">
+                            <?php echo $this->account->get_account_name($news[$i]); ?>
+                          </a>
+                        </p>
+                        <p class="post-excerp">
+                          <?php echo word_limiter(strip_tags($news[$i]['post']), 50); ?>
+                        </p>
+                        <!-- Post Like & Post Comment -->
+                        <div class="d-flex align-items-center">
+                          <a href="#" class="post-like"><i class="fa fa-eye"></i> <span><?php echo $news[$i]['views']; ?></span></a>
+                          <a href="#" class="post-comment"><i class="fa fa-comments-o"></i> <span><?php echo $news[$i]['comments']; ?></span></a>
+                        </div>
                       </div>
                     </div>
                   </div>

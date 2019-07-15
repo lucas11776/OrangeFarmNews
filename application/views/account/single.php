@@ -12,17 +12,6 @@
     <!-- ##### Change User Details Form ##### -->
     <ul class="list-group mb-5">
       <li class="list-group-item bg-color"><strong><i class="fa fa-user-circle-o"></i> Personal Information</strong></li>
-      <li class="list-group-item pb-0">
-        <div class="form-group row">
-           <label for="usernmae" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">Username</label>
-           <div class="col-sm-9">
-             <input type="text"
-                    class="form-control form-control-md"
-                    value="<?php echo $account['username']; ?>"
-                    disabled>
-           </div>
-         </div>
-      </li>
 
       <li class="list-group-item pb-0">
         <div class="form-group row">
@@ -56,6 +45,19 @@
                     class="form-control form-control-md"
                     id="surname"
                     value="<?php echo $account['surname']; ?>"
+                    disabled>
+           </div>
+         </div>
+      </li>
+
+      <li class="list-group-item pb-0">
+        <div class="form-group row">
+           <label for="surname" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">Account Type</label>
+           <div class="col-sm-9">
+             <input type="text"
+                    class="form-control form-control-md"
+                    id="surname"
+                    value="<?php echo $this->account::ROLE[$account['role']]; ?>"
                     disabled>
            </div>
          </div>
