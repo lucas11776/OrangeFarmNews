@@ -78,11 +78,11 @@ class News_model extends CI_Model
     return $this->db->count_all_results('news');
   }
 
-  public function search(array $like)
+  public function search(array $like, int $limit = 10, int $offset = 0)
   {
     $this->like($like);
 
-    return $this->db->get('news')->result_array();
+    return $this->db->get('news', $limit, $offset)->result_array();
   }
 
   private function where(array $where)

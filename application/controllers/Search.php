@@ -31,7 +31,21 @@ class Search extends CI_Controller
       'query_string_segment' => 'page',
       'base_url'             => base_url(uri_string()),
       'total_rows'           => $total,
-      'per_page'             => $per_page
+      'per_page'             => $per_page,
+      # pagination markup
+      'full_tag_open'        => '<ul class="pagination mt-50">',
+      'full_tag_close'       => '</ul>',
+      //'first_tag_open'       => '<li class="page-item">',
+      //'first_tag_close'      => '</li>',
+      'next_tag_open'        => '<li class="page-item">',
+      'next_tag_close'       => '</li>',
+      'prev_tag_open'        => '<li class="page-item">',
+      'prev_tag_close'       => '</li>',
+      'cur_tag_open'         => '<li class="page-item active"><a class="page-link" href="#">',
+      'cur_tag_close'        => '</a></li>',
+      'num_tag_open'         => '<li class="page-item">',
+      'num_tag_close'        => '</li>',
+      'attributes'           => array('class' => 'page-link')
     );
 
     # initialize pagination class
@@ -76,18 +90,27 @@ class Search extends CI_Controller
    *
    * @param   integer
    * @return  array
+   <?php echo $this->pagination->create_links(); ?>
    */
   private function search_news($term, $page)
   {
+    # count number of result for search  term
+    $total = $this->news->count('like', array('title' => $term));
+
+    # get page number
+    $page = is_numeric($this->input->get('page')) ? $this->input->get('page') : 0;
+
+    # initialize pagination
+    $this->page_pagination($total, 7);
+
     $page_details = array(
       'title'         => '',
       'description'   => '',
       'active'        => '',
       'navbar_adv'    => '',
-      'search_result' => $this->news->search(array('title' => $term))
+      'search_result' => $this->news->search(array('title' => $term), 7, $page)
     );
 
-    
     $this->view('news', $page_details);
   }
 

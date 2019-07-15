@@ -78,16 +78,9 @@
           </div>
         </div>
 
-        <nav aria-label="Page navigation example">
-           <ul class="pagination mt-50">
-               <li class="page-item active"><a class="page-link" href="#">1</a></li>
-               <li class="page-item"><a class="page-link" href="#">2</a></li>
-               <li class="page-item"><a class="page-link" href="#">3</a></li>
-               <li class="page-item"><a class="page-link" href="#">4</a></li>
-               <li class="page-item"><a class="page-link" href="#">5</a></li>
-               <li class="page-item"><a class="page-link" href="#">...</a></li>
-               <li class="page-item"><a class="page-link" href="#">10</a></li>
-           </ul>
+        <!-- ##### Pagination ##### -->
+        <nav aria-label="Page navigation">
+          <?php echo $this->pagination->create_links(); ?>
         </nav>
       </div>
 

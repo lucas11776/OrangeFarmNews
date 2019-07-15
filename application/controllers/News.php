@@ -41,7 +41,7 @@ class News extends CI_Controller
   /**
    * @Route (news)
    */
-  public function index($offset = null)
+  public function index()
   {
     # get number of news in database
     $total = $this->news->count();
