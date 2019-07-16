@@ -42,7 +42,7 @@ class Blog extends CI_Controller
       'active'           => 'blog',
       'navbar_adv'       => false,
       'blog'             => $this->blog->latest($per_page, $page),
-      'most_viewed'      => $this->blog->most_viewed($per_page, $page),
+      'most_viewed'      => $this->news->most_viewed($per_page, $page),
       'most_commented'   => $this->blog->most_commented(5, $page == 0 ? 0 : $page - 1)
     );
 
