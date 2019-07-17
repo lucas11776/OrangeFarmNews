@@ -42,7 +42,8 @@ class Blog extends CI_Controller
       'active'           => 'blog',
       'navbar_adv'       => false,
       'blog'             => $this->blog->latest($per_page, $page),
-      'most_viewed'      => $this->news->most_viewed($per_page, $page),
+      'most_viewed_news' => $this->news->most_viewed($per_page, $page),
+      'most_viewed'      => $this->blog->most_commented(5, $page == 0 ? 0 : $page - 1),
       'most_commented'   => $this->blog->most_commented(5, $page == 0 ? 0 : $page - 1)
     );
 
@@ -79,8 +80,9 @@ class Blog extends CI_Controller
 
     # page details
     $page_details = array(
+      'picture'     => $single_blog['picture'],
       'title'       => $single_blog['title'],
-      'description' => word_limiter(strip_tags($single_blog['post']), 40),
+      'description' => $single_blog['post'],
       'active'      => 'blog',
       'single_blog' => $single_blog,
       'latest_blog' => $this->blog->latest(8),

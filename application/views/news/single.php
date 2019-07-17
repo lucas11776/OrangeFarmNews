@@ -181,97 +181,45 @@
                 <?php endfor; ?>
               </div>
 
-              <!-- Comment Area Start -->
-              <div class="comment_area clearfix">
-                  <h5 class="title">3 Comments</h5>
-
-                  <ol>
-                      <!-- Single Comment Area -->
-                      <li class="single_comment_area">
-                          <!-- Comment Content -->
-                          <div class="comment-content d-flex">
-                              <!-- Comment Author -->
-                              <div class="comment-author">
-                                  <img src="<?php echo base_url('assets/default/img/bg-img/30.jpg'); ?>" alt="author">
-                              </div>
-                              <!-- Comment Meta -->
-                              <div class="comment-meta">
-                                  <a href="#" class="post-author">
-                                    Christian Williams
-                                    <button type="button" data-toggle="modal" data-target="#reply-comment-model" class="btn btn-sm btn-outline-dark ml-4">
-                                      <span class="fa fa-reply color"></span>
-                                    </button>
-                                  </a>
-                                  <a href="#" class="post-date">April 15, 2018</a>
-                                  <p>Donec turpis erat, scelerisque id euismod sit amet, fermentum vel dolor. Nulla facilisi. Sed pellen tesque lectus et accu msan aliquam. Fusce lobortis cursus quam, id mattis sapien.</p>
-                              </div>
-                          </div>
-                          <ol class="children">
-                              <li class="single_comment_area">
-                                  <!-- Comment Content -->
-                                  <div class="comment-content d-flex">
-                                      <!-- Comment Author -->
-                                      <div class="comment-author">
-                                          <img src="<?php echo base_url('assets/default/img/bg-img/31.jpg'); ?>" alt="author">
-                                      </div>
-                                      <!-- Comment Meta -->
-                                      <div class="comment-meta">
-                                          <a href="#" class="post-author">
-                                            Sandy Doe <button type="button" class="btn btn-sm btn-outline-dark ml-4 reply-comment-model"><span class="fa fa-reply color"></span></button>
-                                          </a>
-                                          <a href="#" class="post-date">April 15, 2018</a>
-                                          <p>Donec turpis erat, scelerisque id euismod sit amet, fermentum vel dolor. Nulla facilisi. Sed pellen tesque lectus et accu msan aliquam. Fusce lobortis cursus quam, id mattis sapien.</p>
-                                      </div>
-                                  </div>
-                              </li>
-                          </ol>
-                      </li>
-
-                      <!-- Single Comment Area -->
-                      <li class="single_comment_area">
-                          <!-- Comment Content -->
-                          <div class="comment-content d-flex">
-                              <!-- Comment Author -->
-                              <div class="comment-author">
-                                  <img src="<?php echo base_url('assets/default/img/bg-img/32.jpg'); ?>" alt="author">
-                              </div>
-                              <!-- Comment Meta -->
-                              <div class="comment-meta">
-                                  <a href="#" class="post-author">
-                                    Christian Williams <button type="button" class="btn btn-sm btn-outline-dark ml-4 reply-comment-model"><span class="fa fa-reply color"></span></button>
-                                  </a>
-                                  <a href="#" class="post-date">April 15, 2018</a>
-                                  <p>Donec turpis erat, scelerisque id euismod sit amet, fermentum vel dolor. Nulla facilisi. Sed pellen tesque lectus et accu msan aliquam. Fusce lobortis cursus quam, id mattis sapien.</p>
-                              </div>
-                          </div>
-                      </li>
-                  </ol>
-              </div>
+              <!-- ####### PRINT NEW COMMENTS ######## -->
+              <?php $this->comments_view->view($comments); ?>
 
               <div class="post-a-comment-area section-padding-80-0">
                   <h4>Leave a comment</h4>
-
-                  <!-- Reply Form -->
-                  <div class="contact-form-area">
-                      <?php echo form_open('news/comment'); ?>
-                          <input type="hidden"
-                                 name="news_id"
-                                 value="<?php echo $single_news['id']; ?>">
-                          <div class="row">
-                              <div class="col-12">
-                                  <textarea name="message"
-                                            class="form-control"
-                                            id="message"
-                                            cols="30"
-                                            rows="10"
-                                            placeholder="Message"></textarea>
-                              </div>
-                              <div class="col-12 text-center">
-                                  <button class="btn newspaper-btn mt-30 w-100" type="submit">Submit Comment</button>
-                              </div>
-                          </div>
-                      <?php echo form_close(); ?>
-                  </div>
+                  <?php if($this->auth->user(false)): ?>
+                    <!-- Reply Form -->
+                    <div class="contact-form-area">
+                        <?php echo form_open('news/comment?r=' . uri_string()); ?>
+                            <input type="hidden" name="redirect" value="<?php uri_string(); ?>">
+                            <input type="hidden"
+                                   name="news_id"
+                                   value="<?php echo $single_news['id']; ?>">
+                            <div class="row">
+                                <div class="col-12">
+                                    <textarea name="comment"
+                                              class="form-control"
+                                              id="message"
+                                              cols="30"
+                                              rows="10"
+                                              placeholder="Message"></textarea>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <button class="btn newspaper-btn mt-30 w-100" type="submit">Submit Comment</button>
+                                </div>
+                            </div>
+                        <?php echo form_close(); ?>
+                    </div>
+                  <?php else: ?>
+                    <div class="alert alert-info col-12" role="alert">
+                      <h4 class="alert-heading text-info">Want to express your comment!</h4>
+                      <p class="text-info">Join the <span class="fa fa-users"></span> community by becoming a member.</p>
+                      <hr>
+                      <p class="mb-0">
+                        <a class="color" href="<?php echo base_url('register?r=' . uri_string()); ?>"><i class="fa fa-edit"></i> <strong>Register</strong></a>
+                        or <a class="color" href="<?php echo base_url('login?r=' . uri_string()); ?>"><i class="fa fa-user-o"></i> <strong>Login</strong></a>
+                      </p>
+                    </div>
+                  <?php endif; ?>
               </div>
           </div>
       </div>

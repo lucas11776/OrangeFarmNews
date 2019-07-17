@@ -95,7 +95,7 @@ class Login extends CI_Controller
     $this->session->set_userdata('token', $token);
 
     # redirect user to old page or home page
-    empty($this->input->post('redirect')) ? redirect($this->input->post('redirect')) : redirect('');
+    empty($this->input->post('redirect')) === false ? redirect($this->input->post('redirect')) : redirect('');
   }
 
   /**

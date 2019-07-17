@@ -15,7 +15,7 @@
                           </div>
                           <!-- List -->
                           <ul class="list">
-                              <li><a href="mailto:orangefarmnews@yahoo.com"><span class="fa fa-google"></span> orangefarmnews@yahoo.com</a></li>
+                              <li><a href="mailto:orangefarmnews@yahoo.com"><span class="fa fa-envelope-open-o"></span> orangefarmnews@yahoo.com</a></li>
                               <li><a href="tel:0118501160"><span class="fa fa-shopping-bag"></span> 011 850 1160</a></li>
                               <li><a href="tel:0862639988"><span class="fa fa-newspaper-o"></span>  086 263 9988</a></li>
                               <li><a href="<?php echo base_url(''); ?>"><span class="fa fa-globe"></span>  www.orangefarmnews.co.za</a></li>
@@ -27,13 +27,16 @@
                   <div class="col-12 col-sm-6 col-lg-2">
                       <div class="footer-widget-area mt-80">
                           <!-- Title -->
-                          <h4 class="widget-title">Politics</h4>
+                          <h4 class="widget-title">Account</h4>
                           <!-- List -->
                           <ul class="list">
-                              <li><a href="#">Business</a></li>
-                              <li><a href="#">Markets</a></li>
-                              <li><a href="#">Tech</a></li>
-                              <li><a href="#">Luxury</a></li>
+                              <?php if($this->auth->user(false) === false): ?>
+                                <li><a href="<?php echo base_url('login'); ?>"><span class="fa fa-user-o"></span> Login</a></li>
+                                <li><a href="<?php echo base_url('register'); ?>"><span class="fa fa-edit"></span> Register</a></li>
+                              <?php else: ?>
+                                <li><a href="<?php echo base_url('my/account'); ?>"><span class="fa fa-user-o"></span> My Account</a></li>
+                                <li><a href="<?php echo base_url('logout'); ?>"><span class="fa fa-edit"></span> Logout</a></li>
+                              <?php endif; ?>
                           </ul>
                       </div>
                   </div>
@@ -42,17 +45,16 @@
                   <div class="col-12 col-sm-4 col-lg-2">
                       <div class="footer-widget-area mt-80">
                           <!-- Title -->
-                          <h4 class="widget-title">Featured</h4>
+                          <h4 class="widget-title">News</h4>
                           <!-- List -->
                           <ul class="list">
-                              <li><a href="#">Football</a></li>
-                              <li><a href="#">Golf</a></li>
-                              <li><a href="#">Tennis</a></li>
-                              <li><a href="#">Motorsport</a></li>
-                              <li><a href="#">Horseracing</a></li>
-                              <li><a href="#">Equestrian</a></li>
-                              <li><a href="#">Sailing</a></li>
-                              <li><a href="#">Skiing</a></li>
+                            <?php for($i = 0; $i < (count($this->news::CATEGORY) > 8 ? 8 : count($this->news::CATEGORY)); $i++): ?>
+                              <li>
+                                <a href="<?php echo base_url('news/category/' . $this->news::CATEGORY[$i]); ?>">
+                                  <?php echo $this->news::CATEGORY[$i]; ?>
+                                </a>
+                              </li>
+                            <?php endfor; ?>
                           </ul>
                       </div>
                   </div>
@@ -61,17 +63,16 @@
                   <div class="col-12 col-sm-4 col-lg-2">
                       <div class="footer-widget-area mt-80">
                           <!-- Title -->
-                          <h4 class="widget-title">FAQ</h4>
+                          <h4 class="widget-title">Blog</h4>
                           <!-- List -->
                           <ul class="list">
-                              <li><a href="#">Aviation</a></li>
-                              <li><a href="#">Business</a></li>
-                              <li><a href="#">Traveller</a></li>
-                              <li><a href="#">Destinations</a></li>
-                              <li><a href="#">Features</a></li>
-                              <li><a href="#">Food/Drink</a></li>
-                              <li><a href="#">Hotels</a></li>
-                              <li><a href="#">Partner Hotels</a></li>
+                            <?php for($i = 0; $i < (count($this->blog::CATEGORY) > 8 ? 8 : count($this->blog::CATEGORY)); $i++): ?>
+                              <li>
+                                <a href="<?php echo base_url('blog/category/' . $this->blog::CATEGORY[$i]); ?>">
+                                  <?php echo $this->blog::CATEGORY[$i]; ?>
+                                </a>
+                              </li>
+                            <?php endfor; ?>
                           </ul>
                       </div>
                   </div>
@@ -80,15 +81,13 @@
                   <div class="col-12 col-sm-4 col-lg-2">
                       <div class="footer-widget-area mt-80">
                           <!-- Title -->
-                          <h4 class="widget-title">+More</h4>
+                          <h4 class="widget-title">+Quick Links</h4>
                           <!-- List -->
                           <ul class="list">
-                              <li><a href="#">Fashion</a></li>
-                              <li><a href="#">Design</a></li>
-                              <li><a href="#">Architecture</a></li>
-                              <li><a href="#">Arts</a></li>
-                              <li><a href="#">Autos</a></li>
-                              <li><a href="#">Luxury</a></li>
+                              <li><a href="<?php echo base_url(''); ?>"><span class="fa fa-newspaper-o"></span> News</a></li>
+                              <li><a href="<?php echo base_url(''); ?>"><span class="fa fa-rss"></span> Blog</a></li>
+                              <li><a href="<?php echo base_url(''); ?>"><span class="fa fa-phone"></span> Contect</a></li>
+                              <li><a href="<?php echo base_url(''); ?>"><span class="fa fa-users"></span> About Us</a></li>
                           </ul>
                       </div>
                   </div>
@@ -102,9 +101,12 @@
               <div class="row h-100 align-items-center">
                   <div class="col-12">
                       <!-- Copywrite -->
-                      <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                      <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Orange Farm News
+                        <!-- This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> -->
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                      </p>
                   </div>
               </div>
           </div>

@@ -15,19 +15,19 @@
     <title><?php echo strip_tags($title) ?? 'Orange Farm News the voice of the people since 2012.'; ?></title>
 
     <!-- Twitter API -->
-    <meta name="twitter:card" content="">
+    <meta name="twitter:card" content="<?php echo $twitter_type ?? 'article'; ?>">
     <meta name="twitter:site" content="<?php echo $website ?? 'http://www.orangefarmnews.co.za'; ?>">
     <meta name="twitter:creator" content="<?php echo $author ?? 'Orange Farm News'; ?>">
     <meta name="twitter:title" content="<?php echo strip_tags($title) ?? 'Orange Farm News the voice of the people since 2012.'; ?>">
     <meta name="twitter:description" content="<?php echo strip_tags($description); ?>">
-    <meta name="twitter:image" content="">
+    <meta name="twitter:image" content="<?php echo $picture ?? base_url('assets/default/img/core-img/orangefarm.png'); ?>">
 
     <!-- Facebook API (OpenGraph) -->
     <meta property="og:url" content="">
     <meta property="og:title" content="<?php echo strip_tags($title) ?? 'Orange Farm News the voice of the people since 2012.'; ?>">
     <meta property="og:description" content="<?php echo strip_tags($description); ?>">
-    <meta property="og:type" content="">
-    <meta property="og:image" content="">
+    <meta property="og:type" content="<?php echo $og_type ?? 'article'; ?>">
+    <meta property="og:image" content="<?php echo $picture ?? base_url('assets/default/img/core-img/orangefarm.png'); ?>">
     <meta property="og:image:secure_url" content="">
     <meta property="og:image:type" content="">
     <meta property="og:image:width" content="">
@@ -54,7 +54,9 @@
             <div class="top-header-content d-flex align-items-center justify-content-between">
               <!-- Logo -->
               <div class="logo">
-                 <a href="index.html"><img src="<?php echo base_url('assets/default/img/core-img/orangefarm.png'); ?>" alt=""></a>
+                 <a href="<?php echo base_url(''); ?>">
+                   <img src="<?php echo base_url('assets/default/img/core-img/orangefarm.png'); ?>" alt="Orange Farm News">
+                 </a>
               </div>
               <!-- Login Search Area -->
               <div class="login-search-area d-flex align-items-center">
@@ -95,7 +97,9 @@
 
               <!-- Logo -->
               <div class="logo">
-                <a href="index.html"><span class="white">OrangeFarm</span><span class="black">News</span></a>
+                <a href="<?php echo base_url(''); ?>">
+                  <span class="white">OrangeFarm</span><span class="black">News</span>
+                </a>
               </div>
 
               <!-- Navbar Toggler -->
@@ -123,6 +127,13 @@
                           <ul class="dropdown">
                             <?php foreach ($this->news::CATEGORY as $value): ?>
                               <li><a href="<?php echo base_url('news/category/'.$value); ?>"><?php echo $value; ?></a></li>
+                            <?php endforeach; ?>
+                          </ul>
+                        </li>
+                        <li><a href="#"><i class="fa fa-rss color"></i> Blog</a>
+                          <ul class="dropdown">
+                            <?php foreach ($this->blog::CATEGORY as $value): ?>
+                              <li><a href="<?php echo base_url('blog/category/'.$value); ?>"><?php echo $value; ?></a></li>
                             <?php endforeach; ?>
                           </ul>
                         </li>

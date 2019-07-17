@@ -1,4 +1,4 @@
--<!-- ##### Footer Add Area Start ##### -->
+<!-- ##### Footer Add Area Start ##### -->
 <div class="footer-add-area">
     <div class="container">
         <div class="row">
@@ -35,7 +35,7 @@
                           <?php echo $blog[$i]['category']; ?>
                         </a>
                         <a href="<?php echo base_url('blog/'.$blog[$i]['slug']); ?>" class="post-title">
-                          <h5><?php echo word_limiter($blog[$i]['title'], 10); ?></h5>
+                          <h5><?php echo word_limiter($blog[$i]['title'], 20); ?></h5>
                         </a>
                         <div class="post-meta">
                           <p class="post-author">By
@@ -89,6 +89,14 @@
                 </div>
               <?php endif; ?>
             <?php endfor; ?>
+            <?php if(count($blog) == 0): ?>
+              <div class="alert alert-info alert-dismissible fade show col-12" role="alert">
+                <h4 class="alert-heading">Ops Sorry!</h4>
+                <p class="text-info">The are not result found under blog.</p>
+                <hr>
+                <p class="mb-0 text-info">Please check back later.</p>
+              </div>
+            <?php endif; ?>
           </div>
 
         </div>
@@ -105,23 +113,25 @@
           <!-- Latest Posts Widget -->
           <div class="latest-posts-widget mb-50">
 
-            <?php for($i = 0; $i < count($most_viewed); $i++): ?>
+            <?php for($i = 0; $i < count($most_viewed_news); $i++): ?>
               <!-- Single Featured Post -->
               <div class="single-blog-post small-featured-post d-flex">
                 <div class="post-thumb">
-                  <a href="<?php echo base_url('blog/' . $most_viewed[$i]['slug']); ?>">
-                    <img src="<?php echo $most_viewed[$i]['picture']; ?>" alt="<?php echo $most_viewed[$i]['title']; ?>">
+                  <a href="<?php echo base_url('news/' . $most_viewed_news[$i]['slug']); ?>">
+                    <img src="<?php echo $most_viewed_news[$i]['picture']; ?>" alt="<?php echo $most_viewed_news[$i]['title']; ?>">
                   </a>
                 </div>
                 <div class="post-data">
-                  <a href="<?php echo base_url('blog/category/' . $most_viewed[$i]['category']); ?>" class="post-catagory">
-                    <?php echo $most_viewed[$i]['category']; ?>
+                  <a href="<?php echo base_url('news/category/' . $most_viewed_news[$i]['category']); ?>" class="post-catagory">
+                    <?php echo $most_viewed_news[$i]['category']; ?>
                   </a>
                   <div class="post-meta">
-                    <a href="<?php echo base_url($most_viewed[$i]['slug']); ?>" class="post-title">
-                      <h6><?php echo word_limiter($most_viewed[$i]['title'], 15); ?></h6>
+                    <a href="<?php echo base_url('news/' . $most_viewed_news[$i]['slug']); ?>" class="post-title">
+                      <h6><?php echo word_limiter($most_viewed_news[$i]['title'], 15); ?></h6>
                     </a>
-                    <p class="post-date"><span class="fa fa-clock-o color"></span> <?php echo date('h:i A | F d', strtotime($most_viewed[$i]['date'])); ?></p>
+                    <p class="post-date">
+                      <span class="fa fa-clock-o color"></span> <?php echo date('h:i A | F d', strtotime($most_viewed_news[$i]['date'])); ?>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -130,21 +140,22 @@
           </div>
 
           <!-- Latest Comments Widget -->
-          <div class="latest-comments-widget mt-5 mb-5 pt-5 pb-5">
-              <h4 class="text-center color pb-4">Most Viewed Blog Post</h4>
-              <?php for($i = 0; $i < 5; $i++): ?>
+          <div class="latest-comments-widget mt-5 mb-5 pt-4 pb-4">
+              <h4 class="text-center color pb-2">Most Viewed Blog Post</h4>
+              <?php for($i = 0; $i < (count($most_viewed) > 5 ? 5 : count($most_viewed)); $i++): ?>
                 <!-- Single Comments -->
                 <div class="single-comments d-flex">
                     <div class="comments-thumbnail mr-15">
-                        <img src="<?php echo base_url('assets/default/img/bg-img/29.jpg'); ?>" alt="">
+                        <img src="<?php echo $most_viewed[$i]['picture']; ?>" alt="<?php echo $most_viewed[$i]['title']; ?>">
                     </div>
                     <div class="comments-text">
-                        <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
-                        <p>06:34 am, April 14, 2018</p>
+                        <a href="<?php echo base_url('blog/' . $most_viewed[$i]['slug']); ?>">
+                          <?php echo word_limiter($most_viewed[$i]['title'], 10); ?>
+                        </a>
+                        <p><?php echo date('h:i a, F d, Y', strtotime($most_viewed[$i]['date'])); ?></p>
                     </div>
                 </div>
               <?php endfor; ?>
-
           </div>
 
           <!-- Newsletter Widget -->
@@ -162,7 +173,7 @@
                     <span><?php echo $i+1; ?>.</span> <?php echo word_limiter($most_commented[$i]['title'], 15); ?>
                   </h6>
                 </a>
-                <p><?php echo date('F d, Y', strtotime($most_viewed[$i]['date'])); ?></p>
+                <p><?php echo date('F d, Y', strtotime($most_commented[$i]['date'])); ?></p>
               </div>
             <?php endfor; ?>
 

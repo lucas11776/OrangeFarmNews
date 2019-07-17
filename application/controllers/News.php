@@ -43,7 +43,8 @@ class News extends CI_Controller
       'navbar_adv'       => false,
       'news'             => $this->news->latest($per_page, $page),
       'most_viewed'      => $this->news->most_viewed($per_page, $page),
-      'most_commented'   => $this->news->most_commented(5, $page == 0 ? 0 : $page - 1)
+      'most_commented'   => $this->news->most_viewed(5, $page == 0 ? 0 : $page - 1),
+      'most_viewed_blog' => $this->blog->most_viewed(5, $page == 0 ? 0 : $page - 1)
     );
 
     # page
@@ -83,8 +84,9 @@ class News extends CI_Controller
       'description' => word_limiter(strip_tags($single_news['post']), 40),
       'active'      => 'news',
       'single_news' => $single_news,
-      'latest_news'      => $this->news->latest(8),
+      'latest_news' => $this->news->latest(8),
       'most_viewed' => $this->news->most_viewed(5),
+      'comments'    => $this->news_comments->get(array('news_id' => $single_news['id'])),
       'navbar_adv'  => false
     );
 

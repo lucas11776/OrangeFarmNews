@@ -15,19 +15,32 @@ class News_comment extends CI_Controller
     # validate data
     if($this->form_validation->run() === false)
     {
-      $this->session->set_flashdata('alert-danger', 'Something went wrong when trying to comment on news for more details go to comment seaction.');
+      # error to dislay
+      $error = isset($this->form_validation->error_array['comment']) == false ? form_error('comment','<span>','</span>') : form_error('news_id','<span>','</span>');
 
-      redirect($this->input->post('redirect'));
+      $this->session->set_flashdata('alert-danger', $error);
+
+      redirect($this->input->get('r') ?? '');
     }
 
     # comment data
     $comment = array(
       'news_id' => $this->input->post('news_id'),
-      'user_id' => $this->auth->account('user_id'),
+      'user_id' => $this->auth->account('id'),
       'comment' => $this->input->post('comment')
     );
 
-    print_r($comment);
+    # insert comment to database
+    if($this->news_comments->create($comment) === false)
+    {
+      $this->session->set_flashdata('alert-danger', 'Something went wrong when tring to connect to databse.');
+    }
+    else
+    {
+      $this->session->set_flashdata('alert-success', 'Thank you for your comment.');
+    }
+
+    redirect($this->input->get('r') ?? '');
   }
 
   /**
@@ -58,13 +71,13 @@ class News_comment extends CI_Controller
     $news_item = $this->news->get(array('id', $news_id));
 
     # check if news exist
-    if(count($news_id) === false)
+    if(count($news_item) === false)
     {
       $this->form_validation->set_message('news_exist', 'News your are trying to comment to do not exist.');
 
       return false;
     }
 
-    return false;
+    return true;
   }
 }

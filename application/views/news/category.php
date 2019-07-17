@@ -81,6 +81,14 @@
                 </div>
               <?php endif; ?>
             <?php endfor; ?>
+            <?php if(count($category_result) == 0): ?>
+              <div class="alert alert-info alert-dismissible fade show col-12" role="alert">
+                <h4 class="alert-heading">Ops Sorry!</h4>
+                <p class="text-info">The are not result found under that category.</p>
+                <hr>
+                <p class="mb-0 text-info">Please check back later.</p>
+              </div>
+            <?php endif; ?>
           </div>
         </div>
 

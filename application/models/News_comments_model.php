@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class News_comments extends CI_Model
+class News_comments_model extends CI_Model
 {
   /**
    * Store Comment In Database
@@ -22,14 +22,28 @@ class News_comments extends CI_Model
   }
 
   /**
+   * Select Comments Fields
+   */
+  private function select()
+  {
+    return $this->db->select('
+      news_comments.*,
+      (SELECT picture FROM accounts WHERE news_comments.user_id = accounts.id) as picture,
+      (SELECT username FROM accounts WHERE news_comments.user_id = accounts.id) as username,
+      (SELECT name FROM accounts WHERE news_comments.user_id = accounts.id) as name,
+      (SELECT surname FROM accounts WHERE news_comments.user_id = accounts.id) as surname
+    ');
+  }
+
+  /**
    * Get Comment In Database
    *
    * @param   array
    * @return  boolean
    */
-  public function get()
+  public function get(array $where)
   {
-
+    return $this->select()->where($where)->get('news_comments')->result_array();
   }
 
   /**

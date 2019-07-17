@@ -89,6 +89,14 @@
                 </div>
               <?php endif; ?>
             <?php endfor; ?>
+            <?php if(count($news) == 0): ?>
+              <div class="alert alert-info alert-dismissible fade show col-12" role="alert">
+                <h4 class="alert-heading">Ops Sorry!</h4>
+                <p class="text-info">The are not result found under news.</p>
+                <hr>
+                <p class="mb-0 text-info">Please check back later.</p>
+              </div>
+            <?php endif; ?>
           </div>
 
         </div>
@@ -118,7 +126,7 @@
                     <?php echo $most_viewed[$i]['category']; ?>
                   </a>
                   <div class="post-meta">
-                    <a href="<?php echo base_url($most_viewed[$i]['slug']); ?>" class="post-title">
+                    <a href="<?php echo base_url('news/' . $most_viewed[$i]['slug']); ?>" class="post-title">
                       <h6><?php echo word_limiter($most_viewed[$i]['title'], 15); ?></h6>
                     </a>
                     <p class="post-date"><span class="fa fa-clock-o color"></span> <?php echo date('h:i A | F d', strtotime($most_viewed[$i]['date'])); ?></p>
@@ -130,7 +138,7 @@
           </div>
 
           <!-- Popular News Widget -->
-          <div class="popular-news-widget mb-50 pt-4 pb-4">
+          <div class="popular-news-widget mb-50 pt-4 pb-4 <?php if(count($most_commented) == 0) echo 'd-none'; ?>">
             <h4 class="text-center color pb-3"><?php echo count($most_commented); ?> Most Commented News</h4>
 
             <?php for($i = 0; $i < count($most_commented); $i++): ?>
@@ -141,7 +149,7 @@
                     <span><?php echo $i+1; ?>.</span> <?php echo word_limiter($most_commented[$i]['title'], 15); ?>
                   </h6>
                 </a>
-                <p><?php echo date('F d, Y', strtotime($most_viewed[$i]['date'])); ?></p>
+                <p><?php echo date('F d, Y', strtotime($most_commented[$i]['date'])); ?></p>
               </div>
             <?php endfor; ?>
 
@@ -151,9 +159,10 @@
           <?php $this->load->view('template/newsletter'); ?>
 
           <!-- Latest Comments Widget -->
-          <div class="latest-comments-widget mt-5">
-              <h3>Latest Comments</h3>
+          <div class="latest-comments-widget mt-5 pt-4 pb-4  <?php if(count($most_viewed_blog) == 0) echo 'd-none'; ?>">
+              <h3>Most Viewd Blog Post</h3>
 
+              <?php for($i = 0; $i < count($most_viewed_blog); $i++): ?>
               <!-- Single Comments -->
               <div class="single-comments d-flex">
                   <div class="comments-thumbnail mr-15">
@@ -164,39 +173,8 @@
                       <p>06:34 am, April 14, 2018</p>
                   </div>
               </div>
+              <?php endfor; ?>
 
-              <!-- Single Comments -->
-              <div class="single-comments d-flex">
-                  <div class="comments-thumbnail mr-15">
-                      <img src="img/bg-img/30.jpg" alt="">
-                  </div>
-                  <div class="comments-text">
-                      <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
-                      <p>06:34 am, April 14, 2018</p>
-                  </div>
-              </div>
-
-              <!-- Single Comments -->
-              <div class="single-comments d-flex">
-                  <div class="comments-thumbnail mr-15">
-                      <img src="img/bg-img/31.jpg" alt="">
-                  </div>
-                  <div class="comments-text">
-                      <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
-                      <p>06:34 am, April 14, 2018</p>
-                  </div>
-              </div>
-
-              <!-- Single Comments -->
-              <div class="single-comments d-flex">
-                  <div class="comments-thumbnail mr-15">
-                      <img src="img/bg-img/32.jpg" alt="">
-                  </div>
-                  <div class="comments-text">
-                      <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
-                      <p>06:34 am, April 14, 2018</p>
-                  </div>
-              </div>
           </div>
         </div>
       </div>

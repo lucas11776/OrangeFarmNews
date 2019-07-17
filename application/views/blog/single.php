@@ -250,28 +250,39 @@
 
               <div class="post-a-comment-area section-padding-80-0">
                   <h4>Leave a comment</h4>
-
-                  <!-- Reply Form -->
-                  <div class="contact-form-area">
-                      <?php echo form_open('news/comment'); ?>
-                          <input type="hidden"
-                                 name="news_id"
-                                 value="<?php echo $single_blog['id']; ?>">
-                          <div class="row">
-                              <div class="col-12">
-                                  <textarea name="message"
-                                            class="form-control"
-                                            id="message"
-                                            cols="30"
-                                            rows="10"
-                                            placeholder="Message"></textarea>
-                              </div>
-                              <div class="col-12 text-center">
-                                  <button class="btn newspaper-btn mt-30 w-100" type="submit">Submit Comment</button>
-                              </div>
-                          </div>
-                      <?php echo form_close(); ?>
-                  </div>
+                  <?php if($this->auth->user(false)): ?>
+                    <!-- Reply Form -->
+                    <div class="contact-form-area">
+                        <?php echo form_open('blog/comment'); ?>
+                            <input type="hidden"
+                                   name="news_id"
+                                   value="<?php echo $single_news['id']; ?>">
+                            <div class="row">
+                                <div class="col-12">
+                                    <textarea name="message"
+                                              class="form-control"
+                                              id="message"
+                                              cols="30"
+                                              rows="10"
+                                              placeholder="Message"></textarea>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <button class="btn newspaper-btn mt-30 w-100" type="submit">Submit Comment</button>
+                                </div>
+                            </div>
+                        <?php echo form_close(); ?>
+                    </div>
+                  <?php else: ?>
+                    <div class="alert alert-info col-12" role="alert">
+                      <h4 class="alert-heading text-info">Want to express your comment!</h4>
+                      <p class="text-info">Join the <span class="fa fa-users"></span> community by becoming a member.</p>
+                      <hr>
+                      <p class="mb-0">
+                        <a class="color" href="<?php echo base_url('register'); ?>"><i class="fa fa-edit"></i> <strong>Register</strong></a>
+                        or <a class="color" href="<?php echo base_url('login'); ?>"><i class="fa fa-user-o"></i> <strong>Login</strong></a>
+                      </p>
+                    </div>
+                  <?php endif; ?>
               </div>
           </div>
       </div>
@@ -315,12 +326,12 @@
 
               <!-- Popular News Widget -->
               <div class="popular-news-widget mb-50 pt-4 pb-5">
-                  <h3 class="text-center">Popular News</h3>
+                  <h3 class="text-center">Popular Blog Post</h3>
 
                   <?php for($i = 0; $i < count($most_viewed); $i++): ?>
                     <!-- Single Popular Blog -->
                     <div class="single-popular-post">
-                        <a href="<?php echo base_url('news'.$most_viewed[$i]['slug']); ?>">
+                        <a href="<?php echo base_url('blog/' . $most_viewed[$i]['slug']); ?>">
                             <h6>
                               <span><?php echo $i+1; ?>.</span> <?php echo word_limiter($most_viewed[$i]['title'], 15); ?>
                             </h6>
@@ -335,24 +346,6 @@
               <!-- Newsletter Widget -->
               <?php $this->load->view('template/newsletter'); ?>
 
-              <!-- Latest Comments Widget -->
-              <div class="latest-comments-widget mt-5 pt-4 pb-5">
-                  <h3 class="text-center color">Latest Blog Post</h3>
-
-                  <?php for($i = 0; $i < 5; $i++): ?>
-                    <!-- Single Comments -->
-                    <div class="single-comments d-flex">
-                        <div class="comments-thumbnail mr-15">
-                            <img src="<?php echo base_url('assets/default/img/bg-img/29.jpg'); ?>" alt="">
-                        </div>
-                        <div class="comments-text">
-                            <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
-                            <p>06:34 am, April 14, 2018</p>
-                        </div>
-                    </div>
-                  <?php endfor; ?>
-
-              </div>
           </div>
       </div>
 
@@ -360,4 +353,3 @@
   </div>
 </div>
 <!-- ##### Blog Area End ##### -->
-

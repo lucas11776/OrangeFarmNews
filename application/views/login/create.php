@@ -14,6 +14,7 @@
                 </div>
                 <!-- Login Form -->
                 <?php echo form_open('login', array('class' => 'user', 'novalidate')); ?>
+                  <input type="hidden" name="redirect" value="<?php echo $this->input->get('r') ?? set_value('redirect'); ?>">
                   <!-- Log In Error -->
                   <div class="form-group">
                     <?php if(!empty($this->session->flashdata('login_error'))): ?>
