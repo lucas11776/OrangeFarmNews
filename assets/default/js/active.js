@@ -69,4 +69,9 @@
         $.preventDefault()
     });
 
+    // :: 10.0 assign comment id to hidden input in reply to comment model
+    $('.btn-reply-comment').on('click', function(){
+      $('.comment-reply-id').val($(this).val())
+    });
+
 })(jQuery);

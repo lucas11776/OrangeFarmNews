@@ -26,11 +26,12 @@
         <div class="post-a-comment-area pt-0 pb-0">
             <!-- Reply Form -->
             <div class="contact-form-area">
-                <?php echo form_open('news/comment'); ?>
+                <?php echo form_open('news/comment/reply?r=' . uri_string()); ?>
                     <div class="row">
                         <div class="col-12">
                             <input type="hidden" name="redirect" value="<?php echo uri_string(); ?>">
-                            <input type="hidden" name="comment_id" value="">
+                            <input type="hidden" name="comment_id" class="comment-reply-id">
+                            <input type="hidden" name="news_id" value="<?php echo $single_news['id']; ?>">
                             <textarea name="message"
                                       class="form-control"
                                       id="message"

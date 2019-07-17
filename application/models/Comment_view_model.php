@@ -70,7 +70,11 @@ class Comment_view_model extends CI_Model
                   <div class="comment-meta">
                       <a href="#" class="post-author">
                         '. $this->account->get_account_name($this->comments[$i]) .'
-                        <button type="button" data-toggle="modal" data-target="#reply-comment-model" class="btn btn-sm btn-outline-dark ml-4">
+                        <button type="button"
+                                value="'. $this->comments[$i]['id'] .'"
+                                data-toggle="modal"
+                                data-target="#reply-comment-model"
+                                class="btn btn-sm btn-outline-dark ml-4 btn-reply-comment '.(!$this->auth->user(false) ? 'd-none' : '').'">
                           <span class="fa fa-reply color"></span>
                         </button>
                       </a>
@@ -79,7 +83,7 @@ class Comment_view_model extends CI_Model
                   </div>
               </div>
               ';
-          # check comment sub comments
+          # print sub comments
           $this->sub_comments($index + 1, $this->comments[$i]['id']);
           echo '</li>';
         }
@@ -120,12 +124,19 @@ class Comment_view_model extends CI_Model
                       <div class="comment-meta">
                           <a href="#" class="post-author">
                             '. $this->account->get_account_name($this->comments[$i]) .'
-                            <button type="button" class="btn btn-sm btn-outline-dark ml-4 reply-comment-model"><span class="fa fa-reply color"></span></button>
+                            <button type="button"
+                                    value="'. $this->comments[$i]['id'] .'"
+                                    data-toggle="modal"
+                                    data-target="#reply-comment-model"
+                                    class="btn btn-sm btn-outline-dark ml-4 btn-reply-comment '.(!$this->auth->user(false) ? 'd-none' : '').'">
+                              <span class="fa fa-reply color"></span>
+                            </button>
                           </a>
                           <a href="#" class="post-date">'. date('h:i a F d, y', strtotime($this->comments[$i]['date'])) .'</a>
                           <p>'. $this->comments[$i]['comment'] .'</p>
                       </div>
                   </div>';
+          # print sub comments
           $this->sub_comments($index+1,$this->comments[$i]['id']);
           echo '</li></ol>';
 
