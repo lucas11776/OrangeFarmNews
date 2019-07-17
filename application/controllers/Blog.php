@@ -87,6 +87,7 @@ class Blog extends CI_Controller
       'single_blog' => $single_blog,
       'latest_blog' => $this->blog->latest(8),
       'most_viewed' => $this->blog->most_viewed(5),
+      'comments'    => $this->blog_comments->get(array('blog_id' => $single_blog['id'])),
       'navbar_adv'  => false
     );
 

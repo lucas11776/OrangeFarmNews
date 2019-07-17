@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class News_comment extends CI_Controller
+class blog_comment extends CI_Controller
 {
   /**
-   * News Comment
+   * blog Comment
    *
    * @var array
    */
-  public $news = null;
+  public $blog = null;
 
   /**
    * User Reply Comment
@@ -19,12 +19,12 @@ class News_comment extends CI_Controller
 
 
   /**
-   *  @Route (news/comment)
+   *  @Route (blog/comment)
    */
   public function comment()
   {
     # check required data
-    $this->form_validation->set_rules('news_id', 'news', 'required|integer|callback_news_exist');
+    $this->form_validation->set_rules('blog_id', 'blog', 'required|integer|callback_blog_exist');
     $this->form_validation->set_rules('comment', 'comment', 'required|max_length[200]');
 
     # validate data
@@ -32,12 +32,12 @@ class News_comment extends CI_Controller
     {
       $this->session->set_flashdata('alert-danger', validation_errors('<span>','</span> '));
 
-      redirect($this->input->get('r') ?? '');
+      redirect($this->input->get('redirect') ?? '');
     }
 
     # comment data
     $comment = array(
-      'news_id' => $this->input->post('news_id'),
+      'blog_id' => $this->input->post('blog_id'),
       'user_id' => $this->auth->account('id'),
       'comment' => $this->input->post('comment')
     );
@@ -47,12 +47,12 @@ class News_comment extends CI_Controller
   }
 
   /**
-   * @Route (news/comment/reply)
+   * @Route (blog/comment/reply)
    */
   public function reply()
   {
     # check required data
-    $this->form_validation->set_rules('news_id', 'news id', 'required|integer|callback_news_exist');
+    $this->form_validation->set_rules('blog_id', 'blog id', 'required|integer|callback_blog_exist');
     $this->form_validation->set_rules('comment_id', 'comment id', 'required|integer|callback_comment_exist');
     $this->form_validation->set_rules('comment', 'comment', 'required|max_length[200]');
 
@@ -66,7 +66,7 @@ class News_comment extends CI_Controller
 
     # reply comment
     $comment = array(
-      'news_id'   => $this->news['id'],
+      'blog_id'   => $this->blog['id'],
       'user_id'   => $this->auth->account('id'),
       'parent_id' => $this->comment['id'],
       'comment'   => $this->input->post('comment')
@@ -78,7 +78,7 @@ class News_comment extends CI_Controller
 
   private function insert_comment(array $comment)
   {
-    if($this->news_comments->create($comment) === false)
+    if($this->blog_comments->create($comment) === false)
     {
       $this->session->set_flashdata('alert-danger', 'Something went wrong when tring to connect to databse.');
     }
@@ -94,7 +94,7 @@ class News_comment extends CI_Controller
   }
 
   /**
-   * @Route (news/comment/delete)
+   * @Route (blog/comment/delete)
    */
   public function delete()
   {
@@ -102,20 +102,20 @@ class News_comment extends CI_Controller
   }
 
   /**
-   * Check If News Exist By ID
+   * Check If blog Exist By ID
    *
    * @param   integer
    * @return  boolean
    */
-  public function news_exist($news_id)
+  public function blog_exist($blog_id)
   {
-    # get news by id
-    $this->news = $this->news->get(array('news.id' => $news_id))[0] ?? false;
+    # get blog by id
+    $this->blog = $this->blog->get(array('blog.id' => $blog_id))[0] ?? false;
 
-    # check if news exist
-    if($this->news === false)
+    # check if blog exist
+    if($this->blog === false)
     {
-      $this->form_validation->set_message('news_exist', 'News your are trying to comment to do not exist.');
+      $this->form_validation->set_message('blog_exist', 'blog your are trying to comment to do not exist.');
 
       return false;
     }
@@ -132,7 +132,7 @@ class News_comment extends CI_Controller
   public function comment_exist($comment_id)
   {
     # get comment
-    $this->comment = $this->news_comments->get(array('id' => $comment_id))[0] ?? false;
+    $this->comment = $this->blog_comments->get(array('id' => $comment_id))[0] ?? false;
 
     # check if reply comment exist
     if($this->comment === false)

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class News_comments_model extends CI_Model
+class Blog_comments_model extends CI_Model
 {
   /**
    * Store Comment In Database
@@ -12,13 +12,13 @@ class News_comments_model extends CI_Model
   public function create(array $where)
   {
     $data = array(
-      'news_id'   => $where['news_id'],
+      'blog_id'   => $where['blog_id'],
       'parent_id' => $where['parent_id'] ?? 0,
       'user_id'   => $where['user_id'],
       'comment'   => $where['comment']
     );
 
-    return $this->db->insert('news_comments', $data);
+    return $this->db->insert('blog_comments', $data);
   }
 
   /**
@@ -27,12 +27,12 @@ class News_comments_model extends CI_Model
   private function select()
   {
     return $this->db->select('
-      news_comments.*,
-      (SELECT picture FROM accounts WHERE news_comments.user_id = accounts.id) as picture,
-      (SELECT username FROM accounts WHERE news_comments.user_id = accounts.id) as username,
-      (SELECT email FROM accounts WHERE news_comments.user_id = accounts.id) as email,
-      (SELECT name FROM accounts WHERE news_comments.user_id = accounts.id) as name,
-      (SELECT surname FROM accounts WHERE news_comments.user_id = accounts.id) as surname
+      blog_comments.*,
+      (SELECT picture FROM accounts WHERE blog_comments.user_id = accounts.id) as picture,
+      (SELECT username FROM accounts WHERE blog_comments.user_id = accounts.id) as username,
+      (SELECT email FROM accounts WHERE blog_comments.user_id = accounts.id) as email,
+      (SELECT name FROM accounts WHERE blog_comments.user_id = accounts.id) as name,
+      (SELECT surname FROM accounts WHERE blog_comments.user_id = accounts.id) as surname
     ');
   }
 
@@ -44,7 +44,7 @@ class News_comments_model extends CI_Model
    */
   public function get(array $where)
   {
-    return $this->select()->where($where)->get('news_comments')->result_array();
+    return $this->select()->where($where)->get('blog_comments')->result_array();
   }
 
   /**
@@ -55,7 +55,7 @@ class News_comments_model extends CI_Model
    */
   public function delete(array $where)
   {
-    return $this->db->where($where)->delete('news_comments');
+    return $this->db->where($where)->delete('blog_comments');
   }
 
   /**

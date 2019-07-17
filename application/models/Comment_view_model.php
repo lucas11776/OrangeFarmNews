@@ -26,7 +26,7 @@ class Comment_view_model extends CI_Model
   public function view(array $comments)
   {
     # populate
-    $this->comments = $comments;
+    $this->comments = is_array($comments) ? $comments : array();
 
     # print comment
     $this->comments(0);
@@ -34,14 +34,30 @@ class Comment_view_model extends CI_Model
 
   private function comments($index)
   {
+    # number of comments
+    $number_comment = count($this->comments);
+
     # print comment details
     echo '
     <!-- Comment Area Start -->
-    <div class="comment_area clearfix">
-        <h5 class="title">' . count($this->comments) . ' Comments</h5>
+    <div class="comment_area clearfix" data-spy="scroll" data-offset="0">
+        <h5 class="title">'
+          .($number_comment == 1 ? "{$number_comment} Comment" : "{$number_comment} Comments").
+        '</h5>
+        <ol>';
 
-        <ol>
-    ';
+    # no comment available
+    if(count($this->comments) === 0)
+    {
+      echo '
+      <li>
+        <div class="alert alert-info col-12">
+          <strong class="text-info">
+            Be the first one to <i class="fa fa-commenting-o color"></i> comment on this news comment now.
+          </strong>
+        </div>
+      </li>';
+    }
 
     # loop throw main comments
     for($i = $index; $i < count($this->comments); $i++)
@@ -55,16 +71,20 @@ class Comment_view_model extends CI_Model
           # register comment as printed
           array_push($this->viewed, $this->comments[$i]['id']);
 
+          # user comment
+          $user_comment_active = $this->session->flashdata('user_comment') == $this->comments[$i]['id'] ? 'comment-by-me' : 'comment-' . $this->comments[$i]['id'];
 
           #print comment
           echo '
           <!-- Single Comment Area -->
-          <li class="single_comment_area">
+          <li class="single_comment_area" id="'. $user_comment_active .'">
               <!-- Comment Content -->
               <div class="comment-content d-flex">
                   <!-- Comment Author -->
                   <div class="comment-author">
+                    <a href="'.base_url(uri_string()."#comment{$this->comments[$i]['id']}").'">
                       <img src="'. $this->comments[$i]['picture'] .'" alt="'. $this->account->get_account_name($this->comments[$i]) .'">
+                    </a>
                   </div>
                   <!-- Comment Meta -->
                   <div class="comment-meta">
@@ -110,15 +130,20 @@ class Comment_view_model extends CI_Model
           # mark comment as print
           array_push($this->viewed, $this->comments[$i]['id']);
 
+          # user comment
+          $user_comment_active = $this->session->flashdata('user_comment') == $this->comments[$i]['id'] ? 'comment-by-me' : 'comment-' . $this->comments[$i]['id'];
+
           # print sub comment
           echo '
           <ol class="children">
-              <li class="single_comment_area">
+              <li class="single_comment_area" id="'. $user_comment_active .'">
                   <!-- Comment Content -->
                   <div class="comment-content d-flex">
                       <!-- Comment Author -->
                       <div class="comment-author">
+                        <a href="'.base_url(uri_string()."#comment{$this->comments[$i]['id']}").'">
                           <img src="'. $this->comments[$i]['picture'] .'" alt="'. $this->account->get_account_name($this->comments[$i]) .'">
+                        </a>
                       </div>
                       <!-- Comment Meta -->
                       <div class="comment-meta">

@@ -74,4 +74,9 @@
       $('.comment-reply-id').val($(this).val())
     });
 
+    // :: 11.0 Refresh scroll spy
+    $('[data-spy="scroll"]').each(function () {
+      var $spy = $(this).scrollspy('refresh');
+    });
+
 })(jQuery);

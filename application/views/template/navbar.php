@@ -63,10 +63,16 @@
                 <!-- Login -->
                 <div class="login d-flex">
                   <?php if($this->auth->user(false) === false): ?>
-                    <a href="<?php echo base_url('login/'); ?>"><i class="fa fa-user-o"></i> Login</a>
-                    <a href="<?php echo base_url('register/'); ?>"><i class="fa fa-edit"></i> Register</a>
+                    <a href="<?php echo base_url('login?r=' . uri_string()); ?>">
+                      <i class="fa fa-user-o"></i> Login
+                    </a>
+                    <a href="<?php echo base_url('register?r=' . uri_string()); ?>">
+                      <i class="fa fa-edit"></i> Register
+                    </a>
                   <?php else: ?>
-                    <a href="<?php echo base_url('logout'); ?>"><i class="fa fa-edit"></i> Logout</a>
+                    <a href="<?php echo base_url('logout?r=' . uri_string()); ?>">
+                      <i class="fa fa-edit"></i> Logout
+                    </a>
                   <?php endif; ?>
                 </div>
                 <!-- Search Form -->
