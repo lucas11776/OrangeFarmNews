@@ -1,5 +1,10 @@
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">
+    <span class="fas fa-edit"></span> Edit Account
+  </h1>
+</div>
 <div class="col-12">
-  <h1 class="pt-3 pb-4"><span class="fas fa-edit"></span> Edit Account</h1>
   <div class="text-center mt-5 mb-5">
     <img src="<?php echo $this->auth->account('picture'); ?>"
          class="shadow-lg img-thumbnail"

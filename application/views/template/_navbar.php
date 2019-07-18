@@ -102,6 +102,46 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
+        Manager
+      </div>
+
+      <!-- Nav Item - My Account -->
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('dashboard/accounts');?>">
+          <i class="fas fa-fw fa-users"></i>
+          <span>Accounts</span>
+        </a>
+      </li>
+
+      <!-- Nav Item - My Account -->
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('dashboard/news');?>">
+          <i class="fas fa-fw fa-newspaper"></i>
+          <span>News Posts</span>
+        </a>
+      </li>
+
+      <!-- Nav Item - My Account -->
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('dashboard/blog');?>">
+          <i class="fas fa-fw fa-rss"></i>
+          <span>Blog Posts</span>
+        </a>
+      </li>
+
+      <!-- Nav Item - My Account -->
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('dashboard/newsletter');?>">
+          <i class="fas fa-fw fa-envelope-open-text"></i>
+          <span>Newsletters</span>
+        </a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
         Manage Content
       </div>
 
