@@ -46,6 +46,7 @@ class Mail_newsletter_template extends CI_Model
     $title = $data['title'];
     $css   = base_url($this::TEMPLATE_CSS);
 
+    # HTML
     return <<<EOF
     <!DOCTYPE html>
     <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -95,6 +96,7 @@ class Mail_newsletter_template extends CI_Model
       $category = $data['posts'][$i]['category'];
       $date     = date('h:ia, F d, Y', strtotime($data['posts'][$i]['date']));
 
+      # HTML
       $template .= <<<EOF
       <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
         <tr>
@@ -129,6 +131,7 @@ class Mail_newsletter_template extends CI_Model
    */
   private function footer(array $data)
   {
+    # HTML
     return <<<EOF
         </td>
         </tr><!-- end: tr -->

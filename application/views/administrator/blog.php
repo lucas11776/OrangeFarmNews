@@ -1,7 +1,7 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-5 pb-2 pt-2">
   <h1 class="h3 mb-0 text-gray-800">
-    <span class="fas fa-newspaper text-primary"></span> Manage News Posts
+    <span class="fas fa-newspaper text-primary"></span> Manage News Blog
   </h1>
 </div>
 <!-- Content Row -->
@@ -32,7 +32,7 @@
               </p>
               <ul class="list-group list-group-sm list-group-horizontal">
                 <li style="padding: 10px;"  class="list-group-item list-group-item-light" title="View news post">
-                  <a class="btn btn-circle btn-sm" href="<?php echo base_url('news/' . $news[$i]['slug']); ?>">
+                  <a class="btn btn-circle btn-sm" href="<?php echo base_url('blog/' . $news[$i]['slug']); ?>">
                     <i class="fas fa-glasses"></i>
                   </a>
                 </li>
