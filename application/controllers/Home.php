@@ -61,4 +61,15 @@ class Home extends CI_Controller
     echo $this->newsletter_template->html($data);
   }
 
+  public function notify()
+  {
+    $data = array(
+      'title'    => 'Recover Password',
+      'text'     => 'Recover your password easy and fast by just click the link below.',
+      'btn_text' => 'Reset Password',
+      'url'      => base_url()     
+    );
+    echo $this->notify_template->html($data);
+  }
+
 }
