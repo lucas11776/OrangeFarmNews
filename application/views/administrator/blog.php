@@ -1,18 +1,18 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-5 pb-2 pt-2">
   <h1 class="h3 mb-0 text-gray-800">
-    <span class="fas fa-newspaper text-primary"></span> Manage News Blog
+    <span class="fas fa-newspaper text-primary"></span> Manage Blog
   </h1>
 </div>
 <!-- Content Row -->
 <div class="card-columns col-12">
-  <?php for($i = 0; $i < count($news); $i++): ?>
+  <?php for($i = 0; $i < count($blog); $i++): ?>
     <!-- News Item -->
 
       <div class="card mb-3 shadow-sm">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img src="<?php echo $news[$i]['picture']; ?>"
+            <img src="<?php echo $blog[$i]['picture']; ?>"
                  height="100%;"
                  class="card-img"
                  style="border-top-right-radius: 0; border-bottom-right-radius: 0;"
@@ -20,19 +20,19 @@
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h6 class="card-title"><?php echo word_limiter($news[$i]['title'], 8); ?></h6>
+              <h6 class="card-title"><?php echo word_limiter($blog[$i]['title'], 8); ?></h6>
               <p class="card-text">
                 <small class="text-muted">
-                  Posted <span class="fas fa-clock text-primary"></span> <?php echo date('d F, Y', strtotime($news[$i]['date'])); ?>
+                  Posted <span class="fas fa-clock text-primary"></span> <?php echo date('d F, Y', strtotime($blog[$i]['date'])); ?>
                   <i class="fas fa-user text-primary"></i> <i>by</i>
-                  <a href="<?php echo base_url('dashboard/account/' . $news[$i]['id']); ?>">
-                    <?php echo $news[$i]['username']; ?>
+                  <a href="<?php echo base_url('dashboard/account/' . $blog[$i]['id']); ?>">
+                    <?php echo $blog[$i]['username']; ?>
                   </a>
                 </small>
               </p>
               <ul class="list-group list-group-sm list-group-horizontal">
                 <li style="padding: 10px;"  class="list-group-item list-group-item-light" title="View news post">
-                  <a class="btn btn-circle btn-sm" href="<?php echo base_url('blog/' . $news[$i]['slug']); ?>">
+                  <a class="btn btn-circle btn-sm" href="<?php echo base_url('blog/' . $blog[$i]['slug']); ?>">
                     <i class="fas fa-glasses"></i>
                   </a>
                 </li>
@@ -48,23 +48,10 @@
     </div>
   <?php endfor; ?>
 </div>
- <div class="col-12">
-  <nav aria-label="Page navigation example">
-    <ul class="pagination mt-3 mb-5">
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
-          <strong aria-hidden="true">&laquo;</strong>
-        </a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#"><strong>1</strong></a></li>
-      <li class="page-item"><a class="page-link" href="#"><strong>2</strong></a></li>
-      <li class="page-item"><a class="page-link" href="#"><strong>3</strong></a></li>
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
-          <strong aria-hidden="true">&raquo;</strong>
-        </a>
-      </li>
-    </ul>
+<div class="col-12 pt-4 pb-4 mt-4 mb-4">
+  <nav aria-label="Pagination for news">
+    <!-- ##### Pagination Link ##### -->
+    <?php echo $this->pagination->create_links(); ?>
   </nav>
 </div>
 <!-- Content Row -->

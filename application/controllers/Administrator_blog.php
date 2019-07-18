@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Administrator_news extends CI_Controller
+class Administrator_blog extends CI_Controller
 {
   /**
    * Dashboard News View Pages
@@ -26,7 +26,7 @@ class Administrator_news extends CI_Controller
     $this->auth->administrator();
 
     # get number of news in database
-    $total = $this->news->count();
+    $total = $this->blog->count();
 
     # number of result to be show per page
     $per_page = 15;
@@ -41,13 +41,13 @@ class Administrator_news extends CI_Controller
     $page_details = array(
       'title'           => 'OrangeFarmNews Administrator (Themba)',
       'description'     => 'OrangeFarmNews Administrator Panel.',
-      'active'          => 'Newsl Posts',
+      'active'          => 'Blog Posts',
       'summary'         => $this->stats->summary(),
-      'news'            => $this->news->latest($per_page, $page),
+      'blog'            => $this->blog->latest($per_page, $page),
       'unread_messages' => $this->contect->get(array('seen' => 0), $this->contect::UNREAD_MESSAGES_LIMIT)
     );
 
     # page
-    $this->view('news', $page_details);
+    $this->view('blog', $page_details);
   }
 }

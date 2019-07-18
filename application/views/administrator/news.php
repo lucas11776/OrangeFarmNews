@@ -48,23 +48,10 @@
     </div>
   <?php endfor; ?>
 </div>
- <div class="col-12">
-  <nav aria-label="Page navigation example">
-    <ul class="pagination mt-3 mb-5">
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
-          <strong aria-hidden="true">&laquo;</strong>
-        </a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#"><strong>1</strong></a></li>
-      <li class="page-item"><a class="page-link" href="#"><strong>2</strong></a></li>
-      <li class="page-item"><a class="page-link" href="#"><strong>3</strong></a></li>
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
-          <strong aria-hidden="true">&raquo;</strong>
-        </a>
-      </li>
-    </ul>
+<div class="col-12 pt-4 pb-4 mt-4 mb-4">
+  <nav aria-label="Pagination for news">
+    <!-- ##### Pagination Link ##### -->
+    <?php echo $this->pagination->create_links(); ?>
   </nav>
 </div>
 <!-- Content Row -->
