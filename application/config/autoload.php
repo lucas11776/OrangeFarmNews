@@ -141,15 +141,16 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 $autoload['model'] = array(
-  'account_model'       => 'account',
-  'news_model'          => 'news',
-  'blog_model'          => 'blog',
-  'news_comments_model' => 'news_comments',
-  'blog_comments_model' => 'blog_comments',
-  'comment_view_model'  => 'comments_view',
-  'newsletter_model'    => 'newsletter',
-  'contect_model'       => 'contect',
-  'pagination_model'    => 'custom_pagination',
-  'panel_model'         => 'panel',
-  'statistics_model'    => 'stats'
+  'account_model'         => 'account',
+  'news_model'            => 'news',
+  'blog_model'            => 'blog',
+  'news_comments_model'   => 'news_comments',
+  'blog_comments_model'   => 'blog_comments',
+  'comment_view_model'    => 'comments_view',
+  'newsletter_model'      => 'newsletter',
+  'contect_model'         => 'contect',
+  'pagination_model'      => 'custom_pagination',
+  'panel_model'           => 'panel',
+  'statistics_model'      => 'stats',
+  'mail_newsletter_model' => 'mail_newsletter'
 );
