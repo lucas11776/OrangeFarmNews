@@ -153,7 +153,7 @@ $autoload['model'] = array(
   'pagination_model'      => 'custom_pagination',
   'panel_model'           => 'panel',
   'statistics_model'      => 'stats',
-
   // Templates ( _template )
-  'mail_newsletter_template' => 'newsletter_template'
+  'mail_newsletter_template' => 'newsletter_template',
+  'mail_notify_template'     => 'notify_template'
 );

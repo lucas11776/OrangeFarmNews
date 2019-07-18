@@ -51,7 +51,7 @@ class Home extends CI_Controller
     $this->view('index', $page_details);
   }
 
-  public function test()
+  public function newsletter()
   {
     $data = array(
       'title'        => 'Morning News Updated',

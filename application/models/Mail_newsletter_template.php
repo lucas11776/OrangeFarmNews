@@ -44,6 +44,8 @@ class Mail_newsletter_template extends CI_Model
   private function header(array $data)
   {
     $title = $data['title'];
+    $css   = base_url($this::TEMPLATE_CSS);
+
     return <<<EOF
     <!DOCTYPE html>
     <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -54,7 +56,7 @@ class Mail_newsletter_template extends CI_Model
       <meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
       <title>Orange Farm News</title> <!-- The title tag shows in email notifications, like Android 4.4. -->
       <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700|Lato:300,400,700" rel="stylesheet">
-      <link href="http://localhost/assets/mail/newsletter.css" rel="stylesheet">
+      <link href="$css" rel="stylesheet">
     </head>
     <body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #222222;">
       <center style="width: 100%; background-color: #f1f1f1;">
@@ -86,7 +88,7 @@ class Mail_newsletter_template extends CI_Model
     {
       # article details
       $picture  = $data['posts'][$i]['picture'];
-      $title    = word_limiter($data['posts'][$i]['title']);
+      $title    = word_limiter($data['posts'][$i]['title'], 8);
       $post     = word_limiter($data['posts'][$i]['post'], 25);
       $url      = base_url($data['type'] . '/' . $data['posts'][$i]['slug']);
       $picture  = $data['posts'][$i]['picture'];
@@ -99,16 +101,12 @@ class Mail_newsletter_template extends CI_Model
           <td style="padding-bottom: 30px;">
             <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
               <td valign="middle" width="100%">
-                <a href="$url">
-                  <img src="$picture" alt="$title" style="width: 100%; max-width: 600px; height: auto; margin: auto; display: block;">
-                </a>
+                <img src="$picture" alt="$title" style="width: 100%; max-width: 600px; height: auto; margin: auto; display: block;">
               </td>
               <td valign="middle" width="100%">
                 <div class="text-blog" style="text-align: left; padding-left:25px;">
                   <p class="meta"><span>Posted on $date</span> <span>$category</span></p>
-                  <a href="$url">
-                    <h3>$title</h3>
-                  </a>
+                  <h3>$title</h3>
                   <p>$post</p>
                   <p><a href="$url" class="btn btn-primary">Read more</a></p>
                 </div>

@@ -109,7 +109,7 @@ img.g-img + div {
 	background: #fafafa;
 }
 .bg_black{
-	background: #000000;
+	background: #ff5c1f;
 }
 .bg_dark{
 	background: rgba(0,0,0,.8);
@@ -160,6 +160,10 @@ body{
 	font-size: 15px;
 	line-height: 1.8;
 	color: rgba(0,0,0,.4);
+}
+
+.color{
+	color: #ff5c1f;
 }
 
 a{
@@ -270,10 +274,11 @@ ul.social li{
 
 .footer{
 	border-top: 1px solid rgba(0,0,0,.05);
-	color: rgba(0,0,0,.5);
+	color: rgba(255,255,255,.5);
+	background-color: #ff5c1f;
 }
 .footer .heading{
-	color: #000;
+	color: #fff;
 	font-size: 20px;
 }
 .footer ul{
@@ -285,7 +290,7 @@ ul.social li{
 	margin-bottom: 10px;
 }
 .footer ul li a{
-	color: rgba(0,0,0,1);
+	color: #fff;
 }
 
 
