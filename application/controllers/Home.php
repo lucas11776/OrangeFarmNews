@@ -51,4 +51,14 @@ class Home extends CI_Controller
     $this->view('index', $page_details);
   }
 
+  public function test()
+  {
+    $data = array(
+      'title'        => 'Morning News Updated',
+      'article_type' => 'news',
+      'posts'        => $this->news->latest(5)     
+    );
+    echo $this->newsletter_template->html($data);
+  }
+
 }

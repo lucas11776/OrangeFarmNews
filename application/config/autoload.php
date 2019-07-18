@@ -141,6 +141,7 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 $autoload['model'] = array(
+  // Models ( _model )
   'account_model'         => 'account',
   'news_model'            => 'news',
   'blog_model'            => 'blog',
@@ -152,5 +153,7 @@ $autoload['model'] = array(
   'pagination_model'      => 'custom_pagination',
   'panel_model'           => 'panel',
   'statistics_model'      => 'stats',
-  'mail_newsletter_model' => 'mail_newsletter'
+
+  // Templates ( _template )
+  'mail_newsletter_template' => 'newsletter_template'
 );
