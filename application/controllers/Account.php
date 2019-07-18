@@ -21,6 +21,9 @@ class Account extends CI_Controller
    */
   public function single($username)
   {
+    # editor
+    $this->auth->editor();
+
     # get user account by name
     $user_account = $this->account->get(array('username' => $username))[0] ?? false;
 

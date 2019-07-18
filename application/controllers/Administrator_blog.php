@@ -39,8 +39,8 @@ class Administrator_blog extends CI_Controller
 
     # page details
     $page_details = array(
-      'title'           => 'OrangeFarmNews Administrator (Themba)',
-      'description'     => 'OrangeFarmNews Administrator Panel.',
+      'title'           => 'Manage Blog Post',
+      'description'     => 'OrangeFarmNews Dashboard',
       'active'          => 'Blog Posts',
       'summary'         => $this->stats->summary(),
       'blog'            => $this->blog->latest($per_page, $page),

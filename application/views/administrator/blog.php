@@ -9,42 +9,42 @@
   <?php for($i = 0; $i < count($blog); $i++): ?>
     <!-- News Item -->
 
-      <div class="card mb-3 shadow-sm">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img src="<?php echo $blog[$i]['picture']; ?>"
-                 height="100%;"
-                 class="card-img"
-                 style="border-top-right-radius: 0; border-bottom-right-radius: 0;"
-                 alt="...">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h6 class="card-title"><?php echo word_limiter($blog[$i]['title'], 8); ?></h6>
-              <p class="card-text">
-                <small class="text-muted">
-                  Posted <span class="fas fa-clock text-primary"></span> <?php echo date('d F, Y', strtotime($blog[$i]['date'])); ?>
-                  <i class="fas fa-user text-primary"></i> <i>by</i>
-                  <a href="<?php echo base_url('dashboard/account/' . $blog[$i]['id']); ?>">
-                    <?php echo $blog[$i]['username']; ?>
-                  </a>
-                </small>
-              </p>
-              <ul class="list-group list-group-sm list-group-horizontal">
-                <li style="padding: 10px;"  class="list-group-item list-group-item-light" title="View news post">
-                  <a class="btn btn-circle btn-sm" href="<?php echo base_url('blog/' . $blog[$i]['slug']); ?>">
-                    <i class="fas fa-glasses"></i>
-                  </a>
-                </li>
-                <li style="padding: 10px;" class="list-group-item list-group-item-danger" title="Delete news post">
-                  <button class="btn btn-circle btn-sm p-0 m-0" data-toggle="modal" data-target="#delete-news-model">
-                    <i class="fas fa-trash text-danger"></i>
-                  </button>
-                </li>
-              </ul>
-            </div>
+    <div class="card mb-3 shadow-sm">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="<?php echo $blog[$i]['picture']; ?>"
+               height="100%;"
+               class="card-img"
+               style="border-top-right-radius: 0; border-bottom-right-radius: 0;"
+               alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h6 class="card-title"><?php echo word_limiter($blog[$i]['title'], 8); ?></h6>
+            <p class="card-text">
+              <small class="text-muted">
+                Posted <span class="fas fa-clock text-primary"></span> <?php echo date('d F, Y', strtotime($blog[$i]['date'])); ?>
+                <i class="fas fa-user text-primary"></i> <i>by</i>
+                <a href="<?php echo base_url('dashboard/account/' . $blog[$i]['id']); ?>">
+                  <?php echo $blog[$i]['username']; ?>
+                </a>
+              </small>
+            </p>
+            <ul class="list-group list-group-sm list-group-horizontal">
+              <li style="padding: 10px;"  class="list-group-item list-group-item-light" title="View news post">
+                <a class="btn btn-circle btn-sm" href="<?php echo base_url('blog/' . $blog[$i]['slug']); ?>">
+                  <i class="fas fa-glasses"></i>
+                </a>
+              </li>
+              <li style="padding: 10px;" class="list-group-item list-group-item-danger" title="Delete news post">
+                <button class="btn btn-circle btn-sm p-0 m-0" data-toggle="modal" data-target="#delete-news-model">
+                  <i class="fas fa-trash text-danger"></i>
+                </button>
+              </li>
+            </ul>
           </div>
         </div>
+      </div>
     </div>
   <?php endfor; ?>
 </div>

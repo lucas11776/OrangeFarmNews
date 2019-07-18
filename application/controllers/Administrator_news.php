@@ -39,8 +39,8 @@ class Administrator_news extends CI_Controller
 
     # page details
     $page_details = array(
-      'title'           => 'OrangeFarmNews Administrator (Themba)',
-      'description'     => 'OrangeFarmNews Administrator Panel.',
+      'title'           => 'Manage News Posts',
+      'description'     => 'OrangeFarmNews Dashboard',
       'active'          => 'Newsl Posts',
       'summary'         => $this->stats->summary(),
       'news'            => $this->news->latest($per_page, $page),

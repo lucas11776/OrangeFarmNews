@@ -157,7 +157,7 @@ class Authentication
   {
     if($redirect && $status === false)
     {
-      redirect($location);
+      redirect($location . '?r=' . uri_string());
     }
   }
 
