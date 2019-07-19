@@ -38,7 +38,7 @@
             <td><?php echo $accounts[$i]['surname']; ?></td>
             <td><?php echo $accounts[$i]['email']; ?></td>
             <td title="View Account">
-              <a href="<?php echo base_url('dashboard/account/'.$accounts[$i]['id']); ?>">
+              <a href="<?php echo base_url('dashboard/accounts/'.$accounts[$i]['id']); ?>">
                 <i class="fas fa-eye"></i>
               </a>
             </td>

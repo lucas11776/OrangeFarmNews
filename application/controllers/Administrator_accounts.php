@@ -4,6 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Administrator_accounts extends CI_Controller
 {
   /**
+   *
+   */
+  private const SUPER_ADMIN = array(
+    'thembangubeni04@gmail.com'
+  );
+
+  /**
    * Dashboard News View Pages
    *
    * @param   string
@@ -61,9 +68,72 @@ class Administrator_accounts extends CI_Controller
     # Administrator
     $this->auth->administrator();
 
+    // get user account
     $account = $this->account->get(array('id' => $user_id))[0] ?? false;
 
-    if($account == false)
+    # check if user exist
+    if($this->account_exist($account, $user_id) === false)
+    {
+      return;
+    }
+
+    # page details
+    $page_details = array(
+      'title'           => $this->account->get_account_name($account),
+      'description'     => '',
+      'picture'         => $account['picture'],
+      'active'          => 'Edit Account',
+      'account'         => $account,
+      'summary'         => $this->stats->summary(),
+      'unread_messages' => $this->contect->get(array('seen' => 0), $this->contect::UNREAD_MESSAGES_LIMIT)
+    );
+
+    # check if role is valid
+    $this->form_validation->set_rules('role', 'role', 'callback_role_exist');
+
+    # check if user has submit role change
+    if($this->form_validation->run() === false)
+    {
+      # page
+      $this->view('account_single', $page_details);
+
+      return;
+    }
+    if($this->account->change_role($account['id'], $this->input->post('role')));
+    {
+      // updated account is changed
+      $page_details['account']['role'] = $this->input->post('role');
+
+      # page
+      $this->view('account_single', $page_details);
+    }
+
+    redirect(uri_string());
+  }
+
+  public function role_exist($role)
+  {
+    # check if role exist
+    if(isset($this->account::ROLE[$role]) === false)
+    {
+      $this->form_validation->set_message('role_exist', 'The {field} field does not exist please select correct role.');
+
+      return false;
+    }
+    
+    return true;
+  }
+
+  private function account_exist($account, $user_id)
+  {
+    // check if user id is interge
+    if(is_numeric($user_id) === false)
+    {
+      return false;
+    }
+
+    # super administrator validation
+    if($account == false || $this->account->user_super_admin($account))
     {
       # page details
       $page_details = array(
@@ -80,20 +150,9 @@ class Administrator_accounts extends CI_Controller
       $this->load->view('404', $page_details);
       $this->load->view('template/footer', $page_details);
 
-      return;
+      return false;
     }
 
-    # page details
-    $page_details = array(
-      'title'           => $this->account->get_account_name($account),
-      'description'     => '',
-      'picture'         => $account['picture'],
-      'active'          => 'Edit Account',
-      'account'         => $account,
-      'summary'         => $this->stats->summary(),
-      'unread_messages' => $this->contect->get(array('seen' => 0), $this->contect::UNREAD_MESSAGES_LIMIT)
-    );
-
-    $this->view('account_single', $page_details);
+    return true;
   }
 }

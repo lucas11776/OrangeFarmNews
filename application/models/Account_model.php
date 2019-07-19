@@ -8,7 +8,7 @@ class Account_model extends CI_Model
    *
    * @var string
    */
-  public const PICTURE_PATH = '/upload/accounts/picture/';
+  public const PICTURE_PATH = '/uploads/accounts/pictures/';
 
   /**
    * Defualt Picture
@@ -22,7 +22,25 @@ class Account_model extends CI_Model
    *
    * @var array
    */
-  public const ROLE = array(0 => 'guest', 1 => 'user', 2 => 'editor', 3 => 'administrator');
+  public const ROLE = array(0 => 'blocked', 1 => 'user', 2 => 'editor', 3 => 'administrator');
+
+  /**
+   * Accounts With Super Administrator Privileges
+   *
+   * @var array
+   */
+  private const SUPER_ADMIN = array('thembangubeni04@gmail.com');
+
+  /**
+   * Check if user account is super administrator
+   *
+   * @param   array
+   * @return  boolean
+   */
+  public function user_super_admin(array $account)
+  {
+    return in_array($account['email'] ?? '', $this::SUPER_ADMIN) && !in_array($this->auth->account('email'), $this::SUPER_ADMIN);
+  }
 
   /**
    * Get Account From Databae
@@ -79,7 +97,7 @@ class Account_model extends CI_Model
     $data = array(
       'username' => $account['username'],
       'email'    => $account['email'],
-      'picture'  => base_url($account['picture'] ?? $this::PICTURE_PATH.$this::PICTURE),
+      'picture'  => $account['picture'] ?? base_url($this::PICTURE_PATH.$this::PICTURE),
       'role'     => 1, # set user role to user on account create
       'name'     => $account['name']    ?? '',
       'surname'  => $account['surname'] ?? '',
@@ -199,6 +217,12 @@ class Account_model extends CI_Model
   {
     return $this->db->where($where)
                     ->update('accounts', array('password' => $password));
+  }
+
+  public function change_role(int $id, int $role)
+  {
+    return $this->db->where(array('id' => $id))
+                    ->update('accounts', array('role' => $role));
   }
 
   /**
