@@ -156,9 +156,7 @@ class Account_model extends CI_Model
    */
   public function search(array $like, int $limit = 10, int $offset = 0)
   {
-    $this->like($like);
-
-    return $this->select()
+    return $this->like($like)
                 ->order_by('id', 'DESC')
                 ->get('accounts', $limit, $offset)
                 ->result_array();
@@ -204,6 +202,8 @@ class Account_model extends CI_Model
       # add one to loop count
       ++$index;
     }
+
+    return $this->db;
   }
 
   /**

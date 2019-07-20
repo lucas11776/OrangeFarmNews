@@ -165,10 +165,10 @@
           <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Manage Post:</h6>
-              <a class="collapse-item" href="buttons.html">
+              <a class="collapse-item" href="<?php echo base_url('dashboard/my/news'); ?>">
                 <i class="fas fa-edit pr-1 text-primary"></i> News
               </a>
-              <a class="collapse-item" href="buttons.html">
+              <a class="collapse-item" href="<?php echo base_url('dashboard/my/blog'); ?>">
                 <i class="fas fa-rss pr-1 text-primary"></i> Blog
               </a>
             </div>

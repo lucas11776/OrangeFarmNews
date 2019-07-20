@@ -59,6 +59,40 @@ class Administrator_accounts extends CI_Controller
   }
 
   /**
+   * @Route (dashboard/news/search)
+   */
+  public function search()
+  {
+    # check if user administrator
+    $this->auth->administrator();
+
+    # get number of news in database
+    $total = $this->stats->search_result($this->input->get('term'))['accounts'] ?? 0;
+
+    # number of result to be show per page
+    $per_page = 15;
+
+    # config pagination
+    $this->custom_pagination->user_pagination($total, $per_page);
+
+    # get page page
+    $page = is_numeric($this->input->get('page')) ? $this->input->get('page') : 0;
+
+    # page details
+    $page_details = array(
+      'title'           => 'Manage Blog Posts',
+      'description'     => 'OrangeFarmNews Dashboard',
+      'active'          => 'Blog Posts',
+      'summary'         => $this->stats->summary(),
+      'accounts'        => $this->account->search(array('username' => $this->input->get('term'), 'email' => $this->input->get('term')), $per_page, $page),
+      'unread_messages' => $this->contect->get(array('seen' => 0), $this->contect::UNREAD_MESSAGES_LIMIT)
+    );
+
+    # page
+    $this->view('accounts', $page_details);
+  }
+
+  /**
    *
    *
    *

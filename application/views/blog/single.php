@@ -1,26 +1,3 @@
-<nav id="navbar-example2" class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <ul class="nav nav-pills">
-    <li class="nav-item">
-      <a class="nav-link" href="<?php echo base_url(uri_string().'#fat'); ?>">@fat</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#mdo">@mdo</a>
-    </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#one">one</a>
-        <a class="dropdown-item" href="#two">two</a>
-        <div role="separator" class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#three">three</a>
-      </div>
-    </li>
-  </ul>
-</nav>
-
-
-
 <!-- ##### Footer Add Area Start ##### -->
 <div class="footer-add-area">
     <div class="container">
@@ -75,11 +52,6 @@
   </div>
 </div>
 <!-- ##### Reply Comment Model End ##### -->
-
-<!-- Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#delete-comment-model">
-  Launch demo modal
-</button> -->
 
 <!-- ##### Delete Comment Model Start ##### -->
 <div class="modal fade" id="delete-comment-model" tabindex="-1" role="dialog" aria-labelledby="News comment confirmation model" aria-hidden="true">
