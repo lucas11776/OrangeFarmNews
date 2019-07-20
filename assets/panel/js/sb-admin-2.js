@@ -46,26 +46,41 @@
     e.preventDefault();
   });
 
-  // Quill text editor
-  var editorTextArea = new Quill('#editor', {
-    debug: 'info',
-    placeholder: 'Compose Text...',
-    theme: 'snow'
+  // Populate hidden input value
+  $('.hidden-value-button').on('click', function(){
+    $('.hidden-value-input').val($(this).val())
   });
 
-  // get Quill josn Delta as JSON string
-  // decode Quill Delta string to Object
-  // assign Quill Delta object to quill
-  editorTextArea.setText($('.quill-textarea').val());
+  // Quill text edit
+  var editorTextArea = null;
 
-  // Event Listerner #editor-text-area
-  editorTextArea.on('editor-change', function() {
-    // assign text to hidden text area for form submit
-    $('.quill-textarea').val($('.ql-editor').html());
-    // get Quill Delta object
-    // encode Quill Delta object to string
-    // assing Quill Delta object to hidden (Quill textarea)
-  });
+  // check if quill input textarea exist
+  if($('#editor').get(0) !== undefined) {
+    // Quill text editor
+    editorTextArea = new Quill('#editor', {
+      debug: 'info',
+      placeholder: 'Compose Text...',
+      theme: 'snow'
+    });
+  }
+
+  // check if Quill input textarea is avalible
+  if(editorTextArea !== null) {
+    // get Quill josn Delta as JSON string
+    // decode Quill Delta string to Object
+    // assign Quill Delta object to quill
+    editorTextArea.setText($('.quill-textarea').val());
+
+    // Event Listerner #editor-text-area
+    editorTextArea.on('editor-change', function() {
+      // assign text to hidden text area for form submit
+      $('.quill-textarea').val($('.ql-editor').html());
+      // get Quill Delta object
+      // encode Quill Delta object to string
+      // assing Quill Delta object to hidden (Quill textarea)
+    });
+  }
+
 
 
 })(jQuery); // End of use strict

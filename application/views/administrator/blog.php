@@ -37,7 +37,11 @@
                 </a>
               </li>
               <li style="padding: 10px;" class="list-group-item list-group-item-danger" title="Delete news post">
-                <button class="btn btn-circle btn-sm p-0 m-0" data-toggle="modal" data-target="#delete-news-model">
+                <button class="btn btn-circle btn-sm p-0 m-0 hidden-value-button"
+                        value="<?php echo $blog[$i]['id']; ?>"
+                        type="button"
+                        data-toggle="modal"
+                        data-target="#delete-news-model">
                   <i class="fas fa-trash text-danger"></i>
                 </button>
               </li>
@@ -59,7 +63,11 @@
 
 <!-- ##### Delete Comment Model Start ##### -->
 <div class="modal fade" id="delete-news-model" tabindex="-1" role="dialog" aria-labelledby="News comment confirmation model" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered " role="document">
+  <?php echo form_open('dashboard/blog/delete', array('class' => 'modal-dialog modal-dialog-centered', 'role' => 'document')); ?>
+    <input type="hidden" name="redirect" value="<?php echo uri_string(); ?>">
+    <input type="hidden" name="page" value="<?php echo $this->input->get('page'); ?>">
+    <input type="hidden" name="term" value="<?php echo $this->input->get('term'); ?>">
+    <input type="hidden" name="blog_id" class="hidden-value-input">
     <div class="modal-content border border-danger">
       <div class="modal-header">
         <h5 class="modal-title text-muted" id="exampleModalCenterTitle"><span class="fa fa-trash-o color"></span> Confirmation</h5>
@@ -69,11 +77,11 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal"><span class="fa fa-close"></span> Cancel</button>
-        <button type="button" class="btn btn-danger">
+        <button type="submit" class="btn btn-danger">
           <span class="fa fa-trash-o"></span> Delete
         </button>
       </div>
     </div>
-  </div>
+  <?php echo form_close(); ?>
 </div>
 <!-- ##### Delete Comment Model End ##### -->

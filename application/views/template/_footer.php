@@ -45,7 +45,7 @@
   <script src="<?php echo base_url('assets/panel/vendor/quill/quill.js'); ?>"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="<?php echo base_url('assets/panel/js/sb-admin-2.min.js'); ?>"></script>
+  <script src="<?php echo base_url('assets/panel/js/sb-admin-2.js'); ?>"></script>
 
   </body>
 

@@ -252,4 +252,15 @@ class Blog_model extends CI_Model
   {
     return $this->db->where($where)->update('blog', $update);
   }
+
+   /**
+   * Detele News Post
+   * 
+   * @param   array
+   * @return  boolean
+   */
+  public function delete(array $where)
+  {
+    return $this->db->where($where)->delete('blog');
+  }
 }

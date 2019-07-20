@@ -8,43 +8,46 @@
 <div class="card-columns col-12">
   <?php for($i = 0; $i < count($news); $i++): ?>
     <!-- News Item -->
-
-      <div class="card mb-3 shadow-sm">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img src="<?php echo $news[$i]['picture']; ?>"
-                 height="100%;"
-                 class="card-img"
-                 style="border-top-right-radius: 0; border-bottom-right-radius: 0;"
-                 alt="...">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h6 class="card-title"><?php echo word_limiter($news[$i]['title'], 8); ?></h6>
-              <p class="card-text">
-                <small class="text-muted">
-                  Posted <span class="fas fa-clock text-primary"></span> <?php echo date('d F, Y', strtotime($news[$i]['date'])); ?>
-                  <i class="fas fa-user text-primary"></i> <i>by</i>
-                  <a href="<?php echo base_url('dashboard/account/' . $news[$i]['id']); ?>">
-                    <?php echo $news[$i]['username']; ?>
-                  </a>
-                </small>
-              </p>
-              <ul class="list-group list-group-sm list-group-horizontal">
-                <li style="padding: 10px;"  class="list-group-item list-group-item-light" title="View news post">
-                  <a class="btn btn-circle btn-sm" href="<?php echo base_url('news/' . $news[$i]['slug']); ?>">
-                    <i class="fas fa-glasses"></i>
-                  </a>
-                </li>
-                <li style="padding: 10px;" class="list-group-item list-group-item-danger" title="Delete news post">
-                  <button class="btn btn-circle btn-sm p-0 m-0" data-toggle="modal" data-target="#delete-news-model">
-                    <i class="fas fa-trash text-danger"></i>
-                  </button>
-                </li>
-              </ul>
-            </div>
+    <div class="card mb-3 shadow-sm">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="<?php echo $news[$i]['picture']; ?>"
+               height="100%;"
+               class="card-img"
+               style="border-top-right-radius: 0; border-bottom-right-radius: 0;"
+               alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h6 class="card-title"><?php echo word_limiter($news[$i]['title'], 8); ?></h6>
+            <p class="card-text">
+              <small class="text-muted">
+                Posted <span class="fas fa-clock text-primary"></span> <?php echo date('d F, Y', strtotime($news[$i]['date'])); ?>
+                <i class="fas fa-user text-primary"></i> <i>by</i>
+                <a href="<?php echo base_url('dashboard/account/' . $news[$i]['id']); ?>">
+                  <?php echo $news[$i]['username']; ?>
+                </a>
+              </small>
+            </p>
+            <ul class="list-group list-group-sm list-group-horizontal">
+              <li style="padding: 10px;"  class="list-group-item list-group-item-light" title="View news post">
+                <a class="btn btn-circle btn-sm" href="<?php echo base_url('news/' . $news[$i]['slug']); ?>">
+                  <i class="fas fa-glasses"></i>
+                </a>
+              </li>
+              <li style="padding: 10px;" class="list-group-item list-group-item-danger" title="Delete news post">
+                <button class="btn btn-circle btn-sm p-0 m-0 hidden-value-button"
+                        value="<?php echo $news[$i]['id']; ?>"
+                        type="button"
+                        data-toggle="modal"
+                        data-target="#delete-news-model">
+                  <i class="fas fa-trash text-danger"></i>
+                </button>
+              </li>
+            </ul>
           </div>
         </div>
+      </div>
     </div>
   <?php endfor; ?>
 </div>
@@ -59,7 +62,11 @@
 
 <!-- ##### Delete Comment Model Start ##### -->
 <div class="modal fade" id="delete-news-model" tabindex="-1" role="dialog" aria-labelledby="News comment confirmation model" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered " role="document">
+  <?php echo form_open('dashboard/news/delete', array('class' => 'modal-dialog modal-dialog-centered', 'role' => 'document')); ?>
+    <input type="hidden" name="redirect" value="<?php echo uri_string(); ?>">
+    <input type="hidden" name="page" value="<?php echo $this->input->get('page'); ?>">
+    <input type="hidden" name="term" value="<?php echo $this->input->get('term'); ?>">
+    <input type="hidden" name="news_id" class="hidden-value-input">
     <div class="modal-content border border-danger">
       <div class="modal-header">
         <h5 class="modal-title text-muted" id="exampleModalCenterTitle"><span class="fa fa-trash-o color"></span> Confirmation</h5>
@@ -69,11 +76,11 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal"><span class="fa fa-close"></span> Cancel</button>
-        <button type="button" class="btn btn-danger">
+        <button type="submit" class="btn btn-danger">
           <span class="fa fa-trash-o"></span> Delete
         </button>
       </div>
     </div>
-  </div>
+  <?php echo form_close(); ?>
 </div>
 <!-- ##### Delete Comment Model End ##### -->

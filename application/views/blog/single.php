@@ -31,7 +31,7 @@
                     <div class="row">
                         <div class="col-12">
                             <input type="hidden" name="redirect" value="<?php echo uri_string(); ?>">
-                            <input type="hidden" name="comment_id" class="comment-reply-id">
+                            <input type="hidden" name="comment_id" class="hidden-value-input">
                             <input type="hidden" name="blog_id" value="<?php echo $single_blog['id']; ?>">
                             <textarea name="comment"
                                       class="form-control"

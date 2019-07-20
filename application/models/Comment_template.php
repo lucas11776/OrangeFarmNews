@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Comment_view_model extends CI_Model
+class Comment_template extends CI_Model
 {
   /**
    * Page Comments

@@ -293,3 +293,46 @@
   <?php
   # End Hide Navbar If Page
   endif; ?>
+
+          <div class="col-12">
+            <div class="row align-items-center">
+              <div class="col-12">
+                <?php if($this->session->flashdata('alert-success')): ?>
+                  <!-- Alert Success -->
+                  <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
+                    <i class="fa fa-check"></i> <?php echo $this->session->flashdata('alert-success'); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                <?php endif; ?>
+                <?php if($this->session->flashdata('alert-info')): ?>
+                  <!-- Alert Info -->
+                  <div class="alert alert-info alert-dismissible fade show mt-5" role="alert">
+                    <i class="fa fa-info-circle"></i> <?php echo $this->session->flashdata('alert-info'); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                <?php endif; ?>
+                <?php if($this->session->flashdata('alert-warning')): ?>
+                  <!-- Alert Warning -->
+                  <div class="alert alert-warning alert-dismissible fade show mt-5" role="alert">
+                    <i class="fa fa-warning"></i> <?php echo $this->session->flashdata('alert-warning'); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                <?php endif; ?>
+                <?php if($this->session->flashdata('alert-danger')): ?>
+                  <!-- Alert Danger -->
+                  <div class="alert alert-danger alert-dismissible fade show mt-5" role="alert">
+                    <i class="fa fa-close"></i>  <?php echo $this->session->flashdata('alert-danger'); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                <?php endif; ?>
+              </div>
+            </div>
+          </div>

@@ -250,4 +250,15 @@ class News_model extends CI_Model
   {
     return $this->db->where($where)->update('news', $update);
   }
+
+  /**
+   * Detele News Post
+   * 
+   * @param   array
+   * @return  boolean
+   */
+  public function delete(array $where)
+  {
+    return $this->db->where($where)->delete('news');
+  }
 }

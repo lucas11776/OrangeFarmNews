@@ -147,13 +147,13 @@ $autoload['model'] = array(
   'blog_model'            => 'blog',
   'news_comments_model'   => 'news_comments',
   'blog_comments_model'   => 'blog_comments',
-  'comment_view_model'    => 'comments_view',
   'newsletter_model'      => 'newsletter',
   'contect_model'         => 'contect',
   'pagination_model'      => 'custom_pagination',
   'panel_model'           => 'panel',
   'statistics_model'      => 'stats',
   // Templates ( _template )
+  'comment_template'         => 'comments_view',
   'mail_newsletter_template' => 'newsletter_template',
   'mail_notify_template'     => 'notify_template'
 );
