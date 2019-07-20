@@ -32,7 +32,7 @@ class Administrator_search extends CI_Controller
     $page_details = array(
       'result'          => '',
       'active'          => 'Search Result',
-      'summary'         => $this->stats->summary(),
+      'summary'         => $this->stats->search_result($term),
       'unread_messages' => $this->contect->get(array('seen' => 0), $this->contect::UNREAD_MESSAGES_LIMIT)
     );
 

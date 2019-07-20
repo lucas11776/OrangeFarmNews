@@ -21,6 +21,9 @@ class Message extends CI_Controller
    */
   public function index()
   {
+    # check if user is admin
+    $this->auth->administrator();
+
     # page details
     $page_details = array(
       'title'           => 'Inbox (messages).',

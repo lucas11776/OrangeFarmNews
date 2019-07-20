@@ -60,7 +60,7 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
-    
+
       <!-- Heading -->
       <div class="sidebar-heading">
         Accounts
@@ -98,7 +98,7 @@
           </div>
         </li>
       <?php endif; ?>
-      
+
 
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -202,11 +202,19 @@
 
           <?php if($this->auth->administrator(false)): ?>
             <!-- Topbar Search -->
-            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <?php echo form_open('dashboard/search', array(
+              'method' => 'GET',
+              'class' => 'd-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search')) ?>
               <div class="input-group">
-                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                <input type="text"
+                      name="term"
+                       class="form-control bg-light border-0 small"
+                       placeholder="Search..."
+                       value="<?php echo $this->input->get('term'); ?>"
+                       aria-label="Search"
+                       aria-describedby="basic-addon2">
                 <div class="input-group-append">
-                  <button class="btn btn-primary" type="button">
+                  <button class="btn btn-primary" type="submit">
                     <i class="fas fa-search fa-sm"></i>
                   </button>
                 </div>
@@ -217,25 +225,7 @@
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
-            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-            <li class="nav-item dropdown no-arrow d-sm-none">
-              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-search fa-fw"></i>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                <form class="form-inline mr-auto w-100 navbar-search">
-                  <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search fa-sm"></i>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </li>
+
 
             <?php if($this->auth->administrator(false)): ?>
               <!-- Nav Item - Messages -->
@@ -261,7 +251,10 @@
                       </div>
                     </a>
                   <?php endfor; ?>
-                  <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                  <a class="dropdown-item text-center small text-gray-500"
+                     href="<?php echo base_url('dashboard/inbox'); ?>">
+                    Read More Messages
+                  </a>
                 </div>
               </li>
               <div class="topbar-divider d-none d-sm-block"></div>
