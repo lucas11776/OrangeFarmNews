@@ -112,11 +112,11 @@
                   </a>
                 </div>
                 <div class="post-data">
-                  <a href="<?php echo base_url('news/category/' . $most_commented[$i]['category']); ?>" class="post-catagory">
+                  <a href="<?php echo base_url('blog/' . $most_commented[$i]['category']); ?>" class="post-catagory">
                     <?php echo $most_commented[$i]['category']; ?>
                   </a>
                   <div class="post-meta">
-                    <a href="<?php echo base_url('news/' . $most_commented[$i]['slug']); ?>" class="post-title">
+                    <a href="<?php echo base_url('blog/' . $most_commented[$i]['slug']); ?>" class="post-title">
                       <h6><?php echo word_limiter($most_commented[$i]['title'], 15); ?></h6>
                     </a>
                     <p class="post-date"><span class="fa fa-clock-o color"></span> <?php echo date('h:i A | F d', strtotime($most_commented[$i]['date'])); ?></p>
