@@ -124,7 +124,12 @@
                 <!-- Nav Start -->
                 <div class="classynav">
                   <ul>
-                    <li class="<?php echo $active == 'home' || $active == '' ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>">Home</a></li>
+                    <li class="<?php echo $active == 'home' || $active == '' ? 'active' : ''; ?>">
+                      <a href="<?php echo base_url(); ?>">Home</a>
+                    </li>
+                    <?php if($this->auth->user(false)): ?>
+                      <li><a href="<?php echo base_url('my/account'); ?>"><i class="fa fa-user"></i> My Account</a></li>
+                    <?php endif; ?>
                     <li class="<?php echo $active == 'news' ? 'active' : ''; ?>"><a href="<?php echo base_url('news'); ?>">News</a></li>
                     <li class="<?php echo $active == 'blog' ? 'active' : ''; ?>"><a href="<?php echo base_url('blog'); ?>">Blog</a></li>
                     <li class="<?php echo $active == 'category' ? 'active' : ''; ?>"><a href="#">Category</a>
@@ -157,6 +162,7 @@
                       <li class="<?php echo $active == 'upload' ? 'active' : ''; ?>"><a href="#"><i class="fa fa-cloud-upload"></i> Upload</a>
                         <ul class="dropdown">
                           <li><a href="<?php echo base_url('dashboard/upload/news'); ?>"><i class="fa fa-newspaper-o color"></i> News</a></li>
+                          <li><a href="<?php echo base_url('dashboard/upload/blog'); ?>"><i class="fa fa-rss color"></i> Blog</a></li>
                         </ul>
                       </li>
                       <li><a href="<?php echo base_url('dashboard'); ?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>

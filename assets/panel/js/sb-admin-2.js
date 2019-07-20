@@ -46,20 +46,25 @@
     e.preventDefault();
   });
 
-  // Quill TextArea 
+  // Quill text editor
   var editorTextArea = new Quill('#editor', {
     debug: 'info',
     placeholder: 'Compose Text...',
     theme: 'snow'
   });
 
-  // set Quill Content
+  // get Quill josn Delta as JSON string
+  // decode Quill Delta string to Object
+  // assign Quill Delta object to quill
   editorTextArea.setText($('.quill-textarea').val());
 
   // Event Listerner #editor-text-area
   editorTextArea.on('editor-change', function() {
     // assign text to hidden text area for form submit
     $('.quill-textarea').val($('.ql-editor').html());
+    // get Quill Delta object
+    // encode Quill Delta object to string
+    // assing Quill Delta object to hidden (Quill textarea)
   });
 
 

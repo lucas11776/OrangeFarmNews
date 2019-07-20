@@ -60,11 +60,11 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
+    
       <!-- Heading -->
       <div class="sidebar-heading">
         Accounts
       </div>
-
       <!-- Nav Item - My Account -->
       <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url($this->auth->administrator(false) ? 'dashboard/my/account' : 'my/account'); ?>">
@@ -72,119 +72,111 @@
           <span>My Account</span></a>
       </li>
 
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Accounts</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Accounts By Role:</h6>
-            <a class="collapse-item" href="buttons.html">
-              <i class="fas fa-exclamation-triangle pr-1 text-primary"></i> Blocked
-            </a>
-            <a class="collapse-item" href="buttons.html">
-              <i class="fas fa-user pr-1 text-primary"></i> User
-            </a>
-            <a class="collapse-item" href="buttons.html">
-              <i class="fas fa-edit pr-1 text-primary"></i> Editor
-            </a>
-            <a class="collapse-item" href="buttons.html">
-              <i class="fas fa-key pr-1 text-primary"></i> Administrator
-            </a>
+      <?php if($this->auth->administrator(false)): ?>
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Accounts</span>
+          </a>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Accounts By Role:</h6>
+              <a class="collapse-item" href="buttons.html">
+                <i class="fas fa-exclamation-triangle pr-1 text-primary"></i> Blocked
+              </a>
+              <a class="collapse-item" href="buttons.html">
+                <i class="fas fa-user pr-1 text-primary"></i> User
+              </a>
+              <a class="collapse-item" href="buttons.html">
+                <i class="fas fa-edit pr-1 text-primary"></i> Editor
+              </a>
+              <a class="collapse-item" href="buttons.html">
+                <i class="fas fa-key pr-1 text-primary"></i> Administrator
+              </a>
+            </div>
           </div>
-        </div>
-      </li>
+        </li>
+      <?php endif; ?>
+      
 
       <!-- Divider -->
       <hr class="sidebar-divider">
 
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Manager
-      </div>
-
-      <!-- Nav Item - My Account -->
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('dashboard/accounts');?>">
-          <i class="fas fa-fw fa-users"></i>
-          <span>Accounts</span>
-        </a>
-      </li>
-
-      <!-- Nav Item - My Account -->
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('dashboard/news');?>">
-          <i class="fas fa-fw fa-newspaper"></i>
-          <span>News Posts</span>
-        </a>
-      </li>
-
-      <!-- Nav Item - My Account -->
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('dashboard/blog');?>">
-          <i class="fas fa-fw fa-rss"></i>
-          <span>Blog Posts</span>
-        </a>
-      </li>
-
-      <!-- Nav Item - My Account -->
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('dashboard/newsletter');?>">
-          <i class="fas fa-fw fa-envelope-open-text"></i>
-          <span>Newsletters</span>
-        </a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Manage Content
-      </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Upload</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Upload Content:</h6>
-            <a class="collapse-item" href="<?php echo base_url('dashboard/upload/news'); ?>">
-              <i class="fas fa-edit pr-1 text-primary"></i> News
-            </a>
-            <a class="collapse-item" href="<?php echo base_url('dashboard/upload/blog'); ?>">
-              <i class="fas fa-rss pr-1 text-primary"></i> Blog
-            </a>
-          </div>
+      <?php if($this->auth->administrator(false)): ?>
+        <!-- Heading -->
+        <div class="sidebar-heading">
+          Manager
         </div>
-      </li>
+        <!-- Nav Item - My Account -->
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo base_url('dashboard/accounts');?>">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Accounts</span>
+          </a>
+        </li>
+        <!-- Nav Item - My Account -->
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo base_url('dashboard/news');?>">
+            <i class="fas fa-fw fa-newspaper"></i>
+            <span>News Posts</span>
+          </a>
+        </li>
+        <!-- Nav Item - My Account -->
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo base_url('dashboard/blog');?>">
+            <i class="fas fa-fw fa-rss"></i>
+            <span>Blog Posts</span>
+          </a>
+        </li>
+         <!-- Divider -->
+        <hr class="sidebar-divider">
+      <?php endif; ?>
 
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages1" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>My Posts</span>
-        </a>
-        <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Manage Post:</h6>
-            <a class="collapse-item" href="buttons.html">
-              <i class="fas fa-edit pr-1 text-primary"></i> News
-            </a>
-            <a class="collapse-item" href="buttons.html">
-              <i class="fas fa-rss pr-1 text-primary"></i> Blog
-            </a>
-          </div>
+      <?php if($this->auth->editor(false)): ?>
+        <!-- Heading -->
+        <div class="sidebar-heading">
+          Manage Content
         </div>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Upload</span>
+          </a>
+          <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Upload Content:</h6>
+              <a class="collapse-item" href="<?php echo base_url('dashboard/upload/news'); ?>">
+                <i class="fas fa-edit pr-1 text-primary"></i> News
+              </a>
+              <a class="collapse-item" href="<?php echo base_url('dashboard/upload/blog'); ?>">
+                <i class="fas fa-rss pr-1 text-primary"></i> Blog
+              </a>
+            </div>
+          </div>
+        </li>
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages1" aria-expanded="true" aria-controls="collapsePages">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>My Posts</span>
+          </a>
+          <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Manage Post:</h6>
+              <a class="collapse-item" href="buttons.html">
+                <i class="fas fa-edit pr-1 text-primary"></i> News
+              </a>
+              <a class="collapse-item" href="buttons.html">
+                <i class="fas fa-rss pr-1 text-primary"></i> Blog
+              </a>
+            </div>
+          </div>
+        </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+      <?php endif; ?>
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
@@ -208,17 +200,19 @@
             <i class="fa fa-bars"></i>
           </button>
 
-          <!-- Topbar Search -->
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
+          <?php if($this->auth->administrator(false)): ?>
+            <!-- Topbar Search -->
+            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+              <div class="input-group">
+                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <button class="btn btn-primary" type="button">
+                    <i class="fas fa-search fa-sm"></i>
+                  </button>
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
+          <?php endif; ?>
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -243,34 +237,35 @@
               </div>
             </li>
 
-            <!-- Nav Item - Messages -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-envelope fa-fw"></i>
-                <!-- Counter - Messages -->
-                <span class="badge badge-danger badge-counter"><?php echo $summary['message']; ?></span>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                <h6 class="dropdown-header">
-                  Unread Messages
-                </h6>
-                <?php for($i = 0; $i < count($unread_messages); $i++): ?>
-                  <a class="dropdown-item d-flex align-items-center" href="<?php echo base_url('dashboard/inbox/' . $unread_messages[$i]['id']); ?>">
-                    <div class="<?php echo $unread_messages[$i]['seen'] == 0 ? 'font-weight-bold' : ''; ?>">
-                      <div class="text-truncate"><?php echo word_limiter($unread_messages[$i]['message'], 15); ?></div>
-                      <div class="small text-gray-500">
-                        <?php echo $unread_messages[$i]['name']; ?> <?php echo $unread_messages[$i]['name']; ?> ·
-                        <?php echo date('h:ia d F Y'); ?>
+            <?php if($this->auth->administrator(false)): ?>
+              <!-- Nav Item - Messages -->
+              <li class="nav-item dropdown no-arrow mx-1">
+                <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-envelope fa-fw"></i>
+                  <!-- Counter - Messages -->
+                  <span class="badge badge-danger badge-counter"><?php echo $summary['message']; ?></span>
+                </a>
+                <!-- Dropdown - Messages -->
+                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                  <h6 class="dropdown-header">
+                    Unread Messages
+                  </h6>
+                  <?php for($i = 0; $i < count($unread_messages); $i++): ?>
+                    <a class="dropdown-item d-flex align-items-center" href="<?php echo base_url('dashboard/inbox/' . $unread_messages[$i]['id']); ?>">
+                      <div class="<?php echo $unread_messages[$i]['seen'] == 0 ? 'font-weight-bold' : ''; ?>">
+                        <div class="text-truncate"><?php echo word_limiter($unread_messages[$i]['message'], 15); ?></div>
+                        <div class="small text-gray-500">
+                          <?php echo $unread_messages[$i]['name']; ?> <?php echo $unread_messages[$i]['name']; ?> ·
+                          <?php echo date('h:ia d F Y'); ?>
+                        </div>
                       </div>
-                    </div>
-                  </a>
-                <?php endfor; ?>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-              </div>
-            </li>
-
-            <div class="topbar-divider d-none d-sm-block"></div>
+                    </a>
+                  <?php endfor; ?>
+                  <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                </div>
+              </li>
+              <div class="topbar-divider d-none d-sm-block"></div>
+            <?php endif; ?>
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
@@ -287,7 +282,7 @@
                   Profile
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="<?php echo base_url('logout'); ?>" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="<?php echo base_url('logout'); ?>">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
