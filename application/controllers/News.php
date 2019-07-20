@@ -135,7 +135,8 @@ class News extends CI_Controller
       'active'          => strtolower('category-' . $category),
       'navbar_adv'      => false,
       'category_result' => $this->news->get(array('category' => $category), $per_page, $page),
-      'most_commented'  => $this->news->most_commented(6, $page)
+      'most_commented'  => $this->news->most_commented(6, $page),
+      'latest_blog'     => $this->blog->latest($per_page - 2, $page >! $per_page ? $page - 1 : $page)
     );
 
     $this->view('category', $page_details);

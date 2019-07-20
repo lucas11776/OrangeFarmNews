@@ -70,10 +70,21 @@ class Login extends CI_Controller
     if($this->client_account['role'] == 0)
     {
       # change page title
-      $page_details['title'] = 'Account Has Been Blocked By Administrator.';
-
+      $page_details = array(
+        'title'       => 'Account Has Been Blocked By Administrator',
+        'message'     => 'Accout is block please contect us to reactive account.',
+        'description' => 'Account Block',
+        'icon'        => 'fa fa-user-o',
+        'active'      => 'Blocked',
+        'navbar_adv'  => false
+      );
+      
       # page
-      $this->view('account_blocked', $page_details);
+      $this->load->view('template/navbar', $page_details);
+      $this->load->view('404', $page_details);
+      $this->load->view('template/footer', $page_details);
+
+      return;
     }
 
     # client account uid and current client ip address to prevent cookie hijecking and convert token to json object

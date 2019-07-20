@@ -138,16 +138,18 @@
 
           <!-- Latest Comments Widget -->
           <div class="latest-comments-widget mt-5 pt-4 pb-5">
-            <h3 class="text-center">Blog Post</h3>
-            <?php for($i = 0; $i < 5; $i++): ?>
+            <h3 class="text-center">Latest Blog</h3>
+            <?php for($i = 0; $i < count($latest_blog); $i++): ?>
               <!-- Single Comments -->
               <div class="single-comments d-flex">
                 <div class="comments-thumbnail mr-15">
-                  <img src="<?php echo base_url('assets/default/img/bg-img/29.jpg'); ?>" alt="">
+                  <img src="<?php echo $latest_blog[$i]['picture']; ?>" alt="<?php echo $latest_blog[$i]['title']; ?>">
                 </div>
                 <div class="comments-text">
-                <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
-                <p>06:34 am, April 14, 2018</p>
+                <a href="<?php echo base_url('blog/' . $latest_blog[$i]['slug']); ?>">
+                  <?php echo word_limiter($latest_blog[$i]['title'], 10); ?>
+                </a>
+                <p><?php echo date('h:i a, F d, Y', strtotime($latest_blog[$i]['date'])); ?></p>
                 </div>
               </div>
             <?php endfor; ?>
