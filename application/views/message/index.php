@@ -25,12 +25,17 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                 <div class="dropdown-header">Dropdown Header:</div>
-                <a class="dropdown-item text-muted" href="<?php echo base_url('dashboard/inbox/' . $messages[$i]['id']); ?>">
+                <a class="dropdown-item text-success" href="<?php echo base_url('dashboard/inbox/' . $messages[$i]['id']); ?>">
                   <i class="fas fa-envelope"></i> Read Message
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-danger" href="#" data-toggle="modal" data-target="#delete-message-model">
-                  <i class="fas fa-trash"></i> Delete Message</a>
+                <button class="btn btn-link dropdown-item text-danger hidden-value-button"
+                        type="button"
+                        data-toggle="modal"
+                        value="<?php echo $messages[$i]['id']; ?>"
+                        data-target="#delete-message-model">
+                  <i class="fas fa-trash"></i> Delete Message
+                </button>
               </div>
             </div>
           </div>
@@ -45,40 +50,18 @@
       </div>
     <?php endfor; ?>
     <div class="col-12">
-      <ul class="pagination mt-5">
-        <li class="paginate_button page-item previous disabled" id="dataTable_previous">
-          <a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-        </li>
-        <li class="paginate_button page-item active">
-          <a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-        </li>
-        <li class="paginate_button page-item ">
-          <a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a>
-        </li>
-        <li class="paginate_button page-item ">
-          <a href="#" aria-controls="dataTable" data-dt-idx="3" tabindex="0" class="page-link">3</a>
-        </li>
-        <li class="paginate_button page-item ">
-          <a href="#" aria-controls="dataTable" data-dt-idx="4" tabindex="0" class="page-link">4</a>
-        </li>
-        <li class="paginate_button page-item ">
-          <a href="#" aria-controls="dataTable" data-dt-idx="5" tabindex="0" class="page-link">5</a>
-        </li>
-        <li class="paginate_button page-item ">
-          <a href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0" class="page-link">6</a>
-        </li>
-        <li class="paginate_button page-item next" id="dataTable_next">
-          <a href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
-        </li>
-      </ul>
+      <nav aria-label="Pagination for message">
+        <!-- ##### Pagination Link ##### -->
+        <?php echo $this->pagination->create_links(); ?>
+      </nav>
     </div>
   </div>
 </div>
 
 
 <!-- ##### Delete Comment Model Start ##### -->
-<div class="modal fade" id="delete-message-model" tabindex="-1" role="dialog" aria-labelledby="News comment confirmation model" aria-hidden="true">
-  <?php echo form_open('dashboard/news/delete', array('class' => 'modal-dialog modal-dialog-centered', 'role' => 'document')); ?>
+<div class="modal fade" id="delete-message-model" tabindex="-1" role="dialog" aria-labelledby="Delete News Modal" aria-hidden="true">
+  <?php echo form_open('dashboard/inbox/delete', array('class' => 'modal-dialog modal-dialog-centered', 'role' => 'document')); ?>
     <input type="hidden" name="redirect" value="<?php echo uri_string(); ?>">
     <input type="hidden" name="page" value="<?php echo $this->input->get('page'); ?>">
     <input type="hidden" name="message_id" class="hidden-value-input">

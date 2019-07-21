@@ -52,9 +52,7 @@ class Contect_model extends CI_Model
       $this->db->where($where);
     }
 
-    return $this->db->order_by('date', 'DESC')
-                    ->get('contect')
-                    ->result_array();
+    return $this->db->order_by('date', 'DESC')->get('contect', $limit, $offset)->result_array();
   }
 
   /**

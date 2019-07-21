@@ -138,6 +138,7 @@ class Account extends CI_Controller
     }
     else
     {
+      # success message
       $this->session->set_flashdata('account_updated', 'Account details updated.');
 
       # check if profile picture was uploaded
