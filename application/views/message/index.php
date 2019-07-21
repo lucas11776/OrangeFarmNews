@@ -5,7 +5,7 @@
     <div class="col-8">
       <p>
         <strong>Messages</strong>
-        <br/><span class="fas fa-eye text-info"></span> - <i>Unread Message</i>
+        <br/><span class="fas fa-eye text-warning"></span> - <i>Unread Message</i>
         <br/><span class="fas fa-eye text-success"></span> - <i>Read Message</i>
       </p>
     </div>
@@ -14,14 +14,14 @@
   <div class="pt-3 row">
     <?php for($i = 0; $i < count($messages); $i++): ?>
       <div class="col-12">
-        <div class="card shadow mb-4"  style="width: 100%;">
+        <div class="card shadow mb-4 border-<?php echo $messages[$i]['seen'] == 0 ? 'warning' : 'success'; ?>" style="width: 100%;">
           <!-- Card Header - Dropdown -->
           <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
             <h6 class="m-0 font-weight-bold text-primary"><?php echo "{$messages[$i]['name']} {$messages[$i]['surname']}"; ?></h6>
             <div class="dropdown no-arrow">
               <span class="pr-4 small"><i class="fas fa-clock text-primary"></i> <?php echo date('h:iA l, d M Y', strtotime($messages[$i]['date'])); ?></span>
               <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-eye fa-sm fa-fw text-info"></i>
+                <i class="fas fa-eye fa-sm fa-fw text-<?php echo $messages[$i]['seen'] == 0 ? 'warning' : 'success'; ?>"></i>
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                 <div class="dropdown-header">Dropdown Header:</div>

@@ -101,7 +101,7 @@ class Contect_model extends CI_Model
     // set message to seen if not seen
     if(($message['seen'] ?? 'null') == 0)
     {
-      // $this->db->where('id', $message['id'])->update('contect' , array('seen' => $this->auth->account('id')));
+      $this->db->where('id', $message['id'])->update('contect' , array('seen' => $this->auth->account('id')));
     }
 
     return $message;

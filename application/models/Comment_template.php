@@ -94,7 +94,7 @@ class Comment_template extends CI_Model
                                 value="'. $this->comments[$i]['id'] .'"
                                 data-toggle="modal"
                                 data-target="#reply-comment-model"
-                                class="btn btn-sm btn-outline-dark ml-4 btn-reply-comment '.(!$this->auth->user(false) ? 'd-none' : '').'">
+                                class="btn btn-sm btn-outline-dark ml-4 hidden-value-button '.(!$this->auth->user(false) ? 'd-none' : '').'">
                           <span class="fa fa-reply color"></span>
                         </button>
                       </a>
@@ -153,7 +153,7 @@ class Comment_template extends CI_Model
                                     value="'. $this->comments[$i]['id'] .'"
                                     data-toggle="modal"
                                     data-target="#reply-comment-model"
-                                    class="btn btn-sm btn-outline-dark ml-4 btn-reply-comment '.(!$this->auth->user(false) ? 'd-none' : '').'">
+                                    class="btn btn-sm btn-outline-dark ml-4 btn-reply-comment hidden-value-button '.(!$this->auth->user(false) ? 'd-none' : '').'">
                               <span class="fa fa-reply color"></span>
                             </button>
                           </a>

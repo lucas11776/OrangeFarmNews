@@ -71,7 +71,6 @@
 
     // :: 10.0 assign comment id to hidden input in reply to comment model
     $('.hidden-value-button').on('click', function(){
-      alert($(this).val());
       $('.hidden-value-input').val($(this).val())
     });
 
