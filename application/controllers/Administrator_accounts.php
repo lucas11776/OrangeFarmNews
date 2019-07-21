@@ -81,13 +81,19 @@ class Administrator_accounts extends CI_Controller
     # get page page
     $page = is_numeric($this->input->get('page')) ? $this->input->get('page') : 0;
 
+    # where clue
+    $where = array(
+      'accounts.username' => $this->input->get('term'),
+      'accounts.email' => $this->input->get('term')
+    );
+
     # page details
     $page_details = array(
       'title'           => 'Manage Blog Posts',
       'description'     => 'OrangeFarmNews Dashboard',
       'active'          => 'Blog Posts',
       'summary'         => $this->stats->summary(),
-      'accounts'        => $this->account->search(array('username' => $this->input->get('term'), 'email' => $this->input->get('term')), $per_page, $page),
+      'accounts'        => $this->account->search($where, $per_page, $page),
       'unread_messages' => $this->contect->get(array('seen' => 0), $this->contect::UNREAD_MESSAGES_LIMIT)
     );
 

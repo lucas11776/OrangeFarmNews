@@ -35,7 +35,7 @@ class Account_model extends CI_Model
    * @var array
    */
   private const SUPER_ADMIN = array('thembangubeni04@gmail.com');
-  
+
 
   /**
    * Check if user account is super administrator
@@ -48,6 +48,12 @@ class Account_model extends CI_Model
     return in_array($account['email'] ?? '', $this::SUPER_ADMIN) && !in_array($this->auth->account('email'), $this::SUPER_ADMIN);
   }
 
+  private function select()
+  {
+    return $this->db->select('accounts.*, newsletter.subscribed')
+                    ->join('newsletter', 'newsletter.email = accounts.email', 'LEFT');
+  }
+
   /**
    * Get Account From Databae
    *
@@ -56,7 +62,7 @@ class Account_model extends CI_Model
    */
   public function accounts(array $where, int $limit = null, int $offset = null)
   {
-    return $this->db->where($where)->order_by('id','DESC')->get('accounts', $limit, $offset)->result_array();
+    return $this->select()->where($where)->order_by('id','DESC')->get('accounts', $limit, $offset)->result_array();
   }
 
   /**
@@ -67,7 +73,10 @@ class Account_model extends CI_Model
    */
   public function get(array $where, int $limit = null, int $offset = null)
   {
-    return $this->db->where($where)->get('accounts', $limit, $offset)->result_array();
+    return $this->select()
+                ->where($where)
+                ->get('accounts', $limit, $offset)
+                ->result_array();
   }
 
   /**
@@ -78,7 +87,11 @@ class Account_model extends CI_Model
   */
   public function get_account(string $uid)
   {
-    return $this->db->where('username', $uid)->or_where('email', $uid)->get('accounts')->result_array()[0] ?? false;
+    return $this->select()
+                ->where('accounts.username', $uid)
+                ->or_where('accounts.email', $uid)
+                ->get('accounts')
+                ->result_array()[0] ?? false;
   }
 
   /**
@@ -168,7 +181,7 @@ class Account_model extends CI_Model
    */
   public function search(array $like, int $limit = 10, int $offset = 0)
   {
-    return $this->like($like)
+    return $this->select()->like($like)
                 ->order_by('id', 'DESC')
                 ->get('accounts', $limit, $offset)
                 ->result_array();

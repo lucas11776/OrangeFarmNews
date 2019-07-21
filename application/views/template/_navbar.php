@@ -40,10 +40,10 @@
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url(); ?>">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+        <div class="sidebar-brand-icon">
+          <i class="fas fa-fw fa-smile"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">OrangeFarm<sup class="text-dark">News</sup></div>
+        <div class="sidebar-brand-text mx-1">OrangeFarm<sup class="text-dark">News</sup></div>
       </a>
 
       <!-- Divider -->

@@ -1,7 +1,7 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-5 pb-2 pt-2">
   <h1 class="h3 mb-0 text-gray-800">
-    <span class="fas fa-newspaper text-primary"></span> Manage News Posts
+    <span class="fas fa-newspaper text-primary"></span> Manage News
   </h1>
 </div>
 <!-- Content Row -->
