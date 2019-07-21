@@ -4,18 +4,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Account_model extends CI_Model
 {
   /**
-   * Picture Director Reference
-   *
-   * @var string
-   */
-  public const PICTURE_PATH = '/uploads/accounts/pictures/';
-
-  /**
    * Defualt Picture
    *
    * @var string
    */
   public const PICTURE = 'user.png';
+
+  /**
+   * Picture Upload Configuration
+   *
+   * @var array
+   */
+  public const PICTURE_CONFIG = array(
+    'upload_path'   => 'uploads/accounts/pictures/',
+    'max_size'      => 512, # 0.5mb maximum upload size
+    'allowed_types' => array('png','jpeg','jpg')
+  );
+
 
   /**
    * Account Roles
@@ -30,6 +35,7 @@ class Account_model extends CI_Model
    * @var array
    */
   private const SUPER_ADMIN = array('thembangubeni04@gmail.com');
+  
 
   /**
    * Check if user account is super administrator
@@ -97,7 +103,7 @@ class Account_model extends CI_Model
     $data = array(
       'username' => $account['username'],
       'email'    => $account['email'],
-      'picture'  => $account['picture'] ?? base_url($this::PICTURE_PATH.$this::PICTURE),
+      'picture'  => $account['picture'] ?? base_url($this::PICTURE_CONFIG['upload_path'].$this::PICTURE),
       'role'     => 1, # set user role to user on account create
       'name'     => $account['name']    ?? '',
       'surname'  => $account['surname'] ?? '',
@@ -120,6 +126,12 @@ class Account_model extends CI_Model
       'name'     => $account['name']    ?? '',
       'surname'  => $account['surname'] ?? ''
     );
+
+    # check if profile picture isset
+    if(isset($data['picture']))
+    {
+      $data['picture'] = $account['picture'];
+    }
 
     return $this->db->where($where)
                     ->update('accounts', $account);

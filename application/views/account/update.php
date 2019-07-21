@@ -33,7 +33,7 @@
     <?php endif; ?>
     <!-- ##### Change User Details Form ##### -->
     <ul class="list-group mb-5">
-      <?php echo form_open('dashboard/my/account'); ?>
+      <?php echo form_open_multipart('dashboard/my/account'); ?>
         <li class="list-group-item active"><strong><i class="fas fa-user"></i> Personal Information</strong></li>
 
         <li class="list-group-item pb-0">

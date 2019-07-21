@@ -4,6 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Account extends CI_Controller
 {
   /**
+   * Picture
+   */
+  public $profile_picture = null;
+  /**
    * Account View Pages
    *
    * @param   string
@@ -119,7 +123,12 @@ class Account extends CI_Controller
       'surname' => $this->input->post('surname')
     );
 
-    # user ID
+    # check if profile picture has been upload
+    if(empty($this->upload->data('file_name')) === false)
+    {
+      $update['picture'] = base_url($this->account::PICTURE_CONFIG['upload_path'] . $this->upload->data('file_name'));
+    }
+
     $where = array('id' => $this->auth->account('id'));
 
     # update user account
@@ -130,9 +139,29 @@ class Account extends CI_Controller
     else
     {
       $this->session->set_flashdata('account_updated', 'Account details updated.');
+
+      # check if profile picture was uploaded
+      if(empty($this->upload->data('file_name')) === false)
+      {
+        # prev profile picture
+        $profile_picture = trim($this->auth->account('picture'), base_url());
+
+        # default picture
+        $default_picture = $this->account::PICTURE_CONFIG['upload_path'] . $this->account::PICTURE;
+
+        # check if not defualt account
+        if($profile_picture != $default_picture)
+        {
+          # check if file exist
+          if(file_exists($profile_picture))
+          {
+            unlink($profile_picture);
+          }
+        }
+      }
     }
 
-    $this->view('update', $page_details);
+    redirect(uri_string());
   }
 
   /**
@@ -166,9 +195,26 @@ class Account extends CI_Controller
   public function upload_profile_picture()
   {
     # check if picture isset
-    if(isset($_FILES['picture']))
+    if(isset($_FILES['picture']) === false)
     {
       return true;
+    }
+
+    # picture upload configuration
+    $config = $this->account::PICTURE_CONFIG;
+
+    # set file name to username
+    $config['file_name'] = $this->auth->account('username') . '-' . uniqid();
+
+    # initialize upload configuration
+    $this->upload->initialize($config);
+
+    # upload profile picture
+    if($this->upload->do_upload('picture') === false)
+    {
+      $this->form_validation->set_message('upload_profile_picture', $this->upload->display_errors('',''));
+
+      return false;
     }
 
     return true;

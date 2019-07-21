@@ -4,13 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Administrator_news extends CI_Controller
 {
   /**
-   * News Post To Delete
-   * 
-   * @var array
-   */
-  public $news_post;
-
-  /**
    * Dashboard News View Pages
    *
    * @param   string
