@@ -10,7 +10,13 @@ class Cron_jobs extends CI_controller
    */
   public function news_newsletter_cron_job()
   {
+    // current date
 
+    // search news by date
+
+    // check if they are news
+
+    // send newsletter to emails
   }
 
     /**

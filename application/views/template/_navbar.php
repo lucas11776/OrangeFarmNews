@@ -82,16 +82,16 @@
           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Accounts By Role:</h6>
-              <a class="collapse-item" href="buttons.html">
+              <a class="collapse-item" href="<?php echo base_url('dashboard/accounts?role=0'); ?>">
                 <i class="fas fa-exclamation-triangle pr-1 text-primary"></i> Blocked
               </a>
-              <a class="collapse-item" href="buttons.html">
+              <a class="collapse-item" href="<?php echo base_url('dashboard/accounts?role=1'); ?>">
                 <i class="fas fa-user pr-1 text-primary"></i> User
               </a>
-              <a class="collapse-item" href="buttons.html">
+              <a class="collapse-item" href="<?php echo base_url('dashboard/accounts?role=2'); ?>">
                 <i class="fas fa-edit pr-1 text-primary"></i> Editor
               </a>
-              <a class="collapse-item" href="buttons.html">
+              <a class="collapse-item" href="<?php echo base_url('dashboard/accounts?role=3'); ?>">
                 <i class="fas fa-key pr-1 text-primary"></i> Administrator
               </a>
             </div>
