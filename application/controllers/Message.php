@@ -110,7 +110,7 @@ class Message extends CI_Controller
 
     if($this->form_validation->run() === false)
     {
-      $this->session->set_flashdata('alert-danger', $this->form_validtion->error_array()['message_id'] ?? '');
+      $this->session->set_flashdata('alert-danger', $this->form_validation->error_array()['message_id'] ?? '');
 
       # redirect
       $this->redirect($this->input->post('redirect'));
@@ -118,11 +118,18 @@ class Message extends CI_Controller
       return;
     }
 
+    # delete message
     if($this->contect->delete(array('id' => $this->message['id'])) === false)
     {
-
-      return;
+      $this->session->set_flashdata('alert-danger', 'Something went wrong when tring to connect to database.');
     }
+    else
+    {
+      $this->session->set_flashdata('alert-success', 'Message Deleted.');
+    }
+
+    # redirect
+    $this->redirect($this->input->post('redirect'));
   }
 
   /**
@@ -145,8 +152,31 @@ class Message extends CI_Controller
     return true;
   }
 
-  private function redirect()
+    /**
+   * Redirect With GET params
+   * 
+   * @param   string
+   * @return  void
+   */
+  private function redirect(string $url)
   {
-    echo 423423;
+    # get params
+    $params = '';
+
+    # check if the search term
+    if($this->input->post('term'))
+    {
+      $params .= '?term=' . $this->input->post('term');
+    }
+
+    # check if the page
+    if(is_numeric($this->input->post('page')))
+    {
+      $params = empty($params) ? '?' : $params;
+      $params .= '&page=' . $this->input->post('page');
+    }
+
+    redirect($url . $params);
   }
+
 }

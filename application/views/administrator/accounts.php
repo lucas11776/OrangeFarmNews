@@ -56,25 +56,3 @@
   </nav>
 </div>
 <!-- Content Row -->
-
-
-<!-- ##### Delete Comment Model Start ##### -->
-<div class="modal fade" id="delete-news-model" tabindex="-1" role="dialog" aria-labelledby="News comment confirmation model" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered " role="document">
-    <div class="modal-content border border-danger">
-      <div class="modal-header">
-        <h5 class="modal-title text-muted" id="exampleModalCenterTitle"><span class="fa fa-trash-o color"></span> Confirmation</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal"><span class="fa fa-close"></span> Cancel</button>
-        <button type="button" class="btn btn-danger">
-          <span class="fa fa-trash-o"></span> Delete
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- ##### Delete Comment Model End ##### -->
