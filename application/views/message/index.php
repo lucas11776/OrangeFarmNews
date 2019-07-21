@@ -29,7 +29,7 @@
                   <i class="fas fa-envelope"></i> Read Message
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-danger" href="#">
+                <a class="dropdown-item text-danger" href="#" data-toggle="modal" data-target="#delete-message-model">
                   <i class="fas fa-trash"></i> Delete Message</a>
               </div>
             </div>
@@ -74,3 +74,28 @@
     </div>
   </div>
 </div>
+
+
+<!-- ##### Delete Comment Model Start ##### -->
+<div class="modal fade" id="delete-message-model" tabindex="-1" role="dialog" aria-labelledby="News comment confirmation model" aria-hidden="true">
+  <?php echo form_open('dashboard/news/delete', array('class' => 'modal-dialog modal-dialog-centered', 'role' => 'document')); ?>
+    <input type="hidden" name="redirect" value="<?php echo uri_string(); ?>">
+    <input type="hidden" name="page" value="<?php echo $this->input->get('page'); ?>">
+    <input type="hidden" name="message_id" class="hidden-value-input">
+    <div class="modal-content border border-danger">
+      <div class="modal-header">
+        <h5 class="modal-title text-muted" id="exampleModalCenterTitle"><span class="fa fa-trash-o color"></span> Confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal"><span class="fa fa-close"></span> Cancel</button>
+        <button type="submit" class="btn btn-danger">
+          <span class="fa fa-trash-o"></span> Delete
+        </button>
+      </div>
+    </div>
+  <?php echo form_close(); ?>
+</div>
+<!-- ##### Delete Comment Model End ##### -->

@@ -1,20 +1,26 @@
-<!-- Modal -->
-<div class="modal fade" id="deleteMessageModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+<!-- ##### Delete Comment Model Start ##### -->
+<div class="modal fade" id="delete-message-model" tabindex="-1" role="dialog" aria-labelledby="News comment confirmation model" aria-hidden="true">
+  <?php echo form_open('dashboard/news/delete', array('class' => 'modal-dialog modal-dialog-centered', 'role' => 'document')); ?>
+    <input type="hidden" name="redirect" value="<?php echo uri_string(); ?>">
+    <input type="hidden" name="page" value="<?php echo $this->input->get('page'); ?>">
+    <input type="hidden" name="message_id" class="hidden-value-input">
     <div class="modal-content border border-danger">
       <div class="modal-header">
-        <h5 class="modal-title text-danger" id="exampleModalCenterTitle"><i class="fas fa-trash"></i> Confirmation</h5>
+        <h5 class="modal-title text-muted" id="exampleModalCenterTitle"><span class="fa fa-trash-o color"></span> Confirmation</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal"><span class="fa fa-close"></span> Cancel</button>
+        <button type="submit" class="btn btn-danger">
+          <span class="fa fa-trash-o"></span> Delete
+        </button>
       </div>
     </div>
-  </div>
+  <?php echo form_close(); ?>
 </div>
+<!-- ##### Delete Comment Model End ##### -->
 
 <div class="col-12">
   <h1 class="pt-3 pb-4"><span class="fas fa-envelope"></span> Read Message</h1>
@@ -43,7 +49,7 @@
       <p class="card-text pb-5">
         <?php echo $message['message'] ?>
       </p>
-      <button class="btn btn-danger btn-md" data-toggle="modal" data-target="#deleteMessageModel">
+      <button class="btn btn-danger btn-md" data-toggle="modal" data-target="#delete-message-model">
         <strong><i class="fas fa-trash"></i> Delete</strong>
       </button>
     </div>
