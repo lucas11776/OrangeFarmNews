@@ -41,7 +41,7 @@
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url(); ?>">
         <div class="sidebar-brand-icon">
-          <i class="fas fa-fw fa-smile"></i>
+          <i class="fas fa-fw fa-home"></i>
         </div>
         <div class="sidebar-brand-text mx-1">OrangeFarm<sup class="text-dark">News</sup></div>
       </a>

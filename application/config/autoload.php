@@ -65,7 +65,8 @@ $autoload['libraries'] = array(
   'encryption',
   'authentication' => 'auth',
   'upload',
-  'pagination'
+  'pagination',
+  'rest_api'
 );
 
 /*

@@ -90,5 +90,7 @@ $route['newsletter/subscribe']            = 'newsletter/subscribe';             
 $route['newsletter/unsubscribe']          = 'newsletter/unsubscribe';             # access (all)
 $route['contect']                         = 'contect/index';                      # access (all)
 $route['logout']                          = 'logout/index';                       # access (all)
+# cron jobs
+$route['cron-job/newsletter/news']        = 'cron_jobs/news_newsletter_cron_job';  # access (all)
 $route['404_override']                    = 'page_not_found';                     # access (all)
 $route['translate_uri_dashes']            = FALSE;
