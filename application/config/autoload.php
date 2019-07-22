@@ -153,6 +153,7 @@ $autoload['model'] = array(
   'pagination_model'      => 'custom_pagination',
   'panel_model'           => 'panel',
   'statistics_model'      => 'stats',
+  'news_api_model'        => 'news_api',
   // Templates ( _template )
   'comment_template'         => 'comments_view',
   'mail_newsletter_template' => 'newsletter_template',

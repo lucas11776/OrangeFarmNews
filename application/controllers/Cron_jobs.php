@@ -23,8 +23,6 @@ class Cron_jobs extends CI_controller
     # email html template
     $html = $this->newsletter_template->html($data);
 
-    $url = 'https://newsapi.org/v2/top-headlines?country=za&apiKey=6f5a22da84764f66a110244397782353';
-
 
     # check if they are news
 
