@@ -51,7 +51,7 @@ $sidebar_news         = array_splice($latest_news, 0, 8);
               <div class="single-blog-post featured-post-2">
                 <div class="post-thumb">
                   <a href="<?php echo base_url('news/'.$dsiplay_summary_news[$i]['slug']); ?>">
-                    <img src="<?php echo $dsiplay_summary_news[$i]['picture']; ?>" alt="<?php $dsiplay_summary_news[$i]['title']; ?>">
+                    <img src="<?php echo $dsiplay_summary_news[$i]['picture']; ?>" alt="<?php echo $dsiplay_summary_news[$i]['title']; ?>">
                   </a>
                 </div>
                 <div class="post-data">
