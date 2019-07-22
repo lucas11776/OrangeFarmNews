@@ -44,7 +44,9 @@ class Home extends CI_Controller
       'active'        => 'home',
       'latest_news'   => $this->news->latest($per_page, $page),
       'news_updated'  => $this->news->latest($per_page, $page),
-      'blog_updated'  => $this->blog->latest($per_page)
+      'blog_updated'  => $this->blog->latest($per_page),
+      'local_news'    => $this->news_api->local_news(9),
+      'sport_news'    => $this->news_api->sport_news(5)
     );
 
     #page
@@ -56,7 +58,7 @@ class Home extends CI_Controller
     $data = array(
       'title'        => 'Morning News Updated',
       'article_type' => 'news',
-      'posts'        => $this->news->latest(5)     
+      'posts'        => $this->news->latest(5)
     );
     echo $this->newsletter_template->html($data);
   }
@@ -67,7 +69,7 @@ class Home extends CI_Controller
       'title'    => 'Recover Password',
       'text'     => 'Recover your password easy and fast by just click the link below.',
       'btn_text' => 'Reset Password',
-      'url'      => base_url()     
+      'url'      => base_url()
     );
     echo $this->notify_template->html($data);
   }

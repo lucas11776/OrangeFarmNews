@@ -5,7 +5,7 @@ class News_api_model extends CI_Model
 {
   public const API_KEY = '6f5a22da84764f66a110244397782353';
 
-  public function local_news(int $limit = 9)
+  public function local_news(int $limit = 10)
   {
     # request url
     $url = "https://newsapi.org/v2/top-headlines?country=za&pageSize={$limit}&apiKey=" . $this::API_KEY;
@@ -22,8 +22,20 @@ class News_api_model extends CI_Model
     return $news['articles'];
   }
 
-  public function internation_news()
+  public function sport_news(int $limit = 10)
   {
+    # request url
+    $url = "https://newsapi.org/v2/everything?q=sport&pageSize={$limit}&apiKey=" . $this::API_KEY;
 
+    # make api request
+    $news = $this->rest_api->get($url);
+
+    # check if request success
+    if(($news['status'] ?? null) != 'ok')
+    {
+      return false;
+    }
+
+    return $news['articles'];
   }
 }

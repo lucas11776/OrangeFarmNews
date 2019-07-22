@@ -133,65 +133,79 @@ $sidebar_news         = array_splice($latest_news, 0, 8);
               <h6><span class="fa fa-flag"></span> South Africa News</h6>
           </div>
           <div class="row">
-          <?php for($i = 0; $i < 9; $i++): ?>
-            <!-- Single Post -->
-            <div class="col-12 col-lg-4">
-              <div class="single-blog-post">
-                <div class="post-thumb">
-                  <a href="#">
-                    <img src="<?php echo base_url('assets/default/img/bg-img/1.jpg'); ?>" alt="">
-                  </a>
-                </div>
-                <div class="post-data">
-                  <a href="#" class="post-title">
-                    <h6>Orci varius natoque penatibus et magnis dis parturient montes.</h6>
-                  </a>
-                  <div class="post-meta">
-                    <div class="post-date"><a href="#">February 11, 2018</a></div>
+          <?php if(is_array($local_news)): ?>
+            <?php for($i = 0; $i < count($local_news); $i++): ?>
+              <!-- Single Post -->
+              <div class="col-12 col-lg-4">
+                <div class="single-blog-post">
+                  <div class="post-thumb">
+                    <a href="<?php echo $local_news[$i]['url']; ?>" target="_blank">
+                      <img src="<?php echo $local_news[$i]['urlToImage']; ?>" alt="<?php echo $local_news[$i]['title']; ?>">
+                    </a>
+                  </div>
+                  <div class="post-data">
+                    <a href="<?php echo $local_news[$i]['url']; ?>" class="post-title" target="_blank">
+                      <h6><?php echo word_limiter($local_news[$i]['title'], 10); ?></h6>
+                    </a>
+                    <div class="post-meta">
+                      <div class="post-date"><a href="#"><?php echo date('F d, Y',strtotime($local_news[$i]['publishedAt'])); ?></a></div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <?php if(($i+1) % 3 == 0 && $i != (9-1)): ?>
-              <div class="col-12 text-center pt-1 pb-5">
-                <div class="footer-add">
-                  <a href="#"><img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/holy.gif'); ?>" alt=""></a>
+              <?php if(($i+1) % 3 == 0 && $i != (9-1)): ?>
+                <div class="col-12 text-center pt-1 pb-5">
+                  <div class="footer-add">
+                    <a href="#">
+                      <img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/holy.gif'); ?>" alt="">
+                    </a>
+                  </div>
                 </div>
-              </div>
-            <?php endif; ?>
-          <?php endfor; ?>
+              <?php endif; ?>
+            <?php endfor; ?>
+          <?php else: ?>
+            <p class="text-danger">
+              <strong><i class="fa fa-close"></i> Something went wrong when tring to get South African popular news.</strong>
+            </p>
+          <?php endif; ?>
           </div>
       </div>
       <!-- World News -->
       <div class="col-12 col-md-5 col-lg-3">
         <div class="section-heading">
-          <h6><span class="fa fa-globe"></span> World News</h6>
+          <h6><span class="fa fa-football"></span> Sport</h6>
         </div>
-        <?php for($i = 0; $i < 5; $i++): ?>
-        <!-- Single Post -->
-          <div class="single-blog-post style-2">
-            <div class="post-thumb">
-              <a href="#">
-                <img src="<?php echo base_url('assets/default/img/bg-img/7.jpg'); ?>" alt="">
-              </a>
-            </div>
-            <div class="post-data">
-              <a href="#" class="post-title">
-                <h6>Orci varius natoque penatibus et magnis</h6>
-              </a>
-              <div class="post-meta">
-                <div class="post-date"><a href="#">February 11, 2018</a></div>
+        <?php if($sport_news !== false): ?>
+          <?php for($i = 0; $i < count($sport_news); $i++): ?>
+            <!-- Single Post -->
+            <div class="single-blog-post style-2">
+              <div class="post-thumb">
+                <a href="<?php echo $sport_news[$i]['url']; ?>" target="_blank">
+                  <img src="<?php echo $sport_news[$i]['urlToImage']; ?>" alt="<?php echo $sport_news[$i]['urlToImage']; ?>">
+                </a>
+              </div>
+              <div class="post-data">
+                <a href="<?php echo $sport_news[$i]['url']; ?>" class="post-title" target="_blank">
+                  <h6><?php echo word_limiter($sport_news[$i]['title'], 10); ?></h6>
+                </a>
+                <div class="post-meta">
+                  <div class="post-date"><a href="#"><?php echo date('F d, Y',strtotime($local_news[$i]['publishedAt'])); ?></a></div>
+                </div>
               </div>
             </div>
-          </div>
-          <?php if(($i+1) % 3 == 0 && $i != (5-1)): ?>
-            <div class="col-12 text-center pt-1 pb-4">
-              <div class="footer-add">
-                <a href="#"><img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/front-banner.jpg'); ?>" alt=""></a>
+            <?php if(($i+1) % 3 == 0 && $i != (5-1)): ?>
+              <div class="col-12 text-center pt-1 pb-4">
+                <div class="footer-add">
+                  <a href="#">
+                    <img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/front-banner.jpg'); ?>" alt="">
+                  </a>
+                </div>
               </div>
-            </div>
-          <?php endif; ?>
-        <?php endfor; ?>
+            <?php endif; ?>
+          <?php endfor; ?>
+        <?php else: ?>
+          <p class="text-danger"><strong><i class="fa fa-close"></i> Something went wrong when tring to get SPORT news.</strong></p>
+        <?php endif; ?>
       </div>
     </div>
   </div>
