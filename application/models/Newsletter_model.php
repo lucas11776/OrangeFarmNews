@@ -39,7 +39,7 @@ class Newsletter_model extends CI_Model
    */
   public function update(array $where, array $update)
   {
-
+    return $this->db->where($where)->update('newsletter', $update);
   }
 
   /**

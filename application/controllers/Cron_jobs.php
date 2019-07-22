@@ -13,7 +13,7 @@ class Cron_jobs extends CI_controller
     # reset time 12Hours back
     $time = date('Y-m-d', time()-(((60*60*12)*2) * 10));
 
-    # search news by date
+    # search news by date (required newsletter details)
     $data = array(
       'title'        => 'Morning News Update',
       'posts'        => $this->news->search(array('news.date' => $time)),

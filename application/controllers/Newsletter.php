@@ -10,10 +10,11 @@ class Newsletter extends CI_Controller
    */
   private $newsletter_account;
 
+
   public function subscribe()
   {
     # valid required data
-    $this->form_validation->set_rules('newsletter_email', 'email address', 'required|valid_email|callback_email_subscribed');
+    $this->form_validation->set_rules('email', 'email address', 'required|valid_email|callback_email_subscribed');
 
     # check if data is valid
     if($this->form_validation->run() === false)
@@ -22,12 +23,12 @@ class Newsletter extends CI_Controller
       $this->session->set_flashdata('alert-danger', form_error('newsletter_email', '<span>', '</span>'));
       $this->session->set_flashdata('newsletter_error', form_error('newsletter_email', '<span>', '</span>'));
 
-      redirect($this->input->post('redirect') ?? '');
+      $this->redirect($this->input->post('redirect'));
     }
 
     # newsletter data
     $newsletter = array(
-      'email'      => $this->input->post('newsletter_email'),
+      'email'      => $this->input->post('email'),
       'subscribed' => 1
     );
 
@@ -41,13 +42,13 @@ class Newsletter extends CI_Controller
         $this->session->set_flashdata('alert-danger', 'Something went wrong when tring to connect to database.');
         $this->session->set_flashdata('newsletter_error', 'Something went wrong when tring to connect to database.');
 
-        redirect($this->input->post('redirect') ?? '');
+        $this->redirect($this->input->post('redirect'));
       }
     }
     else
     {
-      $where  = array('email', $newsletter['email']);
-      $update = array('subscribed', 1);
+      $where  = array('email' => $newsletter['email']);
+      $update = array('subscribed' => 1);
 
       # update news letter
       if($this->newsletter->update($where, $update) === false)
@@ -56,19 +57,87 @@ class Newsletter extends CI_Controller
         $this->session->set_flashdata('alert-danger', 'Something went wrong when tring to connect to database.');
         $this->session->set_flashdata('newsletter_error', 'Something went wrong when tring to connect to database.');
 
-        redirect($this->input->post('redirect') ?? '');
+        $this->redirect($this->input->post('redirect'));
       }
     }
 
     # success
     $this->session->set_flashdata('alert-success', 'Thank your for subscribing to our newsletter your will now get the latest content from OrangeFarmNews.');
 
-    redirect($this->input->post('redirect') ?? '');
+    $this->redirect($this->input->post('redirect'));
   }
 
+  /**
+   * @Route ()
+   *
+   */
   public function unsubscribe()
   {
+    $this->form_validation->set_rules('email', 'email', 'required|valid_email|callback_email_unsubscribed');
 
+    # check if data is valid
+    if($this->form_validation->run() === false)
+    {
+      # alert user of error
+      $this->session->set_flashdata('alert-danger', form_error('email', '<span>', '</span>'));
+      $this->session->set_flashdata('newsletter_error', form_error('email', '<span>', '</span>'));
+
+      $this->redirect($this->input->post('redirect'));
+    }
+
+    # where
+    $where = array('email' => $this->newsletter_account['email']);
+    # update
+    $update = array('subscribed' => 0);
+
+    # unsubscribe to news letter
+    if($this->newsletter->update($where, $update) === false)
+    {
+      # alert user
+      $this->session->set_flashdata('alert-danger', 'Something went wrong when tring to connect to database.');
+      $this->session->set_flashdata('newsletter_error', 'Something went wrong when tring to connect to database.');
+    }
+    else
+    {
+      # success
+      $this->session->set_flashdata('alert-success', 'You have successfully unsubscribe to Orange Farm Newsletter.');
+    }
+
+    $this->redirect($this->input->post('redirect'));
+  }
+
+  /**
+   * Redirect With GET params
+   *
+   * @param   string
+   * @return  void
+   */
+  private function redirect(string $url)
+  {
+    # get params
+    $params = '';
+
+    # check if the search term
+    if($this->input->post('term'))
+    {
+      $params .= '?term=' . $this->input->post('term');
+    }
+
+    # check if the page
+    if(is_numeric($this->input->post('page')))
+    {
+      $params = empty($params) ? '?' : $params;
+      $params .= '&page=' . $this->input->post('page');
+    }
+
+    # check if the page
+    if(is_string($this->input->post('newsletter')))
+    {
+      $params = empty($params) ? '?' : $params;
+      $params .= '&newsletter=' . $this->input->post('newsletter');
+    }
+
+    redirect($url . $params);
   }
 
   /**
@@ -119,12 +188,12 @@ class Newsletter extends CI_Controller
     # check if email is subscribe to newsletter
     if($this->newsletter_account['subscribed'] == 0)
     {
-      $this->form_validation->set_message('email_unsubscribed', 'The {field} your enter already unsubscribe to our newsletter.');
+      $this->form_validation->set_message('email_unsubscribed', 'The {field} you enter is already unsubscribe to our newsletter.');
 
       return false;
     }
 
-    return false;
+    return true;
   }
 
 }
