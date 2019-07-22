@@ -234,16 +234,22 @@ class Account_model extends CI_Model
   /**
    * Change/Update Account Password
    *
-   * @param   array
-   * @param   array
+   * @param   int
+   * @param   string
    * @return  boolean
    */
-  public function change_password(array $where, string $password)
+  public function change_password(int $uid, string $password)
   {
-    return $this->db->where($where)
-                    ->update('accounts', array('password' => $password));
+    return $this->db->where(array('id' => $uid))->update('accounts', array('password' => $password));
   }
 
+  /**
+   * Change User Role
+   *
+   * @param   integer
+   * @param   integer
+   * @return  boolean
+   */
   public function change_role(int $id, int $role)
   {
     return $this->db->where(array('id' => $id))

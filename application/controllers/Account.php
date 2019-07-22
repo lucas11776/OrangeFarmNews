@@ -173,16 +173,35 @@ class Account extends CI_Controller
    */
   private function change_password(array $page_details)
   {
+    # check if user is logged in
+    $this->auth->user();
+
     # check required data
     $this->form_validation->set_rules('old_password', 'old password', 'required|callback_password_matches');
     $this->form_validation->set_rules('new_password', 'new password', 'required|min_length[6]|max_length[20]');
     $this->form_validation->set_rules('confirm_password', 'confirm password', 'required|matches[new_password]');
 
+    # check if required data is valid
     if($this->form_validation->run() === false)
     {
       $this->view('update', $page_details);
 
       return;
+    }
+
+    # decrypt password
+    $password = $this->encryption->encrypt($this->input->post('new_password'));
+
+    # change password from database
+    if($this->account->change_password($this->auth->account('id'), $password) == false)
+    {
+      # error
+      $this->session->set_flashdata('change_password_error', 'Something went wrong when tring to connect to database.');
+    }
+    else
+    {
+      # success
+      $this->session->set_flashdata('change_password_success', 'Your account password has been changed.');
     }
 
     $this->view('update', $page_details);

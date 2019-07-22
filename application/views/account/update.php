@@ -119,6 +119,22 @@
     <!-- ##### Change User Password Account #### -->
     <ul class="list-group mt-5 mb-5">
       <?php echo form_open('dashboard/my/account'); ?>
+        <?php if($this->session->flashdata('change_password_error')): ?>
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Warning!</strong> <?php echo $this->session->flashdata('change_password_error'); ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <?php endif; ?>
+        <?php if($this->session->flashdata('change_password_success')): ?>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success!</strong> <?php echo $this->session->flashdata('change_password_success'); ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <?php endif; ?>
         <input type="hidden" name="type" value="password">
         <li class="list-group-item active"><strong><i class="fas fa-key"></i> Change Password</strong></li>
         <li class="list-group-item pb-0">
