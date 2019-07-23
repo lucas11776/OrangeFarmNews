@@ -106,13 +106,13 @@
       </div>
       <div class="col-12 col-lg-4">
 
-        <!-- Single Contact Information -->
+        <!-- Address -->
         <div class="single-contact-information mb-30">
           <h6><span class="fa fa-map-marker"></span> Address:</h6>
           <address><p>1st Floor, Nelgate Shopping Complex,<br/>Office #4, Orange Farm,<br/>Guateng, 1805</p></address>
         </div>
 
-        <!-- Single Contact Information -->
+        <!-- Phone Number -->
         <div class="single-contact-information mb-30">
           <h6><span class="fa fa-phone"></span> Phone:</h6>
           <p>
@@ -122,7 +122,7 @@
           </p>
         </div>
 
-        <!-- Single Contact Information -->
+        <!-- Email -->
         <div class="single-contact-information mb-30">
           <h6><span class="fa fa-envelope-open-o"></span> Email:</h6>
           <p><a href="mailTo:orangefarmnews@yahoo.com">orangefarmnews@yahoo.com</a></p>

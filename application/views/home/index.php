@@ -49,6 +49,7 @@ $sidebar_news         = array_splice($latest_news, 0, 8);
                 </div>
               <?php endfor; ?>
             </div>
+
             <div class="col-12 col-lg-5">
               <?php for($i = 0; $i < count($dsiplay_summary_news); $i++): ?>
               <!-- Single Featured Post -->
@@ -76,9 +77,11 @@ $sidebar_news         = array_splice($latest_news, 0, 8);
               </div>
               <?php endfor; ?>
             </div>
+
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4 pb-4">
+
           <!-- Single Featured Post -->
           <?php for($i = 0; $i < count($sidebar_news); $i++): ?>
             <div class="single-blog-post small-featured-post d-flex">
@@ -102,14 +105,18 @@ $sidebar_news         = array_splice($latest_news, 0, 8);
               </div>
             </div>
           <?php endfor; ?>
+
           <!-- Newsletter Widget -->
           <?php $this->load->view('template/newsletter'); ?>
+
         </div>
+
         <div class="col-12 pb-5">
           <nav aria-label="Home Pagination">
             <?php echo $this->pagination->create_links(); ?>
           </nav>
         </div>
+
     </div>
   </div>
 </div>
@@ -117,15 +124,15 @@ $sidebar_news         = array_splice($latest_news, 0, 8);
 
 <!-- ##### Footer Add Area Start ##### -->
 <div class="footer-add-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-sm-10 col-lg-8 offset-sm-1 offset-lg-2">
-                <div class="footer-add">
-                    <a href="#"><img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/topband.gif'); ?>" alt=""></a>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-10 col-lg-8 offset-sm-1 offset-lg-2">
+        <div class="footer-add">
+          <a href="#"><img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/topband.gif'); ?>" alt=""></a>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 <!-- ##### Footer Add Area End ##### -->
 
@@ -135,47 +142,47 @@ $sidebar_news         = array_splice($latest_news, 0, 8);
     <div class="row">
       <!-- South African News -->
       <div class="col-12 col-md-7 col-lg-9">
-          <div class="section-heading">
-            <h6><span class="fa fa-flag"></span> South Africa News</h6>
-          </div>
-          <div class="row">
-          <?php if(is_array($local_news)): ?>
-            <?php for($i = 0; $i < count($local_news); $i++): ?>
-              <!-- Single Post -->
-              <div class="col-12 col-lg-4">
-                <div class="single-blog-post">
-                  <div class="post-thumb">
-                    <a href="<?php echo $local_news[$i]['url']; ?>" target="_blank">
-                      <img src="<?php echo $local_news[$i]['urlToImage']; ?>" alt="<?php echo $local_news[$i]['title']; ?>">
-                    </a>
-                  </div>
-                  <div class="post-data">
-                    <a href="#" class="post-catagory"><i class="text-muted">Source:</i> <?php echo $local_news[$i]['source']['name']; ?></a>
-                    <a href="<?php echo $local_news[$i]['url']; ?>" class="post-title" target="_blank">
-                      <h6><?php echo word_limiter($local_news[$i]['title'], 10); ?></h6>
-                    </a>
-                    <div class="post-meta">
-                      <div class="post-date"><a href="#"><?php echo date('F d, Y',strtotime($local_news[$i]['publishedAt'])); ?></a></div>
-                    </div>
+        <div class="section-heading">
+          <h6><span class="fa fa-flag"></span> South Africa News</h6>
+        </div>
+        <div class="row">
+        <?php if(is_array($local_news)): ?>
+          <?php for($i = 0; $i < count($local_news); $i++): ?>
+            <!-- Single Post -->
+            <div class="col-12 col-lg-4">
+              <div class="single-blog-post">
+                <div class="post-thumb">
+                  <a href="<?php echo $local_news[$i]['url']; ?>" target="_blank">
+                    <img src="<?php echo $local_news[$i]['urlToImage']; ?>" alt="<?php echo $local_news[$i]['title']; ?>">
+                  </a>
+                </div>
+                <div class="post-data">
+                  <a href="#" class="post-catagory"><i class="text-muted">Source:</i> <?php echo $local_news[$i]['source']['name']; ?></a>
+                  <a href="<?php echo $local_news[$i]['url']; ?>" class="post-title" target="_blank">
+                    <h6><?php echo word_limiter($local_news[$i]['title'], 10); ?></h6>
+                  </a>
+                  <div class="post-meta">
+                    <div class="post-date"><a href="#"><?php echo date('F d, Y',strtotime($local_news[$i]['publishedAt'])); ?></a></div>
                   </div>
                 </div>
               </div>
-              <?php if(($i+1) % 3 == 0 && ($i+1) != count($local_news) ): ?>
-                <div class="col-12 text-center pt-1 pb-5">
-                  <div class="footer-add">
-                    <a href="#">
-                      <img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/holy.gif'); ?>" alt="">
-                    </a>
-                  </div>
+            </div>
+            <?php if(($i+1) % 3 == 0 && ($i+1) != count($local_news) ): ?>
+              <div class="col-12 text-center pt-1 pb-5">
+                <div class="footer-add">
+                  <a href="#">
+                    <img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/holy.gif'); ?>" alt="">
+                  </a>
                 </div>
-              <?php endif; ?>
-            <?php endfor; ?>
-          <?php else: ?>
-            <p class="text-danger">
-              <strong><i class="fa fa-close"></i> Something went wrong when tring to get South African popular news.</strong>
-            </p>
-          <?php endif; ?>
-          </div>
+              </div>
+            <?php endif; ?>
+          <?php endfor; ?>
+        <?php else: ?>
+          <p class="text-danger">
+            <strong><i class="fa fa-close"></i> Something went wrong when tring to get South African popular news.</strong>
+          </p>
+        <?php endif; ?>
+        </div>
       </div>
       <!-- World News -->
       <div class="col-12 col-md-5 col-lg-3">
