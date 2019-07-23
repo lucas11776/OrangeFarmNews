@@ -9,10 +9,12 @@
       </div>
     </div>
     <div class="row">
+
       <div class="col-12 col-lg-8">
         <div class="contact-form-area">
           <?php echo form_open('contect'); ?>
             <div class="row">
+
               <!-- Name -->
               <div class="col-12 col-lg-6">
                 <input type="text"
@@ -23,6 +25,7 @@
                        placeholder="Name (Required)">
                 <?php echo form_error('name', '<p class="invalid-feedback">', '</p>'); ?>
               </div>
+
               <!-- Surname -->
               <div class="col-12 col-lg-6">
                 <input type="text"
@@ -33,6 +36,7 @@
                        placeholder="Surname (Required)">
                 <?php echo form_error('surname', '<p class="invalid-feedback">', '</p>'); ?>
               </div>
+
               <!-- Phone Number -->
               <div class="col-12 col-lg-6">
                 <input type="tel"
@@ -43,6 +47,7 @@
                        placeholder="Phone Number (Required)">
                 <?php echo form_error('phone_number', '<p class="invalid-feedback">', '</p>'); ?>
               </div>
+
               <!-- Email -->
               <div class="col-12 col-lg-6">
                 <input type="email"
@@ -53,6 +58,7 @@
                        placeholder="Email Address (Optional)">
                 <?php echo form_error('email', '<p class="invalid-feedback">', '</p>'); ?>
               </div>
+
               <!-- Subject -->
               <div class="col-12">
                 <select name="subject" class="form-control <?php if(form_error('subject')) echo 'is-invalid'; ?> text-capitalize" id="subject">
@@ -69,6 +75,7 @@
                 </select>
                 <?php echo form_error('subject', '<p class="invalid-feedback">', '</p>'); ?>
               </div>
+
               <!-- Message -->
               <div class="col-12">
                 <textarea name="message"
@@ -79,25 +86,32 @@
                           placeholder="Message (Required)..."><?php echo set_value('message'); ?></textarea>
                 <?php echo form_error('message', '<p class="invalid-feedback">', '</p>'); ?>
               </div>
+
               <!-- Submit -->
               <div class="col-12 text-center">
                 <button class="btn newspaper-btn mt-30 w-100" type="submit"><span class="fa fa-paper-plane-o"></span> Send Message</button>
               </div>
+
             </div>
           <?php form_close(); ?>
+
           <hr/>
+
           <p>
             At OrangeFarmNews we protect our source <span class="fa fa-user-o color"></span> identity by keep them private from
             <span class="fa fa-users color"></span> public for they personal safety so do not be afraid to report news.
-           </p>
+          </p>
+
         </div>
       </div>
       <div class="col-12 col-lg-4">
+
         <!-- Single Contact Information -->
         <div class="single-contact-information mb-30">
           <h6><span class="fa fa-map-marker"></span> Address:</h6>
           <address><p>1st Floor, Nelgate Shopping Complex,<br/>Office #4, Orange Farm,<br/>Guateng, 1805</p></address>
         </div>
+
         <!-- Single Contact Information -->
         <div class="single-contact-information mb-30">
           <h6><span class="fa fa-phone"></span> Phone:</h6>
@@ -107,11 +121,13 @@
             <a href="tel:0862639988"><i class="color"><span class="fa fa-newspaper-o"></span> Article :</i> 086 263 9988</a>
           </p>
         </div>
+
         <!-- Single Contact Information -->
         <div class="single-contact-information mb-30">
           <h6><span class="fa fa-envelope-open-o"></span> Email:</h6>
           <p><a href="mailTo:orangefarmnews@yahoo.com">orangefarmnews@yahoo.com</a></p>
         </div>
+
       </div>
     </div>
     <!-- Google Maps -->
