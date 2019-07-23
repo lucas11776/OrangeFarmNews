@@ -4,6 +4,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Newsletter_model extends CI_Model
 {
   /**
+   * Get All Emails Subscribed To Newletter
+   * 
+   * @return array
+   */
+  public function subscribed()
+  {
+    # get all email
+    $subscribed_email = $this->db->select('email')->where(array('subscribed' => 1))->get('newsletter')->result_array();
+
+    $emails = array();
+    
+    for($i = 0; $i < count($subscribed_email); $i++)
+    {
+      array_push($emails, $subscribed_email[$i]['email']);
+    }
+
+    return $emails;
+  }
+
+  /**
    * Get Newsletter From Database
    *
    * @param   array

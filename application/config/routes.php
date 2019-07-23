@@ -95,5 +95,6 @@ $route['reset/password']                  = 'password/reset';                   
 $route['reset/account/password']          = 'password/change_password';           # access (guest)
 # cron jobs
 $route['cron-job/newsletter/news']        = 'cron_jobs/news_newsletter_cron_job'; # access (all)
+$route['cron-job/newsletter/blog']        = 'cron_jobs/blog_newsletter_cron_job'; # access (all)
 $route['404_override']                    = 'page_not_found';                     # access (all)
 $route['translate_uri_dashes']            = FALSE;

@@ -193,6 +193,7 @@ class Password extends CI_Controller
       return;
     }
 
+    # page details
     $page_details = array(
       'icon'        => 'fa fa-unlock',
       'title'       => 'Password Has Been Successfully Changed.',
@@ -216,7 +217,8 @@ class Password extends CI_Controller
   /**
    * Check if token is valid
    * 
-   * @param string
+   * @param   string
+   * @return  array  
    */
   public function token_valid($token)
   {
@@ -239,7 +241,10 @@ class Password extends CI_Controller
   }
 
   /**
+   * Check If Email Exist
    * 
+   * @param   string
+   * @return  boolean
    */
   public function email_exist($email)
   {

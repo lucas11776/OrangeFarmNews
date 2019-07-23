@@ -8,14 +8,14 @@ class Mail_model extends CI_Model
    * 
    * @var string
    */
-  public const EMAIL = '';
+  public const EMAIL = 'thembangubeni04@gmail.com';
 
   /**
    * Email Address Password
    * 
    * @var string
    */
-  private const PASSWORD = '';
+  private const PASSWORD = '11776@1999th';
 
   /**
    * initialize email
