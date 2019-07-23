@@ -14,6 +14,7 @@
       <?php echo form_open(uri_string()); ?>
           <li class="list-group-item bg-color"><strong><i class="fa fa-user-circle-o"></i> Personal Information</strong></li>
 
+          <!-- Email -->
           <li class="list-group-item pb-0">
             <div class="form-group row">
                <label for="email" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">Email</label>
@@ -26,6 +27,7 @@
              </div>
           </li>
 
+          <!-- Name -->
           <li class="list-group-item pb-0">
             <div class="form-group row">
                <label for="name" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">Name</label>
@@ -38,6 +40,7 @@
              </div>
           </li>
 
+          <!-- Surname -->
           <li class="list-group-item pb-0">
             <div class="form-group row">
                <label for="surname" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">Surname</label>
@@ -51,6 +54,7 @@
              </div>
           </li>
 
+          <!-- Account Role -->
           <li class="list-group-item pb-0">
             <div class="form-group row">
                <label for="surname" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">Account Type</label>
@@ -73,6 +77,7 @@
              </div>
           </li>
 
+          <!-- Submit -->
           <li class="list-group-item pb-0">
             <div class="form-group row">
                <label for="surname" class="col-sm-3 col-form-label col-form-label-sm">Update Account</label>

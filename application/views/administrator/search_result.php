@@ -6,7 +6,7 @@
 </div>
 <!-- Content Row -->
 <div class="row">
-  <!-- Earnings (Monthly) Card Example -->
+  <!-- Accounts -->
   <div class="col-xl-4 col-md-6 mb-4">
     <a href="<?php echo base_url('dashboard/accounts/search?term=' . $this->input->get('term')) ?>" style="text-decoration: none;">
       <div class="card border-left-primary shadow h-100 py-2">
@@ -24,7 +24,7 @@
       </div>
     </a>
   </div>
-  <!-- Earnings (Monthly) Card Example -->
+  <!-- News -->
   <div class="col-xl-4 col-md-6 mb-4">
     <a href="<?php echo base_url('dashboard/news/search?term=' . $this->input->get('term')) ?>" style="text-decoration: none;">
       <div class="card border-left-success shadow h-100 py-2">
@@ -42,7 +42,7 @@
       </div>
     </a>
   </div>
-  <!-- Earnings (Monthly) Card Example -->
+  <!-- Blogs -->
   <div class="col-xl-4 col-md-6 mb-4">
     <a href="<?php echo base_url('dashboard/blog/search?term=' . $this->input->get('term')) ?>" style="text-decoration: none;">
       <div class="card border-left-info shadow h-100 py-2">
