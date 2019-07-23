@@ -12,10 +12,11 @@
   </div>
 
   <div class="pt-3 row">
+
     <?php for($i = 0; $i < count($messages); $i++): ?>
       <div class="col-12">
         <div class="card shadow mb-4 border-<?php echo $messages[$i]['seen'] == 0 ? 'warning' : 'success'; ?>" style="width: 100%;">
-          <!-- Card Header - Dropdown -->
+          <!-- Card Header -->
           <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
             <h6 class="m-0 font-weight-bold text-primary"><?php echo "{$messages[$i]['name']} {$messages[$i]['surname']}"; ?></h6>
             <div class="dropdown no-arrow">
@@ -49,6 +50,7 @@
         </div>
       </div>
     <?php endfor; ?>
+
     <div class="col-12">
       <nav aria-label="Pagination for message">
         <!-- ##### Pagination Link ##### -->
@@ -57,7 +59,6 @@
     </div>
   </div>
 </div>
-
 
 <!-- ##### Delete Comment Model Start ##### -->
 <div class="modal fade" id="delete-message-model" tabindex="-1" role="dialog" aria-labelledby="Delete News Modal" aria-hidden="true">
