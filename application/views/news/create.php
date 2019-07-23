@@ -2,6 +2,7 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
   <h1 class="h3 mb-0 text-gray-800"><span class="fas fa-upload text-primary"></span> Upload News</h1>
 </div>
+
 <div class="row">
   <div class="col-lg-8 offset-lg-2">
     <div class="p-5">

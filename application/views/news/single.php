@@ -1,14 +1,14 @@
 <!-- ##### Footer Add Area Start ##### -->
 <div class="footer-add-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-sm-10 col-lg-8 offset-sm-1 offset-lg-2">
-                <div class="footer-add">
-                    <a href="#"><img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/topband.gif'); ?>" alt=""></a>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-10 col-lg-8 offset-sm-1 offset-lg-2">
+        <div class="footer-add">
+          <a href="#"><img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/topband.gif'); ?>" alt=""></a>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 <!-- ##### Footer Add Area End ##### -->
 
@@ -24,27 +24,27 @@
       </div>
       <div class="modal-body">
         <div class="post-a-comment-area pt-0 pb-0">
-            <!-- Reply Form -->
-            <div class="contact-form-area">
-                <?php echo form_open('news/comment/reply?r=' . uri_string()); ?>
-                    <div class="row">
-                        <div class="col-12">
-                            <input type="hidden" name="redirect" value="<?php echo uri_string(); ?>">
-                            <input type="hidden" name="comment_id" class="hidden-value-input">
-                            <input type="hidden" name="news_id" value="<?php echo $single_news['id']; ?>">
-                            <textarea name="comment"
-                                      class="form-control"
-                                      id="message"
-                                      cols="30"
-                                      rows="10"
-                                      placeholder="Reply to comment..."></textarea>
-                        </div>
-                        <div class="col-12 text-center">
-                            <button class="btn newspaper-btn w-100" type="submit"><span class="fa fa-reply"></span> Reply</button>
-                        </div>
-                    </div>
-                <?php echo form_close(); ?>
-            </div>
+          <!-- Reply Form -->
+          <div class="contact-form-area">
+            <?php echo form_open('news/comment/reply?r=' . uri_string()); ?>
+              <div class="row">
+                <div class="col-12">
+                  <input type="hidden" name="redirect" value="<?php echo uri_string(); ?>">
+                  <input type="hidden" name="comment_id" class="hidden-value-input">
+                  <input type="hidden" name="news_id" value="<?php echo $single_news['id']; ?>">
+                  <textarea name="comment"
+                            class="form-control"
+                            id="message"
+                            cols="30"
+                            rows="10"
+                            placeholder="Reply to comment..."></textarea>
+                </div>
+                <div class="col-12 text-center">
+                  <button class="btn newspaper-btn w-100" type="submit"><span class="fa fa-reply"></span> Reply</button>
+                </div>
+              </div>
+            <?php echo form_close(); ?>
+          </div>
         </div>
       </div>
     </div>
@@ -84,9 +84,7 @@
     <div class="row">
 
       <div class="col-12 col-lg-8">
-
         <div class="blog-posts-area">
-
           <!-- Single Featured Post -->
           <div class="single-blog-post featured-post single-post">
             <div class="post-thumb" style="height: auto;">
@@ -100,63 +98,67 @@
                   <h1><?php echo $single_news['title']; ?> </h1>
               </a>
               <div class="post-meta">
-                  <p class="post-author">By
-                    <a href="<?php echo base_url('account/' . $single_news['username']); ?>">
-                      <?php echo $this->account->get_account_name($single_news); ?>
-                    </a>
-                  </p>
-                  <div class="news-post">
-                    <?php echo $single_news['post']; ?>
+                <p class="post-author">By
+                  <a href="<?php echo base_url('account/' . $single_news['username']); ?>">
+                    <?php echo $this->account->get_account_name($single_news); ?>
+                  </a>
+                </p>
+                <div class="news-post">
+                  <?php echo $single_news['post']; ?>
+                </div>
+                <div class="newspaper-post-like d-flex align-items-center justify-content-between">
+                  <!-- Tags -->
+                  <div class="newspaper-tags d-flex">
+                    <span>News Category:</span>
+                    <ul class="d-flex">
+                      <?php for($i = 0; $i < 6; $i++): ?>
+                        <li>
+                          <?php if(5 != $i): ?>
+                            <a href="<?php echo base_url('news/category/'.$this->news::CATEGORY[$i]); ?>">
+                              <?php echo $this->news::CATEGORY[$i]; ?>,
+                            </a>
+                          <?php else: ?>
+                            <a href="<?php echo base_url('news/category/'.$this->news::CATEGORY[$i]); ?>">
+                              <?php echo $this->news::CATEGORY[$i]; ?>
+                            </a>
+                          <?php endif; ?>
+                        </li>
+                      <?php endfor; ?>
+                    </ul>
                   </div>
-                  <div class="newspaper-post-like d-flex align-items-center justify-content-between">
-                      <!-- Tags -->
-                      <div class="newspaper-tags d-flex">
-                          <span>News Category:</span>
-                          <ul class="d-flex">
-                            <?php for($i = 0; $i < 6; $i++): ?>
-                              <li>
-                                <?php if(5 != $i): ?>
-                                  <a href="<?php echo base_url('news/category/'.$this->news::CATEGORY[$i]); ?>">
-                                    <?php echo $this->news::CATEGORY[$i]; ?>,
-                                  </a>
-                                <?php else: ?>
-                                  <a href="<?php echo base_url('news/category/'.$this->news::CATEGORY[$i]); ?>">
-                                    <?php echo $this->news::CATEGORY[$i]; ?>
-                                  </a>
-                                <?php endif; ?>
-                              </li>
-                            <?php endfor; ?>
-                          </ul>
-                      </div>
 
-                      <!-- Post Like & Post Comment -->
-                      <div class="d-flex align-items-center post-like--comments">
-                          <a class="post-like"><i class="fa fa-eye color"></i> <span><?php echo $single_news['views']; ?></span></a>
-                          <a class="post-comment"><i class="fa fa-comments-o color"></i> <span><?php echo $single_news['comments']; ?></span></a>
-                      </div>
+                  <!-- Post Like & Post Comment -->
+                  <div class="d-flex align-items-center post-like--comments">
+                    <a class="post-like">
+                      <i class="fa fa-eye color"></i> <span><?php echo $single_news['views']; ?></span>
+                    </a>
+                    <a class="post-comment">
+                      <i class="fa fa-comments-o color"></i> <span><?php echo $single_news['comments']; ?></span>
+                    </a>
                   </div>
+                </div>
               </div>
             </div>
           </div>
 
           <!-- About Author -->
           <div class="blog-post-author d-flex">
-              <div class="author-thumbnail">
-                  <img src="<?php echo $single_news['profile_picture']; ?>" alt="<?php echo $this->account->get_account_name($single_news); ?>">
-              </div>
-              <div class="author-info">
-                  <a href="<?php echo $this->auth->editor(false) ? base_url('account/' . $single_news['username']) : '#'; ?>" class="author-name">
-                    <?php echo $this->account->get_account_name($single_news); ?>, <span>The Author</span>
-                  </a>
-                  <p>
-                    <i class="fa fa-key"></i> <strong class="color">Account Type :</strong>
-                    <strong class="text-muted"><?php echo strtoupper($this->account::ROLE[$single_news['role']]); ?></strong>
-                  </p>
-              </div>
+            <div class="author-thumbnail">
+              <img src="<?php echo $single_news['profile_picture']; ?>" alt="<?php echo $this->account->get_account_name($single_news); ?>">
+            </div>
+            <div class="author-info">
+              <a href="<?php echo $this->auth->editor(false) ? base_url('account/' . $single_news['username']) : '#'; ?>" class="author-name">
+                <?php echo $this->account->get_account_name($single_news); ?>, <span>The Author</span>
+              </a>
+              <p>
+                <i class="fa fa-key"></i> <strong class="color">Account Type :</strong>
+                <strong class="text-muted"><?php echo strtoupper($this->account::ROLE[$single_news['role']]); ?></strong>
+              </p>
+            </div>
           </div>
 
           <div class="section-heading pt-5">
-              <h6><span class="fa fa-flag"></span> South Africa Latest</h6>
+            <h6><span class="fa fa-flag"></span> South Africa Latest</h6>
           </div>
 
 
@@ -193,30 +195,30 @@
           <?php $this->comments_view->view($comments); ?>
 
           <div class="post-a-comment-area section-padding-80-0">
-              <h4>Leave a comment</h4>
-              <?php if($this->auth->user(false)): ?>
-                <!-- Reply Form -->
-                <div class="contact-form-area">
-                    <?php echo form_open('news/comment'); ?>
-                        <input type="hidden" name="redirect" value="<?php echo uri_string(); ?>">
-                        <input type="hidden"
-                               name="news_id"
-                               value="<?php echo $single_news['id']; ?>">
-                        <div class="row">
-                            <div class="col-12">
-                                <textarea name="comment"
-                                          class="form-control"
-                                          id="message"
-                                          cols="30"
-                                          rows="10"
-                                          placeholder="Message"></textarea>
-                            </div>
-                            <div class="col-12 text-center">
-                                <button class="btn newspaper-btn mt-30 w-100" type="submit">Submit Comment</button>
-                            </div>
-                        </div>
-                    <?php echo form_close(); ?>
-                </div>
+            <h4>Leave a comment</h4>
+            <?php if($this->auth->user(false)): ?>
+              <!-- Reply Form -->
+              <div class="contact-form-area">
+                <?php echo form_open('news/comment'); ?>
+                  <input type="hidden" name="redirect" value="<?php echo uri_string(); ?>">
+                  <input type="hidden"
+                         name="news_id"
+                         value="<?php echo $single_news['id']; ?>">
+                  <div class="row">
+                      <div class="col-12">
+                          <textarea name="comment"
+                                    class="form-control"
+                                    id="message"
+                                    cols="30"
+                                    rows="10"
+                                    placeholder="Message"></textarea>
+                      </div>
+                      <div class="col-12 text-center">
+                          <button class="btn newspaper-btn mt-30 w-100" type="submit">Submit Comment</button>
+                      </div>
+                  </div>
+                <?php echo form_close(); ?>
+              </div>
               <?php else: ?>
                 <div class="alert alert-info col-12" role="alert">
                   <h4 class="alert-heading text-info">Want to express your comment!</h4>
@@ -233,65 +235,61 @@
       </div>
 
       <div class="col-12 col-lg-4">
-          <div class="blog-sidebar-area">
+        <div class="blog-sidebar-area">
 
-              <!-- Latest Posts Widget -->
-              <div class="latest-posts-widget mb-50">
-
-                  <?php for($i = 0; $i < count($latest_news); $i++): ?>
-                    <!-- Single Featured Post -->
-                    <div class="single-blog-post small-featured-post d-flex">
-                        <div class="post-thumb">
-                            <a href="<?php echo base_url('news/' . $latest_news[$i]['slug']); ?>">
-                              <img src="<?php echo $latest_news[$i]['picture']; ?>" alt="<?php echo $latest_news[$i]['title']; ?>">
-                            </a>
-                        </div>
-                        <div class="post-data">
-                            <a href="<?php echo base_url('news/category/' . $latest_news[$i]['category']); ?>" class="post-catagory">
-                              <?php echo $latest_news[$i]['category']; ?>
-                            </a>
-                            <div class="post-meta">
-                                <a href="<?php echo base_url('news/' . $latest_news[$i]['slug']); ?>" class="post-title">
-                                    <h6><?php echo word_limiter($latest_news[$i]['title'], 15); ?></h6>
-                                </a>
-                                <p class="post-date"><?php echo date('h:i A | F d', strtotime($latest_news[$i]['date'])); ?></p>
-                            </div>
-                        </div>
-                    </div>
-                  <?php endfor; ?>
-
-              </div>
-
-              <!-- ##### Advert ##### -->
-              <div class="col-12 text-center pt-0 pb-5">
-                  <div class="footer-add">
-                    <a href="#"><img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/front-banner.jpg'); ?>" alt=""></a>
+          <!-- Latest Posts Widget -->
+          <div class="latest-posts-widget mb-50">
+            <?php for($i = 0; $i < count($latest_news); $i++): ?>
+              <!-- Single Featured Post -->
+              <div class="single-blog-post small-featured-post d-flex">
+                  <div class="post-thumb">
+                      <a href="<?php echo base_url('news/' . $latest_news[$i]['slug']); ?>">
+                        <img src="<?php echo $latest_news[$i]['picture']; ?>" alt="<?php echo $latest_news[$i]['title']; ?>">
+                      </a>
+                  </div>
+                  <div class="post-data">
+                      <a href="<?php echo base_url('news/category/' . $latest_news[$i]['category']); ?>" class="post-catagory">
+                        <?php echo $latest_news[$i]['category']; ?>
+                      </a>
+                      <div class="post-meta">
+                          <a href="<?php echo base_url('news/' . $latest_news[$i]['slug']); ?>" class="post-title">
+                              <h6><?php echo word_limiter($latest_news[$i]['title'], 15); ?></h6>
+                          </a>
+                          <p class="post-date"><?php echo date('h:i A | F d', strtotime($latest_news[$i]['date'])); ?></p>
+                      </div>
                   </div>
               </div>
-
-              <!-- Popular News Widget -->
-              <div class="popular-news-widget mb-50 pt-4 pb-5">
-                  <h3 class="text-center">Popular News</h3>
-
-                  <?php for($i = 0; $i < count($most_viewed); $i++): ?>
-                    <!-- Single Popular Blog -->
-                    <div class="single-popular-post">
-                        <a href="<?php echo base_url('news/' . $most_viewed[$i]['slug']); ?>">
-                            <h6>
-                              <span><?php echo $i+1; ?>.</span> <?php echo word_limiter($most_viewed[$i]['title'], 15); ?>
-                            </h6>
-                        </a>
-                        <p><?php echo date('h:i a F d, Y', strtotime($most_viewed[$i]['date'])); ?></p>
-                        <!-- <p>April 14, 2018</p> -->
-                    </div>
-                  <?php endfor; ?>
-
-              </div>
-
-              <!-- Newsletter Widget -->
-              <?php $this->load->view('template/newsletter'); ?>
-
+            <?php endfor; ?>
           </div>
+
+          <!-- ##### Advert ##### -->
+          <div class="col-12 text-center pt-0 pb-5">
+            <div class="footer-add">
+              <a href="#"><img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/front-banner.jpg'); ?>" alt=""></a>
+            </div>
+          </div>
+
+          <!-- Popular News Widget -->
+          <div class="popular-news-widget mb-50 pt-4 pb-5">
+            <h3 class="text-center">Popular News</h3>
+            <?php for($i = 0; $i < count($most_viewed); $i++): ?>
+              <!-- Single Popular Blog -->
+              <div class="single-popular-post">
+                  <a href="<?php echo base_url('news/' . $most_viewed[$i]['slug']); ?>">
+                      <h6>
+                        <span><?php echo $i+1; ?>.</span> <?php echo word_limiter($most_viewed[$i]['title'], 15); ?>
+                      </h6>
+                  </a>
+                  <p><?php echo date('h:i a F d, Y', strtotime($most_viewed[$i]['date'])); ?></p>
+                  <!-- <p>April 14, 2018</p> -->
+              </div>
+            <?php endfor; ?>
+          </div>
+
+          <!-- Newsletter Widget -->
+          <?php $this->load->view('template/newsletter'); ?>
+
+        </div>
       </div>
 
     </div>

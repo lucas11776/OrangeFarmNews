@@ -1,14 +1,14 @@
 <!-- ##### Footer Add Area Start ##### -->
 <div class="footer-add-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-sm-10 col-lg-8 offset-sm-1 offset-lg-2">
-                <div class="footer-add">
-                    <a href="#"><img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/topband.gif'); ?>" alt=""></a>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-10 col-lg-8 offset-sm-1 offset-lg-2">
+        <div class="footer-add">
+          <a href="#"><img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/topband.gif'); ?>" alt=""></a>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 <!-- ##### Footer Add Area End ##### -->
 
