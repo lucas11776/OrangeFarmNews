@@ -1,14 +1,14 @@
 <!-- ##### Footer Add Area Start ##### -->
 <div class="footer-add-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-sm-10 col-lg-8 offset-sm-1 offset-lg-2">
-                <div class="footer-add">
-                    <a href="#"><img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/topband.gif'); ?>" alt=""></a>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-10 col-lg-8 offset-sm-1 offset-lg-2">
+        <div class="footer-add">
+          <a href="#"><img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/topband.gif'); ?>" alt=""></a>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 <!-- ##### Footer Add Area End ##### -->
 
@@ -37,12 +37,20 @@
                       <h6><?php echo $category_result[$i]['title'] ?></h6>
                     </a>
                     <div class="post-meta">
-                      <p class="post-author">By <a href="#"><?php echo $this->account->get_account_name($category_result[$i]); ?></a></p>
-                      <p class="post-excerp"><?php echo word_limiter(strip_tags($category_result[$i]['post']), 100); ?></p>
+                      <p class="post-author">
+                        By <a href="#"><?php echo $this->account->get_account_name($category_result[$i]); ?></a>
+                      </p>
+                      <p class="post-excerp">
+                        <?php echo word_limiter(strip_tags($category_result[$i]['post']), 100); ?>
+                      </p>
                       <!-- Post Like & Post Comment -->
                       <div class="d-flex align-items-center">
-                        <a href="#" class="post-like"><i class="fa fa-eye"></i> <span><?php echo $category_result[$i]['views']; ?></span></a>
-                        <a href="#" class="post-comment"><i class="fa fa-comments-o"></i> <span><?php echo $category_result[$i]['comments']; ?></span></a>
+                        <a href="#" class="post-like">
+                          <i class="fa fa-eye"></i> <span><?php echo $category_result[$i]['views']; ?></span>
+                        </a>
+                        <a href="#" class="post-comment">
+                          <i class="fa fa-comments-o"></i> <span><?php echo $category_result[$i]['comments']; ?></span>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -62,12 +70,20 @@
                       <h5><?php echo $category_result[$i]['title'] ?></h5>
                     </a>
                     <div class="post-meta">
-                      <p class="post-author">By <a href="#"><?php echo $this->account->get_account_name($category_result[$i]); ?></a></p>
-                      <p class="post-excerp"><?php echo word_limiter(strip_tags($category_result[$i]['post']), 50); ?></p>
+                      <p class="post-author">
+                        By <a href="#"><?php echo $this->account->get_account_name($category_result[$i]); ?></a>
+                      </p>
+                      <p class="post-excerp">
+                        <?php echo word_limiter(strip_tags($category_result[$i]['post']), 50); ?>
+                      </p>
                       <!-- Post Like & Post Comment -->
                       <div class="d-flex align-items-center">
-                        <a href="#" class="post-like"><i class="fa fa-eye"></i> <span><?php echo $category_result[$i]['views']; ?></span></a>
-                        <a href="#" class="post-comment"><i class="fa fa-comments-o"></i> <span><?php echo $category_result[$i]['comments']; ?></span></a>
+                        <a href="#" class="post-like">
+                          <i class="fa fa-eye"></i> <span><?php echo $category_result[$i]['views']; ?></span>
+                        </a>
+                        <a href="#" class="post-comment">
+                          <i class="fa fa-comments-o"></i> <span><?php echo $category_result[$i]['comments']; ?></span>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -76,7 +92,9 @@
               <?php if($i % 4 == 0 && $i != 0): ?>
                 <div class="col-12 text-center pb-5">
                     <div class="footer-add">
-                      <a href="#"><img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/topband.gif'); ?>" alt=""></a>
+                      <a href="#">
+                        <img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/topband.gif'); ?>" alt="">
+                      </a>
                     </div>
                 </div>
               <?php endif; ?>
@@ -126,7 +144,9 @@
               <?php if((count($most_commented) - 1) == $i): ?>
                 <div class="col-12 text-center pt-5 pb-0">
                     <div class="footer-add">
-                      <a href="#"><img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/front-banner.jpg'); ?>" alt=""></a>
+                      <a href="#">
+                        <img class="advert advert-long" src="<?php echo base_url('uploads/adverts/front-banner.jpg'); ?>" alt="">
+                      </a>
                     </div>
                 </div>
               <?php endif; ?>
@@ -149,7 +169,9 @@
                 <a href="<?php echo base_url('news/' . $latest_news[$i]['slug']); ?>">
                   <?php echo word_limiter($latest_news[$i]['title'], 10); ?>
                 </a>
-                <p><?php echo date('h:i a, F d, Y', strtotime($latest_news[$i]['date'])); ?></p>
+                <p>
+                  <?php echo date('h:i a, F d, Y', strtotime($latest_news[$i]['date'])); ?>
+                </p>
                 </div>
               </div>
             <?php endfor; ?>
