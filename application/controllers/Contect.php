@@ -30,7 +30,7 @@ class Contect extends CI_Controller
                         our simple form application by just filling in your details and sending them to us.`,
       'active'       => 'contect',
       'news_updated' => $this->news->most_viewed(5),
-      'blog_updated' => $this->news->latest(5)
+      'blog_updated' => $this->blog->latest(5)
     );
 
     # validate required data
