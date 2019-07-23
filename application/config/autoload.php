@@ -66,7 +66,8 @@ $autoload['libraries'] = array(
   'authentication' => 'auth',
   'upload',
   'pagination',
-  'rest_api'
+  'rest_api',
+  'email'
 );
 
 /*
@@ -154,6 +155,7 @@ $autoload['model'] = array(
   'panel_model'           => 'panel',
   'statistics_model'      => 'stats',
   'news_api_model'        => 'news_api',
+  'mail_model'            => 'mail',
   // Templates ( _template )
   'comment_template'         => 'comments_view',
   'mail_newsletter_template' => 'newsletter_template',

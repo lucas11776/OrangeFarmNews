@@ -59,7 +59,24 @@ class Password extends CI_Controller
     # decrypt token for security
     $token = urlencode($this->encryption->encrypt($token));
 
-    print_r($token);
+    # notify template details for password recovery
+    $data = array(
+      'title'    => 'Reset Password Link',
+      'text'     => 'Recover your password by clicking on reset password link',
+      'btn_text' => 'Reset Password',
+      'url'      => base_url('reset/account/password?token=' . $token)
+    );
+
+    # mail details
+    $data = array(
+      'html'    => $this->notify_template->html($data),
+      'email'   => $this->user_account['email'],
+      'subject' => 'Reset Password Link From Orange Farm News'
+    );
+
+    $this->mail->send($data);
+
+    die();
 
     # send mail
     if(false)
