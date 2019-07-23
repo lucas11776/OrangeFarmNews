@@ -9,12 +9,15 @@
             <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
             <div class="col-lg-6 pt-5 pb-5">
               <div class="p-5">
+
                 <div class="text-center">
                   <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                 </div>
+
                 <!-- Login Form -->
                 <?php echo form_open('login', array('class' => 'user', 'novalidate')); ?>
                   <input type="hidden" name="redirect" value="<?php echo $this->input->get('r') ?? set_value('redirect'); ?>">
+
                   <!-- Log In Error -->
                   <div class="form-group">
                     <?php if(!empty($this->session->flashdata('login_error'))): ?>
@@ -25,6 +28,7 @@
                       </div>
                     <?php endif; ?>
                   </div>
+
                   <!-- Username -->
                   <div class="form-group">
                     <input type="text"
@@ -36,6 +40,7 @@
                            value="<?php echo set_value('username'); ?>">
                     <?php echo form_error('username', '<strong class="invalid-feedback">', '</strong>'); ?>
                   </div>
+
                   <!-- Password -->
                   <div class="form-group">
                     <input type="password"
@@ -45,6 +50,7 @@
                            placeholder="Password">
                     <?php echo form_error('password', '<strong class="invalid-feedback">', '</strong>'); ?>
                   </div>
+
                   <!-- Stay Logged In -->
                   <div class="form-group">
                     <div class="custom-control custom-checkbox small">
@@ -56,24 +62,30 @@
                       <label class="custom-control-label" for="stay-logged-in">Remember Me</label>
                     </div>
                   </div>
+
                   <!-- Submit -->
                   <button type="submit" class="btn btn-primary btn-user btn-block">
                     Login
                   </button>
+
                 <?php echo form_close(); ?>
+
                 <hr>
+
                 <!-- Forget Password Link -->
                 <div class="text-center">
                   <a class="small" href="<?php echo base_url('forgot/password'); ?>">
                     <strong>Forgot Your Password?</strong>
                   </a>
                 </div>
+
                 <!-- Register Account Link -->
                 <div class="text-center">
                   <a class="small" href="<?php echo base_url('register'); ?>">
                     <strong>Not <span class="fas fa-fw fa-user"></span> Member Create Account!</strong>
                   </a>
                 </div>
+
               </div>
             </div>
           </div>
