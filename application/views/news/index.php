@@ -1,14 +1,16 @@
 <!-- ##### Footer Add Area Start ##### -->
 <div class="footer-add-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-sm-10 col-lg-8 offset-sm-1 offset-lg-2">
-                <div class="footer-add">
-                    <a href="#"><img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/holy.gif'); ?>" alt=""></a>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-10 col-lg-8 offset-sm-1 offset-lg-2">
+        <div class="footer-add">
+          <a href="#">
+            <img class="advert advert-wide" src="<?php echo base_url('uploads/adverts/holy.gif'); ?>" alt="">
+          </a>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 <!-- ##### Footer Add Area End ##### -->
 
@@ -46,8 +48,12 @@
                           <p class="post-excerp"><?php echo word_limiter(strip_tags($news[$i]['post']), 100); ?></p>
                           <!-- Post Like & Post Comment -->
                           <div class="d-flex align-items-center">
-                            <a href="#" class="post-like"><i class="fa fa-eye"></i> <span><?php echo $news[$i]['views']; ?></span></a>
-                            <a href="#" class="post-comment"><i class="fa fa-comments-o"></i> <span><?php echo $news[$i]['comments']; ?></span></a>
+                            <a href="#" class="post-like">
+                              <i class="fa fa-eye"></i> <span><?php echo $news[$i]['views']; ?></span>
+                            </a>
+                            <a href="#" class="post-comment">
+                              <i class="fa fa-comments-o"></i> <span><?php echo $news[$i]['comments']; ?></span>
+                            </a>
                           </div>
                         </div>
                     </div>
@@ -80,8 +86,12 @@
                         </p>
                         <!-- Post Like & Post Comment -->
                         <div class="d-flex align-items-center">
-                          <a href="#" class="post-like"><i class="fa fa-eye"></i> <span><?php echo $news[$i]['views']; ?></span></a>
-                          <a href="#" class="post-comment"><i class="fa fa-comments-o"></i> <span><?php echo $news[$i]['comments']; ?></span></a>
+                          <a href="#" class="post-like">
+                            <i class="fa fa-eye"></i> <span><?php echo $news[$i]['views']; ?></span>
+                          </a>
+                          <a href="#" class="post-comment">
+                            <i class="fa fa-comments-o"></i> <span><?php echo $news[$i]['comments']; ?></span>
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -112,7 +122,6 @@
 
           <!-- Latest Posts Widget -->
           <div class="latest-posts-widget mb-50">
-
             <?php for($i = 0; $i < count($most_viewed); $i++): ?>
               <!-- Single Featured Post -->
               <div class="single-blog-post small-featured-post d-flex">
@@ -134,13 +143,11 @@
                 </div>
               </div>
             <?php endfor; ?>
-
           </div>
 
           <!-- Popular News Widget -->
           <div class="popular-news-widget mb-50 pt-4 pb-4 <?php if(count($most_commented) == 0) echo 'd-none'; ?>">
             <h4 class="text-center color pb-3"><?php echo count($most_commented); ?> Most Commented News</h4>
-
             <?php for($i = 0; $i < count($most_commented); $i++): ?>
               <!-- Single Popular Blog -->
               <div class="single-popular-post">
@@ -152,7 +159,6 @@
                 <p><?php echo date('F d, Y', strtotime($most_commented[$i]['date'])); ?></p>
               </div>
             <?php endfor; ?>
-
           </div>
 
           <!-- Newsletter Widget -->
@@ -160,7 +166,7 @@
 
           <!-- Latest Comments Widget -->
           <div class="latest-comments-widget mt-5 pt-4 pb-4  <?php if(count($most_viewed_blog) == 0) echo 'd-none'; ?>">
-              <h3>Most Viewd Blog Post</h3>
+            <h3>Most Viewd Blog Post</h3>
             <?php for($i = 0; $i < count($most_viewed_blog); $i++): ?>
               <!-- Single Comments -->
               <div class="single-comments d-flex">

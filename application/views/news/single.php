@@ -85,144 +85,151 @@
 
       <div class="col-12 col-lg-8">
 
-          <div class="blog-posts-area">
+        <div class="blog-posts-area">
 
-            <!-- Single Featured Post -->
-            <div class="single-blog-post featured-post single-post">
-              <div class="post-thumb" style="height: auto;">
-                  <a><img class="single" style="height: auto;" src="<?php echo $single_news['picture']; ?>" alt="<?php echo $single_news['title']; ?>"></a>
-              </div>
-              <div class="post-data">
-                <a href="#" class="post-catagory">
-                  <?php echo $single_news['category']; ?>
-                </a>
-                <a class="post-title">
-                    <h1><?php echo $single_news['title']; ?> </h1>
-                </a>
-                <div class="post-meta">
-                    <p class="post-author">By
-                      <a href="<?php echo base_url('account/' . $single_news['username']); ?>">
-                        <?php echo $this->account->get_account_name($single_news); ?>
-                      </a>
-                    </p>
-                    <div class="news-post">
-                      <?php echo $single_news['post']; ?>
-                    </div>
-                    <div class="newspaper-post-like d-flex align-items-center justify-content-between">
-                        <!-- Tags -->
-                        <div class="newspaper-tags d-flex">
-                            <span>News Category:</span>
-                            <ul class="d-flex">
-                              <?php for($i = 0; $i < 6; $i++): ?>
-                                <li>
-                                  <?php if(5 != $i): ?>
-                                    <a href="<?php echo base_url('news/category/'.$this->news::CATEGORY[$i]); ?>">
-                                      <?php echo $this->news::CATEGORY[$i]; ?>,
-                                    </a>
-                                  <?php else: ?>
-                                    <a href="<?php echo base_url('news/category/'.$this->news::CATEGORY[$i]); ?>">
-                                      <?php echo $this->news::CATEGORY[$i]; ?>
-                                    </a>
-                                  <?php endif; ?>
-                                </li>
-                              <?php endfor; ?>
-                            </ul>
-                        </div>
-
-                        <!-- Post Like & Post Comment -->
-                        <div class="d-flex align-items-center post-like--comments">
-                            <a class="post-like"><i class="fa fa-eye color"></i> <span><?php echo $single_news['views']; ?></span></a>
-                            <a class="post-comment"><i class="fa fa-comments-o color"></i> <span><?php echo $single_news['comments']; ?></span></a>
-                        </div>
-                    </div>
-                </div>
-              </div>
+          <!-- Single Featured Post -->
+          <div class="single-blog-post featured-post single-post">
+            <div class="post-thumb" style="height: auto;">
+                <a><img class="single" style="height: auto;" src="<?php echo $single_news['picture']; ?>" alt="<?php echo $single_news['title']; ?>"></a>
             </div>
-
-            <!-- About Author -->
-            <div class="blog-post-author d-flex">
-                <div class="author-thumbnail">
-                    <img src="<?php echo $single_news['profile_picture']; ?>" alt="<?php echo $this->account->get_account_name($single_news); ?>">
-                </div>
-                <div class="author-info">
-                    <a href="<?php echo $this->auth->editor(false) ? base_url('account/' . $single_news['username']) : '#'; ?>" class="author-name">
-                      <?php echo $this->account->get_account_name($single_news); ?>, <span>The Author</span>
+            <div class="post-data">
+              <a href="#" class="post-catagory">
+                <?php echo $single_news['category']; ?>
+              </a>
+              <a class="post-title">
+                  <h1><?php echo $single_news['title']; ?> </h1>
+              </a>
+              <div class="post-meta">
+                  <p class="post-author">By
+                    <a href="<?php echo base_url('account/' . $single_news['username']); ?>">
+                      <?php echo $this->account->get_account_name($single_news); ?>
                     </a>
-                    <p>
-                      <i class="fa fa-key"></i> <strong class="color">Account Type :</strong>
-                      <strong class="text-muted"><?php echo strtoupper($this->account::ROLE[$single_news['role']]); ?></strong>
-                    </p>
-                </div>
-            </div>
+                  </p>
+                  <div class="news-post">
+                    <?php echo $single_news['post']; ?>
+                  </div>
+                  <div class="newspaper-post-like d-flex align-items-center justify-content-between">
+                      <!-- Tags -->
+                      <div class="newspaper-tags d-flex">
+                          <span>News Category:</span>
+                          <ul class="d-flex">
+                            <?php for($i = 0; $i < 6; $i++): ?>
+                              <li>
+                                <?php if(5 != $i): ?>
+                                  <a href="<?php echo base_url('news/category/'.$this->news::CATEGORY[$i]); ?>">
+                                    <?php echo $this->news::CATEGORY[$i]; ?>,
+                                  </a>
+                                <?php else: ?>
+                                  <a href="<?php echo base_url('news/category/'.$this->news::CATEGORY[$i]); ?>">
+                                    <?php echo $this->news::CATEGORY[$i]; ?>
+                                  </a>
+                                <?php endif; ?>
+                              </li>
+                            <?php endfor; ?>
+                          </ul>
+                      </div>
 
-            <div class="section-heading pt-5">
-                <h6><span class="fa fa-flag"></span> South Africa Latest</h6>
-            </div>
-
-              <div class="row">
-                <?php for($i = 0; $i < 2; $i++): ?>
-                  <!-- Single Post -->
-                  <div class="col-12 col-md-6">
-                      <div class="single-blog-post style-3 mb-80">
-                          <div class="post-thumb">
-                              <a href="#"><img src="<?php echo base_url('assets/default/img/bg-img/12.jpg'); ?>" alt=""></a>
-                          </div>
-                          <div class="post-data">
-                              <a href="#" class="post-catagory">Finance</a>
-                              <a href="#" class="post-title">
-                                  <h6>Dolor sit amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales placer. Sed varius leo ac...</h6>
-                              </a>
-                              <div class="post-meta d-flex align-items-center">
-                                  <a href="#" class="post-like"><i class="fa fa-comments-o"></i> <span>392</span></a>
-                                  <a href="#" class="post-comment"><i class="fa fa-eye"></i> <span>10</span></a>
-                              </div>
-                          </div>
+                      <!-- Post Like & Post Comment -->
+                      <div class="d-flex align-items-center post-like--comments">
+                          <a class="post-like"><i class="fa fa-eye color"></i> <span><?php echo $single_news['views']; ?></span></a>
+                          <a class="post-comment"><i class="fa fa-comments-o color"></i> <span><?php echo $single_news['comments']; ?></span></a>
                       </div>
                   </div>
-                <?php endfor; ?>
               </div>
+            </div>
+          </div>
 
-              <!-- ####### PRINT NEW COMMENTS ######## -->
-              <?php $this->comments_view->view($comments); ?>
-
-              <div class="post-a-comment-area section-padding-80-0">
-                  <h4>Leave a comment</h4>
-                  <?php if($this->auth->user(false)): ?>
-                    <!-- Reply Form -->
-                    <div class="contact-form-area">
-                        <?php echo form_open('news/comment'); ?>
-                            <input type="hidden" name="redirect" value="<?php echo uri_string(); ?>">
-                            <input type="hidden"
-                                   name="news_id"
-                                   value="<?php echo $single_news['id']; ?>">
-                            <div class="row">
-                                <div class="col-12">
-                                    <textarea name="comment"
-                                              class="form-control"
-                                              id="message"
-                                              cols="30"
-                                              rows="10"
-                                              placeholder="Message"></textarea>
-                                </div>
-                                <div class="col-12 text-center">
-                                    <button class="btn newspaper-btn mt-30 w-100" type="submit">Submit Comment</button>
-                                </div>
-                            </div>
-                        <?php echo form_close(); ?>
-                    </div>
-                  <?php else: ?>
-                    <div class="alert alert-info col-12" role="alert">
-                      <h4 class="alert-heading text-info">Want to express your comment!</h4>
-                      <p class="text-info">Join the <span class="fa fa-users"></span> community by becoming a member.</p>
-                      <hr>
-                      <p class="mb-0">
-                        <a class="color" href="<?php echo base_url('register?r=' . uri_string()); ?>"><i class="fa fa-edit"></i> <strong>Register</strong></a>
-                        or <a class="color" href="<?php echo base_url('login?r=' . uri_string()); ?>"><i class="fa fa-user-o"></i> <strong>Login</strong></a>
-                      </p>
-                    </div>
-                  <?php endif; ?>
+          <!-- About Author -->
+          <div class="blog-post-author d-flex">
+              <div class="author-thumbnail">
+                  <img src="<?php echo $single_news['profile_picture']; ?>" alt="<?php echo $this->account->get_account_name($single_news); ?>">
+              </div>
+              <div class="author-info">
+                  <a href="<?php echo $this->auth->editor(false) ? base_url('account/' . $single_news['username']) : '#'; ?>" class="author-name">
+                    <?php echo $this->account->get_account_name($single_news); ?>, <span>The Author</span>
+                  </a>
+                  <p>
+                    <i class="fa fa-key"></i> <strong class="color">Account Type :</strong>
+                    <strong class="text-muted"><?php echo strtoupper($this->account::ROLE[$single_news['role']]); ?></strong>
+                  </p>
               </div>
           </div>
+
+          <div class="section-heading pt-5">
+              <h6><span class="fa fa-flag"></span> South Africa Latest</h6>
+          </div>
+
+
+          <div class="row">
+            <?php if(is_array($local_news)): ?>
+              <?php for($i = 0; $i < count($local_news); $i++): ?>
+                <!-- Single Post -->
+                <div class="col-12 col-md-6">
+                  <div class="single-blog-post style-3 mb-80">
+                    <div class="post-thumb">
+                      <a href="<?php echo $local_news[$i]['url']; ?>">
+                        <img src="<?php echo $local_news[$i]['urlToImage']; ?>" alt="<?php echo $local_news[$i]['title']; ?>">
+                      </a>
+                    </div>
+                    <div class="post-data">
+                      <a href="#" class="post-catagory">
+                        <i class="text-muted">Source:</i> <?php echo $local_news[$i]['source']['name']; ?>
+                      </a>
+                      <a href="<?php echo $local_news[$i]['url']; ?>" class="post-title">
+                        <h6><?php echo word_limiter($local_news[$i]['title'], 20); ?></h6>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              <?php endfor; ?>
+            <?php else: ?>
+              <p class="text-danger">
+                <strong><i class="fa fa-close"></i> Something went wrong when tring to get South African popular news.</strong>
+              </p>
+            <?php endif; ?>
+          </div>
+
+          <!-- ####### PRINT NEW COMMENTS ######## -->
+          <?php $this->comments_view->view($comments); ?>
+
+          <div class="post-a-comment-area section-padding-80-0">
+              <h4>Leave a comment</h4>
+              <?php if($this->auth->user(false)): ?>
+                <!-- Reply Form -->
+                <div class="contact-form-area">
+                    <?php echo form_open('news/comment'); ?>
+                        <input type="hidden" name="redirect" value="<?php echo uri_string(); ?>">
+                        <input type="hidden"
+                               name="news_id"
+                               value="<?php echo $single_news['id']; ?>">
+                        <div class="row">
+                            <div class="col-12">
+                                <textarea name="comment"
+                                          class="form-control"
+                                          id="message"
+                                          cols="30"
+                                          rows="10"
+                                          placeholder="Message"></textarea>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button class="btn newspaper-btn mt-30 w-100" type="submit">Submit Comment</button>
+                            </div>
+                        </div>
+                    <?php echo form_close(); ?>
+                </div>
+              <?php else: ?>
+                <div class="alert alert-info col-12" role="alert">
+                  <h4 class="alert-heading text-info">Want to express your comment!</h4>
+                  <p class="text-info">Join the <span class="fa fa-users"></span> community by becoming a member.</p>
+                  <hr>
+                  <p class="mb-0">
+                    <a class="color" href="<?php echo base_url('register?r=' . uri_string()); ?>"><i class="fa fa-edit"></i> <strong>Register</strong></a>
+                    or <a class="color" href="<?php echo base_url('login?r=' . uri_string()); ?>"><i class="fa fa-user-o"></i> <strong>Login</strong></a>
+                  </p>
+                </div>
+              <?php endif; ?>
+          </div>
+        </div>
       </div>
 
       <div class="col-12 col-lg-4">

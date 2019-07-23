@@ -52,7 +52,7 @@ class News extends CI_Controller
   }
 
   /**
-   * @Route (news)
+   * @Route (news/:slug)
    */
   public function single($slug)
   {
@@ -85,6 +85,7 @@ class News extends CI_Controller
       'active'      => 'news',
       'single_news' => $single_news,
       'latest_news' => $this->news->latest(8),
+      'local_news'  => $this->news_api->local_news(2),
       'most_viewed' => $this->news->most_viewed(5),
       'comments'    => $this->news_comments->get(array('news_id' => $single_news['id'])),
       'navbar_adv'  => false
@@ -139,6 +140,7 @@ class News extends CI_Controller
       'latest_blog'     => $this->blog->latest($per_page - 2, $page >! $per_page ? $page - 1 : $page)
     );
 
+    # page
     $this->view('category', $page_details);
   }
 

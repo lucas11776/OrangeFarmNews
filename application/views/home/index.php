@@ -150,6 +150,7 @@ $sidebar_news         = array_splice($latest_news, 0, 8);
                     </a>
                   </div>
                   <div class="post-data">
+                    <a href="#" class="post-catagory"><i class="text-muted">Source:</i> <?php echo $local_news[$i]['source']['name']; ?></a>
                     <a href="<?php echo $local_news[$i]['url']; ?>" class="post-title" target="_blank">
                       <h6><?php echo word_limiter($local_news[$i]['title'], 10); ?></h6>
                     </a>
@@ -159,7 +160,7 @@ $sidebar_news         = array_splice($latest_news, 0, 8);
                   </div>
                 </div>
               </div>
-              <?php if(($i+1) % 3 == 0 && $i != (9-1)): ?>
+              <?php if(($i+1) % 3 == 0 && ($i+1) != count($local_news) ): ?>
                 <div class="col-12 text-center pt-1 pb-5">
                   <div class="footer-add">
                     <a href="#">
@@ -191,6 +192,7 @@ $sidebar_news         = array_splice($latest_news, 0, 8);
                 </a>
               </div>
               <div class="post-data">
+                <a href="#" class="post-catagory"><i class="text-muted">Source:</i> <?php echo $sport_news[$i]['source']['name']; ?></a>
                 <a href="<?php echo $sport_news[$i]['url']; ?>" class="post-title" target="_blank">
                   <h6><?php echo word_limiter($sport_news[$i]['title'], 10); ?></h6>
                 </a>
@@ -199,7 +201,7 @@ $sidebar_news         = array_splice($latest_news, 0, 8);
                 </div>
               </div>
             </div>
-            <?php if(($i+1) % 3 == 0 && $i != (5-1)): ?>
+            <?php if(($i+1) % 3 == 0 && ($i+1) != count($sport_news) ): ?>
               <div class="col-12 text-center pt-1 pb-4">
                 <div class="footer-add">
                   <a href="#">

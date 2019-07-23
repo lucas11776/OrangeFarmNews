@@ -152,31 +152,37 @@
             </div>
 
             <div class="section-heading pt-5">
-                <h6><span class="fa fa-flag"></span> South Africa Latest</h6>
+                <h6><span class="fa fa-flag"></span> Latest Sport News</h6>
             </div>
 
-              <div class="row">
-                <?php for($i = 0; $i < 2; $i++): ?>
+            <div class="row">
+              <?php if(is_array($sport_news)): ?>
+                <?php for($i = 0; $i < count($sport_news); $i++): ?>
                   <!-- Single Post -->
                   <div class="col-12 col-md-6">
-                      <div class="single-blog-post style-3 mb-80">
-                          <div class="post-thumb">
-                              <a href="#"><img src="<?php echo base_url('assets/default/img/bg-img/12.jpg'); ?>" alt=""></a>
-                          </div>
-                          <div class="post-data">
-                              <a href="#" class="post-catagory">Finance</a>
-                              <a href="#" class="post-title">
-                                  <h6>Dolor sit amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales placer. Sed varius leo ac...</h6>
-                              </a>
-                              <div class="post-meta d-flex align-items-center">
-                                  <a href="#" class="post-like"><i class="fa fa-comments-o"></i> <span>392</span></a>
-                                  <a href="#" class="post-comment"><i class="fa fa-eye"></i> <span>10</span></a>
-                              </div>
-                          </div>
+                    <div class="single-blog-post style-3 mb-80">
+                      <div class="post-thumb">
+                        <a href="<?php echo $sport_news[$i]['url']; ?>">
+                          <img src="<?php echo $sport_news[$i]['urlToImage']; ?>" alt="<?php echo $sport_news[$i]['title']; ?>">
+                        </a>
                       </div>
+                      <div class="post-data">
+                        <a href="#" class="post-catagory">
+                          <i class="text-muted">Source:</i> <?php echo $sport_news[$i]['source']['name']; ?>
+                        </a>
+                        <a href="<?php echo $sport_news[$i]['url']; ?>" class="post-title">
+                          <h6><?php echo word_limiter($sport_news[$i]['title'], 20); ?></h6>
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 <?php endfor; ?>
-              </div>
+              <?php else: ?>
+                <p class="text-danger">
+                  <strong><i class="fa fa-close"></i> Something went wrong when tring to get South African popular news.</strong>
+                </p>
+              <?php endif; ?>
+            </div>
 
               <!-- ####### PRINT NEW COMMENTS ######## -->
               <?php $this->comments_view->view($comments); ?>

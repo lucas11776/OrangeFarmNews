@@ -48,8 +48,8 @@ class Home extends CI_Controller
       'latest_news'   => $this->news->latest($per_page, $page),
       'news_updated'  => $this->news->latest($per_page, $page),
       'blog_updated'  => $this->blog->latest($per_page),
-      'local_news'    => $this->news_api->local_news(9),
-      'sport_news'    => $this->news_api->sport_news(5)
+      'local_news'    => $this->news_api->local_news(12),
+      'sport_news'    => $this->news_api->sport_news(6)
     );
 
     #page
