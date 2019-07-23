@@ -50,6 +50,7 @@
            </div>
         </li>
 
+        <!-- Username -->
         <li class="list-group-item pb-0">
           <div class="form-group row">
              <label for="usernmae" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">Username</label>
@@ -65,6 +66,7 @@
            </div>
         </li>
 
+        <!-- email -->
         <li class="list-group-item pb-0">
           <div class="form-group row">
              <label for="email" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">Email</label>
@@ -80,6 +82,7 @@
            </div>
         </li>
 
+        <!-- Name -->
         <li class="list-group-item pb-0">
           <div class="form-group row">
              <label for="name" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">Name</label>
@@ -95,6 +98,7 @@
            </div>
         </li>
 
+        <!-- Surname -->
         <li class="list-group-item pb-0">
           <div class="form-group row">
              <label for="surname" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">Surname</label>
@@ -109,6 +113,7 @@
            </div>
         </li>
 
+        <!-- Submit -->
         <li class="list-group-item pb-0 text-right">
           <div class="form-group">
             <button class="btn btn-primary">Update</button>
@@ -116,8 +121,10 @@
         </li>
       <?php echo form_close(); ?>
     </ul>
+
     <!-- ##### Change User Password Account #### -->
     <ul class="list-group mt-5 mb-5">
+
       <?php echo form_open('dashboard/my/account'); ?>
         <?php if($this->session->flashdata('change_password_error')): ?>
           <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -127,6 +134,7 @@
             </button>
           </div>
         <?php endif; ?>
+
         <?php if($this->session->flashdata('change_password_success')): ?>
           <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>Success!</strong> <?php echo $this->session->flashdata('change_password_success'); ?>
@@ -135,8 +143,12 @@
             </button>
           </div>
         <?php endif; ?>
+
         <input type="hidden" name="type" value="password">
+
         <li class="list-group-item active"><strong><i class="fas fa-key"></i> Change Password</strong></li>
+
+        <!-- Old Password -->
         <li class="list-group-item pb-0">
           <div class="form-group row">
              <label for="old-password" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">Old Password</label>
@@ -152,6 +164,7 @@
            </div>
         </li>
 
+        <!-- News Password -->
         <li class="list-group-item pb-0">
           <div class="form-group row">
              <label for="new-password" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">News Password</label>
@@ -167,6 +180,7 @@
            </div>
         </li>
 
+        <!-- confirm Password -->
         <li class="list-group-item pb-0">
           <div class="form-group row">
              <label for="confirm-password" class="col-sm-3 col-form-label col-form-label-md font-weight-bolder">Confirm Password</label>
@@ -182,6 +196,7 @@
            </div>
         </li>
 
+        <!-- Change Password -->
         <li class="list-group-item pb-0 text-right">
           <div class="form-group">
             <button class="btn btn-primary">Change Password</button>
