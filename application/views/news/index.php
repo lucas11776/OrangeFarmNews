@@ -161,21 +161,22 @@
           <!-- Latest Comments Widget -->
           <div class="latest-comments-widget mt-5 pt-4 pb-4  <?php if(count($most_viewed_blog) == 0) echo 'd-none'; ?>">
               <h3>Most Viewd Blog Post</h3>
-
-              <?php for($i = 0; $i < count($most_viewed_blog); $i++): ?>
+            <?php for($i = 0; $i < count($most_viewed_blog); $i++): ?>
               <!-- Single Comments -->
               <div class="single-comments d-flex">
-                  <div class="comments-thumbnail mr-15">
-                      <img src="img/bg-img/29.jpg" alt="">
-                  </div>
-                  <div class="comments-text">
-                      <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
-                      <p>06:34 am, April 14, 2018</p>
-                  </div>
+                <div class="comments-thumbnail mr-15">
+                  <img src="<?php echo $most_viewed_blog[$i]['picture']; ?>" alt="<?php echo $most_viewed_blog[$i]['title']; ?>">
+                </div>
+                <div class="comments-text">
+                  <a href="<?php echo base_url('blog/' . $most_viewed_blog[$i]['slug']); ?>">
+                    <?php echo word_limiter($most_viewed_blog[$i]['title'], 15); ?>
+                  </a>
+                  <p><?php echo date('h:i a, F d, Y', strtotime($most_viewed_blog[$i]['date'])); ?></p>
+                </div>
               </div>
-              <?php endfor; ?>
-
+            <?php endfor; ?>
           </div>
+
         </div>
       </div>
     </div>

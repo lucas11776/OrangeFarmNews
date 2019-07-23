@@ -16,7 +16,7 @@
 
     <!-- Twitter API -->
     <meta name="twitter:card" content="<?php echo $twitter_type ?? 'article'; ?>">
-    <meta name="twitter:site" content="<?php echo $website ?? 'http://www.orangefarmnews.co.za'; ?>">
+    <meta name="twitter:site" content="<?php echo $website ?? 'www.orangefarmnews.co.za'; ?>">
     <meta name="twitter:creator" content="<?php echo $author ?? 'Orange Farm News'; ?>">
     <meta name="twitter:title" content="<?php echo strip_tags($title) ?? 'Orange Farm News the voice of the people since 2012.'; ?>">
     <meta name="twitter:description" content="<?php echo strip_tags($description); ?>">
@@ -71,7 +71,7 @@
                     </a>
                   <?php else: ?>
                     <a href="<?php echo base_url('logout?r=' . uri_string()); ?>">
-                      <i class="fa fa-edit"></i> Logout
+                      <i class="fa fa-sign-out"></i> Logout
                     </a>
                   <?php endif; ?>
                 </div>
@@ -83,7 +83,9 @@
                            class="form-control"
                            placeholder="Search..."
                            value="<?php echo $this->input->get('term'); ?>">
-                    <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <button type="submit">
+                      <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
                   <?php echo form_close(); ?>
                 </div>
               </div>

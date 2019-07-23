@@ -131,7 +131,7 @@ class Newsletter extends CI_Controller
     }
 
     # check if the page
-    if(is_string($this->input->post('newsletter')))
+    if($this->input->post('newsletter') != '')
     {
       $params = empty($params) ? '?' : $params;
       $params .= '&newsletter=' . $this->input->post('newsletter');

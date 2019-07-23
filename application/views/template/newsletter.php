@@ -16,7 +16,7 @@
         </strong>
       </div>
     <?php endif; ?>
-    <input type="hidden" name="redirect" value="<?php echo base_url(); ?>">
+    <input type="hidden" name="redirect" value="<?php echo uri_string(); ?>">
     <input type="hidden" name="page" value="<?php echo $this->input->get('page'); ?>">
     <input type="hidden" name="term" value="<?php echo $this->input->get('term'); ?>">
     <input type="hidden" name="newsletter" value="<?php echo $this->input->get('newsletter'); ?>">

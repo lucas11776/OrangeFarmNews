@@ -17,30 +17,34 @@ $sidebar_news         = array_splice($latest_news, 0, 8);
             <?php for($i = 0; $i < (count($display_news ?? array()) >= 2 ? 2 : count($display_news)); $i++): ?>
               <div class="single-blog-post featured-post">
                   <div class="post-thumb">
-                      <a href="<?php echo base_url("news/{$display_news[$i]['slug']}"); ?>">
-                        <img src="<?php echo $display_news[$i]['picture']; ?>" alt="<?php echo $display_news[$i]['title']; ?>">
-                      </a>
+                    <a href="<?php echo base_url("news/{$display_news[$i]['slug']}"); ?>">
+                      <img src="<?php echo $display_news[$i]['picture']; ?>" alt="<?php echo $display_news[$i]['title']; ?>">
+                    </a>
                   </div>
                   <div class="post-data">
-                      <a href="<?php echo base_url("news/category/{$display_news[$i]['category']}"); ?>" class="post-catagory">
-                        <?php echo $display_news[$i]['category']; ?>
-                      </a>
-                      <a href="<?php echo base_url("news/{$display_news[$i]['slug']}"); ?>" class="">
-                          <h4><?php echo word_limiter($display_news[$i]['title'], 10); ?></h4>
-                      </a>
-                      <div class="post-meta">
-                          <p class="post-author">By
-                            <a href="<?php echo $this->auth->editor(false) ? base_url('account/' . $display_news[$i]['username']) : '#'; ?>">
-                              <?php echo $this->account->get_account_name($display_news[$i]); ?>
-                            </a>
-                          </p>
-                          <p class="post-excerp"><?php echo word_limiter(strip_tags($display_news[$i]['post']), 40); ?></p>
-                          <!-- Post Like & Post Comment -->
-                          <div class="d-flex align-items-center">
-                              <a class="post-like"><i class="fa fa-eye color"></i> <span><?php echo $display_news[$i]['views'] ?></span></a>
-                              <a class="post-comment"><i class="fa fa-comments color"></i> <span><?php echo $display_news[$i]['comments']; ?></span></a>
-                          </div>
+                    <a href="<?php echo base_url("news/category/{$display_news[$i]['category']}"); ?>" class="post-catagory">
+                      <?php echo $display_news[$i]['category']; ?>
+                    </a>
+                    <a href="<?php echo base_url("news/{$display_news[$i]['slug']}"); ?>" class="">
+                        <h4><?php echo word_limiter($display_news[$i]['title'], 10); ?></h4>
+                    </a>
+                    <div class="post-meta">
+                      <p class="post-author">By
+                        <a href="<?php echo $this->auth->editor(false) ? base_url('account/' . $display_news[$i]['username']) : '#'; ?>">
+                          <?php echo $this->account->get_account_name($display_news[$i]); ?>
+                        </a>
+                      </p>
+                      <p class="post-excerp"><?php echo word_limiter(strip_tags($display_news[$i]['post']), 40); ?></p>
+                      <!-- Post Like & Post Comment -->
+                      <div class="d-flex align-items-center">
+                        <a class="post-like">
+                          <i class="fa fa-eye color"></i> <span><?php echo $display_news[$i]['views'] ?></span>
+                        </a>
+                        <a class="post-comment">
+                          <i class="fa fa-comments color"></i> <span><?php echo $display_news[$i]['comments']; ?></span>
+                        </a>
                       </div>
+                    </div>
                   </div>
                 </div>
               <?php endfor; ?>
@@ -75,29 +79,31 @@ $sidebar_news         = array_splice($latest_news, 0, 8);
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4 pb-4">
-            <!-- Single Featured Post -->
-            <?php for($i = 0; $i < count($sidebar_news); $i++): ?>
-              <div class="single-blog-post small-featured-post d-flex">
-                  <div class="post-thumb">
-                      <a href="<?php echo base_url('news/'.$sidebar_news[$i]['slug']); ?>">
-                        <img src="<?php echo $sidebar_news[$i]['picture']; ?>" alt="<?php echo $sidebar_news[$i]['title']; ?>">
-                      </a>
-                  </div>
-                  <div class="post-data">
-                      <a href="<?php echo base_url('news/category/' . $sidebar_news[$i]['category']); ?>" class="post-catagory">
-                        <?php echo $sidebar_news[$i]['category']; ?>
-                      </a>
-                      <div class="post-meta">
-                          <a href="<?php echo base_url('news/'.$sidebar_news[$i]['slug']); ?>" class="post-title">
-                              <h6><?php echo word_limiter($sidebar_news[$i]['title'], 10); ?></h6>
-                          </a>
-                          <p class="post-date"><span class="fa fa-clock-o color"></span> <?php echo date('h:i A | F d', strtotime($sidebar_news[$i]['date'])); ?></p>
-                      </div>
-                  </div>
+          <!-- Single Featured Post -->
+          <?php for($i = 0; $i < count($sidebar_news); $i++): ?>
+            <div class="single-blog-post small-featured-post d-flex">
+              <div class="post-thumb">
+                <a href="<?php echo base_url('news/'.$sidebar_news[$i]['slug']); ?>">
+                  <img src="<?php echo $sidebar_news[$i]['picture']; ?>" alt="<?php echo $sidebar_news[$i]['title']; ?>">
+                </a>
               </div>
-            <?php endfor; ?>
-            <!-- Newsletter Widget -->
-            <?php $this->load->view('template/newsletter'); ?>
+              <div class="post-data">
+                <a href="<?php echo base_url('news/category/' . $sidebar_news[$i]['category']); ?>" class="post-catagory">
+                  <?php echo $sidebar_news[$i]['category']; ?>
+                </a>
+                <div class="post-meta">
+                  <a href="<?php echo base_url('news/'.$sidebar_news[$i]['slug']); ?>" class="post-title">
+                    <h6><?php echo word_limiter($sidebar_news[$i]['title'], 10); ?></h6>
+                  </a>
+                  <p class="post-date">
+                    <span class="fa fa-clock-o color"></span> <?php echo date('h:i A | F d', strtotime($sidebar_news[$i]['date'])); ?>
+                  </p>
+                </div>
+              </div>
+            </div>
+          <?php endfor; ?>
+          <!-- Newsletter Widget -->
+          <?php $this->load->view('template/newsletter'); ?>
         </div>
         <div class="col-12 pb-5">
           <nav aria-label="Home Pagination">
@@ -130,7 +136,7 @@ $sidebar_news         = array_splice($latest_news, 0, 8);
       <!-- South African News -->
       <div class="col-12 col-md-7 col-lg-9">
           <div class="section-heading">
-              <h6><span class="fa fa-flag"></span> South Africa News</h6>
+            <h6><span class="fa fa-flag"></span> South Africa News</h6>
           </div>
           <div class="row">
           <?php if(is_array($local_news)): ?>

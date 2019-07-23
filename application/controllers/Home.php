@@ -17,6 +17,9 @@ class Home extends CI_Controller
     $this->load->view('template/footer', $details);
   }
 
+  /**
+   * @Route (home)
+   */
   public function index()
   {
     # count number of news in database
@@ -33,7 +36,7 @@ class Home extends CI_Controller
 
     # page details
     $page_details = array(
-      'title'         => 'OrangeFarmNews news report for the community.',
+      'title'         => 'Orange Farm News the voice of the people since 2012.',
       'description'   => 'Orange Farm News is a FREE BI - monthly NEWSPAPER, printed at Mid Month (15th) and Month end (25-31).'.
                          'We distribute 60 000 copies FREE door to door in Orange Farm, Drieziek, Stretford, Palm Springs, Migson Manor, '.
                          'Lakeside and Evaton. We circulate 60 000 copies boasting a readership of close to 350 000 and increasing every month. '.
@@ -53,6 +56,9 @@ class Home extends CI_Controller
     $this->view('index', $page_details);
   }
 
+  /**
+   * test news letter mail template
+   */
   public function newsletter()
   {
     $data = array(
@@ -63,6 +69,9 @@ class Home extends CI_Controller
     echo $this->newsletter_template->html($data);
   }
 
+  /**
+   * test notify mail template
+   */
   public function notify()
   {
     $data = array(
