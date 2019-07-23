@@ -71,17 +71,13 @@ class Password extends CI_Controller
     $data = array(
       'html'    => $this->notify_template->html($data),
       'email'   => $this->user_account['email'],
-      'subject' => 'Reset Password Link From Orange Farm News'
+      'subject' => 'Reset Password Link.'
     );
 
-    $this->mail->send($data);
-
-    die();
-
     # send mail
-    if(false)
+    if($this->mail->send($data) === false)
     {
-      $this->session->set_flashdata('change_password_error', 'Something went wrong when trying to send reset link to your mail');
+      $this->session->set_flashdata('recover_password_error', 'Something went wrong when trying to send reset link to your mail');
 
       $this->view('forgot', $page_details);
 
@@ -186,10 +182,8 @@ class Password extends CI_Controller
     # decrypt password
     $password = $this->encryption->encrypt($this->input->post('password'));
 
-    print_r($this->token);
-
     # change password
-    if($this->account->change_password($this->token['id'], $password))
+    if($this->account->change_password($this->token['id'], $password) == false)
     {
       $this->session->set_flashdata('change_password_error', 'Something went wrong when tring to connect to database');
 
@@ -199,8 +193,24 @@ class Password extends CI_Controller
       return;
     }
 
-    echo $password;
+    $page_details = array(
+      'icon'        => 'fa fa-unlock',
+      'title'       => 'Password Has Been Successfully Changed.',
+      'description' => null,
+      'message'     => 'Please login in to your account with a new password a remember your password.',
+      'active'      => 'password',
+      'navbar_adv'  => false,
+      'link'        => array(
+        'text' => 'Login',
+        'url'  => base_url('login'),
+        'icon' => 'fa fa-user-o'
+      )
+    );
 
+    # page
+    $this->load->view('template/navbar', $page_details);
+    $this->load->view('message', $page_details);
+    $this->load->view('template/footer', $page_details);
   }
 
   /**

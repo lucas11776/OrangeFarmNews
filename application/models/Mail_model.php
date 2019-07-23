@@ -8,18 +8,21 @@ class Mail_model extends CI_Model
    * 
    * @var string
    */
-  public const EMAIL = 'testm2697@gmail.com';
+  public const EMAIL = '';
 
   /**
    * Email Address Password
    * 
    * @var string
    */
-  private const PASSWORD = 'qwerty@360';
+  private const PASSWORD = '';
 
+  /**
+   * initialize email
+   */
   public function __construct()
   {
-    $this->config = array(
+    $config = array(
       'protocol' => 'smtp',
       'smtp_host' => 'ssl://smtp.googlemail.com',
       'smtp_port' => 465,
@@ -43,13 +46,19 @@ class Mail_model extends CI_Model
       'html'    => $data['html']
     );
 
-    print_r($data);
-
     $this->email->set_newline("\r\n");
-    $this->email->from($this::EMAIL, 'Orange Farm News');
-    $this->email->to($data['email']);
-    $this->email->subject($data['subject']); 
-    $this->email->message('Hello World…');
+    $this->email->from($this::EMAIL);
+    $this->email->to($data['email']);   
+    $this->email->subject($data['subject']);
+    $this->email->message($data['html']);
+
+    # send email
+    $mail_sent = $this->email->send();
+
+    # email error (debugging)
+    # show_error($this->email->print_debugger());
+
+    return $mail_sent;
   }
 
 }
