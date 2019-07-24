@@ -88,7 +88,8 @@ class News extends CI_Controller
       'local_news'  => $this->news_api->local_news(2),
       'most_viewed' => $this->news->most_viewed(5),
       'comments'    => $this->news_comments->get(array('news_id' => $single_news['id'])),
-      'navbar_adv'  => false
+      'navbar_adv'  => false,
+      'picture'     => $single_news['picture']
     );
 
     # page

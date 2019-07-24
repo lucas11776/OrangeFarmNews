@@ -15,23 +15,26 @@
     <title><?php echo strip_tags($title) ?? 'Orange Farm News the voice of the people since 2012.'; ?></title>
 
     <!-- Twitter API -->
-    <meta name="twitter:card" content="<?php echo $twitter_type ?? 'article'; ?>">
+    <meta name="twitter:card" content="<?php echo $twitter_type ?? 'summary'; ?>">
     <meta name="twitter:site" content="<?php echo $website ?? 'www.orangefarmnews.co.za'; ?>">
-    <meta name="twitter:creator" content="<?php echo $author ?? 'Orange Farm News'; ?>">
+    <meta name="twitter:creator" content="<?php echo base_url(uri_string()); ?>">
     <meta name="twitter:title" content="<?php echo strip_tags($title) ?? 'Orange Farm News the voice of the people since 2012.'; ?>">
     <meta name="twitter:description" content="<?php echo strip_tags($description); ?>">
     <meta name="twitter:image" content="<?php echo $picture ?? base_url('assets/default/img/core-img/orangefarm.png'); ?>">
 
     <!-- Facebook API (OpenGraph) -->
-    <meta property="og:url" content="">
+    <meta property="og:url" content="<?php echo base_url(uri_string()); ?>">
     <meta property="og:title" content="<?php echo strip_tags($title) ?? 'Orange Farm News the voice of the people since 2012.'; ?>">
     <meta property="og:description" content="<?php echo strip_tags($description); ?>">
     <meta property="og:type" content="<?php echo $og_type ?? 'article'; ?>">
     <meta property="og:image" content="<?php echo $picture ?? base_url('assets/default/img/core-img/orangefarm.png'); ?>">
+    <meta property="fb:app_id" content="860963117609357">
+    <!--
     <meta property="og:image:secure_url" content="">
     <meta property="og:image:type" content="">
     <meta property="og:image:width" content="">
     <meta property="og:image:height" content="">
+    -->
 
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">

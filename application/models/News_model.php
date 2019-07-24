@@ -30,7 +30,9 @@ class News_model extends CI_Model
   public const PICTURE_CONFIG = array(
     'upload_path'   => 'uploads/news/pictures/',
     'max_size'      => 512, # 0.5mb maximum upload size
-    'allowed_types' => array('png','jpeg','jpg')
+    'allowed_types' => array('png','jpeg','jpg'),
+    'min_width'     => 200,
+    'min_height'    => 200
   );
 
   /**

@@ -20,18 +20,21 @@ class Cron_jobs extends CI_controller
       'article_type' => 'news'
     );
 
-    // check if the are article to send
-    if(count($data['posts']) !== 0)
-    {
-      # mail data
-      $data = array(
-        'subject' => 'Morning News Updated',
-        'email'   => $this->newsletter->subscribed(),
-        'html'    => $this->newsletter_template->html($data, 'news')
-      );
+    # mail data
+    $data = array(
+      'subject' => 'Morning News Updated',
+      'email'   => $this->newsletter->subscribed(),
+      'html'    => $this->newsletter_template->html($data)
+    );
 
-      # send mails
-      $this->mail->send($data);
+    # send message
+    if($this->mail->send($data))
+    {
+      echo 'Mail Sent';
+    }
+    else
+    {
+      echo 'Mail Not Sent';
     }
   }
 
@@ -40,30 +43,8 @@ class Cron_jobs extends CI_controller
    *
    * Send Blog To NewsLetter (Subscribed)
    */
-  public function blog_newsletter_cron_job()
+  public function news_newsletter_cron_blog()
   {
-    # reset time 12Hours back
-    $time = date('Y-m-d', time()-(((60*60*12)*2) * 10));
 
-    # search news by date (required newsletter details)
-    $data = array(
-      'title'        => 'Morning Blog Update',
-      'posts'        => $this->blog->latest(5),#$this->news->search(array('news.date' => $time)),
-      'article_type' => 'news'
-    );
-
-    // check if the are article to send
-    if(count($data['posts']) !== 0)
-    {
-      # mail data
-      $data = array(
-        'subject' => 'Morning Blog Updated',
-        'email'   => $this->newsletter->subscribed(),
-        'html'    => $this->newsletter_template->html($data, 'blog')
-      );
-
-      # send mails
-      $this->mail->send($data);
-    }
   }
 }

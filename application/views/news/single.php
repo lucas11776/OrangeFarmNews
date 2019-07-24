@@ -142,9 +142,10 @@
           </div>
 
           <!-- About Author -->
+          <!--
           <div class="blog-post-author d-flex">
             <div class="author-thumbnail">
-              <img src="<?php echo $single_news['profile_picture']; ?>" alt="<?php echo $this->account->get_account_name($single_news); ?>">
+              <img disabled src="<?php echo $single_news['profile_picture']; ?>" alt="<?php echo $this->account->get_account_name($single_news); ?>">
             </div>
             <div class="author-info">
               <a href="<?php echo $this->auth->editor(false) ? base_url('account/' . $single_news['username']) : '#'; ?>" class="author-name">
@@ -156,6 +157,7 @@
               </p>
             </div>
           </div>
+          -->
 
           <div class="section-heading pt-5">
             <h6><span class="fa fa-flag"></span> South Africa Latest</h6>

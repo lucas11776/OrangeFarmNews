@@ -26,8 +26,8 @@ class Contect extends CI_Controller
     # page details
     $page_details = array(
       'title'       => 'Getting in touch with OrangeFarmNews is so easy and simple',
-      'description' => `Getting in touch with us is so simple you can go to are office at Nelgate, call us or use
-                        our simple form application by just filling in your details and sending them to us.`,
+      'description' => "Getting in touch with us is so simple you can go to are office at Nelgate, call us or use
+                        our simple form application by just filling in your details and sending them to us.",
       'active'       => 'contect',
       'news_updated' => $this->news->most_viewed(5),
       'blog_updated' => $this->blog->latest(5)

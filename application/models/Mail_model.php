@@ -5,17 +5,17 @@ class Mail_model extends CI_Model
 {
   /**
    * Email Address
-   * 
+   *
    * @var string
    */
-  public const EMAIL = 'thembangubeni04@gmail.com';
+  public const EMAIL = '';
 
   /**
    * Email Address Password
-   * 
+   *
    * @var string
    */
-  private const PASSWORD = '11776@1999th';
+  private const PASSWORD = '';
 
   /**
    * initialize email
@@ -33,7 +33,7 @@ class Mail_model extends CI_Model
       'wordwrap' => TRUE
     );
 
-    # initialize 
+    # initialize
     $this->email->initialize($config);
   }
 
@@ -48,7 +48,7 @@ class Mail_model extends CI_Model
 
     $this->email->set_newline("\r\n");
     $this->email->from($this::EMAIL);
-    $this->email->to($data['email']);   
+    $this->email->to($data['email']);
     $this->email->subject($data['subject']);
     $this->email->message($data['html']);
 
@@ -56,7 +56,7 @@ class Mail_model extends CI_Model
     $mail_sent = $this->email->send();
 
     # email error (debugging)
-    # show_error($this->email->print_debugger());
+    #show_error($this->email->print_debugger());
 
     return $mail_sent;
   }
