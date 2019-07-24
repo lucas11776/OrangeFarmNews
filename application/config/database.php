@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'sql302.epizy.com',
-	'username' => 'epiz_24098056',
-	'password' => '4HpzNBuzbTqblN',
-	'database' => 'epiz_24098056_orange_farm_news',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'orangefarmnews',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
