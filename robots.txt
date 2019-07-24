@@ -1,0 +1,3 @@
+Sitemap: http://www.orangefarmnews.epizy.com/sitemap.xml
+User-agent: *
+Disallow:
