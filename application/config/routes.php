@@ -97,6 +97,7 @@ $route['reset/account/password']          = 'password/change_password';         
 $route['api/news']                        = 'api_news/news_request';              # access (all)
 $route['api/blog']                        = 'api_blog/blog_request';              # access (all)
 $route['api/message/subjects']            = 'api_message/subjects';               # access (all)
+$route['api/message/send']                = 'api_message/send';                   # access (all)
 # cron jobs
 $route['cron-job/newsletter/news']        = 'cron_jobs/news_newsletter_cron_job'; # access (all)
 $route['cron-job/newsletter/blog']        = 'cron_jobs/blog_newsletter_cron_job'; # access (all)
